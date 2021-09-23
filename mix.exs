@@ -33,9 +33,10 @@ defmodule Lexin.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
       {:floki, ">= 0.30.0", only: :test},
       {:gettext, "~> 0.18"},
+      {:hackney, "~> 1.17"},
       {:jason, "~> 1.2"},
       {:phoenix, "~> 1.6.0-rc.1", override: true},
       {:phoenix_html, "~> 3.0"},
@@ -45,7 +46,8 @@ defmodule Lexin.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"}
+      {:telemetry_poller, "~> 1.0"},
+      {:tesla, "~> 1.4"}
     ]
   end
 
