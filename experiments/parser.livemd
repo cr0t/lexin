@@ -1,0 +1,256 @@
+# Lexin Parser
+
+## Intro
+
+We are trying to implement a parser for [Lexin](https://lexin.nada.kth.se/) service output.
+
+```elixir
+Mix.install([
+  {:tesla, "~> 1.4"},
+  {:hackney, "~> 1.17"},
+  {:jason, "~> 1.2"},
+  {:kino, "~> 0.3"}
+])
+```
+
+## Client
+
+```elixir
+defmodule LexinClient do
+  use Tesla
+
+  plug(Tesla.Middleware.BaseUrl, "https://lexin.nada.kth.se/lexin")
+  plug(Tesla.Middleware.JSON)
+
+  def definition(word) do
+    params = [searchinfo: "to,swe_rus,#{word}", output: "JSON"]
+
+    {:ok, %{body: defn}} = get("/service", query: params)
+
+    defn
+  end
+end
+```
+
+## Simplest Request
+
+```elixir
+LexinClient.definition("vatten")
+```
+
+## Type System
+
+It's an attempt to understand what is the structure of Lexin backend response. We might be
+missing some types of fields.
+
+With `enforced_keys` we are trying to highlight which fields are mandatory for the given
+record type; which fieldswe expect to see in the record.
+
+For example, `Lexin.Definition.Lang` fields can be in both: as `"BaseLang"` keys, and as
+`"TargetLang"` keys. Sometimes, `"TargetLang"` has only single `"Translation"`, while
+`"BaseLang"` doesn't have this field at all.
+
+In the comments next to `defstruct` definitions we put the key name (and a value form)
+from the original JSON-response.
+
+```elixir
+defmodule Lexin.Definition.Illustration do
+  @enforce_keys [:type, :url]
+  defstruct [
+    # Type "picture" (not sure if other types exist)
+    :type,
+    # Value "https://..."
+    :url
+  ]
+
+  @type t :: %__MODULE__{
+          type: String.t(),
+          url: String.t()
+        }
+end
+
+defmodule Lexin.Definition.Phonetic do
+  @enforce_keys [:transcription, :audio_url]
+  defstruct [
+    # Content "..."
+    :transcription,
+    # File "http://..."
+    :audio_url
+  ]
+
+  @type t :: %__MODULE__{
+          transcription: String.t(),
+          audio_url: String.t()
+        }
+end
+
+defmodule Lexin.Definition.Content do
+  @enforce_keys [:value]
+  defstruct [
+    # ID "..." (internal for the record id; for corresponding translation)
+    :id,
+    # Content "..."
+    :value,
+    # Inflection ["...", ...] (not the same format as in upper level inflections)
+    :inflections
+  ]
+
+  @type t :: %__MODULE__{
+          id: non_neg_integer() | nil,
+          value: String.t(),
+          inflections: [Strint.t()]
+        }
+end
+
+defmodule Lexin.Definition.Lang do
+  defstruct [
+    # Meaning "..."
+    :meaning,
+    # Comment "..."
+    :comment,
+    # Translation "..."
+    :translation,
+    # Alternate "..."
+    :alternate,
+    # Phonetic %{}
+    :phonetic,
+    # Inflection [%{}, ...]
+    :inflections,
+    # Example [%{}, ...]
+    :examples,
+    # Idiom [%{}, ...]
+    :idioms,
+    # Compound [%{}, ...]
+    :compounds,
+    # Illustration [%{}, ...]
+    :illustrations,
+    # Antonym ["...", ...]
+    :antonyms,
+    # Synonym, ["...", ...]
+    :synonyms
+  ]
+
+  @type t :: %__MODULE__{
+          meaning: String.t() | nil,
+          comment: String.t() | nil,
+          translation: String.t() | nil,
+          alternate: String.t() | nil,
+          phonetic: Lexin.Definition.Phonetic.t() | nil,
+          inflections: [Lexin.Definition.Content.t()],
+          examples: [Lexin.Definition.Content.t()],
+          idioms: [Lexin.Definition.Content.t()],
+          compounds: [Lexin.Definition.Content.t()],
+          illustrations: [Lexin.Definition.Illustration.t()],
+          antonyms: [String.t()],
+          synonyms: [String.t()]
+        }
+end
+
+defmodule Lexin.Definition do
+  @enforce_keys [:id, :pos, :value, :base, :target]
+  defstruct [
+    # VariantID "..."
+    :id,
+    # Type "..." (part of speech)
+    :pos,
+    # Value "..."
+    :value,
+    # BaseLang %{}
+    :base,
+    # TargetLang %{}
+    :target
+  ]
+
+  @type t :: %__MODULE__{
+          id: non_neg_integer(),
+          pos: String.t(),
+          value: String.t(),
+          base: Lexin.Definition.Lang.t(),
+          target: Lexin.Definition.Lang.t()
+        }
+end
+```
+
+## Parsers
+
+```elixir
+defmodule Lexin.Parser do
+  def run(word) do
+    %{"Result" => definitions} = LexinClient.definition(word)
+
+    definitions
+    |> Enum.map(&parse_definition/1)
+  end
+
+  defp parse_definition(raw) do
+    %Lexin.Definition{
+      id: parse_integer(raw["VariantID"]),
+      pos: raw["Type"],
+      value: raw["Value"],
+      base: parse_lang(raw["BaseLang"]),
+      target: parse_lang(raw["TargetLang"])
+    }
+  end
+
+  defp parse_lang(raw) do
+    %Lexin.Definition.Lang{
+      meaning: raw["Meaning"],
+      comment: raw["Comment"],
+      translation: raw["Translation"],
+      alternate: raw["Alternate"],
+      phonetic: parse_phonetic(raw["Phonetic"]),
+      inflections: parse_contents(raw["Inflection"]),
+      examples: parse_contents(raw["Example"]),
+      idioms: parse_contents(raw["Idiom"]),
+      compounds: parse_contents(raw["Compound"]),
+      illustrations: parse_illustrations(raw["Illustration"]),
+      antonyms: parse_strings(raw["Antonym"]),
+      synonyms: parse_strings(raw["Synonym"])
+    }
+  end
+
+  defp parse_phonetic(nil), do: nil
+
+  defp parse_phonetic(raw) do
+    %Lexin.Definition.Phonetic{
+      transcription: raw["Content"],
+      audio_url: raw["File"]
+    }
+  end
+
+  defp parse_contents(nil), do: []
+
+  defp parse_contents(raws) do
+    raws
+    |> Enum.map(fn raw ->
+      %Lexin.Definition.Content{
+        id: parse_integer(raw["ID"]),
+        inflections: parse_strings(raw["Inflection"]),
+        value: raw["Content"]
+      }
+    end)
+  end
+
+  defp parse_illustrations(nil), do: []
+
+  defp parse_illustrations(raws) do
+    raws
+    |> Enum.map(fn raw ->
+      %Lexin.Definition.Illustration{
+        type: raw["Type"],
+        url: raw["Value"]
+      }
+    end)
+  end
+
+  defp parse_integer(nil), do: nil
+  defp parse_integer(""), do: nil
+  defp parse_integer(n), do: String.to_integer(n)
+
+  defp parse_strings(nil), do: []
+  defp parse_strings([""]), do: []
+  defp parse_strings(list), do: list
+end
+
+Lexin.Parser.run("katt")
+```
