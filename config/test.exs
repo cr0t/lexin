@@ -8,8 +8,7 @@ config :lexin, LexinWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :lexin, Lexin.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :lexin, Lexin.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn
