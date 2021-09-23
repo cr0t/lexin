@@ -17,7 +17,7 @@ defmodule LexinWeb.Router do
   scope "/", LexinWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", DictionaryLive
   end
 
   # Other scopes may use custom stacks.
