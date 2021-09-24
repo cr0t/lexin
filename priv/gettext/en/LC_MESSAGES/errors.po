@@ -9,3 +9,13 @@
 msgid ""
 msgstr ""
 "Language: en\n"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:43
+msgid "No response from Lexin API"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:40
+msgid "Not found"
+msgstr ""

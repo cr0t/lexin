@@ -17,13 +17,28 @@ defmodule LexinWeb.DictionaryLive do
 
   def handle_event("search", %{"query" => query}, socket) do
     socket =
-      assign(socket, %{
-        query: query,
-        definitions: find_definitions(query)
-      })
+      case search(query) do
+        {:ok, definitions} ->
+          socket
+          |> clear_flash()
+          |> assign(:definitions, definitions)
+
+        {:error, err} ->
+          socket
+          |> put_flash(:error, error_msg(err))
+          |> assign(:definitions, [])
+      end
+
+    socket = assign(socket, :query, query)
 
     {:noreply, socket}
   end
 
-  defp find_definitions(query), do: Lexin.Service.lookup(query)
+  defp search(query), do: Lexin.Service.lookup(query)
+
+  defp error_msg(:not_found),
+    do: dgettext("errors", "Not found")
+
+  defp error_msg(:no_response),
+    do: dgettext("errors", "No response from Lexin API")
 end

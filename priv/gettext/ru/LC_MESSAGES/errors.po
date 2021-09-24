@@ -10,3 +10,13 @@ msgid ""
 msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=3\n"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:43
+msgid "No response from Lexin API"
+msgstr "Нет ответа от Lexin API"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:40
+msgid "Not found"
+msgstr "Не найдено"
