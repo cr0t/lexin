@@ -12,7 +12,7 @@ defmodule LexinWeb.CardComponent do
   end
 
   def inflections(dfn) do
-    [dfn.value | Enum.map(dfn.base.inflections, &(&1.value))]
+    [dfn.value | Enum.map(dfn.base.inflections, & &1.value)]
   end
 
   def examples(dfn) do

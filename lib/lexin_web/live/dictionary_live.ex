@@ -8,8 +8,8 @@ defmodule LexinWeb.DictionaryLive do
   def mount(_params, _session, socket) do
     socket =
       assign(socket, %{
-        query: "katt",
-        definitions: KattFixture.definitions()
+        query: "",
+        definitions: []
       })
 
     {:ok, socket}
