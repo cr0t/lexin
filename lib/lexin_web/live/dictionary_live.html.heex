@@ -4,3 +4,7 @@
   <input type="text" name="query" value={@query} autocomplete="off" />
   <button type="submit">Search</button>
 </form>
+
+<%= for dfn <- @definitions do %>
+  <%= live_component(CardComponent, dfn: dfn) %>
+<% end %>

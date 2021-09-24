@@ -1,11 +1,13 @@
 defmodule LexinWeb.DictionaryLive do
   use LexinWeb, :live_view
 
+  alias LexinWeb.CardComponent
+
   def mount(_params, _session, socket) do
     socket =
       assign(socket, %{
-        query: "",
-        definitions: []
+        query: "katt",
+        definitions: KattFixture.definitions()
       })
 
     {:ok, socket}
@@ -21,5 +23,5 @@ defmodule LexinWeb.DictionaryLive do
     {:noreply, socket}
   end
 
-  defp find_definitions(_query), do: []
+  defp find_definitions(query), do: Lexin.Service.lookup(query)
 end

@@ -1,0 +1,32 @@
+.dfn {
+  margin-bottom: 4rem;
+}
+
+.dfn_content {
+  padding-left: 2rem;
+}
+
+.dfn_inflections {
+  color: rgba(0, 0, 0, .5)
+}
+
+.dfn_translation {
+  font-weight: bold;
+}
+
+.dfn_translation-synonyms {
+  color: rgba(0, 0, 0, .5);
+  font-weight: normal;
+}
+
+.dfn_examples, .dfn_idioms, .dfn_compounds {
+  margin-top: 2rem;
+}
+
+.dfn_list {
+  margin-left: 2rem;
+}
+
+.dfn_list li {
+  margin-bottom: 0;
+}

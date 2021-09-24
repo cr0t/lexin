@@ -1,0 +1,91 @@
+<div id={"definition-#{@dfn.id}"} class="dfn">
+  <div class="dfn_title">
+    <strong><%= @dfn.value %></strong>
+    <span class="dfn_title-phonetic">[<%= @dfn.base.phonetic.transcription %>]</span>
+    <a href="#" onclick={listen_handler(@dfn)}>listen</a>
+    <span class="dfn_title-pos"><%= @dfn.pos %></span>
+  </div>
+
+  <div class="dfn_content">
+    <div class="dfn_inflections">
+      &lt;<%= Enum.join(inflections(@dfn), ", ") %>&gt;
+    </div>
+
+    <div class="dfn_meaning">
+      <%= @dfn.base.meaning %>
+    </div>
+
+    <%= if @dfn.base.alternate do %>
+      <div class="dfn_alternate">
+        Alternate: <%= @dfn.base.alternate %>
+      </div>
+    <% end %>
+
+    <%= if @dfn.target.translation do %>
+      <div class="dfn_translation">
+        <%= @dfn.target.translation %>
+        <%= if length(@dfn.target.synonyms) > 0 do %>
+          <span class="dfn_translation-synonyms">— <%= Enum.join(@dfn.target.synonyms, ", ") %></span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= if length(@dfn.base.antonyms) > 0 do %>
+      <div class="dfn_antonyms">
+        Antonyms: <%= Enum.join(@dfn.base.antonyms, ", ") %>
+      </div>
+    <% end %>
+
+    <% pictures = illustrations(@dfn)  %>
+
+    <%= if length(pictures) > 0 do %>
+      <div class="dfn_illustrations">
+        Pictures
+        <ul class="dfn_list">
+          <%= for pict <- pictures do %>
+            <li><a href={pict.url} target="_blank">picture 🖼</a></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% examples = examples(@dfn) %>
+
+    <%= if length(examples) > 0 do %>
+      <div class="dfn_examples">
+        Examples
+        <ul class="dfn_list">
+          <%= for {base, target} <- examples do %>
+            <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% idioms = idioms(@dfn) %>
+
+    <%= if length(idioms) > 0 do %>
+      <div class="dfn_idioms">
+        Idioms
+        <ul class="dfn_list">
+          <%= for {base, target} <- idioms do %>
+            <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% compounds = compounds(@dfn) %>
+
+    <%= if length(compounds) > 0 do %>
+      <div class="dfn_compounds">
+        Compounds
+        <ul class="dfn_list">
+          <%= for {base, target} <- compounds do %>
+            <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
