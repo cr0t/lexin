@@ -7,12 +7,17 @@ defmodule Lexin.Service do
 
   @spec lookup(word :: String.t()) :: {:ok, [Lexin.Definition.t()]} | {:error, any()}
   def lookup(word) do
-    case Client.definitions(word) do
-      {:error, err} ->
-        {:error, err}
+    try do
+      case Client.definitions(word) do
+        {:ok, raw_definitions} ->
+          {:ok, Enum.map(raw_definitions, &Parser.convert/1)}
 
-      {:ok, raw_definitions} ->
-        {:ok, Enum.map(raw_definitions, &Parser.convert/1)}
+        {:error, err} ->
+          {:error, err}
+      end
+    rescue
+      _err ->
+        {:error, :exception_processing_request}
     end
   end
 end

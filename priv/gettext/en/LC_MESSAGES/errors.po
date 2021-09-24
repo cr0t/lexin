@@ -19,3 +19,13 @@ msgstr ""
 #: lib/lexin_web/live/dictionary_live.ex:40
 msgid "Not found"
 msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:46
+msgid "Exception processing search request"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:49
+msgid "Unknown (yet) error – fun for developers"
+msgstr ""

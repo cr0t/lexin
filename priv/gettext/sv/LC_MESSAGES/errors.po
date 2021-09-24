@@ -20,3 +20,13 @@ msgstr "Inget svar från Lexin API"
 #: lib/lexin_web/live/dictionary_live.ex:40
 msgid "Not found"
 msgstr "Hittades inte"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:46
+msgid "Exception processing search request"
+msgstr "Undantag bearbetar sökförfrågan"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:49
+msgid "Unknown (yet) error – fun for developers"
+msgstr "Okänt (ännu) fel – kul för utvecklare"

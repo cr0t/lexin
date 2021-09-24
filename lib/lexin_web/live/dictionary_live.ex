@@ -41,4 +41,10 @@ defmodule LexinWeb.DictionaryLive do
 
   defp error_msg(:no_response),
     do: dgettext("errors", "No response from Lexin API")
+
+  defp error_msg(:exception_processing_request),
+    do: dgettext("errors", "Exception processing search request")
+
+  defp error_msg(_),
+    do: dgettext("errors", "Unknown (yet) error – fun for developers")
 end
