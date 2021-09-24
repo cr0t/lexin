@@ -1,3 +1,33 @@
+.dfn_header {
+  margin-top: 4rem;
+}
+
+/* --- Search Form --- */
+
+#dfn_form {
+  display: flex;
+  margin: 2rem 0 4rem 0;
+}
+
+#dfn_form-input {
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  font-size: 16px;
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+
+#dfn_form-submit {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* --- Serach Results --- */
+
 .dfn {
   margin-bottom: 4rem;
 }
@@ -19,7 +49,7 @@
   font-weight: normal;
 }
 
-.dfn_examples, .dfn_idioms, .dfn_compounds {
+.dfn_illustrations, .dfn_examples, .dfn_idioms, .dfn_compounds {
   margin-top: 2rem;
 }
 
@@ -29,4 +59,5 @@
 
 .dfn_list li {
   margin-bottom: 0;
+  list-style: disc inside;
 }

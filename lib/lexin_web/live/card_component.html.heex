@@ -36,19 +36,6 @@
       </div>
     <% end %>
 
-    <% pictures = illustrations(@dfn)  %>
-
-    <%= if length(pictures) > 0 do %>
-      <div class="dfn_illustrations">
-        Pictures
-        <ul class="dfn_list">
-          <%= for pict <- pictures do %>
-            <li><a href={pict.url} target="_blank">picture 🖼</a></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <% examples = examples(@dfn) %>
 
     <%= if length(examples) > 0 do %>
@@ -83,6 +70,19 @@
         <ul class="dfn_list">
           <%= for {base, target} <- compounds do %>
             <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% pictures = illustrations(@dfn)  %>
+
+    <%= if length(pictures) > 0 do %>
+      <div class="dfn_illustrations">
+        Extra
+        <ul class="dfn_list">
+          <%= for pict <- pictures do %>
+            <li><a href={pict.url} target="_blank"><%= pict.type %> &rarr;</a></li>
           <% end %>
         </ul>
       </div>
