@@ -1,6 +1,8 @@
 defmodule LexinWeb.CardComponent do
   use Phoenix.LiveComponent
 
+  import LexinWeb.Gettext
+
   def listen_handler(dfn) do
     "return playAudio('#{dfn.base.phonetic.audio_url}')"
   end

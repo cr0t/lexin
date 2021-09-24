@@ -4,7 +4,9 @@
 
 <form id="dfn_form" phx-submit="search">
   <input id="dfn_form-input" type="text" name="query" value={@query} autocomplete="off" />
-  <button id="dfn_form-submit" type="submit">Search</button>
+  <button id="dfn_form-submit" type="submit">
+    <%= gettext("Search") %>
+  </button>
 </form>
 
 <%= for dfn <- @definitions do %>

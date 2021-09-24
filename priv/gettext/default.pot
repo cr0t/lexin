@@ -1,0 +1,51 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here as no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:20
+msgid "Alternate: %{alt}"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:35
+msgid "Antonyms: %{antonyms}"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:69
+msgid "Compounds"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:43
+msgid "Examples"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:82
+msgid "Extra"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:56
+msgid "Idioms"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.html.heex:8
+msgid "Search"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:5
+msgid "listen"
+msgstr ""

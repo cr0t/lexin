@@ -7,6 +7,11 @@
 # General application configuration
 import Config
 
+# Configure i18n and supported locales
+config :lexin, LexinWeb.Gettext,
+  default_locale: "sv",
+  locales: ~w(en ru sv)
+
 # Configures the endpoint
 config :lexin, LexinWeb.Endpoint,
   url: [host: "localhost"],

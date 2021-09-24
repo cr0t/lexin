@@ -1,6 +1,8 @@
 defmodule LexinWeb.DictionaryLive do
   use LexinWeb, :live_view
 
+  import LexinWeb.Gettext
+
   alias LexinWeb.CardComponent
 
   def mount(_params, _session, socket) do

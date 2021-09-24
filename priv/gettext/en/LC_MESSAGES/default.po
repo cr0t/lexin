@@ -1,0 +1,52 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:20
+msgid "Alternate: %{alt}"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:35
+msgid "Antonyms: %{antonyms}"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:69
+msgid "Compounds"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:43
+msgid "Examples"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:82
+msgid "Extra"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:56
+msgid "Idioms"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.html.heex:8
+msgid "Search"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/card_component.html.heex:5
+msgid "listen"
+msgstr ""
