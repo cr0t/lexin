@@ -18,23 +18,30 @@ defmodule LexinWeb.DictionaryLive do
   def mount(_params, _session, socket), do: {:ok, socket}
 
   @doc """
-  When `?query=...` presented in the parameters hash, we use it as initial state and request data
+  When `?query=...&lang=...` presented in the parameters hash, we use it as initial state and
+  request data.
 
-  By default (if user opens a page without query parameter) we set everything to clean state
+  By default (if user opens a page without query parameter) we set everything to clean state.
   """
   def handle_params(params, uri, socket)
 
-  def handle_params(%{"query" => query}, _uri, socket) do
-    socket = assign(socket, :query, query)
+  def handle_params(%{"query" => query, "lang" => lang}, _uri, socket) do
+    socket =
+      assign(socket, %{
+        query: query,
+        lang: lang
+      })
 
     {:noreply, find_definitions(socket)}
   end
 
   def handle_params(_params, _uri, socket) do
-    socket = assign(socket, %{
-      query: "",
-      definitions: []
-    })
+    socket =
+      assign(socket, %{
+        query: "",
+        lang: "",
+        definitions: []
+      })
 
     {:noreply, socket}
   end
@@ -45,15 +52,19 @@ defmodule LexinWeb.DictionaryLive do
   """
   def handle_event(event, params, socket)
 
-  def handle_event("search", %{"query" => query}, socket) do
-    route = Routes.live_path(socket, LexinWeb.DictionaryLive, %{query: query})
+  def handle_event("search", %{"query" => query, "lang" => lang}, socket) do
+    route =
+      Routes.live_path(socket, LexinWeb.DictionaryLive, %{
+        query: query,
+        lang: lang
+      })
 
     {:noreply, push_patch(socket, to: route)}
   end
 
-  defp find_definitions(socket = %{assigns: %{query: query}}) do
+  defp find_definitions(socket = %{assigns: %{query: query, lang: lang}}) do
     if String.length(query) > 0 do
-      case Lexin.Service.lookup(query) do
+      case Lexin.Service.lookup(query, lang) do
         {:ok, definitions} ->
           socket
           |> clear_flash()
@@ -78,6 +89,34 @@ defmodule LexinWeb.DictionaryLive do
   defp error_msg(:exception_processing_request),
     do: dgettext("errors", "Exception processing search request")
 
+  defp error_msg(:language_not_supported),
+    do: dgettext("errors", "Language is not supported")
+
   defp error_msg(_),
     do: dgettext("errors", "Unknown (yet) error – fun for developers")
+
+  defp localized_languages_select(name, dom_id, selected_lang) do
+    # See docs Lexin.Service.Client regarding Swedish language support
+    supported_languages = [
+      {gettext("Select language"), :select_language},
+      {gettext("albanian"), :albanian},
+      {gettext("arabic"), :arabic},
+      {gettext("bosnian"), :bosnian},
+      {gettext("finnish"), :finnish},
+      {gettext("greek"), :greek},
+      {gettext("croatian"), :croatian},
+      {gettext("northern_kurdish"), :northern_kurdish},
+      {gettext("persian"), :persian},
+      {gettext("russian"), :russian},
+      {gettext("serbian"), :serbian},
+      {gettext("somali"), :somali},
+      {gettext("southern_kurdish"), :southern_kurdish},
+      # {gettext("swedish"), :swedish},
+      {gettext("turkish"), :turkish}
+    ]
+
+    options = options_for_select(supported_languages, selected_lang)
+
+    content_tag(:select, options, [name: name, id: dom_id])
+  end
 end

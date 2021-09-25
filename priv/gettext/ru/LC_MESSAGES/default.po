@@ -42,7 +42,7 @@ msgid "Idioms"
 msgstr "Идиомы"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.html.heex:8
+#: lib/lexin_web/live/dictionary_live.html.heex:12
 msgid "Search"
 msgstr "Искать"
 
@@ -50,3 +50,73 @@ msgstr "Искать"
 #: lib/lexin_web/live/card_component.html.heex:5
 msgid "listen"
 msgstr "слушать"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:101
+msgid "Select language"
+msgstr "Выберите язык"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:102
+msgid "albanian"
+msgstr "Албанский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:103
+msgid "arabic"
+msgstr "Арабский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:104
+msgid "bosnian"
+msgstr "Боснийский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:107
+msgid "croatian"
+msgstr "Хорватский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:105
+msgid "finnish"
+msgstr "Финский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:106
+msgid "greek"
+msgstr "Греческий"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:108
+msgid "northern_kurdish"
+msgstr "Севернокурдский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:109
+msgid "persian"
+msgstr "Персидский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:110
+msgid "russian"
+msgstr "Русский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:111
+msgid "serbian"
+msgstr "Сербский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:112
+msgid "somali"
+msgstr "Сомалийский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:113
+msgid "southern_kurdish"
+msgstr "Южнокурдский"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:115
+msgid "turkish"
+msgstr "Турецкий"

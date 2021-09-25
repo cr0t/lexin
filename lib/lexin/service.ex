@@ -5,10 +5,10 @@ defmodule Lexin.Service do
 
   alias Lexin.Service.{Client, Parser}
 
-  @spec lookup(word :: String.t()) :: {:ok, [Lexin.Definition.t()]} | {:error, any()}
-  def lookup(word) do
+  @spec lookup(word :: String.t(), lang :: String.t()) :: {:ok, [Lexin.Definition.t()]} | {:error, any()}
+  def lookup(word, lang) do
     try do
-      case Client.definitions(word) do
+      case Client.definitions(word, lang) do
         {:ok, raw_definitions} ->
           {:ok, Enum.map(raw_definitions, &Parser.convert/1)}
 

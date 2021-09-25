@@ -12,21 +12,26 @@ msgstr ""
 "Plural-Forms: nplurals=2\n"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:43
+#: lib/lexin_web/live/dictionary_live.ex:87
 msgid "No response from Lexin API"
 msgstr "Inget svar från Lexin API"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:40
+#: lib/lexin_web/live/dictionary_live.ex:84
 msgid "Not found"
 msgstr "Hittades inte"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:46
+#: lib/lexin_web/live/dictionary_live.ex:90
 msgid "Exception processing search request"
 msgstr "Undantag bearbetar sökförfrågan"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:49
+#: lib/lexin_web/live/dictionary_live.ex:96
 msgid "Unknown (yet) error – fun for developers"
 msgstr "Okänt (ännu) fel – kul för utvecklare"
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:93
+msgid "Language is not supported"
+msgstr "Språk stöds inte"

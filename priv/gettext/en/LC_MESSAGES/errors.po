@@ -11,21 +11,26 @@ msgstr ""
 "Language: en\n"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:43
+#: lib/lexin_web/live/dictionary_live.ex:87
 msgid "No response from Lexin API"
 msgstr ""
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:40
+#: lib/lexin_web/live/dictionary_live.ex:84
 msgid "Not found"
 msgstr ""
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:46
+#: lib/lexin_web/live/dictionary_live.ex:90
 msgid "Exception processing search request"
 msgstr ""
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:49
+#: lib/lexin_web/live/dictionary_live.ex:96
 msgid "Unknown (yet) error – fun for developers"
+msgstr ""
+
+#, elixir-format
+#: lib/lexin_web/live/dictionary_live.ex:93
+msgid "Language is not supported"
 msgstr ""

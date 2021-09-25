@@ -1,15 +1,22 @@
-.dfn_header {
-  margin-top: 4rem;
-}
-
 /* --- Search Form --- */
 
 #dfn_form {
-  display: flex;
   margin: 2rem 0 4rem 0;
 }
 
-#dfn_form-input {
+#dfn_form-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#dfn_form-lang {
+}
+
+#dfn_form-search_field {
+  display: flex;
+}
+
+#dfn_form-query{
   border-right: none;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
