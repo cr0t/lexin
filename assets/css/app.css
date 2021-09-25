@@ -1,6 +1,7 @@
 /* This file is for your main application CSS */
 @import "./phoenix.css";
-@import "./dfn.css";
+@import "./form.css";
+@import "./serp.css";
 
 /* Alerts and form errors used by phx.new */
 .alert {

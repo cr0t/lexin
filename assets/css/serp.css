@@ -1,0 +1,34 @@
+.serp {
+  margin-bottom: 4rem;
+}
+
+.serp_content {
+  padding-left: 2rem;
+}
+
+.serp_inflections {
+  color: rgba(0, 0, 0, .5)
+}
+
+.serp_translation {
+  font-weight: bold;
+}
+
+.serp_translation-synonyms {
+  color: rgba(0, 0, 0, .5);
+  font-weight: normal;
+}
+
+.serp_illustrations, .serp_examples, .serp_idioms, .serp_compounds {
+  margin-top: 2rem;
+}
+
+.serp_list {
+  margin-bottom: 0;
+  margin-left: 2rem;
+}
+
+.serp_list-item {
+  margin-bottom: 0;
+  list-style: disc;
+}

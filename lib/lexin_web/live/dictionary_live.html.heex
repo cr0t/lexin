@@ -1,14 +1,17 @@
-<form id="dfn_form" phx-submit="search">
-  <div id="dfn_form-header">
+<form id="form_wrapper" phx-submit="search">
+  <div id="form-header">
     <h3>Lexin Light</h3>
 
-    <%= localized_languages_select("lang", "dfn_form-lang", @lang) %>
+    <%= localized_languages_select("lang", "form-lang", @lang) %>
   </div>
 
-  <div id="dfn_form-search_field">
-    <input id="dfn_form-query" type="text" name="query" value={@query} autocomplete="off" />
+  <div id="form-search_block">
+    <div id="form-query_wrapper">
+      <i id="form-query_reset">+</i>
+      <input id="form-query_field" type="text" name="query" value={@query} autocomplete="off" />
+    </div>
 
-    <button id="dfn_form-submit" type="submit">
+    <button id="form-submit_button" type="submit">
       <%= gettext("Search") %>
     </button>
   </div>

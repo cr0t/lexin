@@ -1,0 +1,59 @@
+#form_wrapper {
+  margin: 2rem 0 4rem 0;
+}
+
+#form-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#form-lang {
+  position: relative;
+  top: -1px;
+}
+
+#form-search_block {
+  display: flex;
+}
+
+#form-query_wrapper {
+  position: relative;
+  width: 100%;
+}
+
+#form-query_reset {
+  border-radius: 30%;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  height: 38px;
+  line-height: 36px;
+  opacity: .25;
+  position: absolute;
+  right: 5px;
+  text-align: center;
+  top: 0;
+  transition: opacity 100ms;
+  transform: rotate(45deg);
+  width: 38px;
+}
+
+#form-query_reset:hover {
+  opacity: .75;
+}
+
+#form-query_field {
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+#form-submit_button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

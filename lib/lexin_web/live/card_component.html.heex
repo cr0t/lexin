@@ -1,49 +1,52 @@
-<div id={"definition-#{@dfn.id}"} class="dfn">
-  <div class="dfn_title">
+<div id={"definition-#{@dfn.id}"} class="serp">
+  <div class="serp_header">
     <strong><%= @dfn.value %></strong>
-    <span class="dfn_title-phonetic">[<%= @dfn.base.phonetic.transcription %>]</span>
-    <a href="#" onclick={listen_handler(@dfn)}><%= gettext "listen" %></a>
-    <span class="dfn_title-pos"><%= @dfn.pos %></span>
+    <span>[<%= @dfn.base.phonetic.transcription %>]</span>
+    <a href="#" onclick={listen_handler(@dfn)}><%= gettext("listen") %></a>
+    <span><%= @dfn.pos %></span>
   </div>
 
-  <div class="dfn_content">
-    <div class="dfn_inflections">
+  <div class="serp_content">
+    <div class="serp_inflections">
       &lt;<%= Enum.join(inflections(@dfn), ", ") %>&gt;
     </div>
 
-    <div class="dfn_meaning">
+    <div>
       <%= @dfn.base.meaning %>
     </div>
 
     <%= if @dfn.base.alternate do %>
-      <div class="dfn_alternate">
-        <%= gettext "Alternate: %{alt}", alt: @dfn.base.alternate %>
+      <div>
+        <%= gettext("Alternate: %{alt}", alt: @dfn.base.alternate) %>
       </div>
     <% end %>
 
     <%= if @dfn.target.translation do %>
-      <div class="dfn_translation">
+      <div class="serp_translation">
         <%= @dfn.target.translation %>
         <%= if length(@dfn.target.synonyms) > 0 do %>
-          <span class="dfn_translation-synonyms">— <%= Enum.join(@dfn.target.synonyms, ", ") %></span>
+          <span class="serp_translation-synonyms">— <%= Enum.join(@dfn.target.synonyms, ", ") %></span>
         <% end %>
       </div>
     <% end %>
 
     <%= if length(@dfn.base.antonyms) > 0 do %>
-      <div class="dfn_antonyms">
-        <%= gettext "Antonyms: %{antonyms}", antonyms: Enum.join(@dfn.base.antonyms, ", ") %>
+      <div>
+        <%= gettext("Antonyms: %{antonyms}", antonyms: Enum.join(@dfn.base.antonyms, ", ")) %>
       </div>
     <% end %>
 
     <% examples = examples(@dfn) %>
 
     <%= if length(examples) > 0 do %>
-      <div class="dfn_examples">
-        <%= gettext "Examples" %>
-        <ul class="dfn_list">
+      <div class="serp_examples">
+        <%= gettext("Examples") %>
+
+        <ul class="serp_list">
           <%= for {base, target} <- examples do %>
-            <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+            <li class="serp_list-item">
+              <span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -52,11 +55,14 @@
     <% idioms = idioms(@dfn) %>
 
     <%= if length(idioms) > 0 do %>
-      <div class="dfn_idioms">
-        <%= gettext "Idioms" %>
-        <ul class="dfn_list">
+      <div class="serp_idioms">
+        <%= gettext("Idioms") %>
+
+        <ul class="serp_list">
           <%= for {base, target} <- idioms do %>
-            <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+            <li class="serp_list-item">
+              <span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -65,11 +71,14 @@
     <% compounds = compounds(@dfn) %>
 
     <%= if length(compounds) > 0 do %>
-      <div class="dfn_compounds">
-        <%= gettext "Compounds" %>
-        <ul class="dfn_list">
+      <div class="serp_compounds">
+        <%= gettext("Compounds") %>
+
+        <ul class="serp_list">
           <%= for {base, target} <- compounds do %>
-            <li><span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span></li>
+            <li class="serp_list-item">
+              <span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -78,11 +87,14 @@
     <% pictures = illustrations(@dfn)  %>
 
     <%= if length(pictures) > 0 do %>
-      <div class="dfn_illustrations">
-        <%= gettext "Extra" %>
-        <ul class="dfn_list">
+      <div class="serp_illustrations">
+        <%= gettext("Extra") %>
+
+        <ul class="serp_list">
           <%= for pict <- pictures do %>
-            <li><a href={pict.url} target="_blank"><%= pict.type %> &rarr;</a></li>
+            <li class="serp_list-item">
+              <a href={pict.url} target="_blank"><%= pict.type %> &rarr;</a>
+            </li>
           <% end %>
         </ul>
       </div>
