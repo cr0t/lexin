@@ -3,10 +3,6 @@ defmodule LexinWeb.CardComponent do
 
   import LexinWeb.Gettext
 
-  def listen_handler(dfn) do
-    "return playAudio('#{dfn.base.phonetic.audio_url}')"
-  end
-
   def illustrations(dfn) do
     dfn.base.illustrations ++ dfn.target.illustrations
   end

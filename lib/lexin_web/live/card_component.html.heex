@@ -2,7 +2,11 @@
   <div class="serp_header">
     <strong><%= @dfn.value %></strong>
     <span>[<%= @dfn.base.phonetic.transcription %>]</span>
-    <a href="#" onclick={listen_handler(@dfn)}><%= gettext("listen") %></a>
+
+    <% audio_url = @dfn.base.phonetic.audio_url %>
+    <% onclick = "playAudio('#{audio_url}'); return false;" %>
+    <a href={audio_url} onclick={onclick}><%= gettext("listen") %></a>
+
     <span><%= @dfn.pos %></span>
   </div>
 
