@@ -7,8 +7,8 @@
 
   <div id="form-search_block">
     <div id="form-query_wrapper">
-      <i id="form-query_reset">+</i>
-      <input id="form-query_field" type="text" name="query" value={@query} autocomplete="off" />
+      <i id="form-query_reset" phx-click="reset">+</i>
+      <input id="form-query_field" type="text" name="query" value={@query} autocomplete="off" autofocus />
     </div>
 
     <button id="form-submit_button" type="submit">

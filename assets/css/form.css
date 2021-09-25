@@ -35,6 +35,7 @@
   top: 0;
   transition: opacity 100ms;
   transform: rotate(45deg);
+  user-select: none;
   width: 38px;
 }
 

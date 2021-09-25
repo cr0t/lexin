@@ -62,6 +62,16 @@ defmodule LexinWeb.DictionaryLive do
     {:noreply, push_patch(socket, to: route)}
   end
 
+  def handle_event("reset", _params, socket) do
+    route =
+      Routes.live_path(socket, LexinWeb.DictionaryLive, %{
+        query: "",
+        lang: socket.assigns.lang
+      })
+
+    {:noreply, push_patch(socket, to: route)}
+  end
+
   defp find_definitions(socket = %{assigns: %{query: query, lang: lang}}) do
     if String.length(query) > 0 do
       case Lexin.Service.lookup(query, lang) do
