@@ -5,12 +5,13 @@ defmodule Lexin.MixProject do
     [
       app: :lexin,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: releases()
     ]
   end
 
@@ -61,6 +62,18 @@ defmodule Lexin.MixProject do
     [
       setup: ["deps.get"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"]
+    ]
+  end
+
+  # Releases specify a few key points, like:
+  # - we do not want to include Erlang runtime into release itself (it's in Docker image)
+  # - we want to generate .tar.gz file to send to remote machine
+  defp releases do
+    [
+      lexin: [
+        include_erts: false,
+        steps: [:assemble, :tar]
+      ]
     ]
   end
 end
