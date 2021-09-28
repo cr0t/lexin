@@ -1,5 +1,5 @@
 defmodule LexinWeb.CardComponent do
-  use Phoenix.LiveComponent
+  use LexinWeb, :live_component
 
   import LexinWeb.Gettext
 
