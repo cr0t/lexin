@@ -11,6 +11,11 @@
 #
 # See https://hexdocs.pm/phoenix/releases.html for more detailed documentation
 
+if ! docker version > /dev/null 2>&1; then
+  echo "Docker is not running. We cannot build release without Docker!"
+  exit 1
+fi
+
 APP_NAME=$(grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e 's/[:,]//g')
 APP_VERSION=$(grep 'version:' mix.exs | cut -d '"' -f2)
 TAR_FILENAME=${APP_NAME}-${APP_VERSION}.tar.gz
