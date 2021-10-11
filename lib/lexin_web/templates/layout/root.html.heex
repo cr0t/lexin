@@ -4,8 +4,16 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <%= csrf_meta_tag() %>
+
     <%= live_title_tag assigns[:page_title] || "Lexin Light" %>
+    <meta name="description" content="Lexin Light. Lexin är en kombination av lexikon och ordböcker som har tagits fram för användning i primärt invandrarundervisning. Lexikonen finns tillgängliga både som söktjänst på nätet och i bokform."/>
+
+    <link rel="icon" href={Routes.static_path(@conn, "/favicon.ico")}/>
+    <link rel="icon" href={Routes.static_path(@conn, "/images/icon.svg")} type="image/svg+xml" sizes="any"/>
+    <link rel="manifest" href={Routes.static_path(@conn, "/manifest.webmanifest")}/>
+
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
   </head>
   <body>

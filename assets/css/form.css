@@ -2,9 +2,23 @@
   margin: 2rem 0 4rem 0;
 }
 
-#form-header {
+#form_header {
   display: flex;
   justify-content: space-between;
+}
+
+#form_header-logo {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  user-select: none;
+}
+
+#form_header-logo_img {
+  display: block;
+  height: 3rem;
+  margin-right: .4rem;
+  width: 3rem;
 }
 
 #form-lang {

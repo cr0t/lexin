@@ -1,6 +1,9 @@
 <form id="form_wrapper" phx-submit="search" phx-target={@myself}>
-  <div id="form-header">
-    <h3>Lexin Light</h3>
+  <div id="form_header">
+    <h3 id="form_header-logo">
+      <img id="form_header-logo_img" src={Routes.static_path(@socket, "/images/icon.svg")} />
+      Light
+    </h3>
 
     <%= localized_languages_select("lang", "form-lang", @lang) %>
   </div>
