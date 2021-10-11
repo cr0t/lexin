@@ -18,6 +18,8 @@ defmodule LexinWeb.Router do
     pipe_through :browser
 
     live "/", DictionaryLive
+
+    get "/sw.js", ServiceWorkerController, :index
   end
 
   # Other scopes may use custom stacks.

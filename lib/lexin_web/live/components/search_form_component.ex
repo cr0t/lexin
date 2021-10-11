@@ -49,6 +49,6 @@ defmodule LexinWeb.SearchFormComponent do
 
     options = options_for_select(supported_languages, selected_lang)
 
-    content_tag(:select, options, [name: name, id: dom_id])
+    content_tag(:select, options, name: name, id: dom_id)
   end
 end

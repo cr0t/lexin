@@ -5,7 +5,8 @@ defmodule Lexin.Service do
 
   alias Lexin.Service.{Client, Parser}
 
-  @spec lookup(word :: String.t(), lang :: String.t()) :: {:ok, [Lexin.Definition.t()]} | {:error, any()}
+  @spec lookup(word :: String.t(), lang :: String.t()) ::
+          {:ok, [Lexin.Definition.t()]} | {:error, any()}
   def lookup(word, lang) do
     try do
       case Client.definitions(word, lang) do

@@ -14,10 +14,19 @@
     <link rel="icon" href={Routes.static_path(@conn, "/images/icon.svg")} type="image/svg+xml" sizes="any"/>
     <link rel="manifest" href={Routes.static_path(@conn, "/manifest.webmanifest")}/>
 
+    <link rel="apple-touch-icon" href={Routes.static_path(@conn, "/images/icon-apple-touch.png")}/>
+    <!--<link rel="apple-touch-startup-image" href="/launch.png"/>-->
+    <meta name="apple-mobile-web-app-title" content="Lexin"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <meta name="theme-color" content="white"/>
+
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
   </head>
   <body>
     <%= @inner_content %>
+
+    <%= render("_service_worker_loader.html") %>
 
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </body>

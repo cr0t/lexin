@@ -1,0 +1,21 @@
+const APP = 'lexin'
+const VERSION = '<%= app_version() %>'
+const CACHE_NAME = APP + VERSION
+
+// ---
+
+function log() {
+  console.log(`SW: ${VERSION}`, ...arguments)
+}
+
+self.addEventListener('install', (event) => {
+  log('install')
+})
+
+self.addEventListener('activate', (event) => {
+  log('activate')
+})
+
+self.addEventListener('fetch', (event) => {
+  return
+})
