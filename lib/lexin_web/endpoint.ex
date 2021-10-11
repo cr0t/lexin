@@ -16,11 +16,15 @@ defmodule LexinWeb.Endpoint do
   #
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
+  #
+  # We need `only_matching` option to serve listed files after
+  # they got digested (with fingerprints in filenames)
   plug Plug.Static,
     at: "/",
     from: :lexin,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico manifest.webmanifest robots.txt)
+    only: ~w(assets fonts images),
+    only_matching: ~w(manifest favicon robots)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
