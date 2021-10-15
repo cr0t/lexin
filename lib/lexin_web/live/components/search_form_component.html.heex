@@ -1,4 +1,4 @@
-<form id="form_wrapper" phx-submit="search" phx-target={@myself}>
+<form id="form_wrapper" phx-submit="search" phx-target={@myself} phx-hook="languageCookie">
   <div id="form_header">
     <h3 id="form_header-logo">
       <img id="form_header-logo_img" src={Routes.static_path(@socket, "/images/icon.svg")} />
