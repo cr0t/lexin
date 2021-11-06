@@ -1,0 +1,23 @@
+# Dockerfile for Development
+# ---
+#
+# Minimal version that enough to build and run underlying applcation, the final image
+# weights only ~70Mb. It doesn't have vim or bash, we install only inotify-tools to let
+# Phoenix recompile and reload page on filesystem changes.
+#
+# See `docker-compose.yml` for more information and how this file is used.
+
+ARG ELIXIR_VERSION
+ARG ERLANG_VERSION
+ARG ALPINE_VERSION
+ARG MIX_ENV
+
+FROM docker.io/hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-alpine-$ALPINE_VERSION
+
+RUN apk add inotify-tools
+
+ENV MIX_ENV="${MIX_ENV}"
+
+RUN mix local.hex --force && mix local.rebar --force
+
+WORKDIR /app

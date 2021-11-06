@@ -3,13 +3,14 @@ version: '3.7'
 x-app: &app
   build:
     context: .
-    dockerfile: ./.docker/Dockerfile
+    dockerfile: ./Dockerfile.dev
     args:
-      ELIXIR_VERSION: ${ELIXIR_VERSION}
-      NODE_MAJOR: ${NODE_MAJOR}
+      ELIXIR_VERSION: $ELIXIR_VERSION
+      ERLANG_VERSION: $ERLANG_VERSION
+      ALPINE_VERSION: $ALPINE_VERSION
   environment: &env
-    MIX_ENV: ${MIX_ENV}
-  image: lexin-on-whales:0.0.1
+    MIX_ENV: dev
+  image: lexin-on-whales:dev
   tmpfs:
     - /tmp
 
@@ -26,8 +27,17 @@ x-backend: &backend
   environment:
     <<: *env
     HISTFILE: /app/log/.bash_history
-    DISPLAY: ${X_WINDOWS_ADDRESS}:0
+    DISPLAY: $X_WINDOWS_ADDRESS:0
     EDITOR: vi
+
+# IMPORTANT:
+#
+# Do not forget to run `docker-compose run --rm phoenix ash` and compile application:
+#
+# mix deps.get && mix deps.compile
+#
+# BEFORE running `docker-compose up` (otherwise there is nothing compiled inside Docker container
+# exists, and container cannot run `command` and simply exit)
 
 services:
   phoenix:
