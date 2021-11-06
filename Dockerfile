@@ -1,20 +1,36 @@
-ARG MIX_ENV="prod"
+# Dockerfile for Production
+#
+# Defines the build steps that we need to follow to get built Elixir application in Docker and
+# later run it in production.
+#
+# Usage:
+#
+#  * build: docker image build --build-arg ELIXIR_VERSION=1.12.3 ... --tag cr0t/lexin:0.3.0 .
+#  * shell: docker container run --rm -it --entrypoint "" -p 127.0.0.1:4000:4000 cr0t/lexin sh
+#  * run:   docker container run --rm -it -p 127.0.0.1:4000:4000 --name lexin cr0t/lexin
+#  * exec:  docker container exec -it lexin sh
+#  * logs:  docker container logs --follow --tail 100 lexin
 
-FROM docker.io/hexpm/elixir:1.12.3-erlang-24.1.2-alpine-3.14.2 AS build
+# --- Stage: Building ---
+
+ARG ELIXIR_VERSION
+ARG ERLANG_VERSION
+ARG ALPINE_VERSION
+
+FROM docker.io/hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-alpine-$ALPINE_VERSION AS build
 
 # install build dependencies
-RUN apk add --no-cache build-base git python3 curl
+# (maybe it's not necessary for simple projects)
+# RUN apk add --no-cache build-base git python3 curl
 
-# prepare build dir
 WORKDIR /app
 
-# install hex + rebar
 RUN mix local.hex --force && \
     mix local.rebar --force
 
 # set build ENV
-ARG MIX_ENV
-ENV MIX_ENV="${MIX_ENV}"
+ARG MIX_ENV="prod"
+ENV MIX_ENV=$MIX_ENV
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
@@ -37,16 +53,18 @@ RUN mix deps.compile && \
 COPY config/runtime.exs config/
 RUN mix release
 
+# --- Stage: Running ---
+
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
-FROM docker.io/alpine:3.14.2 AS app
+FROM docker.io/alpine:$ALPINE_VERSION AS app
 
 RUN apk add --no-cache libstdc++ openssl ncurses-libs
 
-ARG MIX_ENV
+ARG MIX_ENV="prod"
 ENV USER="elixir"
 
-# creates an unprivileged user to be used exclusively to run the Phoenix app
+# creates an unprivileged user to be used exclusively to run the app
 RUN addgroup -g 1000 -S "${USER}" && \
     adduser -s /bin/sh -u 1000 -G "${USER}" -h "/home/${USER}" -D "${USER}"
 
@@ -55,16 +73,8 @@ USER "${USER}"
 
 WORKDIR "/home/${USER}/app"
 
-COPY --from=build --chown="${USER}":"${USER}" /app/_build/"${MIX_ENV}"/rel/lexin ./
+COPY --from=build --chown="${USER}":"${USER}" /app/_build/$MIX_ENV/rel/lexin ./
 
 ENTRYPOINT ["bin/lexin"]
-
-# Usage:
-#
-#  * build: sudo docker image build -t elixir/lexin .
-#  * shell: sudo docker container run --rm -it --entrypoint "" -p 127.0.0.1:4000:4000 elixir/lexin sh
-#  * run:   sudo docker container run --rm -it -p 127.0.0.1:4000:4000 --name lexin elixir/lexin
-#  * exec:  sudo docker container exec -it lexin sh
-#  * logs:  sudo docker container logs --follow --tail 100 lexin
 
 CMD ["start"]
