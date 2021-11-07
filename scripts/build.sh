@@ -42,7 +42,7 @@ fi
 # Some information we will need to name and tag the image we're building
 APP_NAME=$1
 APP_VERSION=$2
-DOCKER_IMAGE="cr0t/$APP_NAME:$APP_VERSION"
+DOCKER_IMAGE="ghcr.io/cr0t/$APP_NAME:$APP_VERSION"
 EXISTING_IMAGE_ID=$(docker images -q $DOCKER_IMAGE 2> /dev/null)
 
 if [ -n "$EXISTING_IMAGE_ID" ] && ! $FORCE_FLAG; then
