@@ -1,47 +1,25 @@
 #!/bin/bash
-
-# We need to do a few things to prepare a release:
 #
-# 1. Clean up any previosly compiled assets
-# 2. Build:
-#    - Compile static assets (mix assets.deploy)
-#    - Gzip and add fingerprints to these files (part of previous step)
-#    - Compile and pack a release tarball
-# 3. Distribute this file
-#
-# See https://hexdocs.pm/phoenix/releases.html for more detailed documentation
+# Build a Docker image and send it to remote machine to run it there.
 
-if ! docker version > /dev/null 2>&1; then
-  echo "Docker is not running. We cannot build release without Docker!"
-  exit 1
-fi
+FULLPATH=$(realpath $0)
+SCRIPTS_DIR=$(dirname $FULLPATH)
 
 APP_NAME=$(grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e 's/[:,]//g')
 APP_VERSION=$(grep 'version:' mix.exs | cut -d '"' -f2)
-TAR_FILENAME=${APP_NAME}-${APP_VERSION}.tar.gz
-RELEASE_ARTEFACT=_build/prod/${TAR_FILENAME}
 
-RUN_IN_DOCKER="docker-compose run --rm phoenix"
+IMAGE_ID=$($SCRIPTS_DIR/build.sh $APP_NAME $APP_VERSION --force | tail -n 1)
 
-### Clean previously compiled assets
+if [[ $? -eq 0 ]]; then
+  IMAGE_TAR="$APP_NAME-$APP_VERSION.tar"
 
-$RUN_IN_DOCKER rm -rf /app/priv/static/assets/*
+  echo "Making an artefact of $IMAGE_ID to distribute..."
+  docker save $IMAGE_ID -o $IMAGE_TAR
 
-### Build
+  echo "Sending $IMAGE_TAR to remote host..."
+  scp $IMAGE_TAR summercode.com:~
+  ssh summercode.com "docker load -i $IMAGE_TAR && docker tag $IMAGE_ID cr0t/$APP_NAME:$APP_VERSION"
+  rm $IMAGE_TAR
+fi
 
-$RUN_IN_DOCKER mix setup
-$RUN_IN_DOCKER mix assets.deploy
-$RUN_IN_DOCKER env MIX_ENV=prod mix release --force --overwrite
-
-### Clean assets' artefacts again, to avoid developer's confusion
-
-$RUN_IN_DOCKER rm -rf /app/priv/static/assets/*
-git clean -fd -- ./priv/static/
-
-### Distribute
-
-$RUN_IN_DOCKER mv $RELEASE_ARTEFACT /app/${TAR_FILENAME} # we have to move it out of _build, as it's a volume in `phoenix` container
-
-echo "Sending archive to host..."
-scp $TAR_FILENAME summercode.com:~
-rm $TAR_FILENAME
+exit 0

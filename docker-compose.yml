@@ -3,7 +3,7 @@ version: '3.7'
 x-app: &app
   build:
     context: .
-    dockerfile: ./Dockerfile.dev
+    dockerfile: .docker/Dockerfile.dev
     args:
       ELIXIR_VERSION: $ELIXIR_VERSION
       ERLANG_VERSION: $ERLANG_VERSION

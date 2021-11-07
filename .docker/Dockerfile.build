@@ -3,6 +3,15 @@
 # Defines the build steps that we need to follow to get built Elixir application in Docker and
 # later run it in production.
 #
+# We need to do a few things to prepare a release build:
+#
+# 0. Install pre-requisites
+# 1. Compile static assets (mix assets.deploy)
+# 2. Gzip and add fingerprints to these files (part of previous step)
+# 3. Compile a release
+#
+# See https://hexdocs.pm/phoenix/releases.html for more detailed documentation.
+#
 # Usage:
 #
 #  * build: docker image build --build-arg ELIXIR_VERSION=1.12.3 ... --tag cr0t/lexin:0.3.0 .
