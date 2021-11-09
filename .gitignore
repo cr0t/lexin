@@ -32,3 +32,5 @@ lexin-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Log or other temp files (like shell- and iex-history files used inside Docker).
+/log/

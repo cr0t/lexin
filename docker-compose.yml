@@ -24,11 +24,13 @@ x-backend: &backend
     - mix:/root/.mix
     - hex:/root/.hex
     - node_modules:/app/assets/node_modules
+    - ./log/.erlang-history:/root/.cache/erlang-history
   environment:
     <<: *env
-    HISTFILE: /app/log/.bash_history
+    HISTFILE: /app/log/.shell_history
     DISPLAY: $X_WINDOWS_ADDRESS:0
     EDITOR: vi
+    ERL_AFLAGS: -kernel shell_history enabled
 
 # IMPORTANT:
 #
@@ -42,7 +44,7 @@ x-backend: &backend
 services:
   phoenix:
     <<: *backend
-    command: bash -c "test -f /app/_build/dev/lib/phoenix/ebin/Elixir.Mix.Phoenix.beam && mix phx.server"
+    command: sh -c "test -f /app/_build/dev/lib/phoenix/ebin/Elixir.Mix.Phoenix.beam && mix phx.server"
     ports:
       - 4000:4000
 
