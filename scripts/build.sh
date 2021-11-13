@@ -53,7 +53,7 @@ if [ -n "$EXISTING_IMAGE_ID" ] && ! $FORCE_FLAG; then
 fi
 
 DOCKER_BUILD_ARGS=$(for i in `cat .env | grep -v '#'`; do out+="--build-arg $i "; done; echo $out; out="")
-DOCKER_BUILD_ARGS="$DOCKER_BUILD_ARGS --quiet --file .docker/Dockerfile.build "
+DOCKER_BUILD_ARGS="$DOCKER_BUILD_ARGS --file .docker/Dockerfile.build "
 
 if $FORCE_FLAG && [ -n "$EXISTING_IMAGE_ID" ]; then
   docker image rm $EXISTING_IMAGE_ID
@@ -64,3 +64,6 @@ if $NO_CACHE_FLAG; then
 else
   docker image build $DOCKER_BUILD_ARGS --tag $DOCKER_IMAGE .
 fi
+
+# push it to GitHub
+docker push $DOCKER_IMAGE

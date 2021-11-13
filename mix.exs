@@ -4,8 +4,8 @@ defmodule Lexin.MixProject do
   def project do
     [
       app: :lexin,
-      version: "0.3.0",
-      elixir: "~> 1.11",
+      version: "0.3.1",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -38,6 +38,7 @@ defmodule Lexin.MixProject do
       {:gettext, "~> 0.18"},
       {:hackney, "~> 1.18"},
       {:jason, "~> 1.2"},
+      {:observer_cli, "~> 1.7"},
       {:phoenix, "~> 1.6.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, "~> 0.5"},
