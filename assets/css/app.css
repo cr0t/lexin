@@ -2,6 +2,7 @@
 @import "./phoenix.css";
 @import "./form.css";
 @import "./serp.css";
+@import "./about.css";
 
 /* Alerts and form errors used by phx.new */
 .alert {

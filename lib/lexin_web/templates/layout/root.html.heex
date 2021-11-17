@@ -23,8 +23,13 @@
 
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
   </head>
+
   <body>
     <%= @inner_content %>
+
+    <footer class="footer">
+      <%= link("About and Help ⇝", to: Routes.help_path(@conn, :index)) %>
+    </footer>
 
     <%= render("_service_worker_loader.html") %>
 

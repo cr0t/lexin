@@ -1,0 +1,26 @@
+.about-toc li {
+  list-style: none;
+  margin-left: 0;
+}
+
+.about-screenshots {
+  border: none;
+}
+
+.about-screenshots td {
+  border-bottom: none;
+  text-align: center;
+}
+
+.about-screenshots td a {
+  cursor: zoom-in;
+}
+
+.about-screenshots img {
+  border: 3px solid rgba(0, 0, 0, .05);
+  transition: all .2s;
+}
+
+.about-screenshots td img:hover {
+  transform: scale(1.1);
+}

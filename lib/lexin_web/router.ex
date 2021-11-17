@@ -20,6 +20,7 @@ defmodule LexinWeb.Router do
     live "/", DictionaryLive
 
     get "/sw.js", ServiceWorkerController, :index
+    get "/help", HelpController, :index
   end
 
   # Other scopes may use custom stacks.
