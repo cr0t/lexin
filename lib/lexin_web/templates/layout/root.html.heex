@@ -25,11 +25,15 @@
   </head>
 
   <body>
-    <%= @inner_content %>
+    <div class="layout-wrapper">
+      <div class="layout-body">
+        <%= @inner_content %>
+      </div>
 
-    <footer class="footer">
-      <%= link("About and Help ⇝", to: Routes.help_path(@conn, :index)) %>
-    </footer>
+      <div class="layout-footer">
+        <%= link("About and Help", to: Routes.help_path(@conn, :index)) %>
+      </div>
+    </div>
 
     <%= render("_service_worker_loader.html") %>
 

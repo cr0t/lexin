@@ -1,5 +1,6 @@
 /* This file is for your main application CSS */
 @import "./phoenix.css";
+@import "./layout.css";
 @import "./form.css";
 @import "./serp.css";
 @import "./about.css";
