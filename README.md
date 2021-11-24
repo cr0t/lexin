@@ -1,31 +1,42 @@
-# Lexin
+# Lexin Light
 
-> I've made this app for my wife to facilitate learning and maintaing her Swedish language.
+It's a small web application for Swedish dictionary service Lexin.
 
-It's a light-weight application for Swedish dictionary service Lexin.
-
-There is a web-interface to the [Lexin](http://lexin2.nada.kth.se/lexin/), but it has an outdated,
-and non-responsive design which makes it hard to use on mobile phone or tablet. There is also an
-iOS application for this dictionary, but it's not maintained and lack of some useful features
-(like it's impossible to use it in split-screen mode when reading a book, for example).
-
-## Screenshots
-
-| Entry Screen | Search Results |
-|--------------|----------------|
-| ![image](https://user-images.githubusercontent.com/113878/134806034-3a709670-1022-421b-b477-28613ebc0864.png) | ![image](https://user-images.githubusercontent.com/113878/134806082-2886da0c-3d1a-4a9b-8ae8-c1af3f392c70.png) |
-
-In comparison to standard Lexin interface:
-
-| Entry Screen | Search Results |
-|--------------|----------------|
-| ![image](https://user-images.githubusercontent.com/113878/134809705-6fe7f038-bafd-4a90-8a17-afa588504b35.png) | ![image](https://user-images.githubusercontent.com/113878/134809719-4292915f-b09a-4b79-a6d0-bbf8d9742896.png) |
+Lexin Light provides a new modern and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [history notes](docs/HISTORY.md) about creation and first look of this application.
 
 ## Development
 
-To start your server:
+Clone the repository to your development machine. To run the app, we have two approaches: native and Docker.
+
+Whichever approach you chose, you can visit [`localhost:4000`](http://localhost:4000) from your browser, when you've successfully executed the Phoenix server locally. See the details below.
+
+### Native
+
+#### Pre-requisites
+
+You need to have Elixir installed and available in your environment.
+
+Preferred way is to install [asdf](https://asdf-vm.com/) utility: then it will be possible to use the same version of Elixir/Erlang/NodeJS which are defined in the `.tool-versions` file in the repository root.
+
+#### Run a Phoenix Server
+
+To start your local development server:
 
 * Install dependencies with `mix deps.get`
 * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+### Docker & Docker Compose
+
+Alternatively, you can use Docker and have nothing but editor on your host machine to work with the project.
+
+**For the first time** (or if you want to install/update deps), you need to run `mix deps.get` command inside the `phoenix` service container: `docker-compose run --rm phoenix mix deps.get`.
+
+Now, we can run `docker-compose up` (to run interactively) or `docker-compose --detach` (to run in background).
+
+Check [`docker-compose.yml`](docker-compose.yml) file for details.
+
+## Testing
+
+Simple way: `mix test`. _To run all the tests._
+
+Advanced way: `fswatch lib test | mix test --listen-on-stdin`. _If you want to autorun tests every time you save the files in `lib` or `test` directories – useful when focusing on writing tests._

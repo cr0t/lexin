@@ -32,19 +32,10 @@ x-backend: &backend
     EDITOR: vi
     ERL_AFLAGS: -kernel shell_history enabled
 
-# IMPORTANT:
-#
-# Do not forget to run `docker-compose run --rm phoenix ash` and compile application:
-#
-# mix deps.get && mix deps.compile
-#
-# BEFORE running `docker-compose up` (otherwise there is nothing compiled inside Docker container
-# exists, and container cannot run `command` and simply exit)
-
 services:
   phoenix:
     <<: *backend
-    command: sh -c "test -f /app/_build/dev/lib/phoenix/ebin/Elixir.Mix.Phoenix.beam && mix phx.server"
+    command: sh -c "mix phx.server"
     ports:
       - 4000:4000
 
