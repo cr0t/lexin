@@ -1,0 +1,65 @@
+# XML Data Files
+
+## Intro
+
+During our conversation with authors of original Lexin, they've gave us access to the SVN repo
+that contains original XML files with dictionary data. One file per supported language plus
+`.xsd` schema file.
+
+We will not commit these files to our repository, but we want to try to find a way if we can
+use them to avoid redundant requests to the main API – this will also make our application
+faster, if we provide a local cache for the dictionary data.
+
+## XML Tips & Tricks
+
+### Validation
+
+First things first, we wanted tu ensure that the data files we downloaded are valid XML files,
+and if they valid against the given XSD schema.
+
+There is a way how we can do that with `xmllint` tool (find how to install it by yourself):
+
+```console
+$ xmllint --noout --schema LexinSchema.xsd */*.xml
+```
+
+In our case we've got a lot of errors with "tigrinska" (`swe_tir.xml`) data file, and a few
+more with "svenska" (`swe_swe.xml`) one; the rest of languages are valid.
+
+### Beautify
+
+To re-format XML, we can also use `xmllint`, like here:
+
+```console
+$ xmllint --format InputFile.xml > OutputFile.xml
+```
+
+## Read from Language Files
+
+We have to try to use "raw" XML language files we've downloaded to lookup for the words. Let's
+install some XML reading library to search and operate with the files.
+
+```elixir
+Mix.install([
+  {:sweet_xml, "~> 0.7.2"}
+])
+```
+
+Let's read?
+
+```elixir
+defmodule LanguageReader do
+  import SweetXml
+
+  def lookup(_word) do
+    document()
+    |> xpath(~x"//Word/@Value/"e)
+  end
+
+  defp document() do
+    File.read!("experiments/swe_rus_f.xml")
+  end
+end
+
+LanguageReader.lookup("bil")
+```
