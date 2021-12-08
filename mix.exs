@@ -4,7 +4,7 @@ defmodule Lexin.MixProject do
   def project do
     [
       app: :lexin,
-      version: "0.4.2",
+      version: "0.4.3",
       elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
@@ -45,7 +45,6 @@ defmodule Lexin.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.16.0"},
       {:plug_cowboy, "~> 2.5"},
-      {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:tesla, "~> 1.4"}

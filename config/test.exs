@@ -7,9 +7,6 @@ config :lexin, LexinWeb.Endpoint,
   secret_key_base: "8Q7QHw+qU9xnuRwI3P2MSGyDS6auQl/8Ki7GCB63toa6fS9kusXiFW9qExob1T/+",
   server: false
 
-# In test we don't send emails.
-config :lexin, Lexin.Mailer, adapter: Swoosh.Adapters.Test
-
 # Print only warnings and errors during test
 config :logger, level: :warn
 
