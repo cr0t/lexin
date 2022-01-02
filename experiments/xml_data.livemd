@@ -41,25 +41,93 @@ install some XML reading library to search and operate with the files.
 
 ```elixir
 Mix.install([
-  {:sweet_xml, "~> 0.7.2"}
+  {:exqlite, "~> 0.8.4"},
+  {:meeseeks, "~> 0.16.1"}
 ])
 ```
 
 Let's read?
 
+> Useful XPath-playground: https://extendsclass.com/xpath-tester.html
+
 ```elixir
 defmodule LanguageReader do
-  import SweetXml
+  import Meeseeks.XPath
 
-  def lookup(_word) do
-    document()
-    |> xpath(~x"//Word/@Value/"e)
+  defp raw_xml(), do: File.read!("experiments/swe_rus_f.xml")
+  defp parse(), do: raw_xml() |> Meeseeks.parse(:xml)
+
+  def lookup(word) do
+    parse()
+    |> Meeseeks.all(xpath("//Word[@Value='#{word}']"))
   end
 
-  defp document() do
-    File.read!("experiments/swe_rus_f.xml")
+  def all_words() do
+    parse()
+    |> Meeseeks.all(xpath("//Word"))
+  end
+
+  def all_ids() do
+    for word <- Meeseeks.all(parse(), xpath("//Word")) do
+      Meeseeks.attr(word, "VariantID")
+    end
   end
 end
 
-LanguageReader.lookup("bil")
+# {
+#   LanguageReader.all_words() |> Enum.count(),
+#   LanguageReader.lookup("abc-bok")
+# }
+
+ids = LanguageReader.all_ids()
+
+{
+  ids |> Enum.count(),
+  ids |> Enum.uniq() |> Enum.count()
+}
+```
+
+## SQLite
+
+It takes a lot of time (~5 seconds) to directly lookup a word in the raw XML file (18MB), so we
+want to find another approach to index words and lookup them. We can try to use SQLite and
+convert these XML files into new format, so we will have a database index over available
+vocabulary.
+
+We are limited in [the number of datatypes](https://www.sqlite.org/datatype3.html) we can use
+in an SQLite database, so we need to be inventive.
+
+Every `Word` in the original XML file has `ID` and `VariantID` attributes. While `ID` sometimes
+repeats, `VariantID` seems to be unique (see section and `LanguageReader.all_ids/0` above).
+
+```elixir
+{:ok, conn} = Exqlite.Sqlite3.open(":memory:")
+
+# Create the table
+:ok = Exqlite.Sqlite3.execute(conn, "CREATE TABLE test (id integer primary key, stuff text)")
+
+# Prepare a statement
+{:ok, statement} = Exqlite.Sqlite3.prepare(conn, "INSERT INTO test (stuff) VALUES (?1)")
+:ok = Exqlite.Sqlite3.bind(conn, statement, ["Hello world"])
+
+# Step is used to run statements
+:done = Exqlite.Sqlite3.step(conn, statement)
+
+# Prepare a select statement
+{:ok, statement} = Exqlite.Sqlite3.prepare(conn, "SELECT id, stuff FROM test")
+
+# Get the results
+{:row, [1, "Hello world"]} = Exqlite.Sqlite3.step(conn, statement)
+
+# No more results
+:done = Exqlite.Sqlite3.step(conn, statement)
+
+# Release the statement.
+#
+# It is recommended you release the statement after using it to reclaim the memory
+# asap, instead of letting the garbage collector eventually releasing the statement.
+#
+# If you are operating at a high load issuing thousands of statements, it would be
+# possible to run out of memory or cause a lot of pressure on memory.
+:ok = Exqlite.Sqlite3.release(conn, statement)
 ```
