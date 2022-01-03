@@ -40,3 +40,19 @@ Check [`docker-compose.yml`](docker-compose.yml) file for details.
 Simple way: `mix test`. _To run all the tests._
 
 Advanced way: `fswatch lib test | mix test --listen-on-stdin`. _If you want to autorun tests every time you save the files in `lib` or `test` directories – useful when focusing on writing tests._
+
+## Convert XML to SQLite
+
+To get faster lookups for words in the available vocabularies, we need to convert language dictionaries from XML to SQLite.
+
+We have prepared a simple script and converter module that takes input XML filename and output SQLite filename, parses XML and then inserts data in the simple SQL (only two tables) structure file.
+
+This helps us to lookup words only in 10-15ms (for the set of ~100k words to search in).
+
+Here is the way to prepare these `.sqlite` files which can be consumed later by the Lexin application:
+
+```console
+mix run scripts/converter.exs --input swe_rus.xml --output swe_rus.sqlite
+```
+
+See more in the module docs to [`lib/lexin/xml_converter.ex`](lib/lexin/xml_converter.ex).

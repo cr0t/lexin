@@ -34,7 +34,8 @@ defmodule Lexin.MixProject do
   defp deps do
     [
       {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
-      {:floki, ">= 0.30.0", only: :test},
+      {:exqlite, "~> 0.8.4"},
+      {:floki, ">= 0.32.0"},
       {:gettext, "~> 0.18"},
       {:hackney, "~> 1.18"},
       {:jason, "~> 1.2"},
