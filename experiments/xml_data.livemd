@@ -101,33 +101,87 @@ Every `Word` in the original XML file has `ID` and `VariantID` attributes. While
 repeats, `VariantID` seems to be unique (see section and `LanguageReader.all_ids/0` above).
 
 ```elixir
-{:ok, conn} = Exqlite.Sqlite3.open(":memory:")
+defmodule SQLiteConverter do
+  import Meeseeks.XPath
 
-# Create the table
-:ok = Exqlite.Sqlite3.execute(conn, "CREATE TABLE test (id integer primary key, stuff text)")
+  defp xml(), do: File.read!("experiments/swe_rus.xml") |> Meeseeks.parse(:xml)
 
-# Prepare a statement
-{:ok, statement} = Exqlite.Sqlite3.prepare(conn, "INSERT INTO test (stuff) VALUES (?1)")
-:ok = Exqlite.Sqlite3.bind(conn, statement, ["Hello world"])
+  def all_words() do
+    xml()
+    |> Meeseeks.all(xpath("//Word"))
+    |> Enum.map(fn word ->
+      id = Meeseeks.attr(word, "VariantID")
 
-# Step is used to run statements
-:done = Exqlite.Sqlite3.step(conn, statement)
+      indexes =
+        for index <- Meeseeks.all(word, xpath("//Index")) do
+          {
+            Meeseeks.attr(index, "Value"),
+            Meeseeks.attr(index, "type")
+          }
+        end
 
-# Prepare a select statement
-{:ok, statement} = Exqlite.Sqlite3.prepare(conn, "SELECT id, stuff FROM test")
+      definition = Meeseeks.html(word)
 
-# Get the results
-{:row, [1, "Hello world"]} = Exqlite.Sqlite3.step(conn, statement)
+      {id, indexes, definition}
+    end)
+  end
+end
 
-# No more results
-:done = Exqlite.Sqlite3.step(conn, statement)
+SQLiteConverter.all_words()
+```
 
-# Release the statement.
-#
-# It is recommended you release the statement after using it to reclaim the memory
-# asap, instead of letting the garbage collector eventually releasing the statement.
-#
-# If you are operating at a high load issuing thousands of statements, it would be
-# possible to run out of memory or cause a lot of pressure on memory.
-:ok = Exqlite.Sqlite3.release(conn, statement)
+```elixir
+{:ok, conn} = Exqlite.Sqlite3.open("swe_rus.sqlite")
+
+# Create the structure
+vocabulary_table = """
+BEGIN;
+DROP TABLE IF EXISTS "vocabulary";
+CREATE TABLE "vocabulary" ("id" INTEGER PRIMARY KEY, "definition_id" INTEGER, "word" TEXT, "type" TEXT);
+COMMIT;
+"""
+
+# CREATE INDEX "index_word" ON "vocabulary" ("word");
+:ok = Exqlite.Sqlite3.execute(conn, vocabulary_table)
+
+definitions_table = """
+BEGIN;
+DROP TABLE IF EXISTS "definitions";
+CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY, "definition" TEXT);
+COMMIT;
+"""
+
+:ok = Exqlite.Sqlite3.execute(conn, definitions_table)
+
+SQLiteConverter.all_words()
+|> Enum.map(fn {id, indexes, definition} ->
+  Enum.map(indexes, fn {word, type} ->
+    word_sql = "INSERT INTO vocabulary (definition_id, word, type) VALUES (?1, ?2, ?3)"
+    {:ok, statement} = Exqlite.Sqlite3.prepare(conn, word_sql)
+    :ok = Exqlite.Sqlite3.bind(conn, statement, [id, word, type])
+    :done = Exqlite.Sqlite3.step(conn, statement)
+  end)
+
+  definition_sql = "INSERT INTO definitions (id, definition) VALUES (?1, ?2)"
+  {:ok, statement} = Exqlite.Sqlite3.prepare(conn, definition_sql)
+  :ok = Exqlite.Sqlite3.bind(conn, statement, [id, definition])
+  :done = Exqlite.Sqlite3.step(conn, statement)
+end)
+```
+
+Quick overview of the resulting file shows that its filesize is getting bigger (in comparison
+to original XML), but not much (~18MB of XML converts into ~26MB of SQLite). Conversion of 18MB
+file takes around 100 seconds.
+
+Time to word lookups tremendously faster: 10-12ms instead of ~5s.
+
+> We don't notice any significant difference when we put an index on the "word" column, or when
+> it is not indexed.
+
+We can lookup definitions like this:
+
+```sql
+SELECT d.id, d.definition FROM definitions d
+JOIN vocabulary v ON d.id = v.definition_id
+WHERE v.word LIKE "fordon"
 ```
