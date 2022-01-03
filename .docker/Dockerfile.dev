@@ -14,7 +14,7 @@ ARG MIX_ENV
 
 FROM docker.io/hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-alpine-$ALPINE_VERSION
 
-RUN apk add inotify-tools
+RUN apk add --no-cache inotify-tools build-base git python3 curl
 
 ENV MIX_ENV="${MIX_ENV}"
 

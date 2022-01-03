@@ -30,7 +30,7 @@ FROM docker.io/hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-alpine-$ALPIN
 
 # install build dependencies
 # (maybe it's not necessary for simple projects)
-# RUN apk add --no-cache build-base git python3 curl
+RUN apk add --no-cache build-base git python3 curl
 
 WORKDIR /app
 
