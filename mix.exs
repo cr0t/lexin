@@ -33,22 +33,21 @@ defmodule Lexin.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.4.0", runtime: Mix.env() == :dev},
       {:exqlite, "~> 0.8.4"},
       {:floki, ">= 0.32.0"},
-      {:gettext, "~> 0.18"},
+      {:gettext, "~> 0.19.0"},
       {:hackney, "~> 1.18"},
-      {:jason, "~> 1.2"},
-      {:observer_cli, "~> 1.7"},
-      {:phoenix, "~> 1.6.0"},
-      {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_dashboard, "~> 0.5"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.16.0"},
-      {:plug_cowboy, "~> 2.5"},
-      {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
-      {:tesla, "~> 1.4"}
+      {:jason, "~> 1.3.0"},
+      {:observer_cli, "~> 1.7.1"},
+      {:phoenix, "~> 1.6.5"},
+      {:phoenix_html, "~> 3.2.0"},
+      {:phoenix_live_dashboard, "~> 0.6.2"},
+      {:phoenix_live_reload, "~> 1.3.3", only: :dev},
+      {:phoenix_live_view, "~> 0.17.5"},
+      {:plug_cowboy, "~> 2.5.2"},
+      {:telemetry_metrics, "~> 0.6.1"},
+      {:telemetry_poller, "~> 1.0.0"}
     ]
   end
 
