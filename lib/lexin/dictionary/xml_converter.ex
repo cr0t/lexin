@@ -1,4 +1,4 @@
-defmodule Lexin.XMLConverter do
+defmodule Lexin.Dictionary.XMLConverter do
   @moduledoc """
   In order to get quick lookups for the words in the dictionary files, we want to convert original
   XML files into similar SQLite counterparts with simple structure.

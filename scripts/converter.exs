@@ -1,6 +1,6 @@
 defmodule XMLConverterRunner do
   @moduledoc """
-  CLI wrapper to Lexin.XMLConverter module
+  CLI wrapper to Lexin.Dictionary.XMLConverter module
   """
 
   @doc """
@@ -13,7 +13,7 @@ defmodule XMLConverterRunner do
 
     case options do
       [input: input_filename, output: output_filename] ->
-        Lexin.XMLConverter.convert(input_filename, output_filename)
+        Lexin.Dictionary.XMLConverter.convert(input_filename, output_filename)
 
       _ ->
         usage()
