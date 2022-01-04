@@ -3,7 +3,7 @@
     <strong><%= @dfn.value %></strong>
     <span>[<%= @dfn.base.phonetic.transcription %>]</span>
 
-    <% audio_url = @dfn.base.phonetic.audio_url %>
+    <% audio_url = external_audio_url(@dfn.base.phonetic.audio_url) %>
     <% onclick = "playAudio('#{audio_url}'); return false;" %>
     <a href={audio_url} onclick={onclick}><%= gettext("listen") %></a>
 
@@ -97,7 +97,8 @@
         <ul class="serp_list">
           <%= for pict <- pictures do %>
             <li class="serp_list-item">
-              <a href={pict.url} target="_blank"><%= pict.type %> &rarr;</a>
+              <% picture_url = external_picture_url(pict.url, @lang) %>
+              <a href={picture_url} target="_blank"><%= pict.type %> &rarr;</a>
             </li>
           <% end %>
         </ul>

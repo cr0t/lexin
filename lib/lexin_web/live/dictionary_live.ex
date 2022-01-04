@@ -48,7 +48,7 @@ defmodule LexinWeb.DictionaryLive do
 
   defp find_definitions(socket = %{assigns: %{query: query, lang: lang}}) do
     if String.length(query) > 0 do
-      case Lexin.Service.lookup(query, lang) do
+      case Lexin.Dictionary.lookup(lang, query) do
         {:ok, definitions} ->
           socket
           |> clear_flash()
@@ -66,9 +66,6 @@ defmodule LexinWeb.DictionaryLive do
 
   defp error_msg(:not_found),
     do: dgettext("errors", "Not found")
-
-  defp error_msg(:no_response),
-    do: dgettext("errors", "No response from Lexin API")
 
   defp error_msg(:exception_processing_request),
     do: dgettext("errors", "Exception processing search request")

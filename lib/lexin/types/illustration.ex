@@ -1,8 +1,6 @@
 defmodule Lexin.Definition.Illustration do
   @moduledoc false
 
-  @derive Jason.Encoder
-
   @enforce_keys [:type, :url]
   defstruct [
     :type,

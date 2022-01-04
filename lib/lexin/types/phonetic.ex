@@ -1,8 +1,6 @@
 defmodule Lexin.Definition.Phonetic do
   @moduledoc false
 
-  @derive Jason.Encoder
-
   @enforce_keys [:transcription, :audio_url]
   defstruct [
     :transcription,

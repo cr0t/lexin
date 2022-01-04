@@ -1,8 +1,6 @@
 defmodule Lexin.Definition.Content do
   @moduledoc false
 
-  @derive Jason.Encoder
-
   @enforce_keys [:value]
   defstruct [
     :id,

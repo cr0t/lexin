@@ -9,5 +9,5 @@
   phx-value-key="error"><%= live_flash(@flash, :error) %></p>
 
 <%= for dfn <- @definitions do %>
-  <%= live_component(CardComponent, dfn: dfn) %>
+  <%= live_component(CardComponent, dfn: dfn, lang: @lang) %>
 <% end %>

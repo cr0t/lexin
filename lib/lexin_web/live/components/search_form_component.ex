@@ -28,26 +28,37 @@ defmodule LexinWeb.SearchFormComponent do
   end
 
   defp localized_languages_select(name, dom_id, selected_lang) do
-    # See docs Lexin.Service.Client regarding Swedish language support
-    supported_languages = [
-      {gettext("Select language"), :select_language},
-      {gettext("albanian"), :albanian},
-      {gettext("arabic"), :arabic},
-      {gettext("bosnian"), :bosnian},
-      {gettext("finnish"), :finnish},
-      {gettext("greek"), :greek},
-      {gettext("croatian"), :croatian},
-      {gettext("northern_kurdish"), :northern_kurdish},
-      {gettext("persian"), :persian},
-      {gettext("russian"), :russian},
-      {gettext("serbian"), :serbian},
-      {gettext("somali"), :somali},
-      {gettext("southern_kurdish"), :southern_kurdish},
-      # {gettext("swedish"), :swedish},
-      {gettext("turkish"), :turkish}
+    translations = [
+      {gettext("albanian"), "albanian"},
+      {gettext("amharic"), "amharic"},
+      {gettext("arabic"), "arabic"},
+      {gettext("azerbaijani"), "azerbaijani"},
+      {gettext("bosnian"), "bosnian"},
+      {gettext("english"), "english"},
+      {gettext("finnish"), "finnish"},
+      {gettext("greek"), "greek"},
+      {gettext("croatian"), "croatian"},
+      {gettext("northern_kurdish"), "northern_kurdish"},
+      {gettext("pashto"), "pashto"},
+      {gettext("persian"), "persian"},
+      {gettext("russian"), "russian"},
+      {gettext("serbian_latin"), "serbian_latin"},
+      {gettext("serbian_cyrillic"), "serbian_cyrillic"},
+      {gettext("somali"), "somali"},
+      {gettext("spanish"), "spanish"},
+      {gettext("swedish"), "swedish"},
+      {gettext("southern_kurdish"), "southern_kurdish"},
+      {gettext("tigrinya"), "tigrinya"},
+      {gettext("turkish"), "turkish"}
     ]
 
-    options = options_for_select(supported_languages, selected_lang)
+    available = Lexin.Dictionary.Worker.languages()
+
+    supported_languages = Enum.filter(translations, &Enum.member?(available, elem(&1, 1)))
+
+    ui_languages = [{gettext("Select language"), "select_language"} | supported_languages]
+
+    options = options_for_select(ui_languages, selected_lang)
 
     content_tag(:select, options, name: name, id: dom_id)
   end

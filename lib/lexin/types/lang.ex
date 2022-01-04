@@ -1,8 +1,6 @@
 defmodule Lexin.Definition.Lang do
   @moduledoc false
 
-  @derive Jason.Encoder
-
   defstruct [
     :meaning,
     :comment,
