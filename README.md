@@ -23,13 +23,14 @@ Preferred way is to install [asdf](https://asdf-vm.com/) utility: then it will b
 To start your local development server:
 
 * Install dependencies with `mix deps.get`
+* Convert or use demo dictionary file (see the section below in this README)
 * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 ### Docker & Docker Compose
 
 Alternatively, you can use Docker and have nothing but editor on your host machine to work with the project.
 
-**For the first time** (or if you want to install/update deps), you need to run `mix deps.get` command inside the `phoenix` service container: `docker-compose run --rm phoenix mix deps.get`.
+> **For the first time** (or if you want to install/update deps), you need to run `mix deps.get` command inside the `phoenix` service container: `docker-compose run --rm phoenix mix deps.get`.
 
 Now, we can run `docker-compose up` (to run interactively) or `docker-compose --detach` (to run in background).
 
@@ -37,21 +38,23 @@ Check [`docker-compose.yml`](docker-compose.yml) file for details.
 
 ## Testing
 
-Simple way: `mix test`. _To run all the tests._
+Simple way: `mix test`. _(To run all the tests)_
 
-Advanced way: `fswatch lib test | mix test --listen-on-stdin`. _If you want to autorun tests every time you save the files in `lib` or `test` directories – useful when focusing on writing tests._
+Advanced way: `fswatch lib test | mix test --listen-on-stdin`.
+
+> If you want to autorun tests every time you save the files in `lib` or `test` directories – useful when focusing on writing tests.
 
 ## Convert XML to SQLite
 
 To make this app work properly, we need to provide it a directory with `.sqlite` dictionary files which contain definitions data.
 
-> Note: For the basic local run, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/russian.sqlite` into this folder; it's extremely limited and contains only 5 word definitions.
+> To run this app locally, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/russian.sqlite` into this folder; though it's extremely limited and contains only 5 word definitions.
 >
 > You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files are stored in the SVN repository and we do not want to copy them here and store in this repo, as they might become out of sync.
 
 You can convert all of them, or just a few selected ones.
 
-> Note: **Important to remember** to name output files according to the list of supported languages options (see [`lib/lexin_web/live/components/search_form_component.ex`](https://github.com/cr0t/lexin/blob/master/lib/lexin_web/live/components/search_form_component.ex#L32-L52) for details). Our application filters shown list of languages according to available dictionaries it finds in the corresponding directory.
+> **It is important** to name output files according to the list of supported languages options (see [`lib/lexin_web/live/components/search_form_component.ex`](lib/lexin_web/live/components/search_form_component.ex#L32-L52) for details). Our application filters shown list of languages according to available dictionaries it finds in the corresponding directory.
 
 You might have similar conversion sequence of commands:
 
@@ -68,12 +71,6 @@ Parsing input XML...
 Inserting into SQLite...
 5539 / 5539
 Done!
-$ mix run scripts/converter.exs --input dictionaries/swe_bos.xml --output dictionaries/bosnian.sqlite
-Resetting database...
-Parsing input XML...
-Inserting into SQLite...
-22014 / 22014
-Done!
 $ mix run scripts/converter.exs --input dictionaries/swe_eng.xml --output dictionaries/english.sqlite
 Resetting database...
 Parsing input XML...
@@ -82,20 +79,4 @@ Inserting into SQLite...
 Done!
 ```
 
-`mix run scripts/converter.exs` uses `XMLConverter` that is described below.
-
-### `XMLConverter`
-
-To get faster lookups for words in the available vocabularies, we need to convert language dictionaries from XML to SQLite.
-
-We have prepared a simple script and converter module that takes input XML filename and output SQLite filename, parses XML and then inserts data in the simple SQL (only two tables) structure file.
-
-This helps us to lookup words only in 10-15ms (for the set of ~100k words to search in).
-
-Here is the way to prepare these `.sqlite` files which can be consumed later by the Lexin application:
-
-```console
-mix run scripts/converter.exs --input swe_rus.xml --output swe_rus.sqlite
-```
-
-See more in the module docs to [`lib/lexin/xml_converter.ex`](lib/lexin/xml_converter.ex).
+`scripts/converter.exs` uses `XMLConverter`, see more in the corresponding module – [`lib/lexin/dictionary/xml_converter.ex`](lib/lexin/dictionary/xml_converter.ex).

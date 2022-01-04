@@ -45,6 +45,12 @@ defmodule Lexin.Dictionary.XMLConverter do
   SELECT DISTINCT word FROM vocabulary
   ```
 
+  Here is the way to prepare these `.sqlite` files which can be consumed later by the Lexin application:
+
+  ```console
+  mix run scripts/converter.exs --input swe_rus.xml --output russian.sqlite
+  ```
+
   P.S. We need to check and be careful of words that spell the same way in both languages – should
   we show all definitions then? Maybe yes, maybe not.
   """
