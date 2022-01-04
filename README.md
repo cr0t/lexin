@@ -43,6 +43,49 @@ Advanced way: `fswatch lib test | mix test --listen-on-stdin`. _If you want to a
 
 ## Convert XML to SQLite
 
+To make this app work properly, we need to provide it a directory with `.sqlite` dictionary files which contain definitions data.
+
+> Note: For the basic local run, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/russian.sqlite` into this folder; it's extremely limited and contains only 5 word definitions.
+>
+> You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files are stored in the SVN repository and we do not want to copy them here and store in this repo, as they might become out of sync.
+
+You can convert all of them, or just a few selected ones.
+
+> Note: **Important to remember** to name output files according to the list of supported languages options (see [`lib/lexin_web/live/components/search_form_component.ex`](https://github.com/cr0t/lexin/blob/master/lib/lexin_web/live/components/search_form_component.ex#L32-L52) for details). Our application filters shown list of languages according to available dictionaries it finds in the corresponding directory.
+
+You might have similar conversion sequence of commands:
+
+```console
+$ mix run scripts/converter.exs --input dictionaries/swe_ara.xml --output dictionaries/arabic.sqlite
+Resetting database...
+Parsing input XML...
+Inserting into SQLite...
+22014 / 22014
+Done!
+$ mix run scripts/converter.exs --input dictionaries/swe_azj.xml --output dictionaries/azerbaijani.sqlite
+Resetting database...
+Parsing input XML...
+Inserting into SQLite...
+5539 / 5539
+Done!
+$ mix run scripts/converter.exs --input dictionaries/swe_bos.xml --output dictionaries/bosnian.sqlite
+Resetting database...
+Parsing input XML...
+Inserting into SQLite...
+22014 / 22014
+Done!
+$ mix run scripts/converter.exs --input dictionaries/swe_eng.xml --output dictionaries/english.sqlite
+Resetting database...
+Parsing input XML...
+Inserting into SQLite...
+22013 / 22013
+Done!
+```
+
+`mix run scripts/converter.exs` uses `XMLConverter` that is described below.
+
+### `XMLConverter`
+
 To get faster lookups for words in the available vocabularies, we need to convert language dictionaries from XML to SQLite.
 
 We have prepared a simple script and converter module that takes input XML filename and output SQLite filename, parses XML and then inserts data in the simple SQL (only two tables) structure file.
