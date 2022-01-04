@@ -1,15 +1,15 @@
-defmodule Lexin.Service do
+defmodule Lexin.Dictionary do
   @moduledoc """
-  Entrance gateway to the Lexin web service application
+  Entrance to the Lexin's dictionary data
   """
 
-  alias Lexin.Service.{Client, Parser}
+  alias Lexin.Dictionary.{Worker, Parser}
 
-  @spec lookup(word :: String.t(), lang :: String.t()) ::
+  @spec lookup(lang :: String.t(), word :: String.t()) ::
           {:ok, [Lexin.Definition.t()]} | {:error, any()}
-  def lookup(word, lang) do
+  def lookup(lang, word) do
     try do
-      case Client.definitions(word, lang) do
+      case Worker.definitions(lang, word) do
         {:ok, raw_definitions} ->
           {:ok, Enum.map(raw_definitions, &Parser.convert/1)}
 

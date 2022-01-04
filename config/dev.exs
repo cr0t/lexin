@@ -1,5 +1,8 @@
 import Config
 
+# Directory with `swe_*.sqlite` dictionary files
+config :lexin, :dictionaries_root, "dictionaries"
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

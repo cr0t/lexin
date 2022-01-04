@@ -12,10 +12,10 @@ defmodule Lexin.Application do
       LexinWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Lexin.PubSub},
+      # Start a worker by calling: Lexin.Worker.start_link(arg)
+      Lexin.Dictionary.Worker,
       # Start the Endpoint (http/https)
       LexinWeb.Endpoint
-      # Start a worker by calling: Lexin.Worker.start_link(arg)
-      # {Lexin.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

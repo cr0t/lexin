@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Dictionary BaseLang="Swedish" TargetLang="Russian" Version="2010-07-07" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://lexin.nada.kth.se/schema/LexinSchema.xsd">
+  <Word ID="1" MatchingID="3" Type="prep." Value="à" Variant="1" VariantID="1">
+    <BaseLang>
+      <Meaning MatchingID="9011002">till ett pris av</Meaning>
+      <Comment>endast vid sifferuttryck</Comment>
+      <Phonetic File="v2/100052_1.mp3">a</Phonetic>
+      <Example ID="1" MatchingID="1174820">två koppar kaffe à 8 kronor (styck)</Example>
+      <Index Value="à" />
+    </BaseLang>
+    <TargetLang>
+      <Translation>по</Translation>
+      <Comment>"только с цифрой"</Comment>
+      <Example ID="1">две чашки кофе по 8 крон (kaждая)</Example>
+    </TargetLang>
+  </Word>
+  <Word ID="1" MatchingID="4" Type="prep." Value="à" Variant="1" VariantID="2">
+    <BaseLang>
+      <Meaning MatchingID="9011003">till</Meaning>
+      <Comment>i sifferuttryck</Comment>
+      <Phonetic File="v2/100052_1.mp3">a</Phonetic>
+      <Example ID="2" MatchingID="1174824">2 à 3 meter</Example>
+      <Index Value="à" />
+    </BaseLang>
+    <TargetLang>
+      <Translation>до</Translation>
+      <Comment>"с цифрой"</Comment>
+      <Example ID="2">от 2 до 3 метров</Example>
+    </TargetLang>
+  </Word>
+  <Word ID="2" MatchingID="1" Type="subst." Value="a" Variant="2" VariantID="3">
+    <BaseLang>
+      <Meaning MatchingID="9011000">första bokstaven i alfabetet</Meaning>
+      <Phonetic File="v2/100021_1.mp3">a:</Phonetic>
+      <Idiom ID="1" MatchingID="1000010">har man sagt a får man också säga b ("har man börjat får man fortsätta")</Idiom>
+      <Idiom ID="2" MatchingID="1000008">a och o ("det viktigaste")</Idiom>
+      <Index Value="a" />
+    </BaseLang>
+    <TargetLang>
+      <Translation>А</Translation>
+      <Idiom ID="1">если сказал А, говори и Б (если начал, то доведи до конца)</Idiom>
+      <Idiom ID="2">от альфы до омеги (от начала до конца)</Idiom>
+    </TargetLang>
+  </Word>
+  <Word ID="2" MatchingID="2" Type="subst." Value="a" Variant="2" VariantID="4">
+    <BaseLang>
+      <Meaning MatchingID="9011001">sjätte tonen i C-durskalan</Meaning>
+      <Comment>musikterm</Comment>
+      <Phonetic File="v2/100021_1.mp3">a:</Phonetic>
+      <Index Value="a" />
+    </BaseLang>
+    <TargetLang>
+      <Translation>ля</Translation>
+      <Comment>"музыкальный термин (шестая нота гаммы)"</Comment>
+    </TargetLang>
+  </Word>
+  <Word ID="3" MatchingID="64" Type="adv." Value="a conto" Variant="" VariantID="5">
+    <BaseLang>
+      <Meaning MatchingID="9011060">i förskott</Meaning>
+      <Phonetic File="v2/850907_1.mp3">akÅn:to</Phonetic>
+      <Index Value="a conto" />
+    </BaseLang>
+    <TargetLang>
+      <Translation>А-конто</Translation>
+      <Synonym>на мой счёт</Synonym>
+    </TargetLang>
+  </Word>
+</Dictionary>

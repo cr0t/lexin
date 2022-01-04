@@ -19,6 +19,13 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
+  # Directory with `swe_*.sqlite` dictionary files
+  dictionaries_root_path =
+    System.get_env("DICTIONARIES_ROOT") ||
+      raise "environment variable DICTIONARIES_ROOT is missing"
+
+  config :lexin, :dictionaries_root, dictionaries_root_path
+
   config :lexin, LexinWeb.Endpoint,
     http: [
       # Enable IPv6 and bind on all interfaces.
