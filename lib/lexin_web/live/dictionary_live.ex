@@ -28,7 +28,7 @@ defmodule LexinWeb.DictionaryLive do
   def handle_params(%{"query" => query, "lang" => lang}, _uri, socket) do
     socket =
       assign(socket, %{
-        query: query,
+        query: String.trim(query),
         lang: lang
       })
 
