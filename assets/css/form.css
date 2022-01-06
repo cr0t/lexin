@@ -11,6 +11,16 @@
   user-select: none;
 }
 
+#form_header-logo > a {
+  color: black;
+  display: flex;
+  transition: all .1s;
+}
+
+#form_header-logo > a:hover {
+  opacity: .5;
+}
+
 #form_header-logo_img {
   display: block;
   height: 3rem;
