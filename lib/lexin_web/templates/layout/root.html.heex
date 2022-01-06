@@ -31,7 +31,16 @@
       </div>
 
       <div class="layout-footer">
-        <%= link("About and Help", to: Routes.help_path(@conn, :index)) %>
+        <ul class="footer_nav">
+          <li>
+            <span class="footer_nav-version" title="Lexin Light version">
+              <%= app_version() %>
+            </span>
+          </li>
+          <li>
+            <%= link("Help", to: Routes.help_path(@conn, :index)) %>
+          </li>
+        </ul>
       </div>
     </div>
 
