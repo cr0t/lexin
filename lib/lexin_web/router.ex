@@ -22,6 +22,7 @@ defmodule LexinWeb.Router do
     get "/sw.js", ServiceWorkerController, :index
 
     # Static pages (About, Help, etc.)
+    get "/contact", PagesController, :contact
     get "/about", PagesController, :about
     get "/help", PagesController, :help
   end
