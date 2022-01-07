@@ -1,15 +1,15 @@
-.footer_nav {
+.footer-nav {
   display: flex;
-  font-size: .85em;
   justify-content: space-evenly;
   margin: 0;
 }
 
-.footer_nav li {
+.footer-nav li {
   list-style: none;
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 
-.footer_nav-version {
+.footer-version {
   color: rgba(0, 0, 0, .4);
+  text-align: center;
 }
