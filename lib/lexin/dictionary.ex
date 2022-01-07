@@ -3,15 +3,15 @@ defmodule Lexin.Dictionary do
   Entrance to the Lexin's dictionary data
   """
 
-  alias Lexin.Dictionary.{Worker, Parser}
+  alias Lexin.Dictionary.Worker
 
   @spec lookup(lang :: String.t(), word :: String.t()) ::
           {:ok, [Lexin.Definition.t()]} | {:error, any()}
   def lookup(lang, word) do
     try do
       case Worker.definitions(lang, word) do
-        {:ok, raw_definitions} ->
-          {:ok, Enum.map(raw_definitions, &Parser.convert/1)}
+        {:ok, definitions} ->
+          {:ok, definitions}
 
         {:error, err} ->
           {:error, err}
