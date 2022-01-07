@@ -4,6 +4,7 @@ defmodule Lexin.Dictionary.Data do
   """
 
   alias Exqlite.Sqlite3, as: SQLite
+  alias Lexin.Dictionary.Parser
 
   @doc """
   Returns pre-configured main directory with SQLite files
@@ -53,13 +54,38 @@ defmodule Lexin.Dictionary.Data do
       :ok = SQLite.release(db, statement)
 
       if length(rows) > 0 do
-        # we need to extract `definition` from the row list
-        {:ok, Enum.map(rows, &hd/1)}
+        # We need to extract `definition` from the row list, then parse and re-order it by relevance
+        definitions =
+          rows
+          |> parse()
+          |> reorder(query)
+
+        {:ok, definitions}
       else
         {:error, :not_found}
       end
     else
       err -> err
     end
+  end
+
+  defp parse(rows) do
+    rows
+    |> Enum.map(&hd/1)
+    |> Enum.map(&Parser.convert/1)
+  end
+
+  # TODO: We should try to avoid this data transformation on the Elixir side, and probably try to
+  # achieve the same in SQL query; worth to cheeck this opportunity.
+  defp reorder(definitions, query) do
+    # We want to pick the most relevant definition; it's a little bit tricky, because sometimes
+    # it can be spelled as compound, for example:
+    # for `dammsurage` query value of the definition is `damm|sugare`)
+    top = Enum.find(definitions, fn %{value: word} ->
+      query == String.replace(word, "|", "")
+    end)
+
+    # Then we put it first to the new list, and add the rest as a tail (with the top rejected)
+    [top | Enum.reject(definitions, &(&1 == top))]
   end
 end
