@@ -31,15 +31,16 @@
       </div>
 
       <div class="layout-footer">
-        <ul class="footer_nav">
-          <li><%= link("About", to: Routes.pages_path(@conn, :about)) %></li>
-          <li><%= link("Help", to: Routes.pages_path(@conn, :help)) %></li>
-          <li>
-            <span class="footer_nav-version" title="Lexin Light version">
-              <%= app_version() %>
-            </span>
-          </li>
-        </ul>
+        <div class="container">
+          <ul class="footer-nav">
+            <li><%= link("About", to: Routes.pages_path(@conn, :about)) %></li>
+            <li><%= link("Help", to: Routes.pages_path(@conn, :help)) %></li>
+          </ul>
+
+          <div class="footer-version" title="Lexin Light version">
+            Lexin Light <%= app_version() %>
+          </div>
+        </div>
       </div>
     </div>
 
