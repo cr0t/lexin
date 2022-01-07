@@ -1,36 +1,13 @@
 #form_header {
   display: flex;
   justify-content: space-between;
-}
-
-#form_header-logo {
-  align-items: center;
-  display: flex;
-  font-size: 2rem;
-  font-weight: 300;
-  user-select: none;
-}
-
-#form_header-logo > a {
-  color: black;
-  display: flex;
-  transition: all .1s;
-}
-
-#form_header-logo > a:hover {
-  opacity: .5;
-}
-
-#form_header-logo_img {
-  display: block;
-  height: 3rem;
-  margin-right: .4rem;
-  width: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 #form-lang {
   position: relative;
   top: -1px;
+  margin-bottom: 0;
 }
 
 #form-search_block {

@@ -2,9 +2,10 @@
 @import "./phoenix.css";
 @import "./layout.css";
 @import "./footer.css";
+@import "./logo.css";
 @import "./form.css";
 @import "./serp.css";
-@import "./about.css";
+@import "./page_content.css";
 
 /* Alerts and form errors used by phx.new */
 .alert {

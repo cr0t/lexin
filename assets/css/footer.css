@@ -1,3 +1,8 @@
+.footer-wrapper {
+  font-size: .85em;
+  margin-bottom: 2rem !important;
+}
+
 .footer-nav {
   display: flex;
   justify-content: space-evenly;
