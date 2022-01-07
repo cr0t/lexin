@@ -1,0 +1,25 @@
+.page_content {
+  margin-top: 4rem;
+}
+
+.page_content-screenshots {
+  border: none;
+}
+
+.page_content-screenshots td {
+  border-bottom: none;
+  text-align: center;
+}
+
+.page_content-screenshots td a {
+  cursor: zoom-in;
+}
+
+.page_content-screenshots img {
+  border: 3px solid rgba(0, 0, 0, .05);
+  transition: all .2s;
+}
+
+.page_content-screenshots td img:hover {
+  transform: scale(1.1);
+}

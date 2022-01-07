@@ -1,9 +1,11 @@
 <form phx-submit="search" phx-target={@myself} phx-hook="languageCookie">
   <div id="form_header">
-    <h3 id="form_header-logo">
-      <img id="form_header-logo_img" src={Routes.static_path(@socket, "/images/icon.svg")} />
-      Light
-    </h3>
+    <div class="logo">
+      <a href="/" class="logo-wrapper">
+        <img class="logo-img" src={Routes.static_path(@socket, "/images/icon.svg")} />
+        <span class="logo-text">Light</span>
+      </a>
+    </div>
 
     <%= localized_languages_select("lang", "form-lang", @lang) %>
   </div>

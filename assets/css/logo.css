@@ -1,0 +1,25 @@
+.logo {
+  display: flex;
+  user-select: none;
+}
+
+.logo-wrapper {
+  display: flex;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.logo-wrapper:hover .logo-img {
+  filter: grayscale(100%);
+}
+
+.logo-img {
+  display: block;
+  height: 3rem;
+  margin-right: .2em;
+  width: 3rem;
+}
+
+.logo-text {
+  color: black;
+}
