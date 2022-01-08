@@ -11,13 +11,19 @@
   </div>
 
   <div class="serp_content">
-    <div class="serp_inflections">
+    <div class="serp_dimmed">
       &lt;<%= Enum.join(inflections(@dfn), ", ") %>&gt;
     </div>
 
     <div>
       <%= @dfn.base.meaning %>
     </div>
+
+    <%= if @dfn.base.graminfo do %>
+      <div class="serp_dimmed">
+        &lt;<%= graminfo(@dfn) %>&gt;
+      </div>
+    <% end %>
 
     <%= if @dfn.base.alternate do %>
       <div>
