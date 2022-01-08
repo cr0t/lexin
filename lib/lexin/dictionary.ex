@@ -11,7 +11,10 @@ defmodule Lexin.Dictionary do
     try do
       Worker.definitions(lang, word)
     rescue
-      _err ->
+      error ->
+        information = %{lang: lang, word: word}
+        Sentry.capture_exception(error, stacktrace: __STACKTRACE__, extra: %{extra: information})
+
         {:error, :exception_processing_request}
     end
   end
