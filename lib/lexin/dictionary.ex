@@ -9,13 +9,7 @@ defmodule Lexin.Dictionary do
           {:ok, [Lexin.Definition.t()]} | {:error, any()}
   def lookup(lang, word) do
     try do
-      case Worker.definitions(lang, word) do
-        {:ok, definitions} ->
-          {:ok, definitions}
-
-        {:error, err} ->
-          {:error, err}
-      end
+      Worker.definitions(lang, word)
     rescue
       _err ->
         {:error, :exception_processing_request}

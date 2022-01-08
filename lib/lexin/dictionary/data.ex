@@ -39,7 +39,8 @@ defmodule Lexin.Dictionary.Data do
   @doc """
   Attempts to find definitions in the given SQLite database (connection) and a query to look for.
   """
-  @spec find_definitions(db :: any(), query :: String.t()) :: {:ok, [String.t()]} | {:error, atom()}
+  @spec find_definitions(db :: any(), query :: String.t()) ::
+          {:ok, [String.t()]} | {:error, atom()}
   def find_definitions(db, query) do
     find_sql = """
     SELECT DISTINCT definition FROM definitions
@@ -54,7 +55,7 @@ defmodule Lexin.Dictionary.Data do
       :ok = SQLite.release(db, statement)
 
       if length(rows) > 0 do
-        # We need to extract `definition` from the row list, then parse and re-order it by relevance
+        # We need to extract `definition` from the row list, parse it, and then re-order it by relevance
         definitions =
           rows
           |> parse()
@@ -78,14 +79,17 @@ defmodule Lexin.Dictionary.Data do
   # TODO: We should try to avoid this data transformation on the Elixir side, and probably try to
   # achieve the same in SQL query; worth to cheeck this opportunity.
   defp reorder(definitions, query) do
-    # We want to pick the most relevant definition; it's a little bit tricky, because sometimes
-    # it can be spelled as compound, for example:
-    # for `dammsurage` query value of the definition is `damm|sugare`)
-    top = Enum.find(definitions, fn %{value: word} ->
-      query == String.replace(word, "|", "")
-    end)
+    # We want to pick the most relevant definition(s); it's a little bit tricky, because sometimes
+    # the value in the definition structure can be spelled as compound, for example:
+    # for `dammsugare` query value of the most relevant definition is `damm|sugare`
+    top_relevant =
+      Enum.filter(definitions, fn %{value: word} ->
+        query == String.replace(word, "|", "")
+      end)
 
-    # Then we put it first to the new list, and add the rest as a tail (with the top rejected)
-    [top | Enum.reject(definitions, &(&1 == top))]
+    less_relevant = Enum.reject(definitions, &Enum.member?(top_relevant, &1))
+
+    # Then we put them first to the new list, and add the rest as a tail (with the top rejected)
+    top_relevant ++ less_relevant
   end
 end
