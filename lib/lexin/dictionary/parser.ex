@@ -19,6 +19,7 @@ defmodule Lexin.Dictionary.Parser do
   defp parse_lang(html) do
     %Lexin.Definition.Lang{
       meaning: child_text(html, "meaning"),
+      graminfo: child_text(html, "graminfo"),
       comment: child_text(html, "comment"),
       translation: child_text(html, "translation"),
       alternate: child_text(html, "alternate"),
@@ -42,8 +43,6 @@ defmodule Lexin.Dictionary.Parser do
     }
   end
 
-  defp parse_contents(nil), do: []
-
   defp parse_contents(htmls) do
     htmls 
     |> Enum.map(fn html ->
@@ -54,8 +53,6 @@ defmodule Lexin.Dictionary.Parser do
       }
     end)
   end
-
-  defp parse_illustrations(nil), do: []
 
   defp parse_illustrations(htmls) do
     htmls
@@ -80,7 +77,6 @@ defmodule Lexin.Dictionary.Parser do
   defp parse_integer(""), do: nil
   defp parse_integer(n), do: String.to_integer(n)
 
-  defp parse_strings(nil), do: []
   defp parse_strings([""]), do: []
   defp parse_strings(list), do: Enum.map(list, &Floki.text/1)
 end

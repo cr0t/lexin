@@ -27,6 +27,9 @@ defmodule LexinWeb.CardComponent do
     "turkish" => "swe,tur"
   }
 
+  def graminfo(dfn),
+    do: dfn.base.graminfo |> String.replace("&", dfn.value)
+
   def illustrations(dfn),
     do: dfn.base.illustrations ++ dfn.target.illustrations
 
