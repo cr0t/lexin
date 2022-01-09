@@ -18,22 +18,9 @@ resetEl.addEventListener('click', () => {
 // ------------- Live Socket --------------
 
 const LANG_KEY = 'language'
-const PROMPT_OPTION = 'select_language'
 
 let hooks = {
-  languageCookie: {
-    mounted() {
-      if (localStorage) {
-        let savedLanguage = localStorage.getItem(LANG_KEY)
-        let selectedLanguage = document.getElementById('form-lang').value
-
-        // if page is opened with language param server already set it to something, and we
-        // do not want to change it to saved language; only when user opens main page
-        if (selectedLanguage == PROMPT_OPTION && savedLanguage !== null) {
-          document.getElementById('form-lang').value = savedLanguage
-        }
-      }
-    },
+  saveLanguage: {
     beforeUpdate() {
       if (localStorage) {
         let langValue = document.getElementById('form-lang').value
@@ -44,11 +31,21 @@ let hooks = {
   }
 }
 
-let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
+let params = () => {
+  let params = {
+    _csrf_token: document.querySelector("meta[name='csrf-token']").getAttribute('content')
+  }
+
+  if (localStorage) {
+    params['lang'] = localStorage.getItem(LANG_KEY)
+  }
+
+  return params
+}
 
 let socketParams = {
-  params: {_csrf_token: csrfToken},
-  hooks: hooks
+  hooks: hooks,
+  params: params
 }
 
 let liveSocket = new LiveSocket('/live', Socket, socketParams)

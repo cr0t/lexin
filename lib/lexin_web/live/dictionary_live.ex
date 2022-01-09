@@ -14,8 +14,15 @@ defmodule LexinWeb.DictionaryLive do
 
   alias LexinWeb.{CardComponent, SearchFormComponent}
 
-  @doc false
-  def mount(_params, _session, socket), do: {:ok, socket}
+  @doc """
+  Set up the language in case if user already made searches previously, and her browser stored the
+  selected language in its localStorage.
+
+  Check how we populate `socketParams` on the JavaScript side around this initialization code:
+  `new LiveSocket('/live', Socket, socketParams)`.
+  """
+  def mount(_params, _session, socket),
+    do: {:ok, assign(socket, lang: get_connect_params(socket)["lang"])}
 
   @doc """
   When `?query=...&lang=...` presented in the parameters hash, we use it as initial state and
@@ -38,8 +45,7 @@ defmodule LexinWeb.DictionaryLive do
   def handle_params(_params, _uri, socket) do
     socket =
       assign(socket, %{
-        query: "",
-        lang: "",
+        query: nil,
         definitions: []
       })
 
