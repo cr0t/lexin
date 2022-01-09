@@ -49,8 +49,8 @@ defmodule Lexin.Dictionary.Data do
     """
 
     with {:ok, statement} <- SQLite.prepare(db, find_sql),
-         :ok <- SQLite.bind(db, statement, [query]),
-         {:ok, rows} = SQLite.fetch_all(db, statement) do
+         :ok <- SQLite.bind(db, statement, [query]) do
+      {:ok, rows} = SQLite.fetch_all(db, statement)
       # release the statement to free memory
       :ok = SQLite.release(db, statement)
 

@@ -46,10 +46,10 @@ defmodule Lexin.Dictionary.Parser do
   end
 
   defp parse_contents(htmls) do
-    htmls 
+    htmls
     |> Enum.map(fn html ->
       %Lexin.Definition.Content{
-        id: attribute(html, "id")|> parse_integer(),
+        id: attribute(html, "id") |> parse_integer(),
         inflections: children(html, "inflection") |> parse_strings(),
         value: Floki.text(html)
       }
@@ -58,7 +58,7 @@ defmodule Lexin.Dictionary.Parser do
 
   defp parse_illustrations(htmls) do
     htmls
-    |> Enum.map(fn html->
+    |> Enum.map(fn html ->
       %Lexin.Definition.Illustration{
         type: attribute(html, "type"),
         url: attribute(html, "norlexin")
@@ -67,8 +67,11 @@ defmodule Lexin.Dictionary.Parser do
   end
 
   defp child(html, selector), do: Floki.find(html, selector) |> List.first()
+
   defp children(html, selector), do: Floki.find(html, selector)
+
   defp attribute(html, attr), do: Floki.attribute(html, attr) |> List.first()
+
   defp child_text(html, selector) do
     text = Floki.find(html, selector) |> Floki.text()
 

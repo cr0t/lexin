@@ -72,8 +72,9 @@ defmodule Lexin.Dictionary.XMLConverter do
 
     IO.puts("Inserting into SQLite...")
 
-    all_words
-    |> Enum.reduce({conn, Enum.count(all_words), 0}, &insert/2)
+    {_conn, _total, _processed} =
+      all_words
+      |> Enum.reduce({conn, Enum.count(all_words), 0}, &insert/2)
 
     IO.puts("\nDone!")
   end
@@ -113,7 +114,6 @@ defmodule Lexin.Dictionary.XMLConverter do
       |> List.first()
       |> String.to_integer()
 
-
     variants =
       for index <- Floki.find(word_block, "index") do
         {
@@ -129,7 +129,7 @@ defmodule Lexin.Dictionary.XMLConverter do
   end
 
   defp insert({id, variants, word, definition}, {conn, total, processed}) do
-    Enum.map(variants, fn {word, type} ->
+    Enum.each(variants, fn {word, type} ->
       word_sql = "INSERT INTO vocabulary (definition_id, word, type) VALUES (?1, ?2, ?3)"
 
       {:ok, statement} = Exqlite.Sqlite3.prepare(conn, word_sql)
