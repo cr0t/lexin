@@ -33,6 +33,7 @@ defmodule Lexin.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:credo, "~> 1.6.1", only: [:dev, :test], runtime: false},
       {:esbuild, "~> 0.4.0", runtime: Mix.env() == :dev},
       {:exqlite, "~> 0.8.4"},
       {:floki, ">= 0.32.0"},
