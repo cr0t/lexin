@@ -1,4 +1,8 @@
 defmodule LexinWeb.CardComponent do
+  @moduledoc """
+  Represents a definition "card" template, provides a few useful helpers to render the data.
+  """
+
   use LexinWeb, :live_component
 
   import LexinWeb.Gettext

@@ -1,4 +1,11 @@
 defmodule LexinWeb.SearchFormComponent do
+  @moduledoc """
+  Renders search form (incl. languages dropdown) and handles search requests by maintaining
+  GET-params of the URL via `Routes.live_path/3`.
+
+  In its turn, the parent live view component handles these params changes. 
+  """
+
   use LexinWeb, :live_component
 
   @doc """

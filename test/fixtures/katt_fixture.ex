@@ -1,4 +1,6 @@
 defmodule KattFixture do
+  @moduledoc false
+
   def definitions() do
     [
       %Lexin.Definition{
@@ -112,7 +114,7 @@ defmodule KattFixture do
           synonyms: [],
           translation: nil
         },
-        id: 10254,
+        id: 10_254,
         pos: "subst.",
         target: %Lexin.Definition.Lang{
           alternate: nil,
@@ -151,7 +153,7 @@ defmodule KattFixture do
           synonyms: [],
           translation: nil
         },
-        id: 16812,
+        id: 16_812,
         pos: "subst.",
         target: %Lexin.Definition.Lang{
           alternate: nil,
@@ -190,7 +192,7 @@ defmodule KattFixture do
           synonyms: [],
           translation: nil
         },
-        id: 19821,
+        id: 19_821,
         pos: "subst.",
         target: %Lexin.Definition.Lang{
           alternate: nil,
