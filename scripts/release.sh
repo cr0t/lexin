@@ -8,4 +8,4 @@ SCRIPTS_DIR=$(dirname $FULLPATH)
 APP_NAME=$(grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e 's/[:,]//g')
 APP_VERSION=$(grep 'version:' mix.exs | cut -d '"' -f2)
 
-IMAGE_ID=$($SCRIPTS_DIR/build.sh $APP_NAME $APP_VERSION --force | tail -n 1)
+$SCRIPTS_DIR/build.sh $APP_NAME $APP_VERSION --force
