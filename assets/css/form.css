@@ -20,6 +20,7 @@
 }
 
 #form-query_reset {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border-radius: 30%;
   cursor: pointer;
   display: block;
