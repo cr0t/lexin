@@ -21,6 +21,7 @@ defmodule Lexin.Dictionary.Parser do
   defp parse_lang(html) do
     %Lexin.Definition.Lang{
       meaning: child_text(html, "meaning"),
+      usage: child_text(html, "usage"),
       graminfo: child_text(html, "graminfo"),
       comment: child_text(html, "comment"),
       translation: child_text(html, "translation"),

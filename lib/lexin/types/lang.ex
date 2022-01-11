@@ -3,6 +3,7 @@ defmodule Lexin.Definition.Lang do
 
   defstruct [
     :meaning,
+    :usage,
     :graminfo,
     :comment,
     :translation,
@@ -19,6 +20,7 @@ defmodule Lexin.Definition.Lang do
 
   @type t :: %__MODULE__{
           meaning: String.t() | nil,
+          usage: String.t() | nil,
           graminfo: String.t() | nil,
           comment: String.t() | nil,
           translation: String.t() | nil,
