@@ -12,21 +12,21 @@ msgstr ""
 "Plural-Forms: nplurals=3\n"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:68
+#: lib/lexin_web/live/dictionary_live.ex:74
 msgid "Not found"
 msgstr "Не найдено"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:71
+#: lib/lexin_web/live/dictionary_live.ex:77
 msgid "Exception processing search request"
 msgstr "Ошибка при обработке запроса"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:77
+#: lib/lexin_web/live/dictionary_live.ex:83
 msgid "Unknown (yet) error – fun for developers"
 msgstr "Неизвестная (пока) ошибка – задачка для разработчиков"
 
 #, elixir-format
-#: lib/lexin_web/live/dictionary_live.ex:74
+#: lib/lexin_web/live/dictionary_live.ex:80
 msgid "Language is not supported"
 msgstr "Выбранный язык не поддерживается"

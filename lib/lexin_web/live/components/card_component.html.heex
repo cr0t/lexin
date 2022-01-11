@@ -31,6 +31,12 @@
       </div>
     <% end %>
 
+    <%= if @dfn.base.usage do %>
+      <div>
+        <%= gettext("Usage: %{usage}", usage: @dfn.base.usage) %>
+      </div>
+    <% end %>
+
     <%= if @dfn.target.translation do %>
       <div class="serp_translation">
         <%= @dfn.target.translation %>
