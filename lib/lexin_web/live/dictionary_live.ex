@@ -36,6 +36,7 @@ defmodule LexinWeb.DictionaryLive do
     socket =
       assign(socket, %{
         query: String.trim(query),
+        suggestions: [],
         lang: lang
       })
 
@@ -46,6 +47,7 @@ defmodule LexinWeb.DictionaryLive do
     socket =
       assign(socket, %{
         query: nil,
+        suggestions: [],
         definitions: []
       })
 
@@ -59,6 +61,7 @@ defmodule LexinWeb.DictionaryLive do
           socket
           |> clear_flash()
           |> assign(:definitions, definitions)
+          |> assign(:suggestions, [])
 
         {:error, err} ->
           socket
