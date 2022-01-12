@@ -13,8 +13,11 @@ defmodule Lexin.Dictionary.Worker do
   def languages(),
     do: GenServer.call(__MODULE__, :languages)
 
-  def definitions(lang, word),
-    do: GenServer.call(__MODULE__, {:definitions, lang, word})
+  def definitions(lang, query),
+    do: GenServer.call(__MODULE__, {:definitions, lang, query})
+
+  def suggestions(lang, query),
+    do: GenServer.call(__MODULE__, {:suggestions, lang, query})
 
   # Initialization
 
@@ -35,6 +38,15 @@ defmodule Lexin.Dictionary.Worker do
   def handle_call({:definitions, lang, query}, _from, dicts) do
     if valid_language?(dicts, lang) do
       {:reply, Data.find_definitions(dicts[lang], query), dicts}
+    else
+      {:reply, {:error, :language_not_supported}, dicts}
+    end
+  end
+
+  @impl true
+  def handle_call({:suggestions, lang, query}, _from, dicts) do
+    if valid_language?(dicts, lang) do
+      {:reply, Data.find_suggestions(dicts[lang], query), dicts}
     else
       {:reply, {:error, :language_not_supported}, dicts}
     end

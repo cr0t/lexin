@@ -20,4 +20,19 @@ defmodule Lexin.Dictionary do
         {:error, :exception_processing_request}
     end
   end
+
+  def suggestions(lang, query) do
+    try do
+      normalized_query = String.downcase(query)
+
+      Worker.suggestions(lang, normalized_query)
+    rescue
+      error ->
+        information = %{lang: lang, query: query}
+        IO.inspect({error, __STACKTRACE__})
+        #Sentry.capture_exception(error, stacktrace: __STACKTRACE__, extra: %{extra: information})
+
+        []
+    end
+  end
 end

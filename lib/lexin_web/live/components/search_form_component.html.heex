@@ -1,4 +1,4 @@
-<form phx-submit="search" phx-target={@myself} phx-hook="saveLanguage">
+<form phx-submit="search" phx-target={@myself} phx-hook="saveLanguage" phx-change="suggest">
   <div id="form_header">
     <div class="logo">
       <a href="/" class="logo-wrapper">
@@ -13,7 +13,13 @@
   <div id="form-search_block">
     <div id="form-query_wrapper">
       <i id="form-query_reset" phx-click="reset" phx-target={@myself}>+</i>
-      <input id="form-query_field" type="text" name="query" value={@query} autocomplete="off" autofocus />
+      <input id="form-query_field" type="text" name="query" value={@query} list="suggestions" autocomplete="off" autofocus />
+
+      <datalist id="suggestions">
+        <%= for suggestion <- @suggestions do %>
+          <option value={suggestion}><%= suggestion %></option>
+        <% end %>
+      </datalist>
     </div>
 
     <button id="form-submit_button" type="submit">

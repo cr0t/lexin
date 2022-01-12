@@ -34,6 +34,17 @@ defmodule LexinWeb.SearchFormComponent do
     {:noreply, push_patch(socket, to: route)}
   end
 
+  def handle_event("suggest", %{"lang" => lang, "query" => query}, socket) do
+    suggestions =
+      if String.length(query) >= 3 do
+        Lexin.Dictionary.suggestions(lang, query)
+      else
+       []
+      end
+
+    {:noreply, assign(socket, suggestions: suggestions)}
+  end
+
   defp localized_languages_select(name, dom_id, selected_lang) do
     translations = [
       {gettext("albanian"), "albanian"},

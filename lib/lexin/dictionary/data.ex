@@ -36,6 +36,30 @@ defmodule Lexin.Dictionary.Data do
     |> Enum.into(%{})
   end
 
+  def find_suggestions(db, query) do
+    suggestions_sql = """
+    SELECT word FROM vocabulary
+    WHERE word LIKE ?1
+    LIMIT 10
+    """
+
+    query = "#{query}%"
+
+    with {:ok, statement} <- SQLite.prepare(db, suggestions_sql),
+         :ok = SQLite.bind(db, statement, [query]) do
+      {:ok, rows} = SQLite.fetch_all(db, statement)
+      :ok = SQLite.release(db, statement)
+
+      if length(rows) > 0 do
+        Enum.map(rows, &hd/1) |> Enum.uniq()
+      else
+        []
+      end
+    else
+      err -> err
+    end
+  end
+
   @doc """
   Attempts to find definitions in the given SQLite database (connection) and a query to look for.
   """
