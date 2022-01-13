@@ -38,7 +38,10 @@ config :phoenix, :json_library, Jason
 
 # For external links we need to provide prefixes
 config :lexin, :external_audio_url_prefix, "http://lexin.nada.kth.se/sound/"
-config :lexin, :external_picture_url_prefix, "https://bildetema.oslomet.no/bildetema/bildetema-html5/bildetema.html?version=swedish"
+
+config :lexin,
+       :external_picture_url_prefix,
+       "https://bildetema.oslomet.no/bildetema/bildetema-html5/bildetema.html?version=swedish"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
