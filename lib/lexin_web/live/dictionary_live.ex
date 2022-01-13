@@ -36,6 +36,7 @@ defmodule LexinWeb.DictionaryLive do
     socket =
       assign(socket, %{
         query: String.trim(query),
+        query_in_focus: socket.assigns[:query_in_focus] || true,
         suggestions: [],
         lang: lang
       })
@@ -46,7 +47,8 @@ defmodule LexinWeb.DictionaryLive do
   def handle_params(_params, _uri, socket) do
     socket =
       assign(socket, %{
-        query: nil,
+        query: "",
+        query_in_focus: socket.assigns[:query_in_focus] || true,
         suggestions: [],
         definitions: []
       })
@@ -54,7 +56,11 @@ defmodule LexinWeb.DictionaryLive do
     {:noreply, socket}
   end
 
-  defp find_definitions(socket = %{assigns: %{query: query, lang: lang}}) do
+  ###
+  ### Helpers
+  ###
+
+  defp find_definitions(%{assigns: %{query: query, lang: lang}} = socket) do
     if String.length(query) > 0 do
       case Lexin.Dictionary.lookup(lang, query) do
         {:ok, definitions} ->

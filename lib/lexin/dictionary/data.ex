@@ -6,6 +6,8 @@ defmodule Lexin.Dictionary.Data do
   alias Exqlite.Sqlite3, as: SQLite
   alias Lexin.Dictionary.Parser
 
+  @max_suggestions 5
+
   @doc """
   Returns pre-configured main directory with SQLite files
   """
@@ -36,35 +38,11 @@ defmodule Lexin.Dictionary.Data do
     |> Enum.into(%{})
   end
 
-  def find_suggestions(db, query) do
-    suggestions_sql = """
-    SELECT word FROM vocabulary
-    WHERE word LIKE ?1
-    LIMIT 10
-    """
-
-    query = "#{query}%"
-
-    with {:ok, statement} <- SQLite.prepare(db, suggestions_sql),
-         :ok = SQLite.bind(db, statement, [query]) do
-      {:ok, rows} = SQLite.fetch_all(db, statement)
-      :ok = SQLite.release(db, statement)
-
-      if length(rows) > 0 do
-        Enum.map(rows, &hd/1) |> Enum.uniq()
-      else
-        []
-      end
-    else
-      err -> err
-    end
-  end
-
   @doc """
   Attempts to find definitions in the given SQLite database (connection) and a query to look for.
   """
   @spec find_definitions(db :: any(), query :: String.t()) ::
-          {:ok, [String.t()]} | {:error, atom()}
+          {:ok, [Lexin.Definition.t()]} | {:error, atom()}
   def find_definitions(db, query) do
     find_sql = """
     SELECT DISTINCT definition FROM definitions
@@ -73,16 +51,14 @@ defmodule Lexin.Dictionary.Data do
     """
 
     with {:ok, statement} <- SQLite.prepare(db, find_sql),
-         :ok <- SQLite.bind(db, statement, [query]) do
-      {:ok, rows} = SQLite.fetch_all(db, statement)
-      # release the statement to free memory
-      :ok = SQLite.release(db, statement)
-
+         :ok <- SQLite.bind(db, statement, [query]),
+         {:ok, rows} <- SQLite.fetch_all(db, statement),
+         :ok <- SQLite.release(db, statement) do
       if length(rows) > 0 do
         # We need to extract `definition` from the row list, parse it, and then re-order it by relevance
         definitions =
           rows
-          |> parse()
+          |> parse_definitions()
           |> reorder(query)
 
         {:ok, definitions}
@@ -94,18 +70,49 @@ defmodule Lexin.Dictionary.Data do
     end
   end
 
-  defp parse(rows) do
+  @doc """
+  Attempts to find suggestions: takes available Swedish vocabulary and selects words which start
+  with the given query. For better performance, limits the selection.
+  """
+  @spec find_suggestions(db :: any(), query :: String.t()) ::
+          {:ok, [String.t()]} | {:error, atom()}
+  def find_suggestions(db, query) do
+    suggestions_sql = """
+    SELECT DISTINCT(word) FROM vocabulary
+    WHERE word LIKE ?1
+    LIMIT #{@max_suggestions}
+    """
+
+    query = "#{query}%"
+
+    with {:ok, statement} <- SQLite.prepare(db, suggestions_sql),
+         :ok <- SQLite.bind(db, statement, [query]),
+         {:ok, rows} <- SQLite.fetch_all(db, statement),
+         :ok <- SQLite.release(db, statement) do
+      if length(rows) > 0 do
+        # TODO: Find a way how to sort it in a more relevant way.
+        {:ok, Enum.map(rows, &hd/1) |> Enum.uniq()}
+      else
+        {:ok, []}
+      end
+    else
+      err -> err
+    end
+  end
+
+  defp parse_definitions(rows) do
     rows
     |> Enum.map(&hd/1)
     |> Enum.map(&Parser.convert/1)
   end
 
+  # We want to pick the most relevant definition(s); it's a little bit tricky, because sometimes
+  # the value in the definition structure can be spelled as compound, for example:
+  # for `dammsugare` query value of the most relevant definition is `damm|sugare`
+  #
   # TODO: We should try to avoid this data transformation on the Elixir side, and probably try to
   # achieve the same in SQL query; worth to cheeck this opportunity.
   defp reorder(definitions, query) do
-    # We want to pick the most relevant definition(s); it's a little bit tricky, because sometimes
-    # the value in the definition structure can be spelled as compound, for example:
-    # for `dammsugare` query value of the most relevant definition is `damm|sugare`
     top_relevant =
       Enum.filter(definitions, fn %{value: word} ->
         query == String.replace(word, "|", "")
