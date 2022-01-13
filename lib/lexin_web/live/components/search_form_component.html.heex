@@ -19,10 +19,7 @@
       <input
         id="form-query_field" class={klass} type="text" name="query" value={@query}
         autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" autofocus
-        phx-target={@myself}
-        phx-debounce="200"
-        phx-focus="query-focus"
-        phx-blur="query-blur"
+        phx-target={@myself} phx-debounce="200" phx-focus="query-focus" phx-blur="query-blur"
       />
 
       <%= if has_suggestions?(@in_focus, @suggestions) do %>
