@@ -40,17 +40,18 @@ defmodule LexinWeb.SearchFormComponent do
     socket =
       assign(socket, %{
         lang: lang,
-        query: String.trim(query)
+        query: String.trim(query),
+        in_focus: true
       })
 
     {:noreply, find_suggestions(socket)}
   end
 
   def handle_event("query-focus", _params, socket),
-    do: {:noreply, assign(socket, query_in_focus: true)}
+    do: {:noreply, assign(socket, in_focus: true)}
 
   def handle_event("query-blur", _params, socket),
-    do: {:noreply, assign(socket, query_in_focus: false)}
+    do: {:noreply, assign(socket, in_focus: false)}
 
   ###
   ### Helpers

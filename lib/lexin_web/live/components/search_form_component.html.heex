@@ -14,7 +14,7 @@
     <div id="form-query_wrapper">
       <i id="form-query_reset" phx-target={@myself} phx-click="reset">+</i>
 
-      <% klass = if has_suggestions?(@query_in_focus, @suggestions), do: "has-suggestions", else: "" %>
+      <% klass = if has_suggestions?(@in_focus, @suggestions), do: "has-suggestions", else: "" %>
 
       <input
         id="form-query_field" class={klass} type="text" name="query" value={@query}
@@ -25,7 +25,7 @@
         phx-blur="query-blur"
       />
 
-      <%= if has_suggestions?(@query_in_focus, @suggestions) do %>
+      <%= if has_suggestions?(@in_focus, @suggestions) do %>
         <ul id="form-query_suggestions">
           <%= for suggestion <- @suggestions do %>
             <% path = suggestion_path(@socket, @lang, suggestion) %>
