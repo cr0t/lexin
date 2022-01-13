@@ -1,4 +1,4 @@
-<%= live_component(SearchFormComponent, id: :form, lang: @lang, query: @query, suggestions: @suggestions) %>
+<%= live_component(SearchFormComponent, id: :form, lang: @lang, query: @query, suggestions: @suggestions, query_in_focus: @query_in_focus) %>
 
 <p class="alert alert-info" role="alert"
   phx-click="lv:clear-flash"

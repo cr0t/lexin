@@ -3,10 +3,12 @@ defmodule LexinWeb.SearchFormComponent do
   Renders search form (incl. languages dropdown) and handles search requests by maintaining
   GET-params of the URL via `Routes.live_path/3`.
 
-  In its turn, the parent live view component handles these params changes. 
+  In its turn, the parent live view component handles these params changes.
   """
 
   use LexinWeb, :live_component
+
+  @min_chars_for_suggestions 1
 
   @doc """
   Processes form submission by setting current URL to the new one (with updating `query` param),
@@ -14,7 +16,7 @@ defmodule LexinWeb.SearchFormComponent do
   """
   def handle_event(event, params, socket)
 
-  def handle_event("search", %{"query" => query, "lang" => lang}, socket) do
+  def handle_event("submit", %{"query" => query, "lang" => lang}, socket) do
     route =
       Routes.live_path(socket, LexinWeb.DictionaryLive, %{
         query: query,
@@ -34,18 +36,27 @@ defmodule LexinWeb.SearchFormComponent do
     {:noreply, push_patch(socket, to: route)}
   end
 
-  def handle_event("suggest", %{"lang" => lang, "query" => query}, socket) do
-    suggestions =
-      if String.length(query) >= 3 do
-        Lexin.Dictionary.suggestions(lang, query)
-      else
-       []
-      end
+  def handle_event("update", %{"query" => query, "lang" => lang}, socket) do
+    socket =
+      assign(socket, %{
+        lang: lang,
+        query: String.trim(query)
+      })
 
-    {:noreply, assign(socket, suggestions: suggestions)}
+    {:noreply, find_suggestions(socket)}
   end
 
-  defp localized_languages_select(name, dom_id, selected_lang) do
+  def handle_event("query-focus", _params, socket),
+    do: {:noreply, assign(socket, query_in_focus: true)}
+
+  def handle_event("query-blur", _params, socket),
+    do: {:noreply, assign(socket, query_in_focus: false)}
+
+  ###
+  ### Helpers
+  ###
+
+  defp localized_languages_select(name, dom_id, selected_lang, opts) do
     translations = [
       {gettext("albanian"), "albanian"},
       {gettext("amharic"), "amharic"},
@@ -78,6 +89,22 @@ defmodule LexinWeb.SearchFormComponent do
 
     options = options_for_select(ui_languages, selected_lang)
 
-    content_tag(:select, options, name: name, id: dom_id)
+    extra_opts = Keyword.merge(opts, name: name, id: dom_id)
+
+    content_tag(:select, options, extra_opts)
   end
+
+  defp find_suggestions(%{assigns: %{query: query, lang: lang}} = socket) do
+    if String.length(query) >= @min_chars_for_suggestions do
+      assign(socket, suggestions: Lexin.Dictionary.suggestions(lang, query))
+    else
+      assign(socket, suggestions: [])
+    end
+  end
+
+  defp has_suggestions?(_, []), do: false
+  defp has_suggestions?(in_focus, _), do: in_focus
+
+  defp suggestion_path(socket, lang, suggestion),
+    do: Routes.live_path(socket, LexinWeb.DictionaryLive, %{query: suggestion, lang: lang})
 end
