@@ -36,7 +36,7 @@ defmodule LexinWeb.DictionaryLive do
     socket =
       assign(socket, %{
         query: String.trim(query),
-        query_in_focus: socket.assigns[:query_in_focus] || true,
+        in_focus: socket.assigns[:in_focus] || true,
         suggestions: [],
         lang: lang
       })
@@ -48,7 +48,7 @@ defmodule LexinWeb.DictionaryLive do
     socket =
       assign(socket, %{
         query: "",
-        query_in_focus: socket.assigns[:query_in_focus] || true,
+        in_focus: socket.assigns[:in_focus] || true,
         suggestions: [],
         definitions: []
       })
