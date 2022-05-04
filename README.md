@@ -54,7 +54,7 @@ To make this app work properly, we need to provide it a directory with `.sqlite`
 
 You can convert all of them, or just a few selected ones.
 
-> **It is important** to name output files according to the list of supported languages options (see [`lib/lexin_web/live/components/search_form_component.ex`](lib/lexin_web/live/components/search_form_component.ex#L32-L52) for details). Our application filters shown list of languages according to available dictionaries it finds in the corresponding directory.
+> **It is important** to name output files according to the list of supported languages options (see [`lib/lexin_web/live/components/search_form_component.ex`](lib/lexin_web/live/components/search_form_component.ex)). Our application filters shown list of languages according to available dictionaries it finds in the corresponding directory.
 
 You might have similar conversion sequence of commands:
 
