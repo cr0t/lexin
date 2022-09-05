@@ -4,10 +4,10 @@ defmodule Lexin.MixProject do
   def project do
     [
       app: :lexin,
-      version: "0.7.2",
+      version: "0.7.3",
       elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,19 +33,19 @@ defmodule Lexin.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:credo, "~> 1.6.1", only: [:dev, :test], runtime: false},
-      {:esbuild, "~> 0.4.0", runtime: Mix.env() == :dev},
-      {:exqlite, "~> 0.8.4"},
-      {:floki, ">= 0.32.0"},
-      {:gettext, "~> 0.19.0"},
-      {:hackney, "~> 1.18"},
+      {:credo, "~> 1.6.7", only: [:dev, :test], runtime: false},
+      {:esbuild, "~> 0.5.0", runtime: Mix.env() == :dev},
+      {:exqlite, "~> 0.11.4"},
+      {:floki, ">= 0.33.1"},
+      {:gettext, "~> 0.20.0"},
+      {:hackney, "~> 1.18.1"},
       {:jason, "~> 1.3.0"},
-      {:observer_cli, "~> 1.7.1"},
-      {:phoenix, "~> 1.6.5"},
+      {:observer_cli, "~> 1.7.3"},
+      {:phoenix, "~> 1.6.11"},
       {:phoenix_html, "~> 3.2.0"},
-      {:phoenix_live_dashboard, "~> 0.6.2"},
+      {:phoenix_live_dashboard, "~> 0.6.5"},
       {:phoenix_live_reload, "~> 1.3.3", only: :dev},
-      {:phoenix_live_view, "~> 0.17.5"},
+      {:phoenix_live_view, "~> 0.17.11"},
       {:plug_cowboy, "~> 2.5.2"},
       {:sentry, "~> 8.0.6"},
       {:telemetry_metrics, "~> 0.6.1"},
