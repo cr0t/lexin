@@ -7,10 +7,16 @@ config :lexin, :dictionaries_root, "test/fixtures/dictionaries"
 config :lexin, LexinWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "8Q7QHw+qU9xnuRwI3P2MSGyDS6auQl/8Ki7GCB63toa6fS9kusXiFW9qExob1T/+",
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# A few settings for Wallaby
+config :wallaby,
+  driver: Wallaby.Chrome,
+  base_url: "http://localhost:4002",
+  screenshot_on_failure: true

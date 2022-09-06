@@ -37,3 +37,6 @@ npm-debug.log
 
 # Data files
 /dictionaries/
+
+# Wallaby integration tests screenshots
+/screenshots/

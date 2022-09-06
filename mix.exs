@@ -49,7 +49,8 @@ defmodule Lexin.MixProject do
       {:plug_cowboy, "~> 2.5.2"},
       {:sentry, "~> 8.0.6"},
       {:telemetry_metrics, "~> 0.6.1"},
-      {:telemetry_poller, "~> 1.0.0"}
+      {:telemetry_poller, "~> 1.0.0"},
+      {:wallaby, "~> 0.30.1", only: :test, runtime: false}
     ]
   end
 
@@ -63,7 +64,8 @@ defmodule Lexin.MixProject do
     [
       setup: ["deps.get"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"],
-      "gettext.update": ["gettext.extract --merge --no-fuzzy"]
+      "gettext.update": ["gettext.extract --merge --no-fuzzy"],
+      test: ["esbuild default", "test"]
     ]
   end
 end
