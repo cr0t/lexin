@@ -1,8 +1,21 @@
 # Lexin Light
 
-It's a small web application for Swedish dictionary service Lexin.
+It's a small web application for Swedish dictionary.
+
+## Intro
 
 Lexin Light provides a new modern and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [history notes](docs/HISTORY.md) about creation and first look of this application.
+
+Lexin Light is written as [Progressive web apps (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be easily installed and used on mobile devices or on desktops.
+
+### Screenshots
+
+<table>
+  <tr>
+    <td><img width="612" alt="image" src="https://user-images.githubusercontent.com/113878/188648480-ce8f18cd-b87a-4ca6-982d-36fb7c07d698.png"></td>
+    <td><img width="612" alt="image" src="https://user-images.githubusercontent.com/113878/188648585-135f6477-ec1d-4a15-9e36-9199e45ad547.png"></td>
+  </tr>
+</table>
 
 ## Development
 
