@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Dictionary BaseLang="Swedish" TargetLang="Russian" Version="2010-07-07" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://lexin.nada.kth.se/schema/LexinSchema.xsd">
+<Dictionary BaseLang="Swedish" TargetLang="English" Version="2010-04-04" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://lexin.nada.kth.se/schema/LexinSchema.xsd">
   <Word ID="1" MatchingID="3" Type="prep." Value="à" Variant="1" VariantID="1">
     <BaseLang>
       <Meaning MatchingID="9011002">till ett pris av</Meaning>
@@ -9,9 +9,10 @@
       <Index Value="à" />
     </BaseLang>
     <TargetLang>
-      <Translation>по</Translation>
-      <Comment>"только с цифрой"</Comment>
-      <Example ID="1">две чашки кофе по 8 крон (kaждая)</Example>
+      <Translation>at</Translation>
+      <Synonym>at a price of</Synonym>
+      <Comment>used only with numerical expressions</Comment>
+      <Example ID="1">two cups of coffee at 8 kronor (each)</Example>
     </TargetLang>
   </Word>
   <Word ID="1" MatchingID="4" Type="prep." Value="à" Variant="1" VariantID="2">
@@ -23,9 +24,9 @@
       <Index Value="à" />
     </BaseLang>
     <TargetLang>
-      <Translation>до</Translation>
-      <Comment>"с цифрой"</Comment>
-      <Example ID="2">от 2 до 3 метров</Example>
+      <Translation>to</Translation>
+      <Comment>in numerical expressions</Comment>
+      <Example ID="2">2 to 3 metres</Example>
     </TargetLang>
   </Word>
   <Word ID="2" MatchingID="1" Type="subst." Value="a" Variant="2" VariantID="3">
@@ -37,9 +38,10 @@
       <Index Value="a" />
     </BaseLang>
     <TargetLang>
-      <Translation>А</Translation>
-      <Idiom ID="1">если сказал А, говори и Б (если начал, то доведи до конца)</Idiom>
-      <Idiom ID="2">от альфы до омеги (от начала до конца)</Idiom>
+      <Translation>a</Translation>
+      <Synonym>the first letter of the alphabet</Synonym>
+      <Idiom ID="1">in for a penny, in for a pound ("what you start you must finish off")</Idiom>
+      <Idiom ID="2">alpha and omega</Idiom>
     </TargetLang>
   </Word>
   <Word ID="2" MatchingID="2" Type="subst." Value="a" Variant="2" VariantID="4">
@@ -50,8 +52,9 @@
       <Index Value="a" />
     </BaseLang>
     <TargetLang>
-      <Translation>ля</Translation>
-      <Comment>"музыкальный термин (шестая нота гаммы)"</Comment>
+      <Translation>A</Translation>
+      <Synonym>the sixth tone in the scale of C major</Synonym>
+      <Comment>a musical term</Comment>
     </TargetLang>
   </Word>
   <Word ID="3" MatchingID="64" Type="adv." Value="a conto" Variant="" VariantID="5">
@@ -61,8 +64,8 @@
       <Index Value="a conto" />
     </BaseLang>
     <TargetLang>
-      <Translation>А-конто</Translation>
-      <Synonym>на мой счёт</Synonym>
+      <Translation>on account</Translation>
+      <Synonym>in advance</Synonym>
     </TargetLang>
   </Word>
   <Word ID="1713" MatchingID="2117" Type="subst." Value="bil" Variant="" VariantID="1858">
@@ -108,16 +111,16 @@
       <Index Value="trafiken" type="suffix" />
     </BaseLang>
     <TargetLang>
-      <Translation>автомобиль</Translation>
-      <Example ID="1208">ездить на машине (не за рулём)</Example>
-      <Compound ID="687">автотранстпорт</Compound>
-      <Compound ID="688">легковая автомашина</Compound>
-      <Compound ID="689">едущий в автомашине</Compound>
-      <Compound ID="690">пешеходный</Compound>
-      <Compound ID="691">испытывающий тошноту при езде в автомобиле</Compound>
-      <Compound ID="692">недомогание (тошнота) от автомобильной езды, укачивание</Compound>
-      <Compound ID="693">автомобильный телефон</Compound>
-      <Compound ID="694">грузовой автомобиль, грузовик</Compound>
+      <Translation>car, motorcar, (automobile [US]), (auto [US])</Translation>
+      <Example ID="1208">go by car</Example>
+      <Compound ID="687">motor traffic</Compound>
+      <Compound ID="688">passenger car</Compound>
+      <Compound ID="689">motorized</Compound>
+      <Compound ID="690">free of cars</Compound>
+      <Compound ID="691">carsick</Compound>
+      <Compound ID="692">carsickness</Compound>
+      <Compound ID="693">car phone</Compound>
+  <Compound ID="694">lorry, (truck [US])</Compound>
     </TargetLang>
   </Word>
   <Word ID="858" MatchingID="1057" Type="subst." Value="avgas" Variant="" VariantID="918">
@@ -155,12 +158,13 @@
       <Index Value="systemet" type="suffix" />
     </BaseLang>
     <TargetLang>
-      <Translation>выхлопные газы</Translation>
-      <Example ID="599">движение автотранспорта приводит к увеличению уровня шума и загрязнению воздуха выхлопными газами</Example>
-      <Compound ID="391">выхлопные газы</Compound>
-      <Compound ID="392">очистка выхлопных газов</Compound>
-      <Compound ID="393">выхлопная система</Compound>
-      <Compound ID="394">выхлопная труба</Compound>
+      <Translation>exhaust (gas)</Translation>
+      <Synonym>the waste gas produced by internal combustion engines</Synonym>
+      <Example ID="599">traffic causes noise and pollution</Example>
+      <Compound ID="391">exhaust fumes</Compound>
+      <Compound ID="392">exhaust conversion, exhaust emission control</Compound>
+      <Compound ID="393">exhaust system</Compound>
+      <Compound ID="394">exhaust pipe</Compound>
     </TargetLang>
   </Word>
 </Dictionary>

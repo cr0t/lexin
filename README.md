@@ -6,7 +6,7 @@ It's a small web application for Swedish dictionary.
 
 Lexin Light provides a new modern and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [history notes](docs/HISTORY.md) about creation and first look of this application.
 
-Lexin Light is written as [Progressive web apps (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be easily installed and used on mobile devices or on desktops.
+Lexin Light is written as [Progressive web apps (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
 
 ### Screenshots
 
@@ -21,7 +21,7 @@ Lexin Light is written as [Progressive web apps (PWA)](https://developer.mozilla
 
 Clone the repository to your development machine. To run the app, we have two approaches: native and Docker.
 
-Whichever approach you chose, you can visit [`localhost:4000`](http://localhost:4000) from your browser, when you've successfully executed the Phoenix server locally. See the details below.
+Whichever approach you chose, you can visit [`localhost:4000`](http://localhost:4000) from your browser, when you've successfully ran the Phoenix server locally. See the details below.
 
 ### Native
 
@@ -43,27 +43,31 @@ To start your local development server:
 
 Alternatively, you can use Docker and have nothing but editor on your host machine to work with the project.
 
-> **For the first time** (or if you want to install/update deps), you need to run `mix deps.get` command inside the `phoenix` service container: `docker-compose run --rm phoenix mix deps.get`.
+> **For the first time** (or if you want to install/update dependencies), you need to run `mix deps.get` command inside the `phoenix` service container: `docker-compose run --rm phoenix mix deps.get`.
 
 Now, we can run `docker-compose up` (to run interactively) or `docker-compose --detach` (to run in background).
 
 Check [`docker-compose.yml`](docker-compose.yml) file for details.
 
-## Testing
+### Testing
 
-Simple way: `mix test`. _(To run all the tests)_
+Straightforward way: `mix test`. _(To run all the tests)_
 
 Advanced way: `fswatch lib test | mix test --listen-on-stdin`.
 
-> If you want to autorun tests every time you save the files in `lib` or `test` directories – useful when focusing on writing tests.
+> If you want to run tests automatically every time you save the files in `lib` or `test` directories – useful when focusing on writing tests.
 
-## Convert XML to SQLite
+#### Integration Testing
+
+We use [Wallaby](https://hexdocs.pm/wallaby) and [ChromeDriver](https://sites.google.com/chromium.org/driver/) to run integration tests. Read example code in our `tests/integration` directory or on Wallaby's documentation page.
+
+## Dictionary Database Files
 
 To make this app work properly, we need to provide it a directory with `.sqlite` dictionary files which contain definitions data.
 
-> To run this app locally, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/russian.sqlite` into this folder; though it's extremely limited and contains only 5 word definitions.
+> To run this app locally, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/*.sqlite` into this folder; though it's extremely limited and contains only 7 word definitions.
 >
-> You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files are stored in the SVN repository and we do not want to copy them here and store in this repo, as they might become out of sync.
+> You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files are stored in the SVN repository and we do not want to copy them here and store in this GitHub repository, as they might become out of sync.
 
 You can convert all of them, or just a few selected ones.
 

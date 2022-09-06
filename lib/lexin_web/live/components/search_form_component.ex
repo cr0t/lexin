@@ -16,7 +16,29 @@ defmodule LexinWeb.SearchFormComponent do
   """
   def handle_event(event, params, socket)
 
-  def handle_event("submit", %{"query" => query, "lang" => lang}, socket) do
+  def handle_event("submit", %{"query" => query, "lang" => lang}, socket),
+    do: do_search(socket, query, lang)
+
+  def handle_event("reset", _params, socket),
+    do: do_search(socket, "", socket.assigns.lang)
+
+  def handle_event("switch-language", %{"lang" => lang}, socket),
+    do: do_search(socket, socket.assigns.query, lang)
+
+  def handle_event("query-focus", _params, socket),
+    do: {:noreply, assign(socket, in_focus: true)}
+
+  def handle_event("suggest", %{"query" => query}, socket) do
+    socket = assign(socket, %{query: String.trim(query), in_focus: true})
+
+    {:noreply, find_suggestions(socket)}
+  end
+
+  ###
+  ### Helpers
+  ###
+
+  defp do_search(socket, query, lang) do
     route =
       Routes.live_path(socket, LexinWeb.DictionaryLive, %{
         query: query,
@@ -25,37 +47,6 @@ defmodule LexinWeb.SearchFormComponent do
 
     {:noreply, push_patch(socket, to: route)}
   end
-
-  def handle_event("reset", _params, socket) do
-    route =
-      Routes.live_path(socket, LexinWeb.DictionaryLive, %{
-        query: "",
-        lang: socket.assigns.lang
-      })
-
-    {:noreply, push_patch(socket, to: route)}
-  end
-
-  def handle_event("update", %{"query" => query, "lang" => lang}, socket) do
-    socket =
-      assign(socket, %{
-        lang: lang,
-        query: String.trim(query),
-        in_focus: true
-      })
-
-    {:noreply, find_suggestions(socket)}
-  end
-
-  def handle_event("query-focus", _params, socket),
-    do: {:noreply, assign(socket, in_focus: true)}
-
-  def handle_event("query-blur", _params, socket),
-    do: {:noreply, assign(socket, in_focus: false)}
-
-  ###
-  ### Helpers
-  ###
 
   defp localized_languages_select(name, dom_id, selected_lang, opts) do
     translations = [
