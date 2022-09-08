@@ -9,6 +9,7 @@ defmodule LexinWeb.SearchFormComponent do
   use LexinWeb, :live_component
 
   @min_chars_for_suggestions 1
+  @select_lang_prompt "select_language"
 
   @doc """
   Processes form submission by setting current URL to the new one (with updating `query` param),
@@ -29,9 +30,17 @@ defmodule LexinWeb.SearchFormComponent do
     do: {:noreply, assign(socket, in_focus: true)}
 
   def handle_event("suggest", %{"query" => query}, socket) do
-    socket = assign(socket, %{query: String.trim(query), in_focus: true})
+    query = String.trim(query)
+    suggestions = find_suggestions(socket.assigns.lang, query)
 
-    {:noreply, find_suggestions(socket)}
+    socket =
+      assign(socket, %{
+        query: query,
+        suggestions: suggestions,
+        in_focus: true
+      })
+
+    {:noreply, socket}
   end
 
   ###
@@ -77,7 +86,7 @@ defmodule LexinWeb.SearchFormComponent do
 
     supported_languages = Enum.filter(translations, &Enum.member?(available, elem(&1, 1)))
 
-    ui_languages = [{gettext("Select language"), "select_language"} | supported_languages]
+    ui_languages = [{gettext("Select language"), @select_lang_prompt} | supported_languages]
 
     options = options_for_select(ui_languages, selected_lang)
 
@@ -86,11 +95,16 @@ defmodule LexinWeb.SearchFormComponent do
     content_tag(:select, options, extra_opts)
   end
 
-  defp find_suggestions(%{assigns: %{query: query, lang: lang}} = socket) do
+  # We want to avoid unnecessary calls of `Lexin.Dictionary.suggestions/2`
+  # when user didn't select language yet.
+  defp find_suggestions(@select_lang_prompt, _query),
+    do: []
+
+  defp find_suggestions(lang, query) do
     if String.length(query) >= @min_chars_for_suggestions do
-      assign(socket, suggestions: Lexin.Dictionary.suggestions(lang, query))
+      Lexin.Dictionary.suggestions(lang, query)
     else
-      assign(socket, suggestions: [])
+      []
     end
   end
 
