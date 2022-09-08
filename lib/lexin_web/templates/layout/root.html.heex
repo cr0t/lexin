@@ -42,18 +42,18 @@
         <div class="footer-wrapper container">
           <ul class="footer-nav">
             <li><%= link("About", to: Routes.pages_path(@conn, :about)) %></li>
-            <li><%= link("Contact", to: Routes.pages_path(@conn, :contact)) %></li>
-            <li><%= link("Help", to: Routes.pages_path(@conn, :help)) %></li>
+            <li><%= link("Contacts", to: Routes.pages_path(@conn, :contact)) %></li>
+            <li><%= link("Install", to: Routes.pages_path(@conn, :install)) %></li>
           </ul>
 
-          <div class="footer-version" title={"Lexin Light #{app_version}"}>
-            Lexin Light sponsored by
-            <a
+          <div class="footer-version" title={"Lexin Light #{app_version()}"}>
+            Lexin Light sponsored by <a
               href="https://0x.se"
               title="Swedish technology consultancy company"
               target="_blank"
               rel="noopener"
-              phx-no-format>0+X</a>
+              phx-no-format
+            >0+X</a>
           </div>
         </div>
       </div>

@@ -10,10 +10,12 @@ window.playAudio = function (url) {
 const queryEl = document.getElementById('form-query_field')
 const resetEl = document.getElementById('form-query_reset')
 
-resetEl.addEventListener('click', () => {
-  queryEl.value = ''
-  queryEl.focus()
-})
+if (resetEl) {
+  resetEl.addEventListener('click', () => {
+    queryEl.value = ''
+    queryEl.focus()
+  })
+}
 
 // ------------- Live Socket --------------
 

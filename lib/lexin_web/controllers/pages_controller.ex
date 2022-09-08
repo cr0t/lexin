@@ -7,6 +7,6 @@ defmodule LexinWeb.PagesController do
   def about(conn, _params),
     do: render(conn, "about.html")
 
-  def help(conn, _params),
-    do: render(conn, "help.html")
+  def install(conn, _params),
+    do: render(conn, "install.html")
 end
