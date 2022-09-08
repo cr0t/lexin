@@ -1,7 +1,6 @@
 <div class="logo">
   <a href="/" class="logo-wrapper">
-    &larr;&nbsp;
-    <img class="logo-img" src={Routes.static_path(@conn, "/images/icon.svg")} />
+    &larr;&nbsp; <img class="logo-img" src={Routes.static_path(@conn, "/images/icon.svg")} />
     <span class="logo-text">Light</span>
   </a>
 </div>
@@ -9,11 +8,27 @@
 <div class="page_content">
   <h4>About</h4>
 
-  <p>Lexin Light is a new "face" for the well-known <a href="https://lexin.nada.kth.se/lexin/" target="_blank" rel="noopener">Lexin</a> (Swedish dictionary web service).</p>
+  <p>
+    Lexin Light is a new "face" for the well-known
+    <a href="https://lexin.nada.kth.se/lexin/" target="_blank" rel="noopener">Lexin</a>
+    (Swedish dictionary web service).
+  </p>
 
-  <p><cite>“Lexin – ett samarbete mellan Institutet för språk och folkminnen och Kungliga tekniska högskolan.”</cite></p>
+  <p>
+    <cite>
+      “Lexin – ett samarbete mellan Institutet för språk och folkminnen och Kungliga tekniska högskolan.”
+    </cite>
+  </p>
 
-  <p>We have built this little application to improve user experience for end users. The functionality this app provides is very basic: pick a language and search for the word. <strong>That simple!</strong></p>
+  <p>
+    We have built this little application to improve user experience for end users. The functionality this app provides is very basic: pick a language and search for the word.
+    <strong>That simple!</strong>
+  </p>
 
-  <p>Though, we also attempted to introduce new ways on how we can leverage full power of the Lexin dictionary. For example, we can easily use it on a mobile device, such as tablet or smartphone. You might want to find a definition of a word, while you're reading a book on a tablet: you can open this app side-by-side with the text of a book. See screenshots on the <%= link("Help", to: Routes.pages_path(@conn, :help)) %> page.</p>
+  <p>
+    Though, we also attempted to introduce new ways on how we can leverage full power of the Lexin dictionary. For example, we can easily use it on a mobile device, such as tablet or smartphone. You might want to find a definition of a word, while you're reading a book on a tablet: you can open this app side-by-side with the text of a book. See screenshots on the <%= link(
+      "Help",
+      to: Routes.pages_path(@conn, :help)
+    ) %> page.
+  </p>
 </div>
