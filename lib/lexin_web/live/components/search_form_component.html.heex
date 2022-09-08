@@ -7,7 +7,10 @@
       </a>
     </div>
 
-    <%= localized_languages_select("lang", "form-lang", @lang, "phx-target": @myself, "phx-change": "switch-language") %>
+    <%= localized_languages_select("lang", "form-lang", @lang,
+      "phx-target": @myself,
+      "phx-change": "switch-language"
+    ) %>
   </div>
 
   <div id="form-search_block">
@@ -17,9 +20,20 @@
       <% klass = if has_suggestions?(@in_focus, @suggestions), do: "has-suggestions", else: "" %>
 
       <input
-        id="form-query_field" class={klass} type="text" name="query" value={@query}
-        autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" autofocus
-        phx-target={@myself} phx-debounce="300" phx-change="suggest" phx-focus="query-focus"
+        id="form-query_field"
+        class={klass}
+        type="text"
+        name="query"
+        value={@query}
+        autocapitalize="off"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        autofocus
+        phx-target={@myself}
+        phx-debounce="300"
+        phx-change="suggest"
+        phx-focus="query-focus"
       />
 
       <%= if has_suggestions?(@in_focus, @suggestions) do %>
@@ -37,4 +51,3 @@
     </button>
   </div>
 </form>
-

@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <%= csrf_meta_tag() %>
 
-    <%= live_title_tag assigns[:page_title] || "Lexin Light" %>
-    <meta name="description" content="Lexin Light. Lexin är en kombination av lexikon och ordböcker som har tagits fram för användning i primärt invandrarundervisning. Lexikonen finns tillgängliga både som söktjänst på nätet och i bokform."/>
+    <%= live_title_tag(assigns[:page_title] || "Lexin Light") %>
+    <meta
+      name="description"
+      content="Lexin Light. Lexin är en kombination av lexikon och ordböcker som har tagits fram för användning i primärt invandrarundervisning. Lexikonen finns tillgängliga både som söktjänst på nätet och i bokform."
+    />
 
-    <link rel="icon" href={Routes.static_path(@conn, "/favicon.ico")}/>
-    <link rel="icon" href={Routes.static_path(@conn, "/images/icon.svg")} type="image/svg+xml" sizes="any"/>
-    <link rel="manifest" href={Routes.static_path(@conn, "/manifest.webmanifest")}/>
+    <link rel="icon" href={Routes.static_path(@conn, "/favicon.ico")} />
+    <link
+      rel="icon"
+      href={Routes.static_path(@conn, "/images/icon.svg")}
+      type="image/svg+xml"
+      sizes="any"
+    />
+    <link rel="manifest" href={Routes.static_path(@conn, "/manifest.webmanifest")} />
 
-    <link rel="apple-touch-icon" href={Routes.static_path(@conn, "/images/icon-apple-touch.png")}/>
+    <link rel="apple-touch-icon" href={Routes.static_path(@conn, "/images/icon-apple-touch.png")} />
     <!--<link rel="apple-touch-startup-image" href="/launch.png"/>-->
-    <meta name="apple-mobile-web-app-title" content="Lexin"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="Lexin" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <meta name="theme-color" content="white"/>
+    <meta name="theme-color" content="white" />
 
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")} />
   </head>
 
   <body>
@@ -49,6 +57,12 @@
 
     <%= render("_ios_gray_highlight.html") %>
 
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <script
+      defer
+      phx-track-static
+      type="text/javascript"
+      src={Routes.static_path(@conn, "/assets/app.js")}
+    >
+    </script>
   </body>
 </html>

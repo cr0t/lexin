@@ -45,10 +45,11 @@
 
     <%= if length(@dfn.target.synonyms) > 0 do %>
       <div class="serp_dimmed">
-        <span class="serp_translation-synonyms">(<%= Enum.join(@dfn.target.synonyms, ", ") %>)</span>
+        <span class="serp_translation-synonyms">
+          (<%= Enum.join(@dfn.target.synonyms, ", ") %>)
+        </span>
       </div>
     <% end %>
-
 
     <%= if length(@dfn.base.antonyms) > 0 do %>
       <div class="serp_dimmed">
@@ -65,7 +66,8 @@
         <ul class="serp_list">
           <%= for {base, target} <- examples do %>
             <li class="serp_list-item">
-              <span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span>
+              <span data-id={base.id}><%= base.value %></span> —
+              <span data-id={target.id}><%= target.value %></span>
             </li>
           <% end %>
         </ul>
@@ -81,7 +83,8 @@
         <ul class="serp_list">
           <%= for {base, target} <- idioms do %>
             <li class="serp_list-item">
-              <span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span>
+              <span data-id={base.id}><%= base.value %></span> —
+              <span data-id={target.id}><%= target.value %></span>
             </li>
           <% end %>
         </ul>
@@ -97,14 +100,15 @@
         <ul class="serp_list">
           <%= for {base, target} <- compounds do %>
             <li class="serp_list-item">
-              <span data-id={base.id}><%= base.value %></span> — <span data-id={target.id}><%= target.value %></span>
+              <span data-id={base.id}><%= base.value %></span> —
+              <span data-id={target.id}><%= target.value %></span>
             </li>
           <% end %>
         </ul>
       </div>
     <% end %>
 
-    <% pictures = illustrations(@dfn)  %>
+    <% pictures = illustrations(@dfn) %>
 
     <%= if length(pictures) > 0 do %>
       <div class="serp_illustrations">

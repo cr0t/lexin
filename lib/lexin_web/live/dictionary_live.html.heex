@@ -1,12 +1,26 @@
-<%= live_component(SearchFormComponent, id: "search_form", lang: @lang, query: @query, suggestions: @suggestions, in_focus: @in_focus) %>
+<%= live_component(SearchFormComponent,
+  id: "search_form",
+  lang: @lang,
+  query: @query,
+  suggestions: @suggestions,
+  in_focus: @in_focus
+) %>
 
-<p class="alert alert-info" role="alert"
+<p
+  class="alert alert-info"
+  role="alert"
   phx-click="lv:clear-flash"
-  phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+  phx-value-key="info"
+  phx-no-format
+><%= live_flash(@flash, :info) %></p>
 
-<p class="alert alert-danger" role="alert"
+<p
+  class="alert alert-danger"
+  role="alert"
   phx-click="lv:clear-flash"
-  phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+  phx-value-key="error"
+  phx-no-format
+><%= live_flash(@flash, :error) %></p>
 
 <%= for dfn <- @definitions do %>
   <%= live_component(CardComponent, dfn: dfn, lang: @lang) %>

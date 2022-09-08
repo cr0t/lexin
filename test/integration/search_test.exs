@@ -84,18 +84,29 @@ defmodule Lexin.SearchTest do
     |> click(@submit_button)
     |> assert_has(css("#definition-1858", text: "bil [bi:l] lyssna subst."))
     |> assert_has(css("#definition-918", text: "avgas [²A:vga:s] lyssna subst."))
-    |> assert_has(css("#definition-918", text: "<avgas, avgasen, avgaser, avgas|reningen, avgas|systemet>"))
+    |> assert_has(
+      css("#definition-918", text: "<avgas, avgasen, avgaser, avgas|reningen, avgas|systemet>")
+    )
     |> assert_has(css("#definition-918", text: "gas som bildas vid förbränning i motor"))
     |> assert_has(css("#definition-918", text: "Användning: mest i plural"))
     |> assert_has(css("#definition-918", text: "exhaust (gas)"))
-    |> assert_has(css("#definition-918", text: "(the waste gas produced by internal combustion engines)"))
+    |> assert_has(
+      css("#definition-918", text: "(the waste gas produced by internal combustion engines)")
+    )
     |> assert_has(css("#definition-918", text: "Exempel"))
-    |> assert_has(css("#definition-918", text: "trafiken medför buller och avgaser — traffic causes noise and pollution"))
+    |> assert_has(
+      css("#definition-918",
+        text: "trafiken medför buller och avgaser — traffic causes noise and pollution"
+      )
+    )
     |> assert_has(css("#definition-918", text: "Sammansättningar"))
     |> assert_has(css("#definition-918", text: "bilavgaser — exhaust fumes"))
-    |> assert_has(css("#definition-918", text: "avgas|rening avgas|reningen — exhaust conversion, exhaust emission control"))
+    |> assert_has(
+      css("#definition-918",
+        text: "avgas|rening avgas|reningen — exhaust conversion, exhaust emission control"
+      )
+    )
     |> assert_has(css("#definition-918", text: "avgas|system avgas|systemet — exhaust system"))
     |> assert_has(css("#definition-918", text: "avgas|rör — exhaust pipe"))
   end
-
 end
