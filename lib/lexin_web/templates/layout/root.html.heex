@@ -7,10 +7,10 @@
 
     <%= csrf_meta_tag() %>
 
-    <%= live_title_tag(assigns[:page_title] || "Lexin Light") %>
+    <%= live_title_tag(assigns[:page_title] || "Lexin Mobi") %>
     <meta
       name="description"
-      content="Lexin Light. Lexin är en kombination av lexikon och ordböcker som har tagits fram för användning i primärt invandrarundervisning. Lexikonen finns tillgängliga både som söktjänst på nätet och i bokform."
+      content="Lexin Mobi. Lexin är en kombination av lexikon och ordböcker som har tagits fram för användning i primärt invandrarundervisning. Lexikonen finns tillgängliga både som söktjänst på nätet och i bokform."
     />
 
     <link rel="icon" href={Routes.static_path(@conn, "/favicon.ico")} />
@@ -46,8 +46,8 @@
             <li><%= link("Install", to: Routes.pages_path(@conn, :install)) %></li>
           </ul>
 
-          <div class="footer-version" title={"Lexin Light #{app_version()}"}>
-            Lexin Light sponsored by <a
+          <div class="footer-version" title={"Lexin Mobi #{app_version()}"}>
+            Lexin Mobi sponsored by <a
               href="https://0x.se"
               title="Swedish technology consultancy company"
               target="_blank"
