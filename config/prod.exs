@@ -17,7 +17,7 @@ config :lexin, LexinWeb.Endpoint,
 config :logger, level: :info
 
 config :sentry,
-  dsn: "https://fa6ced7a5eae47d4b7caf43c6ca22304@o1110717.ingest.sentry.io/6139845",
+  dsn: "https://50f9d0381b9548828d7143ad0dd9ad7a@o1110717.ingest.sentry.io/6766507",
   environment_name: :prod,
   enable_source_code_context: true,
   root_source_code_path: File.cwd!(),
