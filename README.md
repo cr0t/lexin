@@ -12,8 +12,8 @@ Lexin Mobi is written as [Progressive web apps (PWA)](https://developer.mozilla.
 
 <table>
   <tr>
-    <td><img width="612" alt="image" src="https://user-images.githubusercontent.com/113878/188648480-ce8f18cd-b87a-4ca6-982d-36fb7c07d698.png"></td>
-    <td><img width="612" alt="image" src="https://user-images.githubusercontent.com/113878/188648585-135f6477-ec1d-4a15-9e36-9199e45ad547.png"></td>
+    <td><img width="612" alt="image" src="https://user-images.githubusercontent.com/113878/191539899-600a8de1-0dbd-4ca7-bd4d-0255a9cba87b.png"></td>
+    <td><img width="612" alt="image" src="https://user-images.githubusercontent.com/113878/191540072-1a82d451-7bda-4ea3-880d-5617dd04d1fe.png"></td>
   </tr>
 </table>
 
