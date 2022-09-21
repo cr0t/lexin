@@ -11,12 +11,6 @@ defmodule Lexin.StaticTest do
     |> assert_has(
       css(".page_content",
         text:
-          "Lexin – ett samarbete mellan Institutet för språk och folkminnen och Kungliga tekniska högskolan."
-      )
-    )
-    |> assert_has(
-      css(".page_content",
-        text:
           "We have built this little application to improve user experience for end users. The functionality this app provides is very basic: pick a language and search for the word. That's simple!"
       )
     )
@@ -29,7 +23,7 @@ defmodule Lexin.StaticTest do
     |> assert_has(
       css(".page_content",
         text:
-          "Lexin Light is an open-source project, and you can find its code on GitHub. You are welcome to join the development process, or submit any feature requests or issues you find here."
+          "Lexin Mobi is an open-source project, and you can find its code on GitHub. You are welcome to join the development process, or submit any feature requests or issues you find here."
       )
     )
     |> assert_has(
@@ -46,13 +40,13 @@ defmodule Lexin.StaticTest do
     |> assert_has(
       css(".page_content",
         text:
-          "You can use Lexin Light by opening it as a website in your favorite browser. (Psst... Save a bookmark for quick access!)"
+          "You can use Lexin Mobi by opening it as a website in your favorite browser. (Psst... Save a bookmark for quick access!)"
       )
     )
     |> assert_has(
       css(".page_content",
         text:
-          "You can also install and run Lexin Light as mobile application. See our step-by-step instructions on how to install this application to your iPhone/iPad. For Android-based devices installation process is similar, just do it using Chrome."
+          "You can also install and run Lexin Mobi as mobile application. See our step-by-step instructions on how to install this application to your iPhone/iPad. For Android-based devices installation process is similar, just do it using Chrome."
       )
     )
   end

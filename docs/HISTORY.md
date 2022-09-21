@@ -21,3 +21,7 @@ In comparison to standard Lexin website interface:
 | Entry Screen | Search Results |
 |--------------|----------------|
 | ![image](https://user-images.githubusercontent.com/113878/134809705-6fe7f038-bafd-4a90-8a17-afa588504b35.png) | ![image](https://user-images.githubusercontent.com/113878/134809719-4292915f-b09a-4b79-a6d0-bbf8d9742896.png) |
+
+## Rename to Mobi
+
+We decided to change initial project name from "Lexin Light" to "Lexin Mobi" to align it with the short domain name we bought: https://lexin.mobi.

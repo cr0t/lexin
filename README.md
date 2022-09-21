@@ -1,12 +1,12 @@
-# Lexin Light
+# Lexin Mobi
 
-It's a small web application for Swedish dictionary.
+It's a small web and mobile application for Swedish dictionary.
 
 ## Intro
 
-Lexin Light provides a new modern and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [history notes](docs/HISTORY.md) about creation and first look of this application.
+Lexin Mobi provides a new modern and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [history notes](docs/HISTORY.md) about creation and first look of this application.
 
-Lexin Light is written as [Progressive web apps (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
+Lexin Mobi is written as [Progressive web apps (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
 
 ### Screenshots
 
