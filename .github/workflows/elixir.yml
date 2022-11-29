@@ -59,6 +59,9 @@ jobs:
       - name: Check code formatting
         run: mix format --check-formatted
 
+      - name: Check for unused dependencies
+        run: mix deps.unlock --check-unused
+
       - name: Analyze code
         run: mix credo suggest --ignore todo
 
