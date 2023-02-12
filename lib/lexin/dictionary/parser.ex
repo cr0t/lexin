@@ -17,7 +17,7 @@ defmodule Lexin.Dictionary.Parser do
   end
 
   # TODO: Check and fix parsing according to LexinSchema.xsd. For example, we need to follow
-  # number of occurences for different sub-pieces of definition (only one synonym, for example).
+  # number of occurrences for different sub-pieces of definition (only one synonym, for example).
   defp parse_lang(html) do
     %Lexin.Definition.Lang{
       meaning: child_text(html, "meaning"),

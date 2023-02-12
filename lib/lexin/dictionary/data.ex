@@ -111,7 +111,7 @@ defmodule Lexin.Dictionary.Data do
   # for `dammsugare` query value of the most relevant definition is `damm|sugare`
   #
   # TODO: We should try to avoid this data transformation on the Elixir side, and probably try to
-  # achieve the same in SQL query; worth to cheeck this opportunity.
+  # achieve the same in SQL query; worth to cheek this opportunity.
   defp reorder(definitions, query) do
     top_relevant =
       Enum.filter(definitions, fn %{value: word} ->

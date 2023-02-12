@@ -23,7 +23,7 @@ $ asdf elixir reshim
 
 ### Run Livebook
 
-Now we can simply run the server (preferrably from the root directory of this repository or from
+Now we can simply run the server (preferably from the root directory of this repository or from
 the `experiments/`):
 
 ```console
