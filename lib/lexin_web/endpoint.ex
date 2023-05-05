@@ -8,7 +8,8 @@ defmodule LexinWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_lexin_key",
-    signing_salt: "dR5hRzKl"
+    signing_salt: "dR5hRzKl",
+    same_site: "Lax"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
@@ -24,7 +25,7 @@ defmodule LexinWeb.Endpoint do
     at: "/",
     from: :lexin,
     gzip: false,
-    only: ~w(assets fonts images),
+    only: LexinWeb.static_paths(),
     only_matching: ~w(manifest favicon robots)
 
   # Code reloading can be explicitly enabled under the

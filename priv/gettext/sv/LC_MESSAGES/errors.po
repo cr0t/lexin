@@ -9,24 +9,24 @@
 msgid ""
 msgstr ""
 "Language: sv\n"
-"Plural-Forms: nplurals=2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/lexin_web/live/dictionary_live.ex:83
+#: lib/lexin_web/live/dictionary_live/index.ex:83
 #, elixir-autogen, elixir-format
 msgid "Not found"
 msgstr "Hittades inte"
 
-#: lib/lexin_web/live/dictionary_live.ex:86
+#: lib/lexin_web/live/dictionary_live/index.ex:86
 #, elixir-autogen, elixir-format
 msgid "Exception processing search request"
 msgstr "Undantag bearbetar sökförfrågan"
 
-#: lib/lexin_web/live/dictionary_live.ex:92
+#: lib/lexin_web/live/dictionary_live/index.ex:92
 #, elixir-autogen, elixir-format
 msgid "Unknown (yet) error – fun for developers"
 msgstr "Okänt (ännu) fel – kul för utvecklare"
 
-#: lib/lexin_web/live/dictionary_live.ex:89
+#: lib/lexin_web/live/dictionary_live/index.ex:89
 #, elixir-autogen, elixir-format
 msgid "Language is not supported"
 msgstr "Språk stöds inte"

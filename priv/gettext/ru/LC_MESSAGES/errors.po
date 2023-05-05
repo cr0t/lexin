@@ -9,24 +9,24 @@
 msgid ""
 msgstr ""
 "Language: ru\n"
-"Plural-Forms: nplurals=3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100 != 11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10||n%100>=20) ? 1 : 2);\n"
 
-#: lib/lexin_web/live/dictionary_live.ex:83
+#: lib/lexin_web/live/dictionary_live/index.ex:83
 #, elixir-autogen, elixir-format
 msgid "Not found"
 msgstr "Не найдено"
 
-#: lib/lexin_web/live/dictionary_live.ex:86
+#: lib/lexin_web/live/dictionary_live/index.ex:86
 #, elixir-autogen, elixir-format
 msgid "Exception processing search request"
 msgstr "Ошибка при обработке запроса"
 
-#: lib/lexin_web/live/dictionary_live.ex:92
+#: lib/lexin_web/live/dictionary_live/index.ex:92
 #, elixir-autogen, elixir-format
 msgid "Unknown (yet) error – fun for developers"
 msgstr "Неизвестная (пока) ошибка – задачка для разработчиков"
 
-#: lib/lexin_web/live/dictionary_live.ex:89
+#: lib/lexin_web/live/dictionary_live/index.ex:89
 #, elixir-autogen, elixir-format
 msgid "Language is not supported"
 msgstr "Выбранный язык не поддерживается"

@@ -1,0 +1,12 @@
+<.live_component
+  module={SearchFormComponent}
+  id={:search_form}
+  lang={@lang}
+  query={@query}
+  suggestions={@suggestions}
+  in_focus={@in_focus}
+/>
+
+<%= for dfn <- @definitions do %>
+  <.live_component module={CardComponent} id={dfn} dfn={dfn} lang={@lang} />
+<% end %>

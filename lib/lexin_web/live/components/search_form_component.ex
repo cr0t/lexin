@@ -47,17 +47,10 @@ defmodule LexinWeb.SearchFormComponent do
   ### Helpers
   ###
 
-  defp do_search(socket, query, lang) do
-    route =
-      Routes.live_path(socket, LexinWeb.DictionaryLive, %{
-        query: query,
-        lang: lang
-      })
+  defp do_search(socket, query, lang),
+    do: {:noreply, push_patch(socket, to: ~p"/?query=#{query}&lang=#{lang}")}
 
-    {:noreply, push_patch(socket, to: route)}
-  end
-
-  defp localized_languages_select(name, dom_id, selected_lang, opts) do
+  defp localized_languages() do
     translations = [
       {gettext("albanian"), "albanian"},
       {gettext("amharic"), "amharic"},
@@ -84,15 +77,7 @@ defmodule LexinWeb.SearchFormComponent do
 
     available = Lexin.Dictionary.Worker.languages()
 
-    supported_languages = Enum.filter(translations, &Enum.member?(available, elem(&1, 1)))
-
-    ui_languages = [{gettext("Select language"), @select_lang_prompt} | supported_languages]
-
-    options = options_for_select(ui_languages, selected_lang)
-
-    extra_opts = Keyword.merge(opts, name: name, id: dom_id)
-
-    content_tag(:select, options, extra_opts)
+    Enum.filter(translations, &Enum.member?(available, elem(&1, 1)))
   end
 
   # We want to avoid unnecessary calls of `Lexin.Dictionary.suggestions/2`
@@ -110,7 +95,4 @@ defmodule LexinWeb.SearchFormComponent do
 
   defp has_suggestions?(_, []), do: false
   defp has_suggestions?(in_focus, _), do: in_focus
-
-  defp suggestion_path(socket, lang, suggestion),
-    do: Routes.live_path(socket, LexinWeb.DictionaryLive, %{query: suggestion, lang: lang})
 end

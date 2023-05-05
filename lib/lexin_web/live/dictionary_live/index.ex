@@ -1,4 +1,4 @@
-defmodule LexinWeb.DictionaryLive do
+defmodule LexinWeb.DictionaryLive.Index do
   @moduledoc """
   Main entrance point for our app. Provides a search form and shows results.
 
