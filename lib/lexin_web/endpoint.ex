@@ -24,7 +24,7 @@ defmodule LexinWeb.Endpoint do
     at: "/",
     from: :lexin,
     gzip: false,
-    only: ~w(assets fonts images),
+    only: LexinWeb.static_paths(),
     only_matching: ~w(manifest favicon robots)
 
   # Code reloading can be explicitly enabled under the

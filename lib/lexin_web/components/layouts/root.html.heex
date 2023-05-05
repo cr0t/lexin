@@ -4,32 +4,27 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content={get_csrf_token()} />
 
-    <%= csrf_meta_tag() %>
-
-    <%= live_title_tag(assigns[:page_title] || "Lexin Mobi") %>
+    <.live_title><%= assigns[:page_title] || "Lexin Mobi" %></.live_title>
     <meta
       name="description"
       content="Lexin Mobi is a combination of Swedish vocabulary (lexicon) and dictionary that have been developed for use in primarily immigrant education. The encyclopedia is available both as an online search service and as mobile application."
     />
 
-    <link rel="icon" href={Routes.static_path(@conn, "/favicon.ico")} />
-    <link
-      rel="icon"
-      href={Routes.static_path(@conn, "/images/icon.svg")}
-      type="image/svg+xml"
-      sizes="any"
-    />
-    <link rel="manifest" href={Routes.static_path(@conn, "/manifest.webmanifest")} />
+    <link rel="manifest" href={~p"/manifest.webmanifest"} />
 
-    <link rel="apple-touch-icon" href={Routes.static_path(@conn, "/images/icon-apple-touch.png")} />
+    <link rel="icon" href={~p"/favicon.ico"} />
+    <link rel="icon" href={~p"/images/icon.svg"} type="image/svg+xml" sizes="any" />
+
+    <link rel="apple-touch-icon" href={~p"/images/icon-apple-touch.png"} />
     <!--<link rel="apple-touch-startup-image" href="/launch.png"/>-->
     <meta name="apple-mobile-web-app-title" content="Lexin" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <meta name="theme-color" content="white" />
 
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")} />
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
   </head>
 
   <body>
@@ -41,9 +36,9 @@
       <div class="layout-footer">
         <div class="footer-wrapper container">
           <ul class="footer-nav">
-            <li><%= link("About", to: Routes.pages_path(@conn, :about)) %></li>
-            <li><%= link("Contacts", to: Routes.pages_path(@conn, :contact)) %></li>
-            <li><%= link("Install", to: Routes.pages_path(@conn, :install)) %></li>
+            <li><a href={~p"/about"}>About</a></li>
+            <li><a href={~p"/contact"}>Contacts</a></li>
+            <li><a href={~p"/install"}>Install</a></li>
           </ul>
 
           <div class="footer-version" title={"Lexin Mobi #{app_version()}"}>
@@ -59,16 +54,11 @@
       </div>
     </div>
 
-    <%= render("_service_worker_loader.html") %>
+    <._service_worker_loader />
 
-    <%= render("_ios_gray_highlight.html") %>
+    <._ios_gray_highlight />
 
-    <script
-      defer
-      phx-track-static
-      type="text/javascript"
-      src={Routes.static_path(@conn, "/assets/app.js")}
-    >
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </body>
 </html>

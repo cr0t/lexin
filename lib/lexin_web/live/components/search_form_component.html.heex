@@ -2,15 +2,15 @@
   <div id="form_header">
     <div class="logo">
       <a href="/" class="logo-wrapper">
-        <img class="logo-img" src={Routes.static_path(@socket, "/images/icon.svg")} />
+        <img class="logo-img" src={~p"/images/icon.svg"} />
         <span class="logo-text">Mobi</span>
       </a>
     </div>
 
-    <%= localized_languages_select("lang", "form-lang", @lang,
-      "phx-target": @myself,
-      "phx-change": "switch-language"
-    ) %>
+    <select id="form-lang" name="lang" phx-target={@myself} phx-change="switch-language">
+      <option value="select_language"><%= gettext("Select language") %></option>
+      <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
+    </select>
   </div>
 
   <div id="form-search_block">
@@ -39,8 +39,9 @@
       <%= if has_suggestions?(@in_focus, @suggestions) do %>
         <ul id="form-query_suggestions">
           <%= for suggestion <- @suggestions do %>
-            <% path = suggestion_path(@socket, @lang, suggestion) %>
-            <li><%= live_patch(suggestion, to: path) %></li>
+            <li>
+              <%= live_patch(suggestion, to: ~p"/?query=#{suggestion}&lang=#{@lang}") %>
+            </li>
           <% end %>
         </ul>
       <% end %>

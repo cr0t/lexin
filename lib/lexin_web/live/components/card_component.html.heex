@@ -66,8 +66,8 @@
         <ul class="serp_list">
           <%= for {base, target} <- examples do %>
             <li class="serp_list-item">
-              <span data-id={base.id}><%= base.value %></span> —
-              <span data-id={target.id}><%= target.value %></span>
+              <span data-id={base.id}><%= base.value %></span>
+              — <span data-id={target.id}><%= target.value %></span>
             </li>
           <% end %>
         </ul>
@@ -83,8 +83,8 @@
         <ul class="serp_list">
           <%= for {base, target} <- idioms do %>
             <li class="serp_list-item">
-              <span data-id={base.id}><%= base.value %></span> —
-              <span data-id={target.id}><%= target.value %></span>
+              <span data-id={base.id}><%= base.value %></span>
+              — <span data-id={target.id}><%= target.value %></span>
             </li>
           <% end %>
         </ul>
@@ -100,8 +100,8 @@
         <ul class="serp_list">
           <%= for {base, target} <- compounds do %>
             <li class="serp_list-item">
-              <span data-id={base.id}><%= base.value %></span> —
-              <span data-id={target.id}><%= target.value %></span>
+              <span data-id={base.id}><%= base.value %></span>
+              — <span data-id={target.id}><%= target.value %></span>
             </li>
           <% end %>
         </ul>

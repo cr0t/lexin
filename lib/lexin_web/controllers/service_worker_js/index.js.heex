@@ -5,17 +5,17 @@ const CACHE_NAME = APP + VERSION
 // ---
 
 function log() {
-  console.log(`SW: ${VERSION}`, ...arguments)
+console.log(`SW: ${VERSION}`, ...arguments)
 }
 
 self.addEventListener('install', (event) => {
-  log('install')
+log('install')
 })
 
 self.addEventListener('activate', (event) => {
-  log('activate')
+log('activate')
 })
 
 self.addEventListener('fetch', (event) => {
-  return
+return
 })

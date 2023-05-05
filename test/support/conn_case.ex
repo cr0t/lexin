@@ -26,6 +26,8 @@ defmodule LexinWeb.ConnCase do
 
       alias LexinWeb.Router.Helpers, as: Routes
 
+      use LexinWeb, :verified_routes
+
       # The default endpoint for testing
       @endpoint LexinWeb.Endpoint
     end

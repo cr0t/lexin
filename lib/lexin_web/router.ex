@@ -5,7 +5,7 @@ defmodule LexinWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {LexinWeb.LayoutView, :root}
+    plug :put_root_layout, {LexinWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -17,7 +17,7 @@ defmodule LexinWeb.Router do
   scope "/", LexinWeb do
     pipe_through :browser
 
-    live "/", DictionaryLive
+    live "/", DictionaryLive.Index, :index
 
     get "/sw.js", ServiceWorkerController, :index
 
@@ -31,6 +31,21 @@ defmodule LexinWeb.Router do
   # scope "/api", LexinWeb do
   #   pipe_through :api
   # end
+
+  if Application.compile_env(:exxy, :dev_routes) do
+    # If you want to use the LiveDashboard in production, you should put
+    # it behind authentication and allow only admins to access it.
+    # If your application does not have an admins-only section yet,
+    # you can use Plug.BasicAuth to set up some basic authentication
+    # as long as you are also using SSL (which you should anyway).
+    import Phoenix.LiveDashboard.Router
+
+    scope "/dev" do
+      pipe_through :browser
+
+      live_dashboard "/dashboard", metrics: LexinWeb.Telemetry
+    end
+  end
 
   # Enables LiveDashboard only for development
   #
