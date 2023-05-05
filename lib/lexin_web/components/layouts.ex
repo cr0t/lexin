@@ -5,7 +5,5 @@ defmodule LexinWeb.Layouts do
 
   embed_templates "layouts/*"
 
-  @app_version Mix.Project.config()[:version]
-
-  def app_version(), do: @app_version
+  def app_version(), do: Application.get_env(:lexin, :app_version)
 end

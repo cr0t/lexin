@@ -3,9 +3,7 @@ defmodule LexinWeb.ServiceWorkerJS do
 
   use LexinWeb, :html
 
-  @app_version Mix.Project.config()[:version]
-
-  def app_version(), do: @app_version
+  def app_version(), do: Application.get_env(:lexin, :app_version)
 
   embed_templates "service_worker_js/*"
 end

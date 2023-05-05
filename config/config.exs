@@ -46,6 +46,8 @@ config :lexin,
        :external_picture_url_prefix,
        "https://bildetema.oslomet.no/bildetema/bildetema-html5/bildetema.html?version=swedish"
 
+config :lexin, :app_version, Mix.Project.config()[:version]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
