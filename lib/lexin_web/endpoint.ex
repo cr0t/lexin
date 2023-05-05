@@ -8,7 +8,8 @@ defmodule LexinWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_lexin_key",
-    signing_salt: "dR5hRzKl"
+    signing_salt: "dR5hRzKl",
+    same_site: "Lax"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
