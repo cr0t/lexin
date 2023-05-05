@@ -46,6 +46,7 @@ defmodule Lexin.MixProject do
       {:phoenix_live_reload, "~> 1.4.1", only: :dev},
       {:phoenix_live_view, "~> 0.18.18"},
       {:plug_cowboy, "~> 2.6.1"},
+      {:recon, "~> 2.5.3"}, # https://github.com/ferd/recon
       {:sentry, "~> 8.0.6"},
       {:telemetry_metrics, "~> 0.6.1"},
       {:telemetry_poller, "~> 1.0.0"},
