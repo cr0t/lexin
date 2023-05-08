@@ -109,4 +109,27 @@ defmodule Lexin.SearchTest do
     |> assert_has(css("#definition-918", text: "avgas|system avgas|systemet — exhaust system"))
     |> assert_has(css("#definition-918", text: "avgas|rör — exhaust pipe"))
   end
+
+  feature "shows query word in the page title", %{session: session} do
+    session
+    |> visit("/")
+    |> then(fn session ->
+      assert(
+        page_title(session) === "Lexin Mobi",
+        "if query is empty, the title is default"
+      )
+
+      session
+    end)
+    |> fill_in(@lang_select, with: "ryska")
+    |> fill_in(@query_input, with: "a conto")
+    |> click(@submit_button)
+    |> assert_has(css("#definition-5", text: "i förskott"))
+    |> then(fn session ->
+      assert(
+        page_title(session) === "a conto · Lexin Mobi",
+        "when user submits a query, we show it in the page's title"
+      )
+    end)
+  end
 end

@@ -30,12 +30,13 @@ defmodule LexinWeb.DictionaryLive.Index do
 
   By default (if user opens a page without query parameter) we set everything to clean state.
   """
-  def handle_params(params, uri, socket)
-
   def handle_params(%{"query" => query, "lang" => lang}, _uri, socket) do
+    query = String.trim(query)
+
     socket =
       assign(socket, %{
-        query: String.trim(query),
+        query: query,
+        page_title: page_title(query),
         in_focus: socket.assigns[:in_focus] || true,
         suggestions: [],
         lang: lang
@@ -45,9 +46,12 @@ defmodule LexinWeb.DictionaryLive.Index do
   end
 
   def handle_params(_params, _uri, socket) do
+    query = ""
+
     socket =
       assign(socket, %{
-        query: "",
+        query: query,
+        page_title: page_title(query),
         in_focus: socket.assigns[:in_focus] || true,
         suggestions: [],
         definitions: []
@@ -78,6 +82,9 @@ defmodule LexinWeb.DictionaryLive.Index do
       assign(socket, :definitions, [])
     end
   end
+
+  defp page_title(""), do: "Lexin Mobi"
+  defp page_title(q), do: "#{q} · Lexin Mobi"
 
   defp error_msg(:not_found),
     do: dgettext("errors", "Not found")
