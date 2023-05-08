@@ -1,10 +1,10 @@
 <form id={@id} phx-target={@myself} phx-submit="submit" phx-hook="saveLanguage">
   <div id="form_header">
     <div class="logo">
-      <a href="/" class="logo-wrapper">
+      <.link patch={~p"/"} class="logo-wrapper">
         <img class="logo-img" src={~p"/images/icon.svg"} />
         <span class="logo-text">Mobi</span>
-      </a>
+      </.link>
     </div>
 
     <select id="form-lang" name="lang" phx-target={@myself} phx-change="switch-language">
