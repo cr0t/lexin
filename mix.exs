@@ -48,6 +48,7 @@ defmodule Lexin.MixProject do
       {:plug_cowboy, "~> 2.6.1"},
       {:recon, "~> 2.5.3"},
       {:sentry, "~> 8.0.6"},
+      {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6.1"},
       {:telemetry_poller, "~> 1.0.0"},
       {:wallaby, "~> 0.30.3", only: :test, runtime: false}
@@ -63,7 +64,9 @@ defmodule Lexin.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.build": ["tailwind default", "esbuild default"],
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
       "gettext.update": ["gettext.extract --merge --no-fuzzy"],
       test: ["esbuild default", "test"]
     ]

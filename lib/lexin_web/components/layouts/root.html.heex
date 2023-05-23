@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scrollbar-gutter: stable;">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content={get_csrf_token()} />
 
@@ -23,35 +22,43 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <meta name="theme-color" content="white" />
+    <meta name="color-scheme" content="light dark" />
 
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
   </head>
 
   <body>
-    <div class="layout-wrapper">
-      <div class="layout-body">
+    <div class="flex flex-col min-h-screen m-auto max-w-4xl">
+      <header class="flex mt-6 select-none">
+        <a href="/" class="flex items-center hover:grayscale">
+          &larr;<img class="h-8 w-8 mr-1" src={~p"/images/icon.svg"} />
+          <span class="text-black font-light">Mobi</span>
+        </a>
+      </header>
+
+      <main class="grow mt-6">
+        <.flash_group flash={@flash} />
         <%= @inner_content %>
-      </div>
+      </main>
 
-      <div class="layout-footer">
-        <div class="footer-wrapper container">
-          <ul class="footer-nav">
-            <li><a href={~p"/about"}>About</a></li>
-            <li><a href={~p"/contact"}>Contacts</a></li>
-            <li><a href={~p"/install"}>Install</a></li>
-          </ul>
+      <footer class="my-6 text-sm">
+        <ul class="flex justify-evenly mb-2">
+          <li><a href={~p"/about"}>About</a></li>
+          <li><a href={~p"/contact"}>Contacts</a></li>
+          <li><a href={~p"/install"}>Install</a></li>
+        </ul>
 
-          <div class="footer-version" title={"Lexin Mobi #{app_version()}"}>
-            Lexin Mobi sponsored by <a
-              href="https://0x.se"
-              title="Swedish technology consultancy agency"
-              target="_blank"
-              rel="noopener"
-              phx-no-format
-            >0+X</a>
-          </div>
+        <div class="text-gray-400 text-center" title={"Lexin Mobi #{app_version()}"}>
+          Lexin Mobi sponsored by <a
+            class="inline-block border-b border-dashed text-gray-400 hover:text-gray-600"
+            href="https://0x.se"
+            title="Swedish technology consultancy agency"
+            target="_blank"
+            rel="noopener"
+            phx-no-format
+          >0+X</a>
         </div>
-      </div>
+      </footer>
     </div>
 
     <._service_worker_loader />
