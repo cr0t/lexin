@@ -1,0 +1,71 @@
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff;
+    color: #222;
+  }
+
+  img {
+    filter: brightness(.8) contrast(1.2);
+  }
+
+  a {
+    color: #0069d9;
+  }
+
+  .alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+  }
+
+  .alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+  }
+
+  .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+
+  .invalid-feedback {
+    color: #a94442;
+  }
+
+  .phx-modal {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .phx-modal-content {
+    background-color: #fefefe;
+  }
+
+  .logo-text {
+    color: black;
+  }
+
+  .footer-version {
+    color: rgba(0, 0, 0, .4);
+  }
+
+  .footer-version a {
+    color: rgba(0, 0, 0, .4);
+    border-bottom: 1px dashed rgba(0, 0, 0, .1)
+  }
+
+  #form-query_suggestions {
+    background-color: #fff;
+    border: 0.1rem solid #0069d9;
+  }
+
+  .serp_dimmed {
+    color: rgba(0, 0, 0, .5)
+  }
+
+  .serp_translation-synonyms {
+    color: rgba(0, 0, 0, .5);
+  }
+}

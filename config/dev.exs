@@ -18,8 +18,8 @@ config :lexin, LexinWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "dRgQiQXlL06zNwpg1NZrlyMXY3VPp/CDR4wfhM9zhH7Z9Gre6ZVzrs9ClEXsI7/E",
   watchers: [
-    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # Watch static and templates for browser reloading.

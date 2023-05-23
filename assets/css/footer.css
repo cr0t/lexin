@@ -15,11 +15,5 @@
 }
 
 .footer-version {
-  color: rgba(0, 0, 0, .4);
   text-align: center;
-}
-
-.footer-version a {
-  color: rgba(0, 0, 0, .4);
-  border-bottom: 1px dashed rgba(0, 0, 0, .1)
 }
