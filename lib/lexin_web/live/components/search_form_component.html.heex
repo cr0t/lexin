@@ -1,27 +1,32 @@
 <form id={@id} phx-target={@myself} phx-submit="submit" phx-hook="saveLanguage">
-  <div id="form_header">
-    <div class="logo">
-      <.link patch={~p"/"} class="logo-wrapper">
-        <img class="logo-img" src={~p"/images/icon.svg"} />
-        <span class="logo-text">Mobi</span>
-      </.link>
+  <div class="flex relative">
+    <div class="absolute top-[-3.7rem] right-0">
+      <select
+        class="rounded border-slate-400 focus:outline-none focus:ring-0 text-sm dark:border-slate-600 dark:text-slate-400 dark:bg-slate-800"
+        id="form-lang"
+        name="lang"
+        phx-target={@myself}
+        phx-change="switch-language"
+      >
+        <option value="select_language"><%= gettext("Select language") %></option>
+        <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
+      </select>
     </div>
 
-    <select id="form-lang" name="lang" phx-target={@myself} phx-change="switch-language">
-      <option value="select_language"><%= gettext("Select language") %></option>
-      <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
-    </select>
-  </div>
+    <div class="relative w-full">
+      <span
+        class="flex justify-center items-center absolute top-0 right-0 origin-center rotate-45 h-10 w-10 text-slate-400 hover:text-slate-800 hover:cursor-pointer"
+        phx-target={@myself}
+        phx-click="reset"
+      >
+        +
+      </span>
 
-  <div id="form-search_block">
-    <div id="form-query_wrapper">
-      <i id="form-query_reset" phx-target={@myself} phx-click="reset">+</i>
-
-      <% klass = if has_suggestions?(@in_focus, @suggestions), do: "has-suggestions", else: "" %>
+      <% klass = if has_suggestions?(@in_focus, @suggestions), do: "rounded-b-none", else: "" %>
 
       <input
         id="form-query_field"
-        class={klass}
+        class={"rounded rounded-r-none border-slate-400 dark:border-slate-600 w-full focus:outline-none focus:ring-0 dark:text-slate-200 dark:bg-slate-800 #{klass}"}
         type="text"
         name="query"
         value={@query}
@@ -30,6 +35,7 @@
         autocorrect="off"
         spellcheck="false"
         autofocus
+        placeholder={gettext("Start typing a word...")}
         phx-target={@myself}
         phx-debounce="300"
         phx-change="suggest"
@@ -37,17 +43,24 @@
       />
 
       <%= if has_suggestions?(@in_focus, @suggestions) do %>
-        <ul id="form-query_suggestions">
+        <ul
+          id="form-query_suggestions"
+          class="absolute w-full pt-2 px-3 border border-blue-600 border-t-0 rounded rounded-t-none dark:bg-slate-800"
+        >
           <%= for suggestion <- @suggestions do %>
-            <li>
-              <%= live_patch(suggestion, to: ~p"/?query=#{suggestion}&lang=#{@lang}") %>
+            <li class="pb-2">
+              <%= live_patch(suggestion, to: ~p"/?query=#{suggestion}&lang=#{@lang}", class: "dark:text-slate-400") %>
             </li>
           <% end %>
         </ul>
       <% end %>
     </div>
 
-    <button id="form-submit_button" type="submit">
+    <button
+      id="form-submit_button"
+      class="px-8 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium uppercase rounded-r-lg"
+      type="submit"
+    >
       <%= gettext("Search") %>
     </button>
   </div>
