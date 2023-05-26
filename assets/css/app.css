@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 a {
-  @apply text-blue-600 hover:text-blue-800;
+  @apply text-blue-600 hover:text-blue-800 dark:text-sky-300 dark:hover:text-sky-500;
 }
 
 h4 {
@@ -16,4 +16,26 @@ p {
 
 table {
   @apply mb-6 w-full;
+}
+
+/** SEARCH FORM **/
+
+.selector--lang {
+  @apply rounded border-slate-400 dark:border-slate-600 focus:outline-none focus:ring-0 text-sm dark:text-slate-400 dark:bg-slate-800;
+}
+
+.btn--reset {
+  @apply flex justify-center items-center absolute top-0 right-0 origin-center rotate-45 h-10 w-10 text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:cursor-pointer;
+}
+
+.input--query {
+ @apply rounded rounded-r-none border-slate-400 dark:border-slate-600 w-full focus:outline-none focus:ring-0 dark:text-slate-200 dark:bg-slate-800;
+}
+
+.list--suggestions {
+  @apply absolute w-full pt-2 px-3 border border-blue-600 border-t-0 rounded rounded-t-none bg-white dark:bg-slate-800;
+}
+
+.btn--submit {
+  @apply px-8 bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-800 text-white text-xs font-medium uppercase rounded-r-lg;
 }

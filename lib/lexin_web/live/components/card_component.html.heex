@@ -1,5 +1,5 @@
-<div id={"definition-#{@dfn.id}"} class="serp">
-  <div class="serp_header">
+<article id={"definition-#{@dfn.id}"} class="mt-6 dark:text-neutral-200">
+  <header>
     <strong><%= @dfn.value %></strong>
     <span>[<%= @dfn.base.phonetic.transcription %>]</span>
 
@@ -8,10 +8,10 @@
     <a href={audio_url} onclick={onclick}><%= gettext("listen") %></a>
 
     <span><%= @dfn.pos %></span>
-  </div>
+  </header>
 
-  <div class="serp_content">
-    <div class="serp_dimmed">
+  <section class="pl-6">
+    <div class="text-neutral-500">
       &lt;<%= Enum.join(inflections(@dfn), ", ") %>&gt;
     </div>
 
@@ -20,7 +20,7 @@
     </div>
 
     <%= if @dfn.base.graminfo do %>
-      <div class="serp_dimmed">
+      <div class="text-neutral-500">
         &lt;<%= graminfo(@dfn) %>&gt;
       </div>
     <% end %>
@@ -38,13 +38,13 @@
     <% end %>
 
     <%= if @dfn.target.translation do %>
-      <div class="serp_translation">
+      <div class="mt-3 font-bold">
         <%= @dfn.target.translation %>
       </div>
     <% end %>
 
     <%= if length(@dfn.target.synonyms) > 0 do %>
-      <div class="serp_dimmed">
+      <div class="text-neutral-500">
         <span class="serp_translation-synonyms">
           (<%= Enum.join(@dfn.target.synonyms, ", ") %>)
         </span>
@@ -52,7 +52,7 @@
     <% end %>
 
     <%= if length(@dfn.base.antonyms) > 0 do %>
-      <div class="serp_dimmed">
+      <div class="text-neutral-500">
         <%= gettext("Antonyms: %{antonyms}", antonyms: Enum.join(@dfn.base.antonyms, ", ")) %>
       </div>
     <% end %>
@@ -60,12 +60,14 @@
     <% examples = examples(@dfn) %>
 
     <%= if length(examples) > 0 do %>
-      <div class="serp_examples">
-        <%= gettext("Examples") %>
+      <div class="mt-3">
+        <span class="text-neutral-500 font-semibold">
+          <%= gettext("Examples") %>
+        </span>
 
-        <ul class="serp_list">
+        <ul class="list-disc list-inside">
           <%= for {base, target} <- examples do %>
-            <li class="serp_list-item">
+            <li>
               <span data-id={base.id}><%= base.value %></span>
               — <span data-id={target.id}><%= target.value %></span>
             </li>
@@ -77,12 +79,14 @@
     <% idioms = idioms(@dfn) %>
 
     <%= if length(idioms) > 0 do %>
-      <div class="serp_idioms">
-        <%= gettext("Idioms") %>
+      <div class="mt-3">
+        <span class="text-neutral-500 font-semibold">
+          <%= gettext("Idioms") %>
+        </span>
 
-        <ul class="serp_list">
+        <ul class="list-disc list-inside">
           <%= for {base, target} <- idioms do %>
-            <li class="serp_list-item">
+            <li>
               <span data-id={base.id}><%= base.value %></span>
               — <span data-id={target.id}><%= target.value %></span>
             </li>
@@ -94,12 +98,14 @@
     <% compounds = compounds(@dfn) %>
 
     <%= if length(compounds) > 0 do %>
-      <div class="serp_compounds">
-        <%= gettext("Compounds") %>
+      <div class="mt-3">
+        <span class="text-neutral-500 font-semibold">
+          <%= gettext("Compounds") %>
+        </span>
 
-        <ul class="serp_list">
+        <ul class="list-disc list-inside">
           <%= for {base, target} <- compounds do %>
-            <li class="serp_list-item">
+            <li>
               <span data-id={base.id}><%= base.value %></span>
               — <span data-id={target.id}><%= target.value %></span>
             </li>
@@ -111,18 +117,21 @@
     <% pictures = illustrations(@dfn) %>
 
     <%= if length(pictures) > 0 do %>
-      <div class="serp_illustrations">
-        <%= gettext("Extra") %>
+      <div class="mt-3">
+        <span class="text-neutral-500 font-semibold">
+          <%= gettext("Extra") %>
+        </span>
 
-        <ul class="serp_list">
+        <ul class="list-disc list-inside">
           <%= for pict <- pictures do %>
-            <li class="serp_list-item">
-              <% picture_url = external_picture_url(pict.url, @lang) %>
-              <a href={picture_url} target="_blank"><%= pict.type %> &rarr;</a>
+            <li>
+              <a href={external_picture_url(pict.url, @lang)} target="_blank">
+                <%= pict.type %> &rarr;
+              </a>
             </li>
           <% end %>
         </ul>
       </div>
     <% end %>
-  </div>
-</div>
+  </section>
+</article>
