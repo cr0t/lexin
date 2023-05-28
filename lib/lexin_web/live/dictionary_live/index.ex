@@ -21,8 +21,14 @@ defmodule LexinWeb.DictionaryLive.Index do
   Check how we populate `socketParams` on the JavaScript side around this initialization code:
   `new LiveSocket('/live', Socket, socketParams)`.
   """
-  def mount(_params, _session, socket),
-    do: {:ok, assign(socket, lang: get_connect_params(socket)["lang"])}
+  def mount(_params, _session, socket) do
+    lang = get_connect_params(socket)["lang"]
+
+    # See comment below, next to this function definition
+    # maybe_set_locale(lang)
+
+    {:ok, assign(socket, lang: lang)}
+  end
 
   @doc """
   When `?query=...&lang=...` presented in the parameters hash, we use it as initial state and
@@ -33,13 +39,16 @@ defmodule LexinWeb.DictionaryLive.Index do
   def handle_params(%{"query" => query, "lang" => lang}, _uri, socket) do
     query = String.trim(query)
 
+    # See comment below, next to this function definition
+    # maybe_set_locale(lang)
+
     socket =
       assign(socket, %{
         query: query,
         lang: lang,
         page_title: page_title(query),
         in_focus: socket.assigns[:in_focus] || true,
-        suggestions: [],
+        suggestions: []
       })
 
     {:noreply, find_definitions(socket)}
@@ -82,6 +91,14 @@ defmodule LexinWeb.DictionaryLive.Index do
       assign(socket, :definitions, [])
     end
   end
+
+  # TODO: Find a way how to set locale without "jumps" in UI. At the moment, due to the way how we
+  # set previously chosen language (via localStorage), for a moment users see the default locale
+  # (Swedish) labels and messages, and then switch to the chosen one. It's annoying...
+  #
+  # defp maybe_set_locale("english"), do: Gettext.put_locale(LexinWeb.Gettext, "en")
+  # defp maybe_set_locale("russian"), do: Gettext.put_locale(LexinWeb.Gettext, "ru")
+  # defp maybe_set_locale(_), do: Gettext.put_locale(LexinWeb.Gettext, "sv")
 
   defp page_title(""), do: "Lexin Mobi"
   defp page_title(q), do: "#{q} · Lexin Mobi"
