@@ -10,22 +10,22 @@ msgid ""
 msgstr ""
 "Language: en\n"
 
-#: lib/lexin_web/live/dictionary_live/index.ex:83
+#: lib/lexin_web/live/dictionary_live/index.ex:107
 #, elixir-autogen, elixir-format
 msgid "Not found"
 msgstr ""
 
-#: lib/lexin_web/live/dictionary_live/index.ex:86
+#: lib/lexin_web/live/dictionary_live/index.ex:110
 #, elixir-autogen, elixir-format
 msgid "Exception processing search request"
 msgstr ""
 
-#: lib/lexin_web/live/dictionary_live/index.ex:92
+#: lib/lexin_web/live/dictionary_live/index.ex:116
 #, elixir-autogen, elixir-format
 msgid "Unknown (yet) error – fun for developers"
 msgstr ""
 
-#: lib/lexin_web/live/dictionary_live/index.ex:89
+#: lib/lexin_web/live/dictionary_live/index.ex:113
 #, elixir-autogen, elixir-format
 msgid "Language is not supported"
 msgstr ""
