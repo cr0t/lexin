@@ -1,11 +1,20 @@
-defmodule LexinWeb.CardComponent do
+defmodule LexinWeb.SerpComponents do
   @moduledoc """
-  Represents a definition "card" template, provides a few useful helpers to render the data.
+  Provides partials and view helpers for "Search Results Page".
   """
 
-  use LexinWeb, :live_component
+  use Phoenix.Component
 
   import LexinWeb.Gettext
+
+  embed_templates "cards/*"
+
+  @doc """
+  Represents a definition "card" template, provides a few useful helpers to render the data.
+  """
+  attr :dfn, :map, required: true
+  attr :target_lang, :string, required: true
+  def definition(assigns)
 
   @picture_languages %{
     "albanian" => "swe,sqi",
