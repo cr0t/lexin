@@ -13,7 +13,7 @@ defmodule Lexin.SearchTest do
     |> visit("/")
     |> fill_in(@query_input, with: "a conto")
     |> click(@submit_button)
-    |> assert_has(css(".alert.alert-danger", text: "Språk stöds inte"))
+    |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
   end
 
   feature "allows to select a translation language", %{session: session} do
@@ -22,7 +22,7 @@ defmodule Lexin.SearchTest do
     |> fill_in(@lang_select, with: "ryska")
     |> fill_in(@query_input, with: "a conto")
     |> click(@submit_button)
-    |> refute_has(css(".alert.alert-danger"))
+    |> refute_has(css("#flash.flash--error"))
   end
 
   feature "shows definitions for the query", %{session: session} do

@@ -18,6 +18,20 @@ table {
   @apply mb-6 w-full;
 }
 
+/** FlASH **/
+
+.flash--container {
+  @apply fixed top-2 right-1/2 translate-x-1/2 w-80 sm:w-96 z-50 rounded p-3 ring-1 dark:saturate-50;
+}
+
+.flash--info {
+  @apply shadow-md bg-emerald-100 text-emerald-800 ring-emerald-500 fill-cyan-900;
+}
+
+.flash--error {
+  @apply shadow-md bg-rose-100 text-rose-800 ring-rose-500 fill-rose-900;
+}
+
 /** SEARCH FORM **/
 
 .selector--lang {
