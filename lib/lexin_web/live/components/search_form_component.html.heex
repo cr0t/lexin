@@ -1,7 +1,13 @@
 <form id={@id} phx-target={@myself} phx-submit="submit" phx-hook="saveLanguage">
   <div class="flex relative">
     <div class="absolute top-[-3.7rem] right-0">
-      <select class="selector--lang" id="form-lang" name="lang" phx-target={@myself} phx-change="switch-language">
+      <select
+        class="selector--lang"
+        id="form-lang"
+        name="lang"
+        phx-target={@myself}
+        phx-change="switch-language"
+      >
         <option value="select_language"><%= gettext("Select language") %></option>
         <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
       </select>
