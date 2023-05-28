@@ -12,7 +12,7 @@ defmodule LexinWeb.DictionaryLive.Index do
 
   import LexinWeb.Gettext
 
-  alias LexinWeb.{CardComponent, SearchFormComponent}
+  alias LexinWeb.{SearchFormComponent, SerpComponents}
 
   @doc """
   Set up the language in case if user already made searches previously, and her browser stored the
@@ -36,10 +36,10 @@ defmodule LexinWeb.DictionaryLive.Index do
     socket =
       assign(socket, %{
         query: query,
+        lang: lang,
         page_title: page_title(query),
         in_focus: socket.assigns[:in_focus] || true,
         suggestions: [],
-        lang: lang
       })
 
     {:noreply, find_definitions(socket)}

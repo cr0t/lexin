@@ -8,7 +8,7 @@ defmodule Lexin.SearchTest do
   @lang_select css("#form-lang")
   @submit_button css("#form-submit_button")
 
-  feature "shows alert if no language is chosen", %{session: session} do
+  feature "shows an alert if no language is chosen", %{session: session} do
     session
     |> visit("/")
     |> fill_in(@query_input, with: "a conto")
@@ -23,6 +23,15 @@ defmodule Lexin.SearchTest do
     |> fill_in(@query_input, with: "a conto")
     |> click(@submit_button)
     |> refute_has(css("#flash.flash--error"))
+  end
+
+  feature "shows an alert if word not found", %{session: session} do
+    session
+    |> visit("/")
+    |> fill_in(@lang_select, with: "ryska")
+    |> fill_in(@query_input, with: "hloogloo")
+    |> click(@submit_button)
+    |> assert_has(css("#flash.flash--error", text: "Hittades inte"))
   end
 
   feature "shows definitions for the query", %{session: session} do

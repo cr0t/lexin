@@ -125,7 +125,7 @@
         <ul class="list-disc list-inside">
           <%= for pict <- pictures do %>
             <li>
-              <a href={external_picture_url(pict.url, @lang)} target="_blank">
+              <a href={external_picture_url(pict.url, @target_lang)} target="_blank">
                 <%= pict.type %> &rarr;
               </a>
             </li>
