@@ -78,7 +78,7 @@ defmodule LexinWeb.CoreComponents do
       phx-connected={hide("#disconnected")}
       hidden
     >
-      We can't find the Internet, attempting to reconnect…
+      <%= gettext("We can't find the Internet, attempting to reconnect…") %>
     </.flash>
     """
   end

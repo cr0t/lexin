@@ -11,52 +11,52 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100 != 11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10||n%100>=20) ? 1 : 2);\n"
 
-#: lib/lexin_web/live/components/card_component.html.heex:8
+#: lib/lexin_web/components/cards/definition.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "listen"
 msgstr "слушать"
 
-#: lib/lexin_web/live/components/card_component.html.heex:30
+#: lib/lexin_web/components/cards/definition.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "Alternate: %{alt}"
 msgstr "Альтернатива: %{alt}"
 
-#: lib/lexin_web/live/components/card_component.html.heex:36
+#: lib/lexin_web/components/cards/definition.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "Usage: %{usage}"
 msgstr "Использование: %{usage}"
 
-#: lib/lexin_web/live/components/card_component.html.heex:56
+#: lib/lexin_web/components/cards/definition.html.heex:56
 #, elixir-autogen, elixir-format
 msgid "Antonyms: %{antonyms}"
 msgstr "Антонимы: %{antonyms}"
 
-#: lib/lexin_web/live/components/card_component.html.heex:64
+#: lib/lexin_web/components/cards/definition.html.heex:65
 #, elixir-autogen, elixir-format
 msgid "Examples"
 msgstr "Примеры"
 
-#: lib/lexin_web/live/components/card_component.html.heex:81
+#: lib/lexin_web/components/cards/definition.html.heex:84
 #, elixir-autogen, elixir-format
 msgid "Idioms"
 msgstr "Идиомы"
 
-#: lib/lexin_web/live/components/card_component.html.heex:98
+#: lib/lexin_web/components/cards/definition.html.heex:103
 #, elixir-autogen, elixir-format
 msgid "Compounds"
 msgstr "Составные слова"
 
-#: lib/lexin_web/live/components/card_component.html.heex:115
+#: lib/lexin_web/components/cards/definition.html.heex:122
 #, elixir-autogen, elixir-format
 msgid "Extra"
 msgstr "Дополнительно"
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:51
+#: lib/lexin_web/live/components/search_form_component.html.heex:45
 #, elixir-autogen, elixir-format
 msgid "Search"
 msgstr "Искать"
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:11
+#: lib/lexin_web/live/components/search_form_component.html.heex:5
 #, elixir-autogen, elixir-format
 msgid "Select language"
 msgstr "Выберите язык"
@@ -165,3 +165,18 @@ msgstr "Тигринья"
 #, elixir-autogen, elixir-format
 msgid "turkish"
 msgstr "Турецкий"
+
+#: lib/lexin_web/live/components/search_form_component.html.heex:26
+#, elixir-autogen, elixir-format
+msgid "Start typing a word..."
+msgstr ""
+
+#: lib/lexin_web/components/core_components.ex:53
+#, elixir-autogen, elixir-format
+msgid "close"
+msgstr ""
+
+#: lib/lexin_web/components/core_components.ex:81
+#, elixir-autogen, elixir-format
+msgid "We can't find the Internet, attempting to reconnect…"
+msgstr "Что-то случилось с Интернет-соединением, пытаемся подключиться…"
