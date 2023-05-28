@@ -19,15 +19,18 @@ if (resetEl) {
 
 // ------------- Live Socket --------------
 
+const LANG_SELECTOR = 'form-lang'
 const LANG_KEY = 'language'
 
 let hooks = {
   saveLanguage: {
-    beforeUpdate() {
+    mounted() {
       if (localStorage) {
-        let langValue = document.getElementById('form-lang').value
+        document.getElementById(LANG_SELECTOR).addEventListener('change', e => {
+          let langValue = e.target.value
 
-        localStorage.setItem(LANG_KEY, langValue)
+          localStorage.setItem(LANG_KEY, langValue)
+        })
       }
     }
   }
