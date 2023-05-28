@@ -67,7 +67,7 @@ defmodule Lexin.SearchTest do
     |> fill_in(@query_input, with: "bil")
     |> click(@submit_button)
     |> assert_has(css("#definition-1858", text: "bil [bi:l] lyssna subst."))
-    |> assert_has(css("#definition-1858", text: "<bil, bilen, bilar, bil|trafiken>"))
+    |> assert_has(css("#definition-1858", text: "bil, bilen, bilar, bil|trafiken"))
     |> assert_has(css("#definition-1858", text: "ett slags motordrivet fordon"))
     |> assert_has(css("#definition-1858", text: "car, motorcar, (automobile [US]), (auto [US])"))
     |> assert_has(css("#definition-1858", text: "Exempel"))
@@ -94,7 +94,7 @@ defmodule Lexin.SearchTest do
     |> assert_has(css("#definition-1858", text: "bil [bi:l] lyssna subst."))
     |> assert_has(css("#definition-918", text: "avgas [²A:vga:s] lyssna subst."))
     |> assert_has(
-      css("#definition-918", text: "<avgas, avgasen, avgaser, avgas|reningen, avgas|systemet>")
+      css("#definition-918", text: "avgas, avgasen, avgaser, avgas|reningen, avgas|systemet")
     )
     |> assert_has(css("#definition-918", text: "gas som bildas vid förbränning i motor"))
     |> assert_has(css("#definition-918", text: "Användning: mest i plural"))
