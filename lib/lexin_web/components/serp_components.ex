@@ -60,6 +60,9 @@ defmodule LexinWeb.SerpComponents do
   defp compounds(dfn),
     do: Enum.zip(dfn.base.compounds, dfn.target.compounds)
 
+  defp derivations(dfn),
+    do: Enum.zip(dfn.base.derivations, dfn.target.derivations)
+
   defp external_audio_url(audio_path),
     do: "#{@audio_url_prefix}#{audio_path}"
 
