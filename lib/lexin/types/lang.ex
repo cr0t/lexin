@@ -13,6 +13,7 @@ defmodule Lexin.Definition.Lang do
     :examples,
     :idioms,
     :compounds,
+    :derivations,
     :illustrations,
     :antonyms,
     :synonyms
@@ -30,6 +31,7 @@ defmodule Lexin.Definition.Lang do
           examples: [Lexin.Definition.Content.t()],
           idioms: [Lexin.Definition.Content.t()],
           compounds: [Lexin.Definition.Content.t()],
+          derivations: [Lexin.Definition.Content.t()],
           illustrations: [Lexin.Definition.Illustration.t()],
           antonyms: [String.t()],
           synonyms: [String.t()]

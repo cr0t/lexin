@@ -48,15 +48,20 @@ msgstr "Sammansättningar"
 
 #: lib/lexin_web/components/cards/definition.html.heex:122
 #, elixir-autogen, elixir-format
+msgid "Derivations"
+msgstr "Avledningar"
+
+#: lib/lexin_web/components/cards/definition.html.heex:141
+#, elixir-autogen, elixir-format
 msgid "Extra"
 msgstr "Extra"
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:45
+#: lib/lexin_web/live/components/search_form_component.html.heex:51
 #, elixir-autogen, elixir-format
 msgid "Search"
 msgstr "Sök"
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:5
+#: lib/lexin_web/live/components/search_form_component.html.heex:11
 #, elixir-autogen, elixir-format
 msgid "Select language"
 msgstr "Välj språk"
@@ -166,7 +171,7 @@ msgstr "Tigrinska"
 msgid "turkish"
 msgstr "Turkiska"
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:26
+#: lib/lexin_web/live/components/search_form_component.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "Start typing a word..."
 msgstr "Börja skriva ett ord..."

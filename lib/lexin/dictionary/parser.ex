@@ -31,6 +31,7 @@ defmodule Lexin.Dictionary.Parser do
       examples: children(html, "example") |> parse_contents(),
       idioms: children(html, "idiom") |> parse_contents(),
       compounds: children(html, "compound") |> parse_contents(),
+      derivations: children(html, "derivation") |> parse_contents(),
       illustrations: children(html, "illustration") |> parse_illustrations(),
       antonyms: children(html, "antonym") |> Floki.attribute("value"),
       synonyms: children(html, "synonym") |> parse_strings()
