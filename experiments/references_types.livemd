@@ -1,0 +1,224 @@
+# Reference Types: Reverse Engineering
+
+## Intro
+
+At some point we [noticed a lack of information](https://github.com/cr0t/lexin/issues/15) in the Lexin Mobi's output (in comparison to the original Lexin website).
+
+We wrote down a few notes on our process of understanding how to parse and then present some extra data from original XML files.
+
+## Types of Types
+
+Quick check shows that original XML files contain an extra XML piece, `<Reference TYPE="..." VALUE="...">` tags.
+
+We've grepped all the files to find out what these `TYPE`s are:
+
+```console
+for file in swe_*.xml;
+    echo $file;
+    cat $file | grep "<Reference TYPE=" | awk -F '"' '{print $2}' | sort | uniq;
+end
+```
+
+Output:
+
+```console
+swe_alb.xml
+animation
+compare
+phonetic
+see
+swe_amh.xml
+# ...
+```
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Unique TYPEs
+
+Here are the all unique `TYPE`s values we found in all languages' files:
+
+```console
+for file in swe_*.xml;
+    cat $file | grep "<Reference TYPE=" | awk -F '"' '{print $2}' | sort | uniq;
+end | sort | uniq
+# animation
+# compare
+# phonetic
+# see
+```
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Some Random Extra Statistics
+
+Some random statistics (on swe_rus.xml):
+
+```console
+> cat swe_rus.xml | grep '<Reference TYPE="animation"' | wc -l
+     351
+> cat swe_rus.xml | grep '<Reference TYPE="compare"' | wc -l
+     193
+> cat swe_rus.xml | grep '<Reference TYPE="phonetic"' | wc -l
+      35
+> cat swe_rus.xml | grep '<Reference TYPE="see"' | wc -l
+     680
+```
+
+Some values of Reference Types:
+
+```
+> cat swe_rus.xml | grep '<Reference TYPE="animation"' | head -10
+      <Reference TYPE="animation" VALUE="tecknar_ett_abonnemang.swf" />
+      <Reference TYPE="animation" VALUE="andas.swf" />
+      <Reference TYPE="animation" VALUE="anmaler_sig.swf" />
+      <Reference TYPE="animation" VALUE="anmaler_sig_till_en_kurs.swf" />
+      <Reference TYPE="animation" VALUE="skriver_en_ansokan.swf" />
+      <Reference TYPE="animation" VALUE="ansoker_om_pass.swf" />
+      <Reference TYPE="animation" VALUE="ansoker_om_studiemedel.swf" />
+      <Reference TYPE="animation" VALUE="askar.swf" />
+      <Reference TYPE="animation" VALUE="backar.swf" />
+      <Reference TYPE="animation" VALUE="badar.swf" />
+> cat swe_rus.xml | grep '<Reference TYPE="compare"' | head -10
+      <Reference TYPE="compare" VALUE="&amp;quot;iakttar&amp;quot;" />
+      <Reference TYPE="compare" VALUE="&amp;quot;sedan&amp;quot;" />
+      <Reference TYPE="compare" VALUE="&amp;quot;går an, tar sig an&amp;quot; etc." />
+      <Reference TYPE="compare" VALUE="&amp;quot;anhåller&amp;quot; 1" />
+      <Reference TYPE="compare" VALUE="&amp;quot;häktning&amp;quot;" />
+      <Reference TYPE="compare" VALUE="&amp;quot;antar&amp;quot; 1" />
+      <Reference TYPE="compare" VALUE="&amp;quot;direkt skatt&amp;quot;" />
+      <Reference TYPE="compare" VALUE="&amp;quot;anfall&amp;quot; 2" />
+      <Reference TYPE="compare" VALUE="&amp;quot;betalar av&amp;quot;" />
+      <Reference TYPE="compare" VALUE="&amp;quot;avgår&amp;quot; 2" />
+> cat swe_rus.xml | grep '<Reference TYPE="phonetic"' | head -10
+      <Reference TYPE="phonetic" VALUE="allesammans.swf" />
+      <Reference TYPE="phonetic" VALUE="allihopa.swf" />
+      <Reference TYPE="phonetic" VALUE="alltihopa.swf" />
+      <Reference TYPE="phonetic" VALUE="alltmera.swf" />
+      <Reference TYPE="phonetic" VALUE="alltsammans.swf" />
+      <Reference TYPE="phonetic" VALUE="arsel.swf" />
+      <Reference TYPE="phonetic" VALUE="består i.swf" />
+      <Reference TYPE="phonetic" VALUE="cd-romläsare.swf" />
+      <Reference TYPE="phonetic" VALUE="dossié.swf" />
+      <Reference TYPE="phonetic" VALUE="död(s).swf" />
+> cat swe_rus.xml | grep '<Reference TYPE="see"' | head -10
+      <Reference TYPE="see" VALUE="Arbetsdomstolen" />
+      <Reference TYPE="see" VALUE="art director" />
+      <Reference TYPE="see" VALUE="adoption" />
+      <Reference TYPE="see" VALUE="adoption" />
+      <Reference TYPE="see" VALUE="acne" />
+      <Reference TYPE="see" VALUE="allround" />
+      <Reference TYPE="see" VALUE="ATP" />
+      <Reference TYPE="see" VALUE="försäkrings|kassa" />
+      <Reference TYPE="see" VALUE="all (1,2)" />
+      <Reference TYPE="see" VALUE="annan" />
+```
+
+## Going Deeper
+
+Let's check all the types we found with a better precision.
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Type: Animation
+
+```console
+cat swe_rus.xml | grep -3 '<Reference TYPE="animation" VALUE="andas.swf'
+  <Word ID="337" MatchingID="421" Type="verb" Value="andas" Variant="" VariantID="361">
+    <BaseLang>
+      <Meaning>dra in luft i (och skicka ut luft ur) lungorna</Meaning>
+      <Reference TYPE="animation" VALUE="andas.swf" />
+      <Phonetic File="v2/103794_1.mp3">²An:das</Phonetic>
+      <Inflection>andades</Inflection>
+      <Inflection>andats</Inflection>
+```
+
+#### In the UI
+
+Shows as a link "VISA FILM" (between meaning and graminfo) to http://lexin.nada.kth.se/lang/lexinanim/andas.mp4 (not SWF!):
+
+<!-- livebook:{"break_markdown":true} -->
+
+![](images/Animation%20reference%20in%20the%20UI.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Type: Compare
+
+```console
+cat swe_rus.xml | grep -3 '<Reference TYPE="compare" VALUE="&amp;quot;iak'
+  <Word ID="133" Type="subst." Value="akt" Variant="2" VariantID="146">
+    <BaseLang>
+      <Meaning>uppmärksamhet</Meaning>
+      <Reference TYPE="compare" VALUE="&amp;quot;iakttar&amp;quot;" />
+      <Comment>i fraser</Comment>
+      <Phonetic File="akt.mp3">ak:t</Phonetic>
+      <Example ID="65">ta tillfället i akt</Example>
+```
+
+#### In the UI
+
+Shows as '...subst. jämför "iakttar"' (on the first line, after lyssna link and type of word). Could be a link to the word (but sometimes it has numbers in the value, which may be lead to sub-definitions).
+
+<!-- livebook:{"break_markdown":true} -->
+
+![](images/Compare%20reference%20in%20the%20UI.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Type: Phonetic
+
+```console
+cat swe_rus.xml | grep -3 '<Reference TYPE="phonetic'
+  <Word ID="207" MatchingID="268" Type="pron." Value="allesamman(s)" Variant="" VariantID="222">
+    <BaseLang>
+      <Meaning MatchingID="9011255">alla (tillsammans)</Meaning>
+      <Reference TYPE="phonetic" VALUE="allesammans.swf" />
+      <Comment>vardagligt</Comment>
+      <Phonetic File="v2/102264_3.mp3">al:esAm:an(s)</Phonetic>
+      <Example ID="114" MatchingID="1001799">sjung med allesamman(s)!</Example>
+```
+
+#### In the UI
+
+Next link to the first "lyssna" with the URL like http://lexin.nada.kth.se/sound/allesammans.mp3 (swf -> mp3).
+
+<!-- livebook:{"break_markdown":true} -->
+
+![](images/Phonetic%20reference%20in%20the%20UI.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+> 💡 **Important Note**
+>
+> Swedish characters gets converted to something, for example:
+>
+> * `urspårning.swf` has link that leads to http://lexin.nada.kth.se/sound/ursp0345rning.mp3
+> * `pärlemor.swf` linked to http://lexin.nada.kth.se/sound/p0344rlemor.mp3
+> * `omvänt baksträck.swf` linked to http://lexin.nada.kth.se/sound/omv0344nt%20bakstr0344ck.mp3
+> * `död(s).swf` linked to http://lexin.nada.kth.se/sound/d0366d(s).mp3
+> * `dossié.swf` linked to http://lexin.nada.kth.se/sound/dossi0351.mp3
+>
+> Here is the table that look like a good source for these conversions: https://www.ic.unicamp.br/~stolfi/EXPORT/www/ISO-8859-1-Encoding.html
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Type: See
+
+```console
+cat swe_rus.xml | grep -3 '<Reference TYPE="see'
+  <Word ID="55" Type="se" Value="AD" Variant="1" VariantID="61">
+    <BaseLang>
+      <Meaning />
+      <Reference TYPE="see" VALUE="Arbetsdomstolen" />
+      <Phonetic File="AD.mp3">A:de:</Phonetic>
+      <Index Value="AD" />
+    </BaseLang>
+```
+
+#### In the UI
+
+Shows as "se VALUE" (VALUE here is the contents of the VALUE attribute) after "lyssna" link. We possibly can make these words (rarely they separated by commas) as links.
+
+<!-- livebook:{"break_markdown":true} -->
+
+![](images/See%20reference%20in%20the%20UI.png)

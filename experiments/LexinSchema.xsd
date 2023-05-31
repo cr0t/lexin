@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="indexType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="prefix"/>
+      <xs:enumeration value="suffix"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="referenceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="animation"/>
+      <xs:enumeration value="compare"/>
+      <xs:enumeration value="phonetic"/>
+      <xs:enumeration value="see"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="Compound" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="Inflection" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="MatchingID" type="xs:string"/>
+      <xs:attribute name="Description" type="xs:string"/>
+      <xs:attribute name="ID" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Derivation" nillable="true">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="Inflection" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="Description" type="xs:string"/>
+      <xs:attribute name="ID" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Example" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="MatchingID" type="xs:string"/>
+          <xs:attribute name="ID" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Idiom" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="MatchingID" type="xs:string"/>
+          <xs:attribute name="ID" type="xs:string" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Antonym">
+    <xs:complexType>
+      <xs:attribute name="Value" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Dictionary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Word" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BaseLang" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Meaning" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="MatchingID" type="xs:string"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:element name="Reference" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="MatchingID" type="xs:string"/>
+                        <xs:attribute name="TYPE" type="referenceType" use="required"/>
+                        <xs:attribute name="VALUE" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                      <xs:element name="Comment" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                              <xs:attribute name="MatchingID" type="xs:string"/>
+                            </xs:extension>
+                          </xs:simpleContent>
+                        </xs:complexType>
+                      </xs:element>
+
+                      <xs:element name="Explanation" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                              <xs:attribute name="MatchingID" type="xs:string"/>
+                            </xs:extension>
+                          </xs:simpleContent>
+                        </xs:complexType>
+                      </xs:element>
+
+                      <xs:element name="Alternate" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+                      <xs:element ref="Antonym" minOccurs="0" maxOccurs="unbounded"/>
+
+                      <xs:element name="Usage" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                          <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                              <xs:attribute name="MatchingID" type="xs:string"/>
+                            </xs:extension>
+                          </xs:simpleContent>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:choice>
+
+                    <xs:element name="Phonetic" nillable="true" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="File" type="xs:string"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:element name="Illustration" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="TYPE" type="xs:string" use="required"/>
+                        <xs:attribute name="VALUE" type="xs:string" use="required"/>
+                        <xs:attribute name="Norlexin" type="xs:string"/>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:element name="Inflection" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType mixed="true">
+                        <xs:sequence>
+                          <xs:element name="Variant" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="Description" type="xs:string"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+
+                    <xs:element name="Graminfo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="Example" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="Idiom" minOccurs="0" maxOccurs="unbounded"/>
+
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                      <xs:element ref="Compound" minOccurs="0" maxOccurs="1"/>
+                      <xs:element ref="Derivation" minOccurs="0" maxOccurs="1"/>
+                    </xs:choice>
+
+                    <xs:element name="Index" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="Value" type="xs:string" use="required"/>
+                        <xs:attribute name="type" type="indexType"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="TargetLang" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Translation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="Synonym" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="Explanation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="Antonym" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="Example" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="Idiom" minOccurs="0" maxOccurs="unbounded"/>
+
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                      <xs:element ref="Compound" minOccurs="0" maxOccurs="1"/>
+                      <xs:element ref="Derivation" minOccurs="0" maxOccurs="1"/>
+                    </xs:choice>
+                  </xs:sequence>
+
+                  <xs:attribute name="Comment" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+
+            <xs:attribute name="MatchingID" type="xs:string"/>
+            <xs:attribute name="Value" type="xs:string" use="required"/>
+            <xs:attribute name="Variant" type="xs:string"/>
+            <xs:attribute name="Type" type="xs:string" use="required"/>
+            <xs:attribute name="ID" type="xs:string" use="required"/>
+            <xs:attribute name="VariantID" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+
+      <xs:attribute name="BaseLang" type="xs:string" use="required"/>
+      <xs:attribute name="TargetLang" type="xs:string" use="required"/>
+      <xs:attribute name="Version" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
