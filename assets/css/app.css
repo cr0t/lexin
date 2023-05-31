@@ -43,7 +43,7 @@ table {
 /** SEARCH FORM **/
 
 .selector--lang {
-  @apply rounded border-neutral-300 dark:border-slate-600 focus:outline-none focus:ring-0 text-sm dark:text-slate-400 dark:bg-slate-900;
+  @apply rounded text-sm border-slate-200 dark:border-slate-600 dark:text-slate-500 dark:bg-slate-900 dark:focus:border-slate-400 focus:outline-none focus:ring-0;
 }
 
 .btn--reset {
@@ -51,13 +51,13 @@ table {
 }
 
 .input--query {
- @apply w-full rounded rounded-r-none border-blue-700 dark:border-blue-900 focus:outline-none focus:ring-0 dark:text-slate-300 dark:bg-slate-900;
+  @apply w-full rounded rounded-r-none border-blue-700 focus:border-blue-700 dark:border-blue-900 dark:focus:border-blue-900 dark:bg-slate-800 focus:outline-none focus:ring-0;
 }
 
 .list--suggestions {
-  @apply absolute w-full z-10 pt-2 px-3 border border-blue-900 border-t-0 rounded rounded-t-none bg-white dark:bg-slate-900;
+  @apply absolute w-full z-10 pt-2 px-3 rounded rounded-t-none bg-white border border-blue-700 border-t-0 dark:bg-slate-900 dark:border-blue-900;
 }
 
 .btn--submit {
-  @apply px-8 bg-blue-700 dark:bg-blue-900 hover:brightness-110 text-white text-xs font-medium uppercase rounded-r-lg;
+  @apply px-8 text-white text-xs font-medium uppercase rounded-r-lg bg-blue-700 dark:bg-blue-900 hover:brightness-110 focus:outline-none focus:ring-0;
 }
