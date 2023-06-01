@@ -26,6 +26,7 @@ defmodule Lexin.Dictionary.Parser do
       comment: child_text(html, "comment"),
       translation: child_text(html, "translation"),
       alternate: child_text(html, "alternate"),
+      reference: child(html, "reference") |> parse_references(),
       phonetic: child(html, "phonetic") |> parse_phonetic(),
       inflections: children(html, "inflection") |> parse_contents(),
       examples: children(html, "example") |> parse_contents(),
@@ -36,6 +37,35 @@ defmodule Lexin.Dictionary.Parser do
       antonyms: children(html, "antonym") |> Floki.attribute("value"),
       synonyms: children(html, "synonym") |> parse_strings()
     }
+  end
+
+  defp parse_references(nil), do: nil
+
+  defp parse_references(html) do
+    value = attribute(html, "value")
+
+    case attribute(html, "type") do
+      "animation" ->
+        %Lexin.Definition.Reference{
+          type: :animation,
+          values: [String.replace(value, ~r/\.swf$/, ".mp4")]
+        }
+
+      "phonetic" ->
+        %Lexin.Definition.Reference{
+          type: :phonetic,
+          values: [String.replace(value, ~r/\.swf$/, ".mp3")]
+        }
+
+      "compare" ->
+        %Lexin.Definition.Reference{type: :compare, values: [value]}
+
+      "see" ->
+        %Lexin.Definition.Reference{
+          type: :see,
+          values: String.split(value, ",", trim: true) |> Enum.map(&String.trim/1)
+        }
+    end
   end
 
   defp parse_phonetic(nil), do: nil
