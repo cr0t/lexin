@@ -58,7 +58,11 @@ defmodule Lexin.Dictionary.Parser do
         }
 
       "compare" ->
-        %Lexin.Definition.Reference{type: :compare, values: [value]}
+        %Lexin.Definition.Reference{
+          type: :compare,
+          # remove &quot; and similar from the value
+          values: [String.replace(value, ~r/&(?:[a-z\d]+);/, "")]
+        }
 
       "see" ->
         %Lexin.Definition.Reference{
