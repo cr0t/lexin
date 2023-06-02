@@ -25,42 +25,42 @@ msgstr ""
 msgid "listen"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:35
+#: lib/lexin_web/components/cards/definition.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "Alternate: %{alt}"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:41
+#: lib/lexin_web/components/cards/definition.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "Usage: %{usage}"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:61
+#: lib/lexin_web/components/cards/definition.html.heex:50
 #, elixir-autogen, elixir-format
 msgid "Antonyms: %{antonyms}"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:70
+#: lib/lexin_web/components/cards/definition.html.heex:55
 #, elixir-autogen, elixir-format
 msgid "Examples"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:89
+#: lib/lexin_web/components/cards/definition.html.heex:68
 #, elixir-autogen, elixir-format
 msgid "Idioms"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:108
+#: lib/lexin_web/components/cards/definition.html.heex:81
 #, elixir-autogen, elixir-format
 msgid "Compounds"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:127
+#: lib/lexin_web/components/cards/definition.html.heex:94
 #, elixir-autogen, elixir-format
 msgid "Derivations"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:146
+#: lib/lexin_web/components/cards/definition.html.heex:107
 #, elixir-autogen, elixir-format
 msgid "Extra"
 msgstr ""
