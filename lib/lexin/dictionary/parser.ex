@@ -54,7 +54,7 @@ defmodule Lexin.Dictionary.Parser do
       "phonetic" ->
         %Lexin.Definition.Reference{
           type: :phonetic,
-          values: [String.replace(value, ~r/\.swf$/, ".mp3")]
+          values: [String.replace(value, ~r/\.swf$/, ".mp3") |> latin1_rename()]
         }
 
       "compare" ->
@@ -77,7 +77,7 @@ defmodule Lexin.Dictionary.Parser do
   defp parse_phonetic(html) do
     %Lexin.Definition.Phonetic{
       transcription: Floki.text(html),
-      audio_url: attribute(html, "file")
+      audio_url: attribute(html, "file") |> latin1_rename()
     }
   end
 
@@ -120,4 +120,27 @@ defmodule Lexin.Dictionary.Parser do
 
   defp parse_strings([""]), do: []
   defp parse_strings(list), do: Enum.map(list, &Floki.text/1)
+
+  # Does a quite unusual conversion to the given string by replacing non-ASCII characters with
+  # their octal equivalents from Latin 1 (ISO-8859-1) encoding page.
+  #
+  # Examples:
+  # - urspårning => ursp0345rning
+  # - pärlemor => p0344rlemor
+  # - omvänt baksträck -> omv0344nt bakstr0344ck
+  # - död(s) => d0366d(s)
+  # - dossié => dossi0351
+  #
+  # See more:
+  # - https://www.erlang.org/doc/man/unicode.html#characters_to_nfc_list-1
+  # - https://www.ic.unicamp.br/~stolfi/EXPORT/www/ISO-8859-1-Encoding.html
+  defp latin1_rename(filename) do
+    filename
+    |> :unicode.characters_to_nfc_list()
+    |> Enum.map(fn
+      c when c >= 192 -> "0#{Integer.to_string(c, 8)}"
+      c -> to_string([c])
+    end)
+    |> to_string()
+  end
 end
