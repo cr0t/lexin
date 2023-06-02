@@ -3,11 +3,16 @@
     <strong><%= @dfn.value %></strong>
     <span>[<%= @dfn.base.phonetic.transcription %>]</span>
 
-    <% audio_url = external_audio_url(@dfn.base.phonetic.audio_url) %>
-    <% onclick = "playAudio('#{audio_url}'); return false;" %>
-    <a href={audio_url} onclick={onclick}><%= gettext("listen") %></a>
+    <.listen_link file={@dfn.base.phonetic.audio_url} />
 
     <span><%= @dfn.pos %></span>
+
+    <.references
+      :if={@dfn.base.reference}
+      type={@dfn.base.reference.type}
+      values={@dfn.base.reference.values}
+      lang={@target_lang}
+    />
   </header>
 
   <section class="pl-6">

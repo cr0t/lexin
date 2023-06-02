@@ -55,6 +55,8 @@ config :lexin, LexinWeb.Gettext,
 # For external links we need to provide prefixes
 config :lexin, :external_audio_url_prefix, "http://lexin.nada.kth.se/sound/"
 
+config :lexin, :external_video_url_prefix, "http://lexin.nada.kth.se/lang/lexinanim/"
+
 config :lexin,
        :external_picture_url_prefix,
        "https://bildetema.oslomet.no/bildetema/bildetema-html5/bildetema.html?version=swedish"
