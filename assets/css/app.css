@@ -47,7 +47,7 @@ table {
 }
 
 .btn--reset {
-  @apply flex justify-center items-center absolute z-10 top-0 right-0 origin-center rotate-45 h-10 w-10 text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:cursor-pointer;
+  @apply flex justify-center items-center absolute z-10 top-0 right-0 origin-center rotate-45 h-10 w-10 text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:cursor-pointer select-none;
 }
 
 .input--query {

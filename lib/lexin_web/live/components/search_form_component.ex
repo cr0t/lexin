@@ -20,8 +20,14 @@ defmodule LexinWeb.SearchFormComponent do
   def handle_event("submit", %{"query" => query, "lang" => lang}, socket),
     do: do_search(socket, query, lang)
 
-  def handle_event("reset", _params, socket),
-    do: do_search(socket, "", socket.assigns.lang)
+  def handle_event("reset", _params, socket) do
+    empty = ""
+    lang = socket.assigns.lang
+
+    socket
+    |> assign(%{query: empty, lang: lang, suggestions: [], in_focus: false})
+    |> do_search(empty, lang)
+  end
 
   def handle_event("switch-language", %{"lang" => lang}, socket),
     do: do_search(socket, socket.assigns.query, lang)
