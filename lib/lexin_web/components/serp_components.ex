@@ -121,12 +121,10 @@ defmodule LexinWeb.SerpComponents do
 
   def listen_link(assigns) do
     ~H"""
-    <a
-      href={external_audio_url(@file)}
-      onclick={"playAudio('#{external_audio_url(@file)}'); return false;"}
-    >
+    <button class="btn--listen" onclick={"playAudio('#{external_audio_url(@file)}')"}>
+      <.icon name="hero-speaker-wave-solid" class="h-3 w-3 mr-1" />
       <%= gettext("listen") %>
-    </a>
+    </button>
     """
   end
 
