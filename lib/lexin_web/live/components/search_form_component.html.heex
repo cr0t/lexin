@@ -11,6 +11,13 @@
         <option value="select_language"><%= gettext("Select language") %></option>
         <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
       </select>
+
+      <script>
+        <% # set previosly saved language as soon as possible to hide selector UI "jumping" %>
+        if (localStorage) {
+          document.getElementById('form-lang').value = localStorage.getItem('language')
+        }
+      </script>
     </div>
 
     <div class="relative w-full">
