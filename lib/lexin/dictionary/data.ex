@@ -6,7 +6,7 @@ defmodule Lexin.Dictionary.Data do
   alias Exqlite.Sqlite3, as: SQLite
   alias Lexin.Dictionary.Parser
 
-  @max_suggestions 5
+  @max_suggestions 8
 
   @doc """
   Returns pre-configured main directory with SQLite files
@@ -80,30 +80,33 @@ defmodule Lexin.Dictionary.Data do
     suggestions_sql = """
     SELECT DISTINCT(word) FROM vocabulary
     WHERE word LIKE ?1
-    LIMIT #{@max_suggestions}
     """
 
-    query = "#{query}%"
+    word_like = "#{query}%"
 
     with {:ok, statement} <- SQLite.prepare(db, suggestions_sql),
-         :ok <- SQLite.bind(db, statement, [query]),
+         :ok <- SQLite.bind(db, statement, [word_like]),
          {:ok, rows} <- SQLite.fetch_all(db, statement),
          :ok <- SQLite.release(db, statement) do
-      if length(rows) > 0 do
-        # TODO: Find a way how to sort it in a more relevant way.
-        {:ok, Enum.map(rows, &hd/1) |> Enum.uniq()}
-      else
-        {:ok, []}
-      end
-    else
-      err -> err
+      format_suggestions(rows, query)
     end
   end
 
-  defp parse_definitions(rows) do
-    rows
-    |> Enum.map(&hd/1)
-    |> Enum.map(&Parser.convert/1)
+  # Cleans and orders the list of suggestions
+  #
+  # Unfortunately, we cannot order by word similarity in the SQLite, so we have to do this on the
+  # Elixir side. Though, it's quite straightforward and simple.
+
+  defp format_suggestions([], _), do: {:ok, []}
+
+  defp format_suggestions(rows, query) do
+    suggestions =
+      rows
+      |> Enum.map(&hd/1)
+      |> Enum.sort_by(&String.bag_distance(&1, query), :desc)
+      |> Enum.take(@max_suggestions)
+
+    {:ok, suggestions}
   end
 
   # We want to pick the most relevant definition(s); it's a little bit tricky, because sometimes
