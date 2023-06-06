@@ -54,19 +54,7 @@ defmodule Lexin.Dictionary.Data do
          :ok <- SQLite.bind(db, statement, [query]),
          {:ok, rows} <- SQLite.fetch_all(db, statement),
          :ok <- SQLite.release(db, statement) do
-      if length(rows) > 0 do
-        # We need to extract `definition` from the row list, parse it, and then re-order it by relevance
-        definitions =
-          rows
-          |> parse_definitions()
-          |> reorder(query)
-
-        {:ok, definitions}
-      else
-        {:error, :not_found}
-      end
-    else
-      err -> err
+      format_definitions(rows, query)
     end
   end
 
@@ -109,12 +97,26 @@ defmodule Lexin.Dictionary.Data do
     {:ok, suggestions}
   end
 
+  # Cleans and orders the list of definitions we found
+  #
+  # Note: we need to extract `definition` from the row list, parse it, and then re-order it by the
+  # relevance.
+
+  defp format_definitions([], _), do: {:error, :not_found}
+
+  defp format_definitions(rows, query) do
+    definitions =
+      rows
+      |> Enum.map(&hd/1)
+      |> Enum.map(&Parser.convert/1)
+      |> reorder(query)
+
+    {:ok, definitions}
+  end
+
   # We want to pick the most relevant definition(s); it's a little bit tricky, because sometimes
   # the value in the definition structure can be spelled as compound, for example:
   # for `dammsugare` query value of the most relevant definition is `damm|sugare`
-  #
-  # TODO: We should try to avoid this data transformation on the Elixir side, and probably try to
-  # achieve the same in SQL query; worth to cheeck this opportunity.
   defp reorder(definitions, query) do
     top_relevant =
       Enum.filter(definitions, fn %{value: word} ->
