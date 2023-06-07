@@ -36,8 +36,9 @@
       <%= gettext("Usage: %{usage}", usage: @dfn.base.usage) %>
     </div>
 
-    <div :if={@dfn.target.translation} class="mt-3 font-bold">
-      <%= @dfn.target.translation %>
+    <div :if={@dfn.target.translation} class="mt-3">
+      <span class="font-bold"><%= @dfn.target.translation %></span>
+      <span :if={@dfn.target.comment} class="dimmed">(<%= @dfn.target.comment %>)</span>
     </div>
 
     <div :if={length(@dfn.target.synonyms) > 0} class="dimmed">

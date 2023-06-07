@@ -38,11 +38,11 @@ defmodule Lexin.SearchTest do
     session
     |> visit("/")
     |> fill_in(@lang_select, with: "ryska")
-    |> fill_in(@query_input, with: "a conto")
+    |> fill_in(@query_input, with: "a")
     |> click(@submit_button)
-    |> assert_has(css("#definition-5", text: "i förskott"))
-    |> assert_has(css("#definition-5", text: "А-конто"))
-    |> assert_has(css("#definition-5", text: "(на мой счёт)"))
+    |> assert_has(css("#definition-4", text: "sjätte tonen i C-durskalan"))
+    |> assert_has(css("#definition-4", text: "ля"))
+    |> assert_has(css("#definition-4", text: "(\"музыкальный термин (шестая нота гаммы)"))
   end
 
   feature "switches definition to another available language", %{session: session} do
