@@ -24,6 +24,7 @@ defmodule LexinWeb.Router do
     # Static pages (About, Help, etc.)
     get "/contact", PagesController, :contact
     get "/about", PagesController, :about
+    get "/cookies", PagesController, :cookies
     get "/install", PagesController, :install
   end
 

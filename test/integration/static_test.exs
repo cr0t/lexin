@@ -45,4 +45,21 @@ defmodule Lexin.StaticTest do
       )
     )
   end
+
+  feature "opens cookies page", %{session: session} do
+    session
+    |> visit("/")
+    |> click(link("Cookies"))
+    |> assert_has(
+      css("main",
+        text: "Cookies are small files that websites put on your computer when you visit them."
+      )
+    )
+    |> assert_has(
+      css("main",
+        text:
+          "We only use cookies that we can control. We only use cookies that are needed to keep your session on our website running smoothly. Furthermore, we don't use cookies from other companies for tracking things like how people use our website."
+      )
+    )
+  end
 end
