@@ -11,19 +11,13 @@ defmodule Lexin.StaticTest do
     |> assert_has(
       css("main",
         text:
-          "We have built this little application to improve user experience, the functionality it provides is quite basic – pick a language and search for the word. That's simple!"
+          "We made this small app to make it easier for users to use. It only does one thing: choose a language and search for a word. It does it very well!"
       )
     )
-  end
-
-  feature "opens contacts page", %{session: session} do
-    session
-    |> visit("/")
-    |> click(link("Contacts"))
     |> assert_has(
       css("main",
         text:
-          "Lexin Mobi is an open-source project, and you can find its code on GitHub. You are welcome to join the development process. You can also use this link to submit feature requests or issues, or to contact authors of this app."
+          "Lexin Mobi is an open-source project, and you can find its source code on GitHub. You are welcome to contribute to the development process. This link can also be used to submit suggestions for enhancements or bugs, or to reach out to the developers of this application."
       )
     )
   end
