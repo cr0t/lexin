@@ -51,7 +51,7 @@ defmodule Lexin.MixProject do
       {:tailwind, "~> 0.2.1", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6.1"},
       {:telemetry_poller, "~> 1.0.0"},
-      {:wallaby, "~> 0.30.3", only: :test, runtime: false}
+      {:wallaby, "~> 0.30.5", only: :test, runtime: false}
     ]
   end
 
