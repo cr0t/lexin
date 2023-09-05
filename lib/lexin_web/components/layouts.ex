@@ -41,5 +41,4 @@ defmodule LexinWeb.Layouts do
     |> Jason.encode!()
     |> Phoenix.HTML.raw()
   end
-
 end

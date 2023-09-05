@@ -21,7 +21,7 @@ msgstr ""
 msgid "compare"
 msgstr ""
 
-#: lib/lexin_web/components/serp_components.ex:128
+#: lib/lexin_web/components/serp_components.ex:126
 #, elixir-autogen, elixir-format
 msgid "listen"
 msgstr ""
@@ -36,152 +36,152 @@ msgstr ""
 msgid "Usage: %{usage}"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:50
+#: lib/lexin_web/components/cards/definition.html.heex:51
 #, elixir-autogen, elixir-format
 msgid "Antonyms: %{antonyms}"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:55
+#: lib/lexin_web/components/cards/definition.html.heex:56
 #, elixir-autogen, elixir-format
 msgid "Examples"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:68
+#: lib/lexin_web/components/cards/definition.html.heex:69
 #, elixir-autogen, elixir-format
 msgid "Idioms"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:81
+#: lib/lexin_web/components/cards/definition.html.heex:82
 #, elixir-autogen, elixir-format
 msgid "Compounds"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:94
+#: lib/lexin_web/components/cards/definition.html.heex:95
 #, elixir-autogen, elixir-format
 msgid "Derivations"
 msgstr ""
 
-#: lib/lexin_web/components/cards/definition.html.heex:107
+#: lib/lexin_web/components/cards/definition.html.heex:108
 #, elixir-autogen, elixir-format
 msgid "Extra"
 msgstr ""
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:51
+#: lib/lexin_web/live/components/search_form_component.html.heex:58
 #, elixir-autogen, elixir-format
 msgid "Search"
 msgstr ""
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:11
+#: lib/lexin_web/live/components/search_form_component.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "Select language"
 msgstr ""
 
-#: lib/lexin_web/live/components/search_form_component.ex:55
+#: lib/lexin_web/live/components/search_form_component.ex:61
 #, elixir-autogen, elixir-format
 msgid "albanian"
 msgstr "Albanian"
 
-#: lib/lexin_web/live/components/search_form_component.ex:56
+#: lib/lexin_web/live/components/search_form_component.ex:62
 #, elixir-autogen, elixir-format
 msgid "amharic"
 msgstr "Amharic"
 
-#: lib/lexin_web/live/components/search_form_component.ex:57
+#: lib/lexin_web/live/components/search_form_component.ex:63
 #, elixir-autogen, elixir-format
 msgid "arabic"
 msgstr "Arabic"
 
-#: lib/lexin_web/live/components/search_form_component.ex:58
+#: lib/lexin_web/live/components/search_form_component.ex:64
 #, elixir-autogen, elixir-format
 msgid "azerbaijani"
 msgstr "Azerbaijani"
 
-#: lib/lexin_web/live/components/search_form_component.ex:59
+#: lib/lexin_web/live/components/search_form_component.ex:65
 #, elixir-autogen, elixir-format
 msgid "bosnian"
 msgstr "Bosnian"
 
-#: lib/lexin_web/live/components/search_form_component.ex:60
+#: lib/lexin_web/live/components/search_form_component.ex:66
 #, elixir-autogen, elixir-format
 msgid "english"
 msgstr "English"
 
-#: lib/lexin_web/live/components/search_form_component.ex:61
+#: lib/lexin_web/live/components/search_form_component.ex:67
 #, elixir-autogen, elixir-format
 msgid "finnish"
 msgstr "Finnish"
 
-#: lib/lexin_web/live/components/search_form_component.ex:62
+#: lib/lexin_web/live/components/search_form_component.ex:68
 #, elixir-autogen, elixir-format
 msgid "greek"
 msgstr "Greek"
 
-#: lib/lexin_web/live/components/search_form_component.ex:63
+#: lib/lexin_web/live/components/search_form_component.ex:69
 #, elixir-autogen, elixir-format
 msgid "croatian"
 msgstr "Croatian"
 
-#: lib/lexin_web/live/components/search_form_component.ex:64
+#: lib/lexin_web/live/components/search_form_component.ex:70
 #, elixir-autogen, elixir-format
 msgid "northern_kurdish"
 msgstr "Northern Kurdish"
 
-#: lib/lexin_web/live/components/search_form_component.ex:65
+#: lib/lexin_web/live/components/search_form_component.ex:71
 #, elixir-autogen, elixir-format
 msgid "pashto"
 msgstr "Pashto"
 
-#: lib/lexin_web/live/components/search_form_component.ex:66
+#: lib/lexin_web/live/components/search_form_component.ex:72
 #, elixir-autogen, elixir-format
 msgid "persian"
 msgstr "Persian"
 
-#: lib/lexin_web/live/components/search_form_component.ex:67
+#: lib/lexin_web/live/components/search_form_component.ex:73
 #, elixir-autogen, elixir-format
 msgid "russian"
 msgstr "Russian"
 
-#: lib/lexin_web/live/components/search_form_component.ex:68
+#: lib/lexin_web/live/components/search_form_component.ex:74
 #, elixir-autogen, elixir-format
 msgid "serbian_latin"
 msgstr "Serbian (Latin)"
 
-#: lib/lexin_web/live/components/search_form_component.ex:69
+#: lib/lexin_web/live/components/search_form_component.ex:75
 #, elixir-autogen, elixir-format
 msgid "serbian_cyrillic"
 msgstr "Serbian (Cyrillic)"
 
-#: lib/lexin_web/live/components/search_form_component.ex:70
+#: lib/lexin_web/live/components/search_form_component.ex:76
 #, elixir-autogen, elixir-format
 msgid "somali"
 msgstr "Somali"
 
-#: lib/lexin_web/live/components/search_form_component.ex:71
+#: lib/lexin_web/live/components/search_form_component.ex:77
 #, elixir-autogen, elixir-format
 msgid "spanish"
 msgstr "Spanish"
 
-#: lib/lexin_web/live/components/search_form_component.ex:72
+#: lib/lexin_web/live/components/search_form_component.ex:78
 #, elixir-autogen, elixir-format
 msgid "swedish"
 msgstr "Swedish"
 
-#: lib/lexin_web/live/components/search_form_component.ex:73
+#: lib/lexin_web/live/components/search_form_component.ex:79
 #, elixir-autogen, elixir-format
 msgid "southern_kurdish"
 msgstr "Southern Kurdish"
 
-#: lib/lexin_web/live/components/search_form_component.ex:74
+#: lib/lexin_web/live/components/search_form_component.ex:80
 #, elixir-autogen, elixir-format
 msgid "tigrinya"
 msgstr "Tigrinya"
 
-#: lib/lexin_web/live/components/search_form_component.ex:75
+#: lib/lexin_web/live/components/search_form_component.ex:81
 #, elixir-autogen, elixir-format
 msgid "turkish"
 msgstr "Turkish"
 
-#: lib/lexin_web/live/components/search_form_component.html.heex:32
+#: lib/lexin_web/live/components/search_form_component.html.heex:37
 #, elixir-autogen, elixir-format
 msgid "Start typing a word..."
 msgstr ""
