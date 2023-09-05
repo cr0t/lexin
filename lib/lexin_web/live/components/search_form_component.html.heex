@@ -5,18 +5,16 @@
         class="selector--lang"
         id="form-lang"
         name="lang"
+        title={gettext("Select language")}
         phx-target={@myself}
         phx-change="switch-language"
       >
-        <option value="select_language"><%= gettext("Select language") %></option>
         <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
       </select>
 
       <script>
         <% # set previosly saved language as soon as possible to hide selector UI "jumping" %>
-        if (localStorage) {
-          document.getElementById('form-lang').value = localStorage.getItem('language')
-        }
+        document.getElementById('form-lang').value = window.preferredLanguage();
       </script>
     </div>
 

@@ -1,0 +1,37 @@
+<script>
+  const DEFAULT_LANG_MAPPING = <%= default_languages_mapping() %>;
+  const DEFAULT_LANG = 'english';
+
+  function findQueryParameter(parameterName) {
+    let result = null, tmp = [];
+
+    location.search.substr(1).split("&").forEach(function (item) {
+      tmp = item.split("=");
+
+      if (tmp[0] === parameterName) {
+        result = decodeURIComponent(tmp[1]);
+      }
+    })
+
+    return result;
+  }
+
+  window.preferredLanguage = function() {
+    const browserLanguage = navigator.language.split('-')[0];
+    const savedLanguage = localStorage.getItem('language');
+    const queryLanguage = findQueryParameter('lang');
+
+    if (queryLanguage !== null) {
+      return queryLanguage;
+    }
+    else if (savedLanguage !== null) {
+      return savedLanguage;
+    }
+    else if (typeof browserLanguage === 'string') {
+      return DEFAULT_LANG_MAPPING[browserLanguage];
+    }
+    else {
+      return DEFAULT_LANG;
+    }
+  }
+</script>

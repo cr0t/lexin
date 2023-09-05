@@ -36,16 +36,9 @@ let hooks = {
   }
 }
 
-let params = () => {
-  let params = {
-    _csrf_token: document.querySelector("meta[name='csrf-token']").getAttribute('content')
-  }
-
-  if (localStorage) {
-    params['lang'] = localStorage.getItem(LANG_KEY)
-  }
-
-  return params
+let params = {
+ _csrf_token: document.querySelector("meta[name='csrf-token']").getAttribute('content'),
+ lang: window.preferredLanguage() // see layouts.ex and _lang_js_utils.html.heex for details
 }
 
 let socketParams = {
