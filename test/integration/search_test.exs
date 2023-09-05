@@ -8,14 +8,6 @@ defmodule Lexin.SearchTest do
   @lang_select css("#form-lang")
   @submit_button css("#form-submit_button")
 
-  feature "shows an alert if no language is chosen", %{session: session} do
-    session
-    |> visit("/")
-    |> fill_in(@query_input, with: "a conto")
-    |> click(@submit_button)
-    |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
-  end
-
   feature "allows to select a translation language", %{session: session} do
     session
     |> visit("/")
@@ -146,5 +138,11 @@ defmodule Lexin.SearchTest do
         "when user submits a query, we show it in the page's title"
       )
     end)
+  end
+
+  feature "shows an alert if wrong language is given in the URL", %{session: session} do
+    session
+    |> visit("/?query=a+conto&lang=albaniska")
+    |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
   end
 end
