@@ -17,6 +17,38 @@ defmodule Lexin.SearchTest do
     |> refute_has(css("#flash.flash--error"))
   end
 
+  feature "pre-selects the given language in the URL", %{session: session} do
+    session
+    |> visit("/?query=a+conto&lang=russian")
+    |> assert_has(css("#definition-5", text: "на мой счёт"))
+  end
+
+  feature "pre-selects the previously saved language", %{session: session} do
+    session
+    |> visit("/")
+    |> fill_in(@lang_select, with: "ryska")
+    |> visit("/")
+    |> fill_in(@query_input, with: "a conto")
+    |> click(@submit_button)
+    |> assert_has(css("#definition-5", text: "на мой счёт"))
+  end
+
+  feature "pre-selects the language in the URL even is the other was saved", %{session: session} do
+    session
+    |> visit("/")
+    |> fill_in(@lang_select, with: "ryska")
+    |> visit("/?a+conto&lang=english")
+    |> fill_in(@query_input, with: "a conto")
+    |> click(@submit_button)
+    |> assert_has(css("#definition-5", text: "(in advance)"))
+  end
+
+  feature "shows an alert if wrong language is given in the URL", %{session: session} do
+    session
+    |> visit("/?query=a+conto&lang=ruskii")
+    |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
+  end
+
   feature "shows an alert if word not found", %{session: session} do
     session
     |> visit("/")
@@ -138,11 +170,5 @@ defmodule Lexin.SearchTest do
         "when user submits a query, we show it in the page's title"
       )
     end)
-  end
-
-  feature "shows an alert if wrong language is given in the URL", %{session: session} do
-    session
-    |> visit("/?query=a+conto&lang=albaniska")
-    |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
   end
 end
