@@ -18,7 +18,7 @@ jobs:
     name: Test on Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}}
     strategy:
       matrix:
-        elixir: [1.15.2]
+        elixir: [1.15.5]
         otp: [26.0.2]
     steps:
       - name: Setup Elixir
