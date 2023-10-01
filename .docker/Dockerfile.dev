@@ -9,12 +9,12 @@
 
 ARG ELIXIR_VERSION
 ARG ERLANG_VERSION
-ARG ALPINE_VERSION
+ARG DEBIAN_VERSION
 ARG MIX_ENV
 
-FROM docker.io/hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-alpine-$ALPINE_VERSION
+FROM docker.io/hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-debian-$DEBIAN_VERSION
 
-RUN apk add --no-cache inotify-tools build-base git python3 curl
+RUN apt-get update -y && apt-get install -y build-essential git inotify-tools
 
 ENV MIX_ENV="${MIX_ENV}"
 
