@@ -116,12 +116,14 @@ defmodule LexinWeb.SerpComponents do
   An anchor tag that plays the given audio file URL when user clicks. We duplicate the URL in the
   `href` attribute, so users can download files or listen in the other way if browser doesn't support
   `playAudio` JS feature.
+
+  In rare cases `file` can be nil: we do not render the 'listen' button then.
   """
-  attr :file, :string, required: true
+  attr :file, :string
 
   def listen_link(assigns) do
     ~H"""
-    <button class="btn--listen" onclick={"playAudio('#{external_audio_url(@file)}')"}>
+    <button :if={@file} class="btn--listen" onclick={"playAudio('#{external_audio_url(@file)}')"}>
       <.icon name="hero-speaker-wave-solid" class="h-3 w-3 mr-1" />
       <%= gettext("listen") %>
     </button>

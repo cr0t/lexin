@@ -134,7 +134,9 @@ defmodule Lexin.Dictionary.Parser do
   # See more:
   # - https://www.erlang.org/doc/man/unicode.html#characters_to_nfc_list-1
   # - https://www.ic.unicamp.br/~stolfi/EXPORT/www/ISO-8859-1-Encoding.html
-  defp latin1_rename(filename) do
+  defp latin1_rename(nil), do: nil
+
+  defp latin1_rename(filename) when is_binary(filename) do
     filename
     |> :unicode.characters_to_nfc_list()
     |> Enum.map(fn
