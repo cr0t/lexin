@@ -26,7 +26,7 @@ defmodule LexinWeb.Endpoint do
     from: :lexin,
     gzip: false,
     only: LexinWeb.static_paths(),
-    only_matching: ~w(manifest favicon robots)
+    only_matching: ~w(manifest favicon robots sitemap)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
