@@ -20,11 +20,12 @@ defmodule LexinWeb.Endpoint do
   # when deploying your static files in production.
   #
   # We need `only_matching` option to serve listed files after
-  # they got digested (with fingerprints in filenames)
+  # they got digested (with fingerprints in filenames), and a bunch
+  # of sitemaps (which are similar to sitemap_english_0.xml)
   plug Plug.Static,
     at: "/",
     from: :lexin,
-    gzip: false,
+    gzip: true,
     only: LexinWeb.static_paths(),
     only_matching: ~w(manifest favicon robots sitemap)
 
