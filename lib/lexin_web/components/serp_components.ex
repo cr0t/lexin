@@ -108,7 +108,9 @@ defmodule LexinWeb.SerpComponents do
 
   def reference_link(assigns) do
     ~H"""
-    <a href={~p"/?query=#{@word}&lang=#{@lang}"}><%= @word %></a>
+    <.link patch={~p"/dictionary/#{@word}?lang=#{@lang}"}>
+      <%= @word %>
+    </.link>
     """
   end
 

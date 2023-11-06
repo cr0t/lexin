@@ -8,6 +8,8 @@ defmodule LexinWeb.SearchFormComponent do
 
   use LexinWeb, :live_component
 
+  import LexinWeb.SerpComponents
+
   @min_chars_for_suggestions 1
   @select_lang_prompt "select_language"
 
@@ -15,8 +17,6 @@ defmodule LexinWeb.SearchFormComponent do
   Processes form submission by setting current URL to the new one (with updating `query` param),
   the actual data request and handling happens in the corresponding `handle_params/3` function.
   """
-  def handle_event(event, params, socket)
-
   def handle_event("submit", %{"query" => query, "lang" => lang}, socket),
     do: do_search(socket, query, lang)
 
@@ -54,7 +54,7 @@ defmodule LexinWeb.SearchFormComponent do
   ###
 
   defp do_search(socket, query, lang),
-    do: {:noreply, push_patch(socket, to: ~p"/?query=#{query}&lang=#{lang}")}
+    do: {:noreply, push_patch(socket, to: ~p"/dictionary/#{query}?lang=#{lang}")}
 
   defp localized_languages() do
     translations = [

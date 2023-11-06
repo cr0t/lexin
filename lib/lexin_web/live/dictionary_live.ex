@@ -1,9 +1,9 @@
-defmodule LexinWeb.DictionaryLive.Index do
+defmodule LexinWeb.DictionaryLive do
   @moduledoc """
   Main entrance point for our app. Provides a search form and shows results.
 
   We want to support GET-params, so users are able to share links to the page they're looking at
-  any particular moment. So, we rely on the `?query` parameter a lot.
+  any particular moment. So, we rely on the `query` parameter a lot.
 
   In order to handle it properly in LiveView we use `handle_params/3` which runs before `mount/3`.
   """
@@ -31,47 +31,40 @@ defmodule LexinWeb.DictionaryLive.Index do
   end
 
   @doc """
-  When `?query=...&lang=...` presented in the parameters hash, we use it as initial state and
+  When `query` and `lang` are presented in the parameters hash, we use them as initial state and
   request data.
 
-  By default (if user opens a page without query parameter) we set everything to clean state.
+  By default (if user opens a home page) we set everything to clean state.
   """
   def handle_params(%{"query" => query, "lang" => lang}, _uri, socket) do
-    query = String.trim(query)
-
     # See comment below, next to this function definition
     # maybe_set_locale(lang)
 
     socket =
-      assign(socket, %{
-        query: query,
-        lang: lang,
-        page_title: page_title(query),
-        in_focus: socket.assigns[:in_focus] || true,
-        suggestions: []
-      })
-
-    {:noreply, find_definitions(socket)}
-  end
-
-  def handle_params(_params, _uri, socket) do
-    query = ""
-
-    socket =
-      assign(socket, %{
-        query: query,
-        page_title: page_title(query),
-        in_focus: socket.assigns[:in_focus] || true,
-        suggestions: [],
-        definitions: []
-      })
+      socket
+      |> preset_params(String.trim(query), lang)
+      |> find_definitions()
 
     {:noreply, socket}
   end
 
+  def handle_params(params, _uri, socket),
+    do: {:noreply, preset_params(socket, "", params["lang"])}
+
   ###
   ### Helpers
   ###
+
+  defp preset_params(socket, query, lang) do
+    assign(socket, %{
+      query: query,
+      lang: lang || socket.assigns[:lang],
+      page_title: page_title(query),
+      in_focus: socket.assigns[:in_focus] || true,
+      suggestions: [],
+      definitions: [],
+    })
+  end
 
   defp find_definitions(%{assigns: %{query: query, lang: lang}} = socket) do
     if String.length(query) > 0 do

@@ -19,7 +19,7 @@ defmodule Lexin.SearchTest do
 
   feature "pre-selects the given language in the URL", %{session: session} do
     session
-    |> visit("/?query=a+conto&lang=russian")
+    |> visit("/dictionary/a conto?lang=russian")
     |> assert_has(css("#definition-5", text: "на мой счёт"))
   end
 
@@ -37,7 +37,7 @@ defmodule Lexin.SearchTest do
     session
     |> visit("/")
     |> fill_in(@lang_select, with: "ryska")
-    |> visit("/?a+conto&lang=english")
+    |> visit("/dictionary/a conto?lang=english")
     |> fill_in(@query_input, with: "a conto")
     |> click(@submit_button)
     |> assert_has(css("#definition-5", text: "(in advance)"))
@@ -45,7 +45,7 @@ defmodule Lexin.SearchTest do
 
   feature "shows an alert if wrong language is given in the URL", %{session: session} do
     session
-    |> visit("/?query=a+conto&lang=ruskii")
+    |> visit("/dictionary/a conto?lang=ruskii")
     |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
   end
 

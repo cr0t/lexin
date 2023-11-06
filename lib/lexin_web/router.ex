@@ -17,7 +17,9 @@ defmodule LexinWeb.Router do
   scope "/", LexinWeb do
     pipe_through :browser
 
-    live "/", DictionaryLive.Index, :index
+    live "/", DictionaryLive, :homepage
+    live "/dictionary/", DictionaryLive
+    live "/dictionary/:query", DictionaryLive, :definition
 
     get "/sw.js", ServiceWorkerController, :index
 
