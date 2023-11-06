@@ -33,25 +33,26 @@ defmodule Lexin.MixProject do
   defp deps do
     [
       {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
-      {:esbuild, "~> 0.7.1", runtime: Mix.env() == :dev},
+      {:dns_cluster, "~> 0.1.1"},
+      {:esbuild, "~> 0.8.1", runtime: Mix.env() == :dev},
       {:exqlite, "~> 0.13.14"},
       {:floki, "~> 0.34.3"},
-      {:gettext, "~> 0.22.3"},
+      {:gettext, "~> 0.23.1"},
       {:hackney, "~> 1.18.1"},
-      {:jason, "~> 1.4.0"},
-      {:observer_cli, "~> 1.7.3"},
-      {:phoenix, "~> 1.7.6"},
-      {:phoenix_html, "~> 3.3.1"},
-      {:phoenix_live_dashboard, "~> 0.8.0"},
+      {:jason, "~> 1.4.1"},
+      {:observer_cli, "~> 1.7.4"},
+      {:phoenix, "~> 1.7.10"},
+      {:phoenix_html, "~> 3.3.3"},
+      {:phoenix_live_dashboard, "~> 0.8.3"},
       {:phoenix_live_reload, "~> 1.4.1", only: :dev},
-      {:phoenix_live_view, "~> 0.19.3"},
+      {:phoenix_live_view, "~> 0.20.1"},
       {:plug_cowboy, "~> 2.6.1"},
-      {:recon, "~> 2.5.3"},
-      {:sentry, "~> 8.0.6"},
-      {:tailwind, "~> 0.2.1", runtime: Mix.env() == :dev},
+      {:recon, "~> 2.5.4"},
+      {:sentry, "~> 9.1.0"},
+      {:tailwind, "~> 0.2.2", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6.1"},
       {:telemetry_poller, "~> 1.0.0"},
-      {:wallaby, "~> 0.30.5", only: :test, runtime: false}
+      {:wallaby, "~> 0.30.6", only: :test, runtime: false}
     ]
   end
 
