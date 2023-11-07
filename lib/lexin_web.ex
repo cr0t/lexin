@@ -86,6 +86,7 @@ defmodule LexinWeb do
       # Core UI components and translation
       import LexinWeb.CoreComponents
       import LexinWeb.Gettext
+      import LexinWeb.SEO
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

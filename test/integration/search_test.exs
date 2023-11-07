@@ -166,7 +166,7 @@ defmodule Lexin.SearchTest do
     |> assert_has(css("#definition-5", text: "i förskott"))
     |> then(fn session ->
       assert(
-        page_title(session) === "a conto · Lexin Mobi",
+        page_title(session) === "a conto - А-конто · Lexin Mobi",
         "when user submits a query, we show it in the page's title"
       )
     end)

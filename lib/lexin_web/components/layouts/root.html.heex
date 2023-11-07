@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content={get_csrf_token()} />
 
-    <.live_title><%= assigns[:page_title] || "Lexin Mobi" %></.live_title>
-    <meta
-      name="description"
-      content={assigns[:meta_desc] || "Lexin Mobi is a combination of Swedish vocabulary (lexicon) and dictionary that have been developed for use in primarily immigrant education. The encyclopedia is available both as an online search service and as mobile application."}
-    />
+    <.live_title><%= assigns[:page_title] || default_title() %></.live_title>
+    <meta name="description" content={assigns[:meta_desc] || default_desc()} />
 
     <link rel="manifest" href={~p"/manifest.webmanifest"} />
 

@@ -11,6 +11,7 @@ defmodule LexinWeb.DictionaryLive do
   use LexinWeb, :live_view
 
   import LexinWeb.Gettext
+  import LexinWeb.SEO
 
   alias LexinWeb.{SearchFormComponent, SerpComponents}
 
@@ -59,10 +60,9 @@ defmodule LexinWeb.DictionaryLive do
     assign(socket, %{
       query: query,
       lang: lang || socket.assigns[:lang],
-      page_title: page_title(query),
       in_focus: socket.assigns[:in_focus] || true,
       suggestions: [],
-      definitions: [],
+      definitions: []
     })
   end
 
@@ -74,6 +74,8 @@ defmodule LexinWeb.DictionaryLive do
           |> clear_flash()
           |> assign(:definitions, definitions)
           |> assign(:suggestions, [])
+          |> assign(:page_title, page_title(query, definitions))
+          |> assign(:meta_desc, meta_desc(query, definitions))
 
         {:error, err} ->
           socket
@@ -92,9 +94,6 @@ defmodule LexinWeb.DictionaryLive do
   # defp maybe_set_locale("english"), do: Gettext.put_locale(LexinWeb.Gettext, "en")
   # defp maybe_set_locale("russian"), do: Gettext.put_locale(LexinWeb.Gettext, "ru")
   # defp maybe_set_locale(_), do: Gettext.put_locale(LexinWeb.Gettext, "sv")
-
-  defp page_title(""), do: "Lexin Mobi"
-  defp page_title(q), do: "#{q} · Lexin Mobi"
 
   defp error_msg(:not_found),
     do: dgettext("errors", "Not found")
