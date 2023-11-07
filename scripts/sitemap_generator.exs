@@ -56,8 +56,11 @@ defmodule SitemapGenerator do
     end
   end
 
-  defp url(word, lang),
-    do: "#{@url_prefix}/dictionary/#{word}?lang=#{lang}"
+  defp url(word, lang) do
+    word = String.replace(word, "/", "%2F")
+
+    URI.encode("#{@url_prefix}/dictionary/#{word}?lang=#{lang}")
+  end
 
   defp save_to_file({{urls, chunk_n}, lang}, filenames) do
     contents = compile_sitemap(urls)

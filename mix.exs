@@ -70,7 +70,8 @@ defmodule Lexin.MixProject do
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
       "gettext.update": ["gettext.extract --merge --no-fuzzy"],
       test: ["esbuild default", "test"],
-      "sitemap.gen": ["run scripts/sitemap_generator.exs"]
+      "sitemap.gen": ["run scripts/sitemap_generator.exs"],
+      "sitemap.check": ["run scripts/sitemap_tester.exs"]
     ]
   end
 end
