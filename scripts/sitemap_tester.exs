@@ -27,8 +27,7 @@ defmodule SitemapTester do
       |> Floki.parse_document!()
       |> Floki.find("loc")
       |> Enum.map(&Floki.text/1)
-      |> Enum.filter(&String.contains?(&1, "CAD"))
-      |> Enum.map(&String.replace(&1, "https://lexin.mobi", "http://localhost:4000"))
+      #|> Enum.map(&String.replace(&1, "https://lexin.mobi", "http://localhost:4000"))
 
     task_opts = [
       max_concurrency: System.schedulers_online(),
