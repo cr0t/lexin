@@ -30,7 +30,13 @@ defmodule SitemapGenerator do
     Data.load_dictionaries()
     |> Enum.map(&make_sitemap/1)
     |> List.flatten()
-    |> then(&report/1)
+    |> then(fn sitemap_files ->
+      sitemap_files
+      |> compile_sitemapindex()
+      |> save_to_file!("sitemap.xml")
+
+      report(sitemap_files)
+    end)
   end
 
   defp make_sitemap({lang, db}) do
@@ -38,36 +44,34 @@ defmodule SitemapGenerator do
 
     db
     |> vocabulary()
-    |> Enum.map(&url(&1, lang))
+    |> Enum.map(&url_for(&1, lang))
     |> Enum.chunk_every(@max_urls_per_file)
     |> Enum.with_index()
-    |> Enum.reduce([], &save_to_file({&1, lang}, &2))
+    |> Enum.reduce([], &persist_sitemap({&1, lang}, &2))
   end
 
   defp vocabulary(db) do
-    vocab_sql = """
-    SELECT DISTINCT(word) FROM vocabulary
-    """
+    vocab_query = "SELECT DISTINCT(word) FROM vocabulary"
 
-    with {:ok, statement} <- SQLite.prepare(db, vocab_sql),
+    with {:ok, statement} <- SQLite.prepare(db, vocab_query),
          {:ok, rows} <- SQLite.fetch_all(db, statement),
          :ok <- SQLite.release(db, statement) do
       List.flatten(rows)
     end
   end
 
-  defp url(word, lang) do
+  defp url_for(word, lang) do
     word = String.replace(word, "/", "%2F")
 
     URI.encode("#{@url_prefix}/dictionary/#{word}?lang=#{lang}")
   end
 
-  defp save_to_file({{urls, chunk_n}, lang}, filenames) do
-    contents = compile_sitemap(urls)
+  defp persist_sitemap({{urls, chunk_n}, lang}, filenames) do
     filename = "sitemap_#{lang}_#{chunk_n}.xml"
-    filepath = Path.join([@static_path, filename])
 
-    File.write!(filepath, contents)
+    urls
+    |> compile_sitemap()
+    |> save_to_file!(filename)
 
     [filename | filenames]
   end
@@ -86,19 +90,46 @@ defmodule SitemapGenerator do
     |> then(&"#{intro}#{&1}#{outro}")
   end
 
-  defp report(sitemap_files) do
-    IO.puts("""
-    ---
-    Ensure that you have all these lines in the robots.txt:
+  defp compile_sitemapindex(sitemap_files) do
+    intro = """
+    <?xml version="1.0" encoding="UTF-8"?>
+    <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    """
 
-    User-agent: *
-    """)
+    outro = "\n</sitemapindex>\n"
 
     sitemap_files
-    |> Enum.sort()
-    |> Enum.map(&"Sitemap: #{@url_prefix}/#{&1}")
+    |> Enum.map(&"#{@url_prefix}/#{&1}")
+    |> Enum.map(&"<sitemap><loc>#{&1}</loc></sitemap>")
     |> Enum.join("\n")
-    |> IO.puts()
+    |> then(&"#{intro}#{&1}#{outro}")
+  end
+
+  defp report(sitemap_files) do
+    list_of_sitemaps = sitemap_files |> Enum.sort() |> Enum.join("\n")
+
+    IO.puts("""
+    =====
+    We have generated these sitemap files:
+
+    #{list_of_sitemaps}
+
+    ...as well as the sitemap index file that shall list all of them.
+    """)
+
+    IO.puts("""
+    Ensure that it defines all of the and your robots.txt looks like this:
+
+    User-agent: *
+
+    Sitemap: #{@url_prefix}/sitemap.xml
+    """)
+  end
+
+  defp save_to_file!(contents, filename) do
+    [@static_path, filename]
+    |> Path.join()
+    |> File.write!(contents)
   end
 end
 
