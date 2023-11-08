@@ -64,7 +64,7 @@ COPY lib lib
 RUN mix assets.deploy
 
 # clean up artefacts of phx.digest's of sitemaps (remove ones with fingerprints)
-RUN rm -f priv/static/sitemap_*-*.xml
+RUN rm -f priv/static/sitemap*-*.xml
 
 # compile the release
 RUN mix compile
