@@ -44,10 +44,12 @@ defmodule LexinWeb.SEO do
     translation = info.translation
     examples = Enum.take(info.compounds ++ info.examples, 3) |> Enum.join(@joiner)
 
+    prefix = if is_nil(translation), do: word, else: "#{word} - #{translation}"
+
     if String.length(examples) > 0 do
-      "#{word} - #{translation}#{@joiner}#{examples}"
+      "#{prefix}#{@joiner}#{examples}"
     else
-      "#{word} - #{translation}"
+      "#{prefix}"
     end
   end
 

@@ -149,6 +149,21 @@ defmodule Lexin.SearchTest do
     |> assert_has(css("#definition-918", text: "avgas|rör — exhaust pipe"))
   end
 
+  feature "does not fail on reference-only definitions (empty ones)", %{session: session} do
+    session
+    |> visit("/")
+    |> fill_in(@lang_select, with: "english")
+    |> fill_in(@query_input, with: "silhuett")
+    |> click(@submit_button)
+    |> assert_has(css("#definition-15456", text: "silhuett se siluett"))
+    |> then(fn session ->
+      assert(
+        page_title(session) === "silhuett - silhouette · Lexin Mobi",
+        "for reference-only words we use translation from the other definition"
+      )
+    end)
+  end
+
   feature "shows query word in the page title", %{session: session} do
     session
     |> visit("/")
@@ -168,6 +183,21 @@ defmodule Lexin.SearchTest do
       assert(
         page_title(session) === "a conto - А-конто · Lexin Mobi",
         "when user submits a query, we show it in the page's title"
+      )
+    end)
+  end
+
+  feature "shows a simplified page title when no translation available", %{session: session} do
+    session
+    |> visit("/")
+    |> fill_in(@lang_select, with: "ryska")
+    |> fill_in(@query_input, with: "silhuett")
+    |> click(@submit_button)
+    |> assert_has(css("#definition-15456", text: "silhuett se siluett"))
+    |> then(fn session ->
+      assert(
+        page_title(session) === "silhuett · Lexin Mobi",
+        "we skip translation from page title if it's not available"
       )
     end)
   end

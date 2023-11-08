@@ -1,9 +1,9 @@
 <article id={"definition-#{@dfn.id}"} class="mt-6">
   <header>
     <strong><%= @dfn.value %></strong>
-    <span>[<%= @dfn.base.phonetic.transcription %>]</span>
+    <span :if={@dfn.base.phonetic}>[<%= @dfn.base.phonetic.transcription %>]</span>
 
-    <.listen_link file={@dfn.base.phonetic.audio_url} />
+    <.listen_link :if={@dfn.base.phonetic} file={@dfn.base.phonetic.audio_url} />
 
     <span><%= @dfn.pos %></span>
 
@@ -15,7 +15,7 @@
     />
   </header>
 
-  <section class="pl-6">
+  <section :if={@dfn.base.meaning} class="pl-6">
     <div class="dimmed">
       (<%= Enum.join(inflections(@dfn), ", ") %>)
     </div>
