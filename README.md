@@ -35,9 +35,9 @@ Preferred way is to install [asdf](https://asdf-vm.com/) utility: then it will b
 
 To start your local development server:
 
-* Install dependencies with `mix deps.get`
-* Convert or use demo dictionary file (see the section below in this README)
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+- Install dependencies with `mix deps.get`
+- Convert or use demo dictionary file (see the section below in this README)
+- Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 ### Docker & Docker Compose
 
@@ -61,13 +61,40 @@ Advanced way: `fswatch lib test | mix test --listen-on-stdin`.
 
 We use [Wallaby](https://hexdocs.pm/wallaby) and [ChromeDriver](https://sites.google.com/chromium.org/driver/) to run integration tests. Read example code in our `tests/integration` directory or on Wallaby's documentation page.
 
+### Releasing
+
+When you're done with the development and tests are green, we can run the release script. It compiles the app inside a Docker container, cleans it, prepares the runner image and uploads it to GitHub Container Registry.
+
+> [!warning] Before Release Checklist
+>
+> - check or bump the app version in the `mix.exs`
+> - ensure that `.env` and `.tool-versions` files are in harmony
+> - run and check `mix test` for the last time
+
+To execute a release, we can run this from the project's root directory:
+
+```console
+./scripts/release.sh
+```
+
+> [!tip] GitHub Container Registry Login
+>
+> If you see _"unauthorized: unauthenticated: User cannot be authenticated with the token provided"_ error at the attempt to push the new image into the container repository, you might need to run this:
+>
+> ```console
+> docker login --username cr0t ghcr.io
+> # use `--password <ghcr_token>` option to avoid interactive prompt for the token
+> ```
+>
+> _You can generate a token at https://github.com/settings/tokens._
+
 ## Dictionary Database Files
 
 To make this app work properly, we need to provide it a directory with `.sqlite` dictionary files which contain definitions data.
 
 > To run this app locally, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/*.sqlite` into this folder; though it's extremely limited and contains only 7 word definitions.
 >
-> You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files are stored in the SVN repository and we do not want to copy them here and store in this GitHub repository, as they might become out of sync.
+> You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files stored in the SVN repository, and we do not want to copy them here and store in this GitHub repository, as they might become out of sync.
 
 You can convert all of them, or just a few selected ones.
 
