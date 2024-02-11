@@ -45,6 +45,12 @@ RUN mix local.hex --force && \
 # set build ENV
 ENV MIX_ENV="prod"
 
+# to build an AMD64 image on M-based macs Docker uses QEMU virtual machines, so
+# we have to pass custom ERL_FLAGS to fix segfaults, more info:
+# - https://github.com/erlang/otp/pull/6340
+# - https://github.com/livebook-dev/livebook/commit/6256b66bd37cb434f0bd19f58b68ec232ca9a7f7#diff-dd2c0eb6ea5cfc6c4bd4eac30934e2d5746747af48fef6da689e85b752f39557R23
+ENV ERL_FLAGS="+JMsingle true"
+
 # install mix dependencies
 COPY mix.exs mix.lock ./
 RUN mix deps.get --only $MIX_ENV

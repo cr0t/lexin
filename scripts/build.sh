@@ -42,27 +42,28 @@ fi
 # Some information we will need to name and tag the image we're building
 APP_NAME=$1
 APP_VERSION=$2
-DOCKER_IMAGE="ghcr.io/cr0t/$APP_NAME:$APP_VERSION"
-EXISTING_IMAGE_ID=$(docker images -q $DOCKER_IMAGE 2> /dev/null)
+IMAGE_NAME="ghcr.io/cr0t/$APP_NAME:$APP_VERSION"
+EXISTING_IMAGE_ID=$(docker images -q $IMAGE_NAME 2> /dev/null)
 
 if [ -n "$EXISTING_IMAGE_ID" ] && ! $FORCE_FLAG; then
-  echo "The image $DOCKER_IMAGE already exists: $EXISTING_IMAGE_ID!"
+  echo "The image $IMAGE_NAME already exists: $EXISTING_IMAGE_ID!"
   echo "You can use --force to delete and rebuild it forcefully, or bump the version in mix.exs."
   echo "Note: add --no-cache to tell Docker skip local cache."
   exit 3
 fi
 
-DOCKER_BUILD_ARGS=$(for i in `cat .env | grep -v '#'`; do out+="--build-arg $i "; done; echo $out; out="")
-DOCKER_BUILD_ARGS="$DOCKER_BUILD_ARGS --file .docker/Dockerfile.build "
+BUILD_PLATFORM="linux/amd64"
+BUILD_ENV_ARGS=$(for i in `cat .env | grep -v '#'`; do out+="--build-arg $i "; done; echo $out; out="")
+BUILD_FLAGS="$BUILD_ENV_ARGS --platform $BUILD_PLATFORM --file .docker/Dockerfile.build "
 
 if $FORCE_FLAG && [ -n "$EXISTING_IMAGE_ID" ]; then
   docker image rm $EXISTING_IMAGE_ID
 fi
 
 if $NO_CACHE_FLAG; then
-  docker image build $DOCKER_BUILD_ARGS --no-cache --tag $DOCKER_IMAGE .
+  docker build $BUILD_FLAGS --no-cache --tag $IMAGE_NAME .
 else
-  docker image build $DOCKER_BUILD_ARGS --tag $DOCKER_IMAGE .
+  docker build $BUILD_FLAGS --tag $IMAGE_NAME .
 fi
 
 # push it to GitHub
