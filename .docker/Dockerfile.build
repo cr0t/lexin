@@ -1,7 +1,7 @@
 # Dockerfile for Production
 #
-# Defines the build steps that we need to follow to get built Elixir application in Docker and
-# later run it in production.
+# Defines the build steps that we need to follow to get built Elixir application
+# in Docker and later run it in production.
 #
 # We need to do a few things to prepare a release build:
 #
@@ -20,29 +20,24 @@
 #  * exec:  docker container exec -it lexin sh
 #  * logs:  docker container logs --follow --tail 100 lexin
 
-# --- Stage: Building ---
-
 ARG ELIXIR_VERSION
 ARG ERLANG_VERSION
-ARG UBUNTU_VERSION
+ARG ALPINE_VERSION
 
-ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${ERLANG_VERSION}-ubuntu-${UBUNTU_VERSION}"
-ARG RUNNER_IMAGE="ubuntu:${UBUNTU_VERSION}"
+ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${ERLANG_VERSION}-alpine-${ALPINE_VERSION}"
+ARG RUNNER_IMAGE="alpine:${ALPINE_VERSION}"
+
+# --- Stage: Building ---
 
 FROM ${BUILDER_IMAGE} AS builder
 
-# install build dependencies & do some clean ups
-RUN apt-get update -y && apt-get install -y build-essential git \
-    && apt-get clean && rm -f /var/lib/apt/lists/*_*
+# install build dependencies
+RUN apk add --no-cache build-base
 
-# prepare build dir
 WORKDIR /app
 
-# install hex + rebar
-RUN mix local.hex --force && \
-    mix local.rebar --force
+RUN mix local.hex --force && mix local.rebar --force
 
-# set build ENV
 ENV MIX_ENV="prod"
 
 # to build an AMD64 image on M-based macs Docker uses QEMU virtual machines, so
@@ -54,25 +49,23 @@ ENV ERL_FLAGS="+JMsingle true"
 # install mix dependencies
 COPY mix.exs mix.lock ./
 RUN mix deps.get --only $MIX_ENV
-RUN mkdir config
 
 # copy compile-time config files before we compile dependencies
 # to ensure any relevant config change will trigger the dependencies
 # to be re-compiled.
+RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
-COPY priv priv
+COPY priv/gettext priv/gettext
+COPY priv/static priv/static
 COPY assets assets
 COPY lib lib
 
 # compile assets
 RUN mix assets.deploy
 
-# clean up artefacts of phx.digest's of sitemaps (remove ones with fingerprints)
-RUN rm -f priv/static/sitemap*-*.xml
-
-# compile the release
+# compile application
 RUN mix compile
 
 # changes to config/runtime.exs don't require recompiling the code
@@ -82,37 +75,24 @@ RUN mix release
 
 # --- Stage: Running ---
 
-# start a new build stage so that the final image will only contain
-# the compiled release and other runtime necessities
+# final image will only contain the compiled release and other runtime necessities
 FROM ${RUNNER_IMAGE} AS runner
 
-# install runtime dependencies & do some clean ups
-RUN apt-get update -y \
-  && apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates tini \
-  && apt-get clean \
-  && rm -f /var/lib/apt/lists/*_*
+# install runtime dependencies
+RUN apk add --no-cache libstdc++ ncurses-libs tini
 
-# set the locale
-RUN sed -i "/en_US.UTF-8/s/^# //g" /etc/locale.gen && locale-gen
-
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+USER nobody:nobody
 
 WORKDIR "/app"
-RUN chown nobody /app
 
-# set runner ENV
 ENV MIX_ENV="prod"
 
 # only copy the final release from the build stage
-COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/lexin ./
+COPY --from=builder --chown=nobody:nobody /app/_build/${MIX_ENV}/rel/lexin ./
 
-USER nobody
-
-# if using an environment that doesn't automatically reap zombie processes, it is
-# advised to add an init process such as tini via `apt-get install`
-# above and adding an entrypoint. See https://github.com/krallin/tini for details
-ENTRYPOINT ["/usr/bin/tini", "--"]
+# if using an environment that doesn't automatically reap zombie processes, it
+# is advised to add an init process (such as tini) as an entrypoint;
+# see https://github.com/krallin/tini
+ENTRYPOINT ["/sbin/tini", "--"]
 
 CMD ["/app/bin/lexin", "start"]

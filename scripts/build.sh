@@ -60,6 +60,7 @@ if $FORCE_FLAG && [ -n "$EXISTING_IMAGE_ID" ]; then
   docker image rm $EXISTING_IMAGE_ID
 fi
 
+# NOTE: add `--progress plain` to simplify debugging
 if $NO_CACHE_FLAG; then
   docker build $BUILD_FLAGS --no-cache --tag $IMAGE_NAME .
 else
@@ -67,4 +68,4 @@ else
 fi
 
 # push it to GitHub
-docker push $DOCKER_IMAGE
+docker push $IMAGE_NAME
