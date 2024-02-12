@@ -3,6 +3,9 @@ import Config
 # Directory with `swe_*.sqlite` dictionary files
 config :lexin, :dictionaries_root, "dictionaries"
 
+# Directory with sitemap files
+config :lexin, :sitemaps_root, "sitemaps"
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

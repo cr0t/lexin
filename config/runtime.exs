@@ -12,7 +12,7 @@ import Config
 # If you use `mix release`, you need to explicitly enable the server
 # by passing the PHX_SERVER=true when you start it:
 #
-#     PHX_SERVER=true bin/exxy start
+#     PHX_SERVER=true bin/lexin start
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
@@ -27,6 +27,13 @@ if config_env() == :prod do
       raise "environment variable DICTIONARIES_ROOT is missing"
 
   config :lexin, :dictionaries_root, dictionaries_root_path
+
+  # Directory with the pre-generated sitemap files
+  sitemaps_root_path =
+    System.get_env("SITEMAPS_ROOT") ||
+      raise "environment variable SITEMAPS_ROOT is missing"
+
+  config :lexin, :sitemaps_root, sitemaps_root_path
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you

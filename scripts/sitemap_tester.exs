@@ -13,7 +13,7 @@ defmodule SitemapTester do
   def run() do
     "#{@static_path}/sitemap_*_*.xml"
     |> Path.wildcard()
-    # |> Enum.take(2)
+    # |> Enum.take(2) # for speeding up the development
     |> Enum.map(&test/1)
     |> full_report()
   end
@@ -27,7 +27,9 @@ defmodule SitemapTester do
       |> Floki.parse_document!()
       |> Floki.find("loc")
       |> Enum.map(&Floki.text/1)
-      #|> Enum.map(&String.replace(&1, "https://lexin.mobi", "http://localhost:4000"))
+
+    # add the next replace to the chain above to test sitemaps against the localhost
+    # |> Enum.map(&String.replace(&1, "https://lexin.mobi", "http://localhost:4000"))
 
     task_opts = [
       max_concurrency: System.schedulers_online(),

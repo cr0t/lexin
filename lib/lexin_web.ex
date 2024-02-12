@@ -18,6 +18,7 @@ defmodule LexinWeb do
   """
 
   def static_paths, do: ~w[assets fonts images manifest.webmanifest favicon.ico robots.txt]
+  def sitemaps_path, do: Application.get_env(:lexin, :sitemaps_root)
 
   def router do
     quote do

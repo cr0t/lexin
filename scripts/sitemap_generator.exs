@@ -18,21 +18,30 @@ defmodule SitemapGenerator do
   """
 
   alias Exqlite.Sqlite3, as: SQLite
-  alias Lexin.Dictionary.Data
 
   require Logger
 
   @url_prefix "https://lexin.mobi"
-  @static_path Path.join(["priv", "static"])
+  @static_path Path.join(["sitemaps"])
   @max_urls_per_file 50_000
 
-  def generate() do
-    Data.load_dictionaries()
+  def generate!() do
+    case Lexin.Dictionary.Data.load_dictionaries() do
+      dicts when map_size(dicts) == 0 ->
+        raise "Cannot find any dictionary file! Please, provide language databases to generate sitemaps..."
+
+      dicts ->
+        compile(dicts)
+    end
+  end
+
+  def compile(dictionaries) do
+    dictionaries
     |> Enum.map(&make_sitemap/1)
     |> List.flatten()
     |> then(fn sitemap_files ->
       sitemap_files
-      |> compile_sitemapindex()
+      |> build_sitemapindex()
       |> save_to_file!("sitemap.xml")
 
       report(sitemap_files)
@@ -43,14 +52,14 @@ defmodule SitemapGenerator do
     Logger.info("Generating sitemap(s) for #{lang}...")
 
     db
-    |> vocabulary()
+    |> get_vocabulary()
     |> Enum.map(&url_for(&1, lang))
     |> Enum.chunk_every(@max_urls_per_file)
     |> Enum.with_index()
     |> Enum.reduce([], &persist_sitemap({&1, lang}, &2))
   end
 
-  defp vocabulary(db) do
+  defp get_vocabulary(db) do
     vocab_query = "SELECT DISTINCT(word) FROM vocabulary"
 
     with {:ok, statement} <- SQLite.prepare(db, vocab_query),
@@ -61,48 +70,49 @@ defmodule SitemapGenerator do
   end
 
   defp url_for(word, lang) do
+    # some of the words might have `/` character inside
     word = String.replace(word, "/", "%2F")
 
-    URI.encode("#{@url_prefix}/dictionary/#{word}?lang=#{lang}")
+    [@url_prefix, "/dictionary/", word, "?lang=", lang]
+    |> IO.iodata_to_binary()
+    |> URI.encode()
   end
 
   defp persist_sitemap({{urls, chunk_n}, lang}, filenames) do
     filename = "sitemap_#{lang}_#{chunk_n}.xml"
 
     urls
-    |> compile_sitemap()
+    |> build_sitemap()
     |> save_to_file!(filename)
 
     [filename | filenames]
   end
 
-  defp compile_sitemap(urls) do
+  defp build_sitemap(urls) do
     intro = """
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     """
 
-    outro = "\n</urlset>\n"
+    outro = "</urlset>\n"
 
-    urls
-    |> Enum.map(&"<url><loc>#{&1}</loc></url>")
-    |> Enum.join("\n")
-    |> then(&"#{intro}#{&1}#{outro}")
+    locations = Enum.map(urls, &["<url><loc>", &1, "</loc></url>\n"])
+
+    IO.iodata_to_binary([intro, locations, outro])
   end
 
-  defp compile_sitemapindex(sitemap_files) do
+  defp build_sitemapindex(sitemap_files) do
     intro = """
     <?xml version="1.0" encoding="UTF-8"?>
     <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     """
 
-    outro = "\n</sitemapindex>\n"
+    outro = "</sitemapindex>\n"
 
-    sitemap_files
-    |> Enum.map(&"#{@url_prefix}/#{&1}")
-    |> Enum.map(&"<sitemap><loc>#{&1}</loc></sitemap>")
-    |> Enum.join("\n")
-    |> then(&"#{intro}#{&1}#{outro}")
+    sitemap_files_urls =
+      Enum.map(sitemap_files, &["<sitemap><loc>", @url_prefix, "/", &1, "</loc></sitemap>\n"])
+
+    IO.iodata_to_binary([intro, sitemap_files_urls, outro])
   end
 
   defp report(sitemap_files) do
@@ -133,4 +143,4 @@ defmodule SitemapGenerator do
   end
 end
 
-SitemapGenerator.generate()
+SitemapGenerator.generate!()

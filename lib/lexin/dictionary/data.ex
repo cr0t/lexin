@@ -7,6 +7,7 @@ defmodule Lexin.Dictionary.Data do
   alias Lexin.Dictionary.Parser
 
   @max_suggestions 8
+  @db_extension ".sqlite"
 
   @doc """
   Returns pre-configured main directory with SQLite files
@@ -20,16 +21,14 @@ defmodule Lexin.Dictionary.Data do
   """
   @spec load_dictionaries() :: Map.t()
   def load_dictionaries() do
-    extension = ".sqlite"
-
-    [dictionaries_root(), "*#{extension}"]
+    [dictionaries_root(), "*#{@db_extension}"]
     |> Path.join()
     |> Path.wildcard()
     |> Enum.map(fn filename ->
       lang =
         filename
         |> Path.basename()
-        |> String.replace(extension, "")
+        |> String.replace(@db_extension, "")
 
       {:ok, db} = SQLite.open(filename)
 
