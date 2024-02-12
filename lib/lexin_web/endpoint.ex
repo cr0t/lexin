@@ -20,14 +20,20 @@ defmodule LexinWeb.Endpoint do
   # when deploying your static files in production.
   #
   # We need `only_matching` option to serve listed files after
-  # they got digested (with fingerprints in filenames), and a bunch
-  # of sitemaps (which are similar to sitemap_english_0.xml)
+  # they got digested (with fingerprints in filenames).
   plug Plug.Static,
     at: "/",
     from: :lexin,
     gzip: true,
     only: LexinWeb.static_paths(),
-    only_matching: ~w(manifest favicon robots sitemap)
+    only_matching: ~w(manifest favicon robots)
+
+  # Sitemaps shall be served at "/" too, but from an external (in relation to the app's root)
+  # directory. In production (with Docker env), it must be mounted to the app's container.
+  plug Plug.Static,
+    at: "/",
+    gzip: true,
+    from: LexinWeb.sitemaps_path()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

@@ -44,5 +44,8 @@ npm-debug.log
 # Data files
 /dictionaries/
 
+# Sitemap (generated) files
+/sitemaps/
+
 # Wallaby integration tests screenshots
 /screenshots/
