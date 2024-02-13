@@ -1,5 +1,13 @@
 import Config
 
+# IMPORTANT: Don't forget to mount external folders in the Docker; for example we can do like this:
+#
+# docker container run ... -v ./dictionaries:/app/dictionaries ...
+#
+# ...or use `docker-compose.prod.yml` as an example for the composed environment
+config :lexin, :dictionaries_path, "../../dictionaries"
+config :lexin, :sitemaps_path, "../../sitemaps"
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.

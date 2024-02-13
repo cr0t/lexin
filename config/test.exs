@@ -1,7 +1,9 @@
 import Config
 
-config :lexin, :dictionaries_root, "test/fixtures/dictionaries"
-config :lexin, :sitemaps_root, "test/fixtures/sitemaps"
+# NOTE: because of the way how we build the full path for dictionaries, we have to set it to a
+# relative here to point it to the repo's root instead of something inside the _build/test/...
+config :lexin, :dictionaries_path, "../../../../test/fixtures/dictionaries"
+config :lexin, :sitemaps_path, "../../../../test/fixtures/sitemaps"
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

@@ -8,10 +8,10 @@ defmodule SitemapTester do
 
   require Logger
 
-  @static_path Path.join(["priv", "static"])
+  @sitemaps_path Application.compile_env(:lexin, :sitemaps_path)
 
   def run() do
-    "#{@static_path}/sitemap_*_*.xml"
+    "#{@sitemaps_path}/sitemap_*_*.xml"
     |> Path.wildcard()
     # |> Enum.take(2) # for speeding up the development
     |> Enum.map(&test/1)
