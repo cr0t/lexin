@@ -12,8 +12,15 @@ defmodule Lexin.Dictionary.Data do
   @doc """
   Returns pre-configured main directory with SQLite files
   """
-  @spec dictionaries_root() :: String.t()
-  def dictionaries_root(), do: Application.get_env(:lexin, :dictionaries_root)
+  @spec dictionaries_dir() :: String.t()
+  def dictionaries_dir() do
+    app_dir = Application.app_dir(:lexin)
+    dicts_path = Application.get_env(:lexin, :dictionaries_path)
+
+    [app_dir, dicts_path]
+    |> Path.join()
+    |> Path.expand()
+  end
 
   @doc """
   Looks into dictionaries root directory for *.sqlite files that contain data for languages.
@@ -21,7 +28,7 @@ defmodule Lexin.Dictionary.Data do
   """
   @spec load_dictionaries() :: Map.t()
   def load_dictionaries() do
-    [dictionaries_root(), "*#{@db_extension}"]
+    [dictionaries_dir(), "*#{@db_extension}"]
     |> Path.join()
     |> Path.wildcard()
     |> Enum.map(fn filename ->

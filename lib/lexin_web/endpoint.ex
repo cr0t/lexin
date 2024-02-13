@@ -32,8 +32,8 @@ defmodule LexinWeb.Endpoint do
   # directory. In production (with Docker env), it must be mounted to the app's container.
   plug Plug.Static,
     at: "/",
-    gzip: true,
-    from: LexinWeb.sitemaps_path()
+    from: {:lexin, LexinWeb.sitemaps_path()},
+    only_matching: ~w(sitemap)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

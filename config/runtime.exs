@@ -21,20 +21,6 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
-  # Directory with `swe_*.sqlite` dictionary files
-  dictionaries_root_path =
-    System.get_env("DICTIONARIES_ROOT") ||
-      raise "environment variable DICTIONARIES_ROOT is missing"
-
-  config :lexin, :dictionaries_root, dictionaries_root_path
-
-  # Directory with the pre-generated sitemap files
-  sitemaps_root_path =
-    System.get_env("SITEMAPS_ROOT") ||
-      raise "environment variable SITEMAPS_ROOT is missing"
-
-  config :lexin, :sitemaps_root, sitemaps_root_path
-
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want

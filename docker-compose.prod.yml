@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  lexin:
+    image: ghcr.io/cr0t/lexin:0.15.0
+    container_name: lexin
+    environment:
+      PHX_HOST: "lexin.mobi"
+      PHX_SERVER: "true"
+      SECRET_KEY_BASE: "REPLACE-ME-WITH-A-SECRET" # use `mix phx.gen.secret` output
+    volumes:
+      - ./dictionaries:/app/dictionaries:ro
+      - ./sitemaps:/app/sitemaps:ro
+    ports:
+      - 127.0.0.1:4003:4000
+    restart: unless-stopped

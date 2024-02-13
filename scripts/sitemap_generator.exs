@@ -22,7 +22,7 @@ defmodule SitemapGenerator do
   require Logger
 
   @url_prefix "https://lexin.mobi"
-  @static_path Path.join(["sitemaps"])
+  @sitemaps_path Application.compile_env(:lexin, :sitemaps_path)
   @max_urls_per_file 50_000
 
   def generate!() do
@@ -137,7 +137,7 @@ defmodule SitemapGenerator do
   end
 
   defp save_to_file!(contents, filename) do
-    [@static_path, filename]
+    [@sitemaps_path, filename]
     |> Path.join()
     |> File.write!(contents)
   end

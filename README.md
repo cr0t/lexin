@@ -1,12 +1,12 @@
 # Lexin Mobi
 
-It's a small web and mobile application for Swedish dictionary.
+It's a small web and mobile application for the Swedish dictionary.
 
 ## Intro
 
-Lexin Mobi provides a new modern and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [history notes](docs/HISTORY.md) about creation and first look of this application.
+Lexin Mobi provides a new, modern, and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [historical notes](docs/HISTORY.md) about the creation and first visuals of this application.
 
-Lexin Mobi is written as [Progressive web apps (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
+Lexin Mobi is written as [a Progressive Web App (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
 
 ### Screenshots
 
@@ -19,9 +19,9 @@ Lexin Mobi is written as [Progressive web apps (PWA)](https://developer.mozilla.
 
 ## Development
 
-Clone the repository to your development machine. To run the app, we have two approaches: native and Docker.
+Clone the repository on your development machine. To run the app, we have two approaches: native and Docker.
 
-Whichever approach you chose, you can visit [`localhost:4000`](http://localhost:4000) from your browser, when you've successfully ran the Phoenix server locally. See the details below.
+Whichever approach you choose, you can visit [`localhost:4000`](http://localhost:4000) from your browser, when you've successfully run the Phoenix server locally. See the details below.
 
 ### Native
 
@@ -29,25 +29,25 @@ Whichever approach you chose, you can visit [`localhost:4000`](http://localhost:
 
 You need to have Elixir installed and available in your environment.
 
-Preferred way is to install [asdf](https://asdf-vm.com/) utility: then it will be possible to use the same version of Elixir/Erlang/NodeJS which are defined in the `.tool-versions` file in the repository root.
+The preferred way is to install the [asdf](https://asdf-vm.com/) utility: then it will be possible to use the same version of Elixir/Erlang/Node.js, which is defined in the `.tool-versions` file in the repository root.
 
 #### Run a Phoenix Server
 
 To start your local development server:
 
-- Install dependencies with `mix deps.get`
-- Convert or use demo dictionary file (see the section below in this README)
-- Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+1. Install dependencies with `mix deps.get`.
+2. Convert or use a demo dictionary file (see the section below in this README).
+3. Start Phoenix endpoint with `mix phx.server` or `iex -S mix phx.server`.
 
 ### Docker & Docker Compose
 
-Alternatively, you can use Docker and have nothing but editor on your host machine to work with the project.
+Alternatively, you can use Docker and have nothing but an editor on your host machine to work with the project.
 
 > **For the first time** (or if you want to install/update dependencies), you need to run `mix deps.get` command inside the `phoenix` service container: `docker-compose run --rm phoenix mix deps.get`.
 
-Now, we can run `docker-compose up` (to run interactively) or `docker-compose --detach` (to run in background).
+Now, we can run `docker-compose up` (to run interactively) or `docker-compose --detach` (to run in the background).
 
-Check [`docker-compose.yml`](docker-compose.yml) file for details.
+Check the [`docker-compose.yml`](docker-compose.yml) file for details.
 
 ### Testing
 
@@ -63,7 +63,7 @@ We use [Wallaby](https://hexdocs.pm/wallaby) and [ChromeDriver](https://sites.go
 
 ### Releasing
 
-When you're done with the development and tests are green, we can run the release script. It compiles the app inside a Docker container, cleans it, prepares the runner image and uploads it to GitHub Container Registry.
+When you're done with the development and the tests are green, we can run the release script. It compiles the app inside a Docker container, cleans it, prepares the runner image, and uploads it to the GitHub Container Registry.
 
 > [!warning] Before Release Checklist
 >
@@ -88,11 +88,13 @@ To execute a release, we can run this from the project's root directory:
 >
 > _You can generate a token at https://github.com/settings/tokens._
 
-## Dictionary Database Files
+To run the container, we must mount two directories (and configure corresponding environment variables): for dictionaries and for sitemaps, as these files are outside the release image. Check [`docker-compose.prod.yml`](docker-compose.prod.yml) as an example.
 
-To make this app work properly, we need to provide it a directory with `.sqlite` dictionary files which contain definitions data.
+## Dictionary Files
 
-> To run this app locally, you must create `dictionaries` directory in the app root, and copy `test/fixtures/dictionaries/*.sqlite` into this folder; though it's extremely limited and contains only 7 word definitions.
+To make this app work properly, we need to provide it with a directory with `.sqlite` dictionary files, which contain definitions data.
+
+> To run this app locally, you must create `priv/dictionaries` directory, then copy files from `test/fixtures/dictionaries/` there (fixtures are extremely limited, and contain only ~7 words definitions).
 >
 > You can request access to the original XML files from authors of the original Lexin service (check [https://lexin.nada.kth.se/lexin/](https://lexin.nada.kth.se/lexin/) for the contact information). These files stored in the SVN repository, and we do not want to copy them here and store in this GitHub repository, as they might become out of sync.
 
@@ -100,7 +102,7 @@ You can convert all of them, or just a few selected ones.
 
 > **It is important** to name output files according to the list of supported languages options (see [`lib/lexin_web/live/components/search_form_component.ex`](lib/lexin_web/live/components/search_form_component.ex)). Our application filters shown list of languages according to available dictionaries it finds in the corresponding directory.
 
-You might have similar conversion sequence of commands:
+You might have a similar conversion sequence of commands:
 
 ```console
 $ mix run scripts/converter.exs --input dictionaries/swe_ara.xml --output dictionaries/arabic.sqlite
@@ -123,4 +125,4 @@ Inserting into SQLite...
 Done!
 ```
 
-`scripts/converter.exs` uses `XMLConverter`, see more in the corresponding module – [`lib/lexin/dictionary/xml_converter.ex`](lib/lexin/dictionary/xml_converter.ex).
+`scripts/converter.exs` uses `XMLConverter`, see more in the corresponding [module](lib/lexin/dictionary/xml_converter.ex).
