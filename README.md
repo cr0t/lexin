@@ -65,7 +65,9 @@ We use [Wallaby](https://hexdocs.pm/wallaby) and [ChromeDriver](https://sites.go
 
 When you're done with the development and the tests are green, we can run the release script. It compiles the app inside a Docker container, cleans it, prepares the runner image, and uploads it to the GitHub Container Registry.
 
-> [!warning] Before Release Checklist
+> [!warning]
+>
+> **Before Release Checklist**
 >
 > - check or bump the app version in the `mix.exs`
 > - ensure that `.env` and `.tool-versions` files are in harmony
@@ -77,7 +79,9 @@ To execute a release, we can run this from the project's root directory:
 ./scripts/release.sh
 ```
 
-> [!tip] GitHub Container Registry Login
+> [!tip]
+>
+> **GitHub Container Registry Login**
 >
 > If you see _"unauthorized: unauthenticated: User cannot be authenticated with the token provided"_ error at the attempt to push the new image into the container repository, you might need to run this:
 >
