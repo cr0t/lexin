@@ -46,7 +46,7 @@ defmodule Lexin.MixProject do
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:phoenix_live_reload, "~> 1.5.3", only: :dev},
       {:phoenix_live_view, "~> 0.20.1"},
-      {:plug_cowboy, "~> 2.6.1"},
+      {:plug_cowboy, "~> 2.7.1"},
       {:recon, "~> 2.5.4"},
       {:sentry, "~> 9.1.0"},
       {:tailwind, "~> 0.2.2", runtime: Mix.env() == :dev},
