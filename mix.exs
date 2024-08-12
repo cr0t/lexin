@@ -37,7 +37,7 @@ defmodule Lexin.MixProject do
       {:esbuild, "~> 0.8.1", runtime: Mix.env() == :dev},
       {:exqlite, "~> 0.23.0"},
       {:floki, "~> 0.36.2"},
-      {:gettext, "~> 0.24.0"},
+      {:gettext, "~> 0.25.0"},
       {:hackney, "~> 1.20.1"},
       {:jason, "~> 1.4.1"},
       {:observer_cli, "~> 1.7.4"},
