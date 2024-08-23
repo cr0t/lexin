@@ -10,9 +10,7 @@ defmodule LexinWeb.DictionaryLive do
 
   use LexinWeb, :live_view
 
-  import LexinWeb.SEO
-
-  alias LexinWeb.{SearchFormComponent, SerpComponents}
+  alias LexinWeb.{SEO, SearchFormComponent, SerpComponents}
 
   @doc """
   Set up the language in case if user already made searches previously, and her browser stored the
@@ -73,8 +71,8 @@ defmodule LexinWeb.DictionaryLive do
           |> clear_flash()
           |> assign(:definitions, definitions)
           |> assign(:suggestions, [])
-          |> assign(:page_title, page_title(query, definitions))
-          |> assign(:meta_desc, meta_desc(query, definitions))
+          |> assign(:page_title, SEO.page_title(query, definitions))
+          |> assign(:meta_desc, SEO.meta_desc(query, definitions))
 
         {:error, err} ->
           socket
