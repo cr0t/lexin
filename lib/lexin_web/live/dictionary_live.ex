@@ -65,9 +65,9 @@ defmodule LexinWeb.DictionaryLive do
     })
   end
 
-  defp find_definitions(%{assigns: %{query: query, lang: lang}} = socket) do
+  defp find_definitions(%{assigns: %{lang: lang, query: query}} = socket) do
     if String.length(query) > 0 do
-      case Lexin.Dictionary.lookup(lang, query) do
+      case Lexin.Dictionary.definitions(lang, query) do
         {:ok, definitions} ->
           socket
           |> clear_flash()

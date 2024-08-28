@@ -81,7 +81,7 @@ defmodule LexinWeb.SearchFormComponent do
       {gettext("turkish"), "turkish"}
     ]
 
-    available = Lexin.Dictionary.Worker.languages()
+    available = Lexin.Dictionary.languages()
 
     Enum.filter(translations, &Enum.member?(available, elem(&1, 1)))
   end
