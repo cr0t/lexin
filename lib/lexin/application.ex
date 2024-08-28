@@ -12,8 +12,8 @@ defmodule Lexin.Application do
       LexinWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Lexin.PubSub},
-      # Start a worker by calling: Lexin.Worker.start_link(arg)
-      Lexin.Dictionary.Worker,
+      # Start the Dictionaries
+      Lexin.Dictionary.Supervisor,
       # Start the Endpoint (http/https)
       LexinWeb.Endpoint
     ]
