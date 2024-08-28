@@ -4,9 +4,9 @@ defmodule LexinWeb.CoreComponents do
   """
 
   use Phoenix.Component
+  use Gettext, backend: LexinWeb.Gettext
 
   alias Phoenix.LiveView.JS
-  import LexinWeb.Gettext
 
   @doc """
   Renders flash notices.

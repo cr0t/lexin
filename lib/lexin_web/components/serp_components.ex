@@ -6,8 +6,6 @@ defmodule LexinWeb.SerpComponents do
   use Phoenix.Component
   use LexinWeb, :html
 
-  import LexinWeb.Gettext
-
   embed_templates("cards/*")
 
   @audio_url_prefix Application.compile_env(:lexin, :external_audio_url_prefix, "")
