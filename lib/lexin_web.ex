@@ -43,8 +43,9 @@ defmodule LexinWeb do
         formats: [:html, :json, :js],
         layouts: [html: LexinWeb.Layouts]
 
+      use Gettext, backend: LexinWeb.Gettext
+
       import Plug.Conn
-      import LexinWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -82,11 +83,12 @@ defmodule LexinWeb do
 
   defp html_helpers do
     quote do
+      use Gettext, backend: LexinWeb.Gettext
+
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
       import LexinWeb.CoreComponents
-      import LexinWeb.Gettext
       import LexinWeb.SEO
 
       # Shortcut for generating JS commands

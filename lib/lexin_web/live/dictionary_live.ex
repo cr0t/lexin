@@ -10,7 +10,6 @@ defmodule LexinWeb.DictionaryLive do
 
   use LexinWeb, :live_view
 
-  import LexinWeb.Gettext
   import LexinWeb.SEO
 
   alias LexinWeb.{SearchFormComponent, SerpComponents}
