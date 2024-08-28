@@ -50,3 +50,6 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 end
+
+# List available <lang>.sqlite files at the start of the application
+config :lexin, :dictionaries, Lexin.Dictionary.Files.available()
