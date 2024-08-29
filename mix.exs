@@ -4,7 +4,7 @@ defmodule Lexin.MixProject do
   def project do
     [
       app: :lexin,
-      version: "0.15.3",
+      version: "0.16.0",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
