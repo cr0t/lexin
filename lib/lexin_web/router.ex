@@ -28,8 +28,9 @@ defmodule LexinWeb.Router do
     get "/cookies", PagesController, :cookies
     get "/install", PagesController, :install
 
-    # OpenGraph image endpoint
-    get "/share/og/:definition_id/:lang", OGImageController, :image
+    scope "/share" do
+      get "/og/:lang/:query", OGImageController, :image
+    end
   end
 
   # Other scopes may use custom stacks.
