@@ -10,7 +10,7 @@ defmodule LexinWeb.DictionaryLive do
 
   use LexinWeb, :live_view
 
-  alias LexinWeb.{SEO, SearchFormComponent, SerpComponents}
+  alias LexinWeb.{SEO, SearchFormComponent, CardComponents}
 
   @doc """
   Set up the language in case if user already made searches previously, and her browser stored the

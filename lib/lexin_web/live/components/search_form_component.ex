@@ -8,7 +8,7 @@ defmodule LexinWeb.SearchFormComponent do
 
   use LexinWeb, :live_component
 
-  import LexinWeb.SerpComponents
+  import LexinWeb.CardComponents
 
   @min_chars_for_suggestions 1
   @select_lang_prompt "select_language"
