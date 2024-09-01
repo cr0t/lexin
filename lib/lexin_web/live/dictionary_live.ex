@@ -10,7 +10,7 @@ defmodule LexinWeb.DictionaryLive do
 
   use LexinWeb, :live_view
 
-  alias LexinWeb.{SEO, SearchFormComponent, CardComponents}
+  alias LexinWeb.{SearchFormComponent, CardComponents}
 
   @doc """
   Set up the language in case if user already made searches previously, and her browser stored the
@@ -67,12 +67,17 @@ defmodule LexinWeb.DictionaryLive do
     if String.length(query) > 0 do
       case Lexin.Dictionary.definitions(lang, query) do
         {:ok, definitions} ->
+          # we have a bit of duplication for the page title below because `SEO.assign` won't update
+          # title-tag content dynamically: we have to explicitly assign `:page_title` to the socket
+          top_definition = hd(definitions)
+          page_title = LexinWeb.SEO.ForDefinition.title(top_definition, %{"query" => query})
+
           socket
+          |> SEO.assign(top_definition)
+          |> assign(:page_title, page_title)
           |> clear_flash()
           |> assign(:definitions, definitions)
           |> assign(:suggestions, [])
-          |> assign(:page_title, SEO.page_title(query, definitions))
-          |> assign(:meta_desc, SEO.meta_desc(query, definitions))
 
         {:error, err} ->
           socket

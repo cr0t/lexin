@@ -5,7 +5,7 @@ defmodule LexinWeb.OGImageController do
 
   alias Lexin.Dictionary
 
-  @template_filepath "lib/lexin_web/components/og_image.svg.eex"
+  @template_filepath "lib/lexin_web/seo/og_image.svg.eex"
   @external_resource @template_filepath
   @template_svg EEx.compile_file(@template_filepath)
 

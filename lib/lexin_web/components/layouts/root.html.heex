@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content={get_csrf_token()} />
 
-    <.live_title><%= assigns[:page_title] || default_title() %></.live_title>
-    <meta name="description" content={assigns[:meta_desc] || default_desc()} />
-    <meta name="yandex-verification" content="0d08b3d92a2bee01" />
-
-    <link rel="manifest" href={~p"/manifest.webmanifest"} />
+    <SEO.juice conn={@conn} config={LexinWeb.SEO.config()} page_title={assigns[:page_title]} />
 
     <link rel="icon" href={~p"/favicon.ico"} />
     <link rel="icon" href={~p"/images/icon.svg"} type="image/svg+xml" sizes="any" />
@@ -27,6 +23,8 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
 
     <._lang_js_utils />
+
+    <meta name="yandex-verification" content="0d08b3d92a2bee01" />
 
     <script defer data-domain="lexin.mobi" src="https://plausible.summercode.com/js/script.js">
     </script>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1200"
+   height="630"
+   viewBox="0 0 1200 630"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="og_default_inkscape.svg"
+   inkscape:export-filename="../../../../og_blueprint.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showguides="false"
+     inkscape:zoom="0.97107929"
+     inkscape:cx="600.87781"
+     inkscape:cy="364.02795"
+     inkscape:window-width="2152"
+     inkscape:window-height="1212"
+     inkscape:window-x="2801"
+     inkscape:window-y="48"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffffff" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       fill="#0069d9"
+       d="m 412.9036,240.13783 c 19.1717,8.11642 45.1998,7.13685 60.0333,17.63223 14.8334,10.49537 18.1921,32.60562 17.2125,54.15613 -0.8395,21.5505 -6.2973,42.54125 -16.6525,60.59329 -10.3556,18.19199 -25.7486,33.5852 -43.9408,42.26138 -18.1921,8.53624 -39.0429,10.63531 -59.4737,9.65574 -20.4308,-0.97957 -40.1625,-4.89784 -60.3133,-12.45451 -20.1512,-7.55667 -40.4423,-18.75174 -50.79771,-35.96415 -10.35545,-17.07247 -10.77528,-40.30224 -6.15729,-60.87318 4.7579,-20.43099 14.4137,-38.20316 24.909,-55.27563 10.4954,-16.93254 21.6903,-33.16538 37.0838,-43.38088 15.533,-10.21551 35.1242,-14.55359 50.9372,-8.11643 15.953,6.43717 28.1278,23.64958 47.1595,31.76601 z"
+       id="path1"
+       inkscape:label="blue_blob"
+       style="stroke-width:1.39938" />
+    <path
+       d="m 360.2736,333.17057 -1.9678,27.68155 h -72.7461 v -4.65733 q 1.5743,-0.13111 4.5261,-0.45919 3.0174,-0.32799 4.198,-0.85275 1.9678,-0.85274 2.821,-2.49266 0.9183,-1.6399 0.9183,-4.19813 v -66.64561 q 0,-2.23027 -0.7875,-3.93577 -0.7215,-1.7055 -2.9518,-2.75503 -1.5086,-0.78715 -4.2636,-1.50871 -2.6894,-0.78715 -4.4605,-0.91835 v -4.65732 h 39.2922 v 4.65732 q -1.8371,0.0656 -4.7889,0.65596 -2.8862,0.59037 -4.1978,1.04954 -2.2304,0.78715 -3.0831,2.68944 -0.787,1.90228 -0.787,4.06696 v 62.51307 q 0,4.32935 0.3937,6.75641 0.459,2.36144 2.0335,3.67336 1.509,1.18073 4.4603,1.57431 3.0175,0.32795 8.3965,0.32795 2.4273,0 5.051,-0.13111 2.6237,-0.13112 4.9853,-0.52478 2.296,-0.39353 4.1982,-1.04954 1.9679,-0.72156 2.8862,-1.7711 2.6893,-3.01741 6.2318,-9.11785 3.6076,-6.16603 4.9853,-9.9706 z m 62.1193,12.46326 q -4.0665,7.74034 -10.8889,12.33206 -6.8219,4.59173 -15.6774,4.59173 -7.8058,0 -13.7095,-2.75503 -5.838,-2.75504 -9.6425,-7.47796 -3.8049,-4.72292 -5.7072,-11.02014 -1.8366,-6.29723 -1.8366,-13.316 0,-6.29722 1.9679,-12.33207 2.0335,-6.10044 5.9036,-10.95455 3.7393,-4.65733 9.2492,-7.47796 5.5755,-2.88622 12.4635,-2.88622 7.084,0 12.1349,2.23027 5.051,2.23026 8.1997,6.10043 3.0174,3.67338 4.4603,8.65868 1.5089,4.98531 1.5089,10.82336 v 4.32934 h -42.8343 q 0,6.36283 1.1808,11.54491 1.2465,5.1821 3.8701,9.11787 2.5585,3.80457 6.6907,6.03482 4.1327,2.16468 9.8394,2.16468 5.8384,0 10.0363,-2.68944 4.2638,-2.75503 8.1996,-9.83941 z M 407.8964,320.9697 q 0,-3.67338 -0.6558,-7.87153 -0.5907,-4.19815 -1.9679,-7.01879 -1.5089,-3.01741 -4.1326,-4.9197 -2.6242,-1.90229 -6.7563,-1.90229 -6.888,0 -11.4796,5.77246 -4.5259,5.70686 -4.9197,15.93985 z m 84.2909,39.88242 h -29.6494 v -4.32934 q 2.9519,-0.32795 4.9854,-0.65596 2.0991,-0.32795 2.0991,-1.7055 0,-0.59037 -0.6563,-1.83669 -0.6558,-1.24632 -1.3116,-2.29586 -1.6402,-2.55825 -4.5264,-6.82199 -2.8205,-4.32934 -6.9532,-10.29859 -3.4107,4.26375 -6.2969,8.33071 -2.8862,4.00135 -6.0349,8.52749 -0.4593,0.65596 -0.9839,1.6399 -0.4594,0.98393 -0.4594,1.5743 0,1.44312 1.8371,2.42705 1.9022,0.91834 5.6411,1.24633 v 4.19815 h -23.9426 v -4.06695 q 4.4607,-1.31193 7.15,-3.14861 2.755,-1.9023 5.051,-4.65733 2.0335,-2.62384 5.6411,-7.21556 3.6733,-4.59173 9.4461,-12.46326 -3.3456,-4.78852 -8.1997,-11.67611 -4.7884,-6.95319 -7.9371,-11.54492 -1.7058,-2.49265 -3.9357,-4.00136 -2.1648,-1.5743 -6.1662,-1.5743 v -4.32934 h 28.1409 v 4.32934 q -2.0991,0 -4.1326,0.26237 -2.0335,0.26237 -2.0335,1.18073 0,0.59036 0.3937,1.31192 0.3938,0.72155 0.984,1.5743 1.4433,2.23027 4.4607,6.88759 3.0831,4.65732 6.6251,9.83942 2.296,-3.14861 5.3134,-7.34676 3.0831,-4.19816 5.6412,-8.00273 0.2625,-0.45919 0.5245,-1.11513 0.2625,-0.72156 0.2625,-1.37752 0,-1.37752 -2.296,-2.16467 -2.2299,-0.85275 -4.2634,-1.18073 v -4.19815 h 23.877 v 4.06696 q -5.051,1.31192 -7.8715,3.14861 -2.821,1.77109 -4.7889,4.13255 -2.1643,2.68944 -5.1817,6.62521 -2.9519,3.93576 -8.3309,11.02014 5.9692,8.3963 9.7081,13.77518 3.7393,5.37888 7.5438,11.08575 1.9023,2.88621 4.1978,4.59171 2.3617,1.63991 6.4287,1.9023 z"
+       id="text5"
+       style="font-size:96px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';fill:#ffffff;stroke-width:1.40158"
+       inkscape:label="Lex"
+       aria-label="Lex" />
+    <path
+       d="m 529.0699,360.85212 h -31.2896 v -4.32934 q 1.509,-0.13112 3.0831,-0.26237 1.6402,-0.13111 2.8205,-0.52477 1.8371,-0.59038 2.6898,-2.03349 0.9183,-1.5087 0.9183,-3.87016 v -39.94804 q 0,-2.09908 -0.9839,-3.80458 -0.9183,-1.77109 -2.6242,-2.95182 -1.246,-0.78715 -3.6076,-1.31192 -2.3612,-0.59036 -4.329,-0.72156 v -4.26374 l 22.827,-1.44312 0.9187,0.91835 v 52.73925 q 0,2.29588 0.8527,3.80458 0.9183,1.5087 2.8206,2.23026 1.4428,0.59036 2.8205,0.98394 1.3777,0.328 3.0831,0.45919 z m -8.2653,-90.98177 q 0,3.73897 -2.4924,6.5596 -2.4273,2.75504 -6.0349,2.75504 -3.3455,0 -5.838,-2.62384 -2.4272,-2.68944 -2.4272,-6.10044 0,-3.60779 2.4272,-6.29723 2.4925,-2.68944 5.838,-2.68944 3.7389,0 6.1005,2.55825 2.4268,2.49265 2.4268,5.83806 z m 87.6365,90.98177 h -31.6828 v -4.32934 q 1.5085,-0.13112 3.2799,-0.26237 1.8366,-0.13111 3.0174,-0.52477 1.8367,-0.59038 2.6893,-2.03349 0.9184,-1.5087 0.9184,-3.87016 v -33.25721 q 0,-6.8876 -3.28,-10.62658 -3.2143,-3.73898 -7.8715,-3.73898 -3.4764,0 -6.3625,1.11514 -2.8862,1.04954 -5.1166,2.62384 -2.1648,1.50871 -3.4768,3.27981 -1.2465,1.70549 -1.8366,2.75503 v 37.19299 q 0,2.23027 0.9183,3.67338 0.9183,1.44311 2.7549,2.23026 1.3777,0.65597 2.9518,0.98394 1.6402,0.32799 3.3456,0.45919 v 4.32934 H 537.007 v -4.32934 q 1.5085,-0.13112 3.0831,-0.26237 1.6397,-0.13112 2.8205,-0.52477 1.8367,-0.59038 2.6893,-2.03349 0.9184,-1.50871 0.9184,-3.87017 v -39.94805 q 0,-2.23027 -0.984,-4.06696 -0.9183,-1.90229 -2.6237,-3.08301 -1.2464,-0.78716 -2.9518,-1.11514 -1.7054,-0.39357 -3.6732,-0.52478 v -4.26374 l 21.5153,-1.44312 0.9184,0.91835 v 9.11786 h 0.3281 q 1.5741,-1.5743 3.9357,-3.73898 2.3612,-2.23027 4.4603,-3.60778 2.4273,-1.57431 5.7724,-2.62385 3.3456,-1.04954 7.5438,-1.04954 9.3144,0 13.7752,5.83806 4.5259,5.77245 4.5259,15.41509 v 33.65079 q 0,2.29587 0.7875,3.73896 0.7871,1.37753 2.6893,2.16468 1.5741,0.65596 2.6893,0.91835 1.1808,0.26237 3.2143,0.39358 z m 30.4365,-7.54355 q 0,3.67338 -2.6893,6.29722 -2.6237,2.55825 -6.2974,2.55825 -3.6733,0 -6.3626,-2.55825 -2.6241,-2.62384 -2.6241,-6.29722 0,-3.67337 2.6241,-6.29722 2.6893,-2.68944 6.3626,-2.68944 3.6737,0 6.2974,2.68944 2.6893,2.62385 2.6893,6.29722 z m 124.5015,7.54355 h -31.5516 v -4.32934 q 1.5085,-0.13112 3.0174,-0.26237 1.5742,-0.13111 2.755,-0.52477 1.8366,-0.59038 2.6893,-2.03349 0.9183,-1.5087 0.9183,-3.87016 v -33.38841 q 0,-6.822 -3.1487,-10.49538 -3.083,-3.73898 -7.7402,-3.73898 -3.2143,0 -6.0349,0.98394 -2.8206,0.98394 -5.1818,2.75504 -1.9026,1.44311 -3.2143,3.14861 -1.2464,1.63991 -1.9022,2.75504 v 37.32418 q 0,2.29587 0.787,3.80457 0.7871,1.44312 2.6894,2.23027 1.5089,0.59036 2.6893,0.91834 1.2464,0.26237 3.2143,0.39358 v 4.32934 h -30.8958 v -4.32934 q 1.5089,-0.13112 2.8862,-0.26237 1.4433,-0.13112 2.6241,-0.52477 1.8366,-0.59038 2.6893,-2.03349 0.9183,-1.50871 0.9183,-3.87016 v -33.38841 q 0,-6.822 -3.1487,-10.49538 -3.083,-3.73898 -7.7402,-3.73898 -3.2143,0 -6.0349,1.04954 -2.8206,0.98394 -5.1822,2.75503 -1.9022,1.44312 -3.2139,3.27981 -1.312,1.7711 -1.9678,2.68944 v 37.06179 q 0,2.23027 0.9183,3.73897 0.9183,1.50872 2.7549,2.29587 1.3777,0.65597 2.8206,0.98394 1.4433,0.32795 3.2143,0.45919 v 4.32934 h -31.4204 v -4.32934 q 1.5085,-0.13112 3.0826,-0.26237 1.6402,-0.13112 2.821,-0.52477 1.8367,-0.59038 2.6893,-2.03349 0.9184,-1.5087 0.9184,-3.87016 v -40.21049 q 0,-2.09907 -0.984,-3.73898 -0.9183,-1.70549 -2.6237,-2.88622 -1.2464,-0.78716 -3.083,-1.24633 -1.8367,-0.52477 -3.8045,-0.65596 v -4.26375 l 21.6466,-1.44311 0.9183,0.91835 v 9.24905 h 0.4589 q 1.6398,-1.63991 4.0014,-3.87018 2.3616,-2.23026 4.3951,-3.60778 2.2956,-1.57431 5.7068,-2.62384 3.4764,-1.04954 7.4777,-1.04954 6.2974,0 10.8234,3.411 4.5263,3.3454 6.4942,8.13391 2.3612,-2.29586 4.1326,-4.00136 1.8367,-1.77109 4.7885,-3.73898 2.4924,-1.7055 5.838,-2.75503 3.4112,-1.04954 7.5433,-1.04954 8.1997,0 12.9881,5.37887 4.7889,5.37889 4.7889,16.53023 v 32.86364 q 0,2.29587 0.787,3.80457 0.7871,1.44312 2.6894,2.23027 1.5089,0.59036 2.9518,0.91834 1.5085,0.26237 3.3455,0.39358 z m 70.58151,-32.99482 q 0,6.82199 -2.1648,13.44719 -2.1647,6.5596 -6.1661,11.15133 -4.52601,5.24769 -10.49521,7.80593 -5.9693,2.55826 -13.3818,2.55826 -6.1661,0 -11.7416,-2.29588 -5.5755,-2.36145 -9.905,-6.82199 -4.2639,-4.39493 -6.822,-10.69215 -2.4928,-6.36282 -2.4928,-14.23435 0,-15.1527 8.7902,-24.79533 8.8554,-9.64262 23.1551,-9.64262 13.5787,0 22.36851,9.18345 8.8555,9.11786 8.8555,24.33616 z m -13.57831,0.13112 q 0,-4.91972 -0.9844,-10.36419 -0.9835,-5.51007 -2.9518,-9.31465 -2.0987,-4.06695 -5.5099,-6.49401 -3.4111,-2.49265 -8.3308,-2.49265 -5.051,0 -8.6586,2.49265 -3.542,2.49265 -5.7724,6.822 -2.0991,4.00136 -2.9518,9.11786 -0.8527,5.11649 -0.8527,9.905 0,6.29722 0.984,11.6761 1.0495,5.3133 3.2795,9.51144 2.2303,4.19814 5.5759,6.6252 3.4108,2.36146 8.3961,2.36146 8.1996,0 12.988,-7.93712 4.7889,-7.93713 4.7889,-21.90909 z m 88.62001,0.45919 q 0,14.56233 -9.1836,24.46733 -9.1831,9.90502 -21.3185,9.90502 -5.3134,0 -10.4951,-1.63991 -5.1166,-1.63989 -9.643,-4.39493 l -4.854,7.54354 -4.067,-0.91834 q 0.3281,-4.85411 0.4593,-11.67611 0.1313,-6.82198 0.1313,-13.18481 v -64.0218 q 0,-2.23027 -1.0496,-4.46054 -0.9835,-2.23027 -2.558,-3.2142 -1.2465,-0.85276 -4.1983,-1.24633 -2.8862,-0.45919 -4.6572,-0.59037 v -4.19815 l 23.7458,-1.50864 0.9183,0.98395 v 42.63746 l 0.4594,0.1312 q 4.067,-4.32934 8.8554,-6.49401 4.8541,-2.16468 9.5112,-2.16468 11.9385,0 19.9413,9.44584 8.0027,9.44585 8.0027,24.59854 z m -13.7095,0.45919 q 0,-4.85411 -1.0496,-9.90502 -1.0495,-5.05089 -3.2799,-8.78987 -2.2299,-3.80458 -5.838,-6.16603 -3.6076,-2.36147 -8.6586,-2.36147 -4.5915,0 -8.0683,1.8367 -3.4108,1.77109 -6.1662,4.8541 v 37.65216 q 0.3938,1.57431 1.509,3.67338 1.1808,2.09908 3.1487,4.00136 1.9678,1.83669 4.4603,3.01742 2.4929,1.11514 6.1005,1.11514 8.0027,0 12.9224,-7.74034 4.9197,-7.74034 4.9197,-21.18753 z m 54.7072,31.94529 h -31.2896 v -4.32935 q 1.509,-0.13112 3.0831,-0.26237 1.6402,-0.13112 2.821,-0.52478 1.8366,-0.59036 2.6893,-2.03348 0.9183,-1.5087 0.9183,-3.87016 V 309.884 q 0,-2.09908 -0.9839,-3.80458 -0.9183,-1.77109 -2.6237,-2.95182 -1.2464,-0.78715 -3.6081,-1.31192 -2.3612,-0.59037 -4.329,-0.72156 v -4.26374 l 22.827,-1.44312 0.9187,0.91834 v 52.73926 q 0,2.29588 0.8527,3.80458 0.9183,1.5087 2.8206,2.23027 1.4428,0.59036 2.8205,0.98393 1.3777,0.32799 3.0831,0.45919 z m -8.2653,-90.98178 q 0,3.73897 -2.4924,6.5596 -2.4272,2.75504 -6.0349,2.75504 -3.3455,0 -5.838,-2.62384 -2.4272,-2.68944 -2.4272,-6.10044 0,-3.60778 2.4272,-6.29722 2.4925,-2.68944 5.838,-2.68944 3.7389,0 6.1005,2.55824 2.4268,2.49266 2.4268,5.83806 z"
+       id="text6"
+       style="font-size:96px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';fill:#0069d9;stroke-width:1.40158"
+       inkscape:label="in.mobi"
+       aria-label="in.mobi" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="985.51624"
+       y="373.00211"
+       id="text1-9"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan1-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="985.51624"
+         y="373.00211">english</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="824.58826"
+       y="543.05414"
+       id="text1"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="824.58826"
+         y="543.05414">shqiptare</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="103.71093"
+       y="97.158463"
+       id="text2"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="103.71093"
+         y="97.158463">azərbaycan</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="973.57446"
+       y="110.77642"
+       id="text3"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="973.57446"
+         y="110.77642">عربي</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="954.08771"
+       y="195.97131"
+       id="text4"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="954.08771"
+         y="195.97131">bosanski</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="475.30203"
+       y="467.9458"
+       id="text7"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="475.30203"
+         y="467.9458">svenska</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="456.97302"
+       y="108.54148"
+       id="text9"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="456.97302"
+         y="108.54148">suomalainen</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="43.340282"
+       y="298.9281"
+       id="text10"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="43.340282"
+         y="298.9281">ελληνικά</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="484.8111"
+       y="211.5275"
+       id="text11"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="484.8111"
+         y="211.5275">hrvatski</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="418.1532"
+       y="566.53345"
+       id="text12"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="418.1532"
+         y="566.53345">kurdiya bakur</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="704.45685"
+       y="244.26486"
+       id="text13"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="704.45685"
+         y="244.26486">پښتو</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="328.24094"
+       y="158.62813"
+       id="text14"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="328.24094"
+         y="158.62813">فارسی</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="95.469612"
+       y="196.40932"
+       id="text15"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="95.469612"
+         y="196.40932">русский</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="696.56"
+       y="429.15884"
+       id="text16"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="696.56"
+         y="429.15884">српски</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="727.87042"
+       y="169.26477"
+       id="text17"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="727.87042"
+         y="169.26477">soomaali</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="62.075603"
+       y="409.86862"
+       id="text18"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#333333;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="62.075603"
+         y="409.86862">español</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="182.41527"
+       y="501.95181"
+       id="text19"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="182.41527"
+         y="501.95181">کوردی باشوور</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="909.44147"
+       y="463.07352"
+       id="text20"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="909.44147"
+         y="463.07352">tigrinya</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="986.72485"
+       y="281.14587"
+       id="text21"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="986.72485"
+         y="281.14587">türkçe</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+       x="775.56982"
+       y="84.113731"
+       id="text22"
+       inkscape:label="target_definition"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Georgia;-inkscape-font-specification:'Georgia, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#b3b3b3;fill-opacity:1;stroke-width:1.002;stroke-dasharray:none"
+         x="775.56982"
+         y="84.113731">amharic</tspan></text>
+  </g>
+</svg>
