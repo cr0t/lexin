@@ -11,6 +11,7 @@ services:
     volumes:
       - ./dictionaries:/app/dictionaries:ro
       - ./sitemaps:/app/sitemaps:ro
+      - ./og_cache:/app/og_cache:rw
     ports:
       - 127.0.0.1:4003:4000
     restart: unless-stopped

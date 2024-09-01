@@ -4,6 +4,7 @@ import Config
 # relative here to point it to the repo's root instead of something inside the _build/test/...
 config :lexin, :dictionaries_path, "../../../../test/fixtures/dictionaries"
 config :lexin, :sitemaps_path, "../../../../test/fixtures/sitemaps"
+config :lexin, :og_cache_path, "../../../../test/fixtures/og_cache"
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

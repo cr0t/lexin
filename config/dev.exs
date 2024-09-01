@@ -2,6 +2,7 @@ import Config
 
 config :lexin, :dictionaries_path, "priv/dictionaries"
 config :lexin, :sitemaps_path, "priv/sitemaps"
+config :lexin, :og_cache_path, "priv/og_cache"
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

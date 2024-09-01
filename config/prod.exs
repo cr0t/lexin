@@ -7,6 +7,7 @@ import Config
 # ...or use `docker-compose.prod.yml` as an example for the composed environment
 config :lexin, :dictionaries_path, "../../dictionaries"
 config :lexin, :sitemaps_path, "../../sitemaps"
+config :lexin, :og_cache_path, "../../og_cache"
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information

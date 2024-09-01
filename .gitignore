@@ -38,11 +38,10 @@ npm-debug.log
 # Log or other temp files (like shell- and iex-history files used inside Docker).
 /log/
 
-# Data files
+# Data and various generated files
 /priv/dictionaries/
-
-# Sitemap (generated) files
 /priv/sitemaps/
+/priv/og_cache/
 
 # Wallaby integration tests screenshots
 /screenshots/
