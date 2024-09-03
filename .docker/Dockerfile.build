@@ -78,8 +78,8 @@ RUN mix release
 # final image will only contain the compiled release and other runtime necessities
 FROM ${RUNNER_IMAGE} AS runner
 
-# install runtime dependencies
-RUN apk add --no-cache libstdc++ ncurses-libs tini
+# install runtime dependencies (we need some font to generate OpenGraph images)
+RUN apk add --no-cache libstdc++ ncurses-libs tini font-dejavu
 
 USER nobody:nobody
 

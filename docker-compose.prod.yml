@@ -2,7 +2,7 @@ version: '3'
 
 services:
   lexin:
-    image: ghcr.io/cr0t/lexin:0.15.0
+    image: ghcr.io/cr0t/lexin:0.17.0
     container_name: lexin
     environment:
       PHX_HOST: "lexin.mobi"
