@@ -57,12 +57,12 @@ defmodule LexinWeb.OGImageController do
     assigns = [
       base_lang: "Svenska",
       target_lang: String.capitalize(lang),
-      definition: definition.value,
-      transcription: definition.base.phonetic.transcription,
+      definition: get_in(definition.value) || "",
+      transcription: get_in(definition.base.phonetic.transcription) || "",
       inflections: Enum.join(inflections(definition), ", "),
-      meaning: definition.base.meaning,
-      target_translation: definition.target.translation,
-      target_synonyms: Enum.join(definition.target.synonyms, ", ")
+      meaning: get_in(definition.base.meaning) || "",
+      target_translation: get_in(definition.target.translation) || "",
+      target_synonyms: Enum.join(get_in(definition.target.synonyms) || [], ", ")
     ]
 
     {svg, _bindings} = Code.eval_quoted(@template_svg, assigns)
