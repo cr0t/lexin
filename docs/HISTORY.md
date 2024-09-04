@@ -25,3 +25,5 @@ In comparison to standard Lexin website interface:
 ## Rename to Mobi
 
 We decided to change initial project name from "Lexin Light" to "Lexin Mobi" to align it with the short domain name we bought: https://lexin.mobi.
+
+In 2024, we did another micro-rebranding and renamed it to "Lexin.mobi".

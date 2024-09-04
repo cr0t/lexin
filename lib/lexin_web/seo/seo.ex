@@ -6,7 +6,7 @@ defmodule LexinWeb.SEO do
   use LexinWeb, :verified_routes
 
   @default_desc "A combination of a Swedish vocabulary and a dictionary developed for use in the multinational society of Sweden and rest of the world."
-  @default_title "Lexin.Mobi"
+  @default_title "Lexin.mobi"
   @default_image "/images/og_default.png"
 
   use SEO,

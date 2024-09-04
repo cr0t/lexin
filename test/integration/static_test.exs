@@ -17,7 +17,7 @@ defmodule Lexin.StaticTest do
     |> assert_has(
       css("main",
         text:
-          "Lexin Mobi is an open-source project, and you can find its source code on GitHub. You are welcome to contribute to the development process. This link can also be used to submit suggestions for enhancements or bugs, or to reach out to the developers of this application."
+          "Lexin.mobi is an open-source project, and you can find its source code on GitHub. You are welcome to contribute to the development process. This link can also be used to submit suggestions for enhancements or bugs, or to reach out to the developers of this application."
       )
     )
   end
@@ -29,13 +29,13 @@ defmodule Lexin.StaticTest do
     |> assert_has(
       css("main",
         text:
-          "You can use Lexin Mobi as a website in your browser. To share a word definition with a friend or colleague – copy and send the currently opened URL. (Psst... Save a bookmark for quick access to this website!)"
+          "You can use Lexin.mobi as a website in your browser. To share a word definition with a friend or colleague – copy and send the currently opened URL. (Psst... Save a bookmark for quick access to this website!)"
       )
     )
     |> assert_has(
       css("main",
         text:
-          "You can also install and run Lexin Mobi as mobile application. See our step-by-step instructions on how to install this application to your iPhone/iPad. For Android-based devices installation process is similar, but you need to use Chrome."
+          "You can also install and run Lexin.mobi as mobile application. See our step-by-step instructions on how to install this application to your iPhone/iPad. For Android-based devices installation process is similar, but you need to use Chrome."
       )
     )
   end

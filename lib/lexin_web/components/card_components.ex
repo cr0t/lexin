@@ -69,7 +69,7 @@ defmodule LexinWeb.CardComponents do
   end
 
   @doc """
-  A searchable (in Lexin Mobi) link to the word and target language.
+  A searchable (in Lexin.mobi) link to the word and target language.
   """
   attr :word, :string, required: true
   attr :lang, :string, required: true

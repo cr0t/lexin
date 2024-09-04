@@ -169,7 +169,7 @@ defmodule Lexin.SearchTest do
     |> visit("/")
     |> then(fn session ->
       assert(
-        page_title(session) == "Lexin.Mobi",
+        page_title(session) == "Lexin.mobi",
         "if query is empty, the title is default"
       )
 

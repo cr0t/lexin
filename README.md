@@ -1,12 +1,12 @@
-# Lexin Mobi
+# Lexin.mobi
 
 It's a small web and mobile application for the Swedish dictionary.
 
 ## Intro
 
-Lexin Mobi provides a new, modern, and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [historical notes](docs/HISTORY.md) about the creation and first visuals of this application.
+Lexin.mobi provides a new, modern, and responsive user interface to the [Lexin](http://lexin2.nada.kth.se/lexin/) dictionary service. You can find some [historical notes](docs/HISTORY.md) about the creation and first visuals of this application.
 
-Lexin Mobi is written as [a Progressive Web App (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
+Lexin.mobi is written as [a Progressive Web App (PWA)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) and can be installed and used on mobile devices or on desktops.
 
 ### Screenshots
 
