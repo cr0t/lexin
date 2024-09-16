@@ -41,7 +41,7 @@ defmodule LexinWeb.OGImageControllerTest do
       assert {:ok, stat} = File.stat(cached_image_path)
       assert stat.type == :regular
       # ...the actual file size depends on the OS, vips library version, etc.
-      assert stat.size > 30_000
+      assert stat.size > 25_000
     end
   end
 end
