@@ -41,7 +41,7 @@ defmodule Lexin.MixProject do
       {:hackney, "~> 1.20.1"},
       {:image, "~> 0.54.1"},
       {:jason, "~> 1.4.1"},
-      {:observer_cli, "~> 1.7.4"},
+      {:observer_cli, "~> 1.8.0"},
       {:phoenix, "~> 1.7.10"},
       {:phoenix_html, "~> 4.1.1"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
