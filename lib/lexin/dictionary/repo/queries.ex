@@ -18,7 +18,7 @@ defmodule Lexin.Dictionary.Repo.Queries do
     """
 
     with {:ok, statement} <- SQLite.prepare(db_conn, find_sql),
-         :ok <- SQLite.bind(db_conn, statement, [query]),
+         _ <- SQLite.bind(statement, [query]),
          {:ok, rows} <- SQLite.fetch_all(db_conn, statement),
          :ok <- SQLite.release(db_conn, statement) do
       format_definitions(rows, query)
@@ -40,7 +40,7 @@ defmodule Lexin.Dictionary.Repo.Queries do
     word_like = "#{query}%"
 
     with {:ok, statement} <- SQLite.prepare(db_conn, suggestions_sql),
-         :ok <- SQLite.bind(db_conn, statement, [word_like]),
+         _ <- SQLite.bind(statement, [word_like]),
          {:ok, rows} <- SQLite.fetch_all(db_conn, statement),
          :ok <- SQLite.release(db_conn, statement) do
       format_suggestions(rows, query)
