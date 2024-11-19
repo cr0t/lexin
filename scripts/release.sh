@@ -6,6 +6,7 @@ RED='\033[0;31m'
 ORANGE='\033[0;33m'
 NOCOLOR='\033[0m'
 echo -e "${RED}WARNING: ${ORANGE}Don't forget to pre-generate sitemaps and put them in the right place!${NOCOLOR}"
+echo -e "${RED}WARNING: ${NOCOLOR}Run gzip -k * in the directory with sitemaps to make their gz-versions"
 
 # ---
 

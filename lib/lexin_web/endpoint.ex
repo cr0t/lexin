@@ -33,6 +33,7 @@ defmodule LexinWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: {:lexin, LexinWeb.sitemaps_path()},
+    gzip: true,
     only_matching: ~w(sitemap)
 
   # Code reloading can be explicitly enabled under the
