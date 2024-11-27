@@ -1,10 +1,13 @@
 defmodule Lexin.MixProject do
   use Mix.Project
 
+  @app :lexin
+  @version "0.17.7"
+
   def project do
     [
-      app: :lexin,
-      version: "0.17.7",
+      app: @app,
+      version: @version,
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -73,7 +76,27 @@ defmodule Lexin.MixProject do
       "gettext.update": ["gettext.extract --merge --no-fuzzy"],
       test: ["esbuild default", "test"],
       "sitemap.gen": ["run --no-start scripts/sitemap_generator.exs"],
-      "sitemap.check": ["run --no-start scripts/sitemap_tester.exs"]
+      "sitemap.check": ["run --no-start scripts/sitemap_tester.exs"],
+      build: ["build.check", &build_confirmed?/1, "build.run"],
+      "build.check": [
+        "cmd git status --porcelain | grep . && echo \"'error: Working directory is dirty'\" && exit 1 || exit 0",
+        "cmd mix test --warnings-as-errors"
+      ],
+      "build.run": "cmd ./scripts/build.sh ghcr.io/cr0t/#{@app}:#{@version}"
     ]
+  end
+
+  defp build_confirmed?(_) do
+    with true <- Mix.shell().yes?("Have you generated sitemaps and put them to the server?"),
+         true <- Mix.shell().yes?("Have you ran `gzip -k *` in the sitemaps directory?"),
+         true <- Mix.shell().yes?("Have you bumped Lexin's version?") do
+      :ok
+    else
+      _ ->
+        IO.puts("error: Cancelling build...")
+
+        System.halt(1)
+        Process.sleep(:infinity)
+    end
   end
 end

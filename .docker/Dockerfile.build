@@ -20,9 +20,10 @@
 #  * exec:  docker container exec -it lexin sh
 #  * logs:  docker container logs --follow --tail 100 lexin
 
-ARG ELIXIR_VERSION
-ARG ERLANG_VERSION
-ARG ALPINE_VERSION
+# these defaults shall be overwritten by the --build-arg params that are taken from the .env file
+ARG ELIXIR_VERSION=1.17.3
+ARG ERLANG_VERSION=27.1.2
+ARG ALPINE_VERSION=3.20.3
 
 ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${ERLANG_VERSION}-alpine-${ALPINE_VERSION}"
 ARG RUNNER_IMAGE="alpine:${ALPINE_VERSION}"
