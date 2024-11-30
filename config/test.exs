@@ -23,4 +23,5 @@ config :phoenix, :plug_init_mode, :runtime
 config :wallaby,
   driver: Wallaby.Chrome,
   base_url: "http://localhost:4002",
+  js_logger: nil,
   screenshot_on_failure: true
