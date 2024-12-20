@@ -102,7 +102,7 @@ main() {
   check_docker
   parse_arguments "$@"
   build_docker_image
-  # docker push "$IMAGE_NAME"
+  docker push "$IMAGE_NAME"
 }
 
 main "$@"
