@@ -49,7 +49,7 @@ defmodule Lexin.MixProject do
       {:phoenix_html, "~> 4.1.1"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:phoenix_live_reload, "~> 1.5.3", only: :dev},
-      {:phoenix_live_view, "~> 0.20.1"},
+      {:phoenix_live_view, "~> 1.0.1"},
       {:phoenix_seo, "~> 0.1.10"},
       {:plug_cowboy, "~> 2.7.1"},
       {:recon, "~> 2.5.4"},
