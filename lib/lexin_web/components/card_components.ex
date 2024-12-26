@@ -30,7 +30,7 @@ defmodule LexinWeb.CardComponents do
     <%= for path <- @values do %>
       <span>
         <a href={external_video_url(path)} target="_blank">
-          <%= gettext("watch film") %>
+          {gettext("watch film")}
           <.icon name="hero-arrow-top-right-on-square-mini" class="h-3 w-3" />
         </a>
       </span>
@@ -42,7 +42,7 @@ defmodule LexinWeb.CardComponents do
     ~H"""
     <%= for word <- @values do %>
       <span>
-        <%= gettext("compare") %> <.reference_link word={"#{word}"} lang={@lang} />
+        {gettext("compare")} <.reference_link word={"#{word}"} lang={@lang} />
       </span>
     <% end %>
     """
@@ -77,7 +77,7 @@ defmodule LexinWeb.CardComponents do
   def reference_link(assigns) do
     ~H"""
     <.link patch={~p"/dictionary/#{@word}?lang=#{@lang}"}>
-      <%= @word %>
+      {@word}
     </.link>
     """
   end
@@ -95,7 +95,7 @@ defmodule LexinWeb.CardComponents do
     ~H"""
     <button :if={@file} class="btn--listen" onclick={"playAudio('#{external_audio_url(@file)}')"}>
       <.icon name="hero-speaker-wave-solid" class="h-3 w-3 mr-1" />
-      <%= gettext("listen") %>
+      {gettext("listen")}
     </button>
     """
   end

@@ -9,7 +9,7 @@
         phx-target={@myself}
         phx-change="switch-language"
       >
-        <%= Phoenix.HTML.Form.options_for_select(localized_languages(), @lang) %>
+        {Phoenix.HTML.Form.options_for_select(localized_languages(), @lang)}
       </select>
 
       <script>
@@ -53,7 +53,7 @@
     </div>
 
     <button id="form-submit_button" class="btn--submit" type="submit">
-      <%= gettext("Search") %>
+      {gettext("Search")}
     </button>
   </div>
 </form>

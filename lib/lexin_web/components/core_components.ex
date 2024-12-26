@@ -43,10 +43,10 @@ defmodule LexinWeb.CoreComponents do
           <div :if={@title} class="gap-1 my-1 text-sm font-semibold">
             <.icon :if={@kind == :info} name="hero-information-circle-mini" class="h-4 w-4" />
             <.icon :if={@kind == :error} name="hero-exclamation-circle-mini" class="h-4 w-4" />
-            <%= @title %>
+            {@title}
           </div>
           <div class="my-1 text-base">
-            <%= msg %>
+            {msg}
           </div>
         </div>
 
@@ -78,7 +78,7 @@ defmodule LexinWeb.CoreComponents do
       phx-connected={hide("#disconnected")}
       hidden
     >
-      <%= gettext("We can't find the Internet, attempting to reconnect…") %>
+      {gettext("We can't find the Internet, attempting to reconnect…")}
     </.flash>
     """
   end
