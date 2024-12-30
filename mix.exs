@@ -46,7 +46,7 @@ defmodule Lexin.MixProject do
       {:jason, "~> 1.4.1"},
       {:observer_cli, "~> 1.8.0"},
       {:phoenix, "~> 1.7.10"},
-      {:phoenix_html, "~> 4.1.1"},
+      {:phoenix_html, "~> 4.2.0"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:phoenix_live_reload, "~> 1.5.3", only: :dev},
       {:phoenix_live_view, "~> 1.0.1"},
