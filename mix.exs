@@ -38,7 +38,7 @@ defmodule Lexin.MixProject do
       {:credo, "~> 1.7.4", only: [:dev, :test], runtime: false},
       {:dns_cluster, "~> 0.1.1"},
       {:esbuild, "~> 0.8.1", runtime: Mix.env() == :dev},
-      {:exqlite, "~> 0.28.0"},
+      {:exqlite, "~> 0.29.0"},
       {:floki, "~> 0.37.0"},
       {:gettext, "~> 0.26.1"},
       {:hackney, "~> 1.20.1"},
@@ -55,7 +55,7 @@ defmodule Lexin.MixProject do
       {:recon, "~> 2.5.4"},
       {:sentry, "~> 10.8.0"},
       {:tailwind, "~> 0.2.2", runtime: Mix.env() == :dev},
-      {:telemetry_metrics, "~> 1.0.0"},
+      {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.1.0"},
       {:wallaby, "~> 0.30.6", only: :test, runtime: false}
     ]
