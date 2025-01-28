@@ -2,7 +2,7 @@ defmodule Lexin.MixProject do
   use Mix.Project
 
   @app :lexin
-  @version "0.17.9"
+  @version "0.17.10"
 
   def project do
     [
