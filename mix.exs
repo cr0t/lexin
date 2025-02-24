@@ -41,7 +41,7 @@ defmodule Lexin.MixProject do
       {:exqlite, "~> 0.29.0"},
       {:floki, "~> 0.37.0"},
       {:gettext, "~> 0.26.1"},
-      {:hackney, "~> 1.20.1"},
+      {:hackney, "~> 1.22.0"},
       {:image, "~> 0.56.0"},
       {:jason, "~> 1.4.1"},
       {:observer_cli, "~> 1.8.0"},
