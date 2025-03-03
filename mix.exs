@@ -41,7 +41,7 @@ defmodule Lexin.MixProject do
       {:exqlite, "~> 0.29.0"},
       {:floki, "~> 0.37.0"},
       {:gettext, "~> 0.26.1"},
-      {:hackney, "~> 1.22.0"},
+      {:hackney, "~> 1.23.0"},
       {:image, "~> 0.56.0"},
       {:jason, "~> 1.4.1"},
       {:observer_cli, "~> 1.8.0"},
@@ -54,7 +54,7 @@ defmodule Lexin.MixProject do
       {:plug_cowboy, "~> 2.7.1"},
       {:recon, "~> 2.5.4"},
       {:sentry, "~> 10.8.0"},
-      {:tailwind, "~> 0.2.2", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.3.1", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.1.0"},
       {:wallaby, "~> 0.30.6", only: :test, runtime: false}
