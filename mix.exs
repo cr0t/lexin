@@ -53,7 +53,7 @@ defmodule Lexin.MixProject do
       {:phoenix_seo, "~> 0.1.10"},
       {:plug_cowboy, "~> 2.7.1"},
       {:recon, "~> 2.5.4"},
-      {:sentry, "~> 10.8.0"},
+      {:sentry, "~> 10.9.0"},
       {:tailwind, "~> 0.3.1", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.2.0"},
