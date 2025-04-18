@@ -157,6 +157,8 @@ defmodule Lexin.SearchTest do
     |> click(@submit_button)
     |> assert_has(css("#definition-15456", text: "silhuett se siluett"))
     |> then(fn session ->
+      Process.sleep(50)
+
       assert(
         page_title(session) == "silhuett - silhouette",
         "for reference-only words we use translation from the other definition"
@@ -168,6 +170,8 @@ defmodule Lexin.SearchTest do
     session
     |> visit("/")
     |> then(fn session ->
+      Process.sleep(50)
+
       assert(
         page_title(session) == "Lexin.mobi",
         "if query is empty, the title is default"
@@ -180,6 +184,8 @@ defmodule Lexin.SearchTest do
     |> click(@submit_button)
     |> assert_has(css("#definition-5", text: "i förskott"))
     |> then(fn session ->
+      Process.sleep(50)
+
       assert(
         page_title(session) == "a conto - А-конто",
         "when user submits a query, we show it in the page's title"
@@ -195,6 +201,8 @@ defmodule Lexin.SearchTest do
     |> click(@submit_button)
     |> assert_has(css("#definition-15456", text: "silhuett se siluett"))
     |> then(fn session ->
+      Process.sleep(50)
+
       assert(
         page_title(session) == "silhuett",
         "we skip translation from page title if it's not available"
