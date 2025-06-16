@@ -39,7 +39,7 @@ defmodule Lexin.MixProject do
       {:dns_cluster, "~> 0.2.0"},
       {:esbuild, "~> 0.10.0", runtime: Mix.env() == :dev},
       {:exqlite, "~> 0.31.0"},
-      {:floki, "~> 0.37.0"},
+      {:floki, "~> 0.38.0"},
       {:gettext, "~> 0.26.1"},
       {:hackney, "~> 1.24.1"},
       {:image, "~> 0.59.0"},
