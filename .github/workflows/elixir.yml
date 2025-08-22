@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         elixir: [1.18.4]
-        otp: [28.0.1]
+        otp: [28.0.2]
     steps:
       - name: Setup Elixir
         uses: erlef/setup-beam@v1
