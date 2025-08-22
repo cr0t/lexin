@@ -15,7 +15,7 @@ defmodule LexinWeb.Endpoint do
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # No more than requests per minute from one IP address
-  @rate_per_minute 1000
+  @rate_per_minute 100
   plug :rate_limit
 
   # Serve at "/" the static files from "priv/static" directory.
