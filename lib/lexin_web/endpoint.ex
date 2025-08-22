@@ -15,7 +15,8 @@ defmodule LexinWeb.Endpoint do
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # No more than requests per minute from one IP address
-  @rate_per_minute 100
+  @rate_scale Application.compile_env(:hammer, :scale)
+  @rate_limit Application.compile_env(:hammer, :limit)
   plug :rate_limit
 
   # Serve at "/" the static files from "priv/static" directory.
@@ -69,10 +70,8 @@ defmodule LexinWeb.Endpoint do
 
   defp rate_limit(conn, _opts) do
     key = "web_requests:#{:inet.ntoa(conn.remote_ip)}"
-    scale = :timer.minutes(1)
-    limit = @rate_per_minute
 
-    case Lexin.RateLimit.hit(key, scale, limit) do
+    case Lexin.RateLimit.hit(key, @rate_scale, @rate_limit) do
       {:allow, _count} ->
         conn
 

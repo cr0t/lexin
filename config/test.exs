@@ -19,6 +19,9 @@ config :logger, level: :warning
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
+# Increase the rate limit for requests in test mode, or Wallaby fails
+config :hammer, limit: 1_000_000
+
 # A few settings for Wallaby
 config :wallaby,
   driver: Wallaby.Chrome,
