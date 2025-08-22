@@ -14,6 +14,10 @@ defmodule LexinWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+  # No more than requests per minute from one IP address
+  @rate_per_minute 1000
+  plug :rate_limit
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
@@ -62,4 +66,23 @@ defmodule LexinWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug LexinWeb.Router
+
+  defp rate_limit(conn, _opts) do
+    key = "web_requests:#{:inet.ntoa(conn.remote_ip)}"
+    scale = :timer.minutes(1)
+    limit = @rate_per_minute
+
+    case Lexin.RateLimit.hit(key, scale, limit) do
+      {:allow, _count} ->
+        conn
+
+      {:deny, retry_after} ->
+        retry_after_seconds = div(retry_after, 1000)
+
+        conn
+        |> put_resp_header("retry-after", Integer.to_string(retry_after_seconds))
+        |> send_resp(429, [])
+        |> halt()
+    end
+  end
 end

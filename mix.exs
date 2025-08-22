@@ -2,7 +2,7 @@ defmodule Lexin.MixProject do
   use Mix.Project
 
   @app :lexin
-  @version "0.17.17"
+  @version "0.18.0"
 
   def project do
     [
@@ -42,6 +42,7 @@ defmodule Lexin.MixProject do
       {:floki, "~> 0.38.0"},
       {:gettext, "~> 0.26.1"},
       {:hackney, "~> 1.25.0"},
+      {:hammer, "~> 7.1.0"},
       {:image, "~> 0.61.0"},
       {:jason, "~> 1.4.1"},
       {:observer_cli, "~> 1.8.0"},

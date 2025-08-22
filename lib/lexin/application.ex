@@ -15,7 +15,8 @@ defmodule Lexin.Application do
       # Start the Dictionaries
       Lexin.Dictionary.Supervisor,
       # Start the Endpoint (http/https)
-      LexinWeb.Endpoint
+      LexinWeb.Endpoint,
+      Lexin.RateLimit
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
