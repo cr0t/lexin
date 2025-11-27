@@ -2,7 +2,7 @@ defmodule Lexin.MixProject do
   use Mix.Project
 
   @app :lexin
-  @version "0.18.1"
+  @version "0.18.2"
 
   def project do
     [
@@ -54,6 +54,7 @@ defmodule Lexin.MixProject do
       {:phoenix_seo, "~> 0.1.10"},
       {:plug_cowboy, "~> 2.7.1"},
       {:recon, "~> 2.5.4"},
+      {:remote_ip, "~> 1.2.0"},
       {:sentry, "~> 11.0.1"},
       {:tailwind, "~> 0.3.1", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 1.1.0"},
