@@ -18,8 +18,8 @@ jobs:
     name: Test on Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}}
     strategy:
       matrix:
-        elixir: [1.18.4]
-        otp: [28.0.2]
+        elixir: [1.19.3]
+        otp: [28.2]
     steps:
       - name: Setup Elixir
         uses: erlef/setup-beam@v1
