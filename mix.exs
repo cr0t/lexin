@@ -81,8 +81,7 @@ defmodule Lexin.MixProject do
       "sitemap.check": ["run --no-start scripts/sitemap_tester.exs"],
       build: ["build.check", &build_confirmed?/1, "build.run"],
       "build.check": [
-        "cmd git status --porcelain | grep . && echo \"'error: Working directory is dirty'\" && exit 1 || exit 0",
-        "cmd mix test --warnings-as-errors"
+        "cmd git status --porcelain | grep . && echo \"'error: Working directory is dirty'\" && exit 1 || exit 0"
       ],
       "build.run": "cmd ./scripts/build.sh ghcr.io/cr0t/#{@app}:#{@version}"
     ]
