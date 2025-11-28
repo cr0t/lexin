@@ -94,7 +94,7 @@ build_docker_image() {
 
   [[ "$NO_CACHE_FLAG" == "true" ]] && build_flags="${build_flags} --no-cache"
 
-  # Execute build
+  # Ensure that buildx plugin is available (in macOS check info in `brew info docker-buildx`)
   docker build --debug $build_flags --tag "$IMAGE_NAME" .
 }
 
