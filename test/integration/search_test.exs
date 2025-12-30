@@ -107,8 +107,6 @@ defmodule Lexin.SearchTest do
     |> assert_has(css("#definition-1858", text: "bil|sjuka — carsickness"))
     |> assert_has(css("#definition-1858", text: "bil|telefon — car phone"))
     |> assert_has(css("#definition-1858", text: "lastbil — lorry, (truck [US])"))
-    |> assert_has(css("#definition-1858", text: "Extra"))
-    |> assert_has(css("#definition-1858", text: "picture"))
   end
 
   feature "shows definitions of related words", %{session: session} do

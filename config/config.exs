@@ -63,7 +63,7 @@ config :lexin, :external_video_url_prefix, "http://lexin.nada.kth.se/lang/lexina
 
 config :lexin,
        :external_picture_url_prefix,
-       "https://bildetema.oslomet.no/bildetema/bildetema-html5/bildetema.html?version=swedish"
+       "https://bildtema.isof.se/bildetema/bildetema-html5/bildetema.html?version=swedish"
 
 config :lexin, :app_version, Mix.Project.config()[:version]
 
