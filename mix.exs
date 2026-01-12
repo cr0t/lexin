@@ -2,7 +2,7 @@ defmodule Lexin.MixProject do
   use Mix.Project
 
   @app :lexin
-  @version "0.19.0"
+  @version "0.20.0"
 
   def project do
     [
@@ -11,6 +11,7 @@ defmodule Lexin.MixProject do
       elixir: "~> 1.18",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
+      listeners: [Phoenix.CodeReloader],
       aliases: aliases(),
       deps: deps()
     ]
