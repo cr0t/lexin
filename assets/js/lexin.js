@@ -7,8 +7,8 @@ window.playAudio = function (url) {
   new Audio(url).play()
 }
 
-const queryEl = document.getElementById('form-query_field')
-const resetEl = document.getElementById('form-query_reset')
+const queryEl = document.getElementById('search_form-query_input')
+const resetEl = document.getElementById('search_form-query_reset')
 
 if (resetEl) {
   resetEl.addEventListener('click', () => {
@@ -19,7 +19,7 @@ if (resetEl) {
 
 // ------------- Live Socket --------------
 
-const LANG_SELECTOR = 'form-lang'
+const LANG_SELECTOR = 'search_form-lang'
 const LANG_KEY = 'language'
 
 let hooks = {
