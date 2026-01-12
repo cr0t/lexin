@@ -57,7 +57,6 @@ defmodule Lexin.MixProject do
       {:recon, "~> 2.5.4"},
       {:remote_ip, "~> 1.2.0"},
       {:sentry, "~> 11.0.1"},
-      {:tailwind, "~> 0.4.1", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.3.0"},
       {:wallaby, "~> 0.30.6", only: :test, runtime: false}

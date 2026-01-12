@@ -18,7 +18,6 @@
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020617" />
-    <% # NOTE: sync dark theme-color with the dark:bg-... of body tag if you change it %>
 
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
 
@@ -31,9 +30,9 @@
   </head>
 
   <body>
-    <div class="flex flex-col min-h-screen m-auto max-w-4xl px-6">
-      <header class="flex mt-6 select-none">
-        <a href="/" class="flex items-center hover:grayscale">
+    <div id="page-container">
+      <header id="top">
+        <a id="logo" href="/">
           <img
             style="height: 32px; width: 52px;"
             src={~p"/images/logo.svg"}
@@ -42,20 +41,19 @@
         </a>
       </header>
 
-      <main class="grow mt-6">
+      <main id="main">
         {@inner_content}
       </main>
 
-      <footer class="my-6 text-sm">
-        <ul class="flex justify-evenly mb-2">
+      <footer id="footer">
+        <ul id="bottom-nav">
           <li><a href={~p"/about"}>About</a></li>
           <li><a href={~p"/cookies"}>Cookies</a></li>
           <li><a href={~p"/install"}>Install</a></li>
         </ul>
 
-        <div class="text-gray-400 text-center" title={"Lexin.mobi #{app_version()}"}>
+        <div id="sponsor-line" title={"Lexin.mobi #{app_version()}"}>
           Lexin.mobi is sponsored by <a
-            class="inline-block border-b border-dashed text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
             href="https://0x.se"
             title="Swedish technology consultancy agency"
             target="_blank"
