@@ -1,9 +1,8 @@
 <form id={@id} phx-target={@myself} phx-submit="submit" phx-hook="saveLanguage">
-  <div class="flex relative">
-    <div class="absolute top-[-3.7rem] right-0">
+  <div id="search_form-container">
+    <div id="search_form-wrapper_lang">
       <select
-        class="selector--lang"
-        id="form-lang"
+        id="search_form-lang"
         name="lang"
         title={gettext("Select language")}
         phx-target={@myself}
@@ -14,18 +13,16 @@
 
       <script>
         <% # set previosly saved language as soon as possible to hide selector UI "jumping" %>
-        document.getElementById('form-lang').value = window.preferredLanguage();
+        document.getElementById('search_form-lang').value = window.preferredLanguage();
       </script>
     </div>
 
-    <div class="relative w-full">
-      <span class="btn--reset" phx-target={@myself} phx-click="reset">+</span>
-
-      <% klass = if has_suggestions?(@in_focus, @suggestions), do: "!rounded-b-none", else: "" %>
+    <div id="search_form-wrapper_query">
+      <span id="search_form-query_reset" phx-target={@myself} phx-click="reset">×</span>
 
       <input
-        id="form-query_field"
-        class={"input--query #{klass}"}
+        id="search_form-query_input"
+        class={if has_suggestions?(@in_focus, @suggestions), do: "has-suggestions", else: ""}
         type="text"
         name="query"
         value={@query}
@@ -43,16 +40,15 @@
 
       <ul
         :if={has_suggestions?(@in_focus, @suggestions)}
-        id="form-query_suggestions"
-        class="list--suggestions"
+        id="search_form-query_suggestions"
       >
-        <li :for={suggestion <- @suggestions} class="pb-2">
+        <li :for={suggestion <- @suggestions}>
           <.reference_link word={suggestion} lang={@lang} />
         </li>
       </ul>
     </div>
 
-    <button id="form-submit_button" class="btn--submit" type="submit">
+    <button id="search_form-submit" type="submit">
       {gettext("Search")}
     </button>
   </div>
