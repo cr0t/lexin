@@ -90,6 +90,23 @@ ul {
   }
 }
 
+.listen {
+  color: var(--color-text-dimmed);
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.7;
+  text-decoration: underline dotted var(--color-text-dimmed);
+  text-underline-offset: 0.15rem;
+  transition: opacity 50ms;
+  vertical-align: text-bottom;
+
+  &:hover {
+    color: var(--color-text-dimmed);
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+
 /* UTILS */
 
 .dimmed {

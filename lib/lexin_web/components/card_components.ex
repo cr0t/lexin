@@ -83,20 +83,25 @@ defmodule LexinWeb.CardComponents do
   end
 
   @doc """
-  An anchor tag that plays the given audio file URL when user clicks. We duplicate the URL in the
-  `href` attribute, so users can download files or listen in the other way if browser doesn't support
-  `playAudio` JS feature.
+  An anchor tag that plays the given audio file URL when user clicks it.
 
-  In rare cases `file` can be nil: we do not render the 'listen' button then.
+  We duplicate the URL in the `href` attribute, so users can simply download linked file and listen
+  to it some other way, e.g., if browser doesn't support the `Audio` feature (which is unlikely).
+
+  In rare cases `file` can be nil: we do not render the 'listen' link then.
   """
   attr :file, :string
 
   def listen_link(assigns) do
     ~H"""
-    <button :if={@file} class="btn--listen" onclick={"playAudio('#{external_audio_url(@file)}')"}>
-      <.icon name="hero-speaker-wave-solid" class="h-3 w-3 mr-1" />
-      {gettext("listen")}
-    </button>
+    <a
+      :if={@file}
+      class="listen"
+      href={external_audio_url(@file)}
+      onclick={"new Audio('#{external_audio_url(@file)}').play(); return false"}
+    >
+      🔉 {gettext("listen")}
+    </a>
     """
   end
 end

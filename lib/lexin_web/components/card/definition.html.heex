@@ -3,9 +3,9 @@
     <strong>{@dfn.value}</strong>
     <span :if={@dfn.base.phonetic}>[{@dfn.base.phonetic.transcription}]</span>
 
-    <.listen_link :if={@dfn.base.phonetic} file={@dfn.base.phonetic.audio_url} />
-
     <span>{@dfn.pos}</span>
+
+    <.listen_link :if={@dfn.base.phonetic} file={@dfn.base.phonetic.audio_url} />
 
     <.references
       :if={@dfn.base.reference}
