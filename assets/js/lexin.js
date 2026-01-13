@@ -3,10 +3,6 @@ import { LiveSocket } from 'phoenix_live_view'
 
 // ------------- Global UI/UX --------------
 
-window.playAudio = function(url) {
-  new Audio(url).play()
-}
-
 const queryEl = document.getElementById('search_form-query_input')
 const resetEl = document.getElementById('search_form-query_reset')
 
