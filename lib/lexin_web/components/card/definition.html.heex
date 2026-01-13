@@ -1,4 +1,4 @@
-<article id={"definition-#{@dfn.id}"} class="mt-6">
+<article id={"definition-#{@dfn.id}"} class="mt-150">
   <header>
     <strong>{@dfn.value}</strong>
     <span :if={@dfn.base.phonetic}>[{@dfn.base.phonetic.transcription}]</span>
@@ -15,14 +15,10 @@
     />
   </header>
 
-  <section :if={@dfn.base.meaning} class="pl-6">
-    <div class="dimmed">
-      ({Enum.join(inflections(@dfn), ", ")})
-    </div>
+  <section :if={@dfn.base.meaning} class="pl-150">
+    <div class="dimmed">({Enum.join(inflections(@dfn), ", ")})</div>
 
-    <div>
-      {@dfn.base.meaning}
-    </div>
+    <div>{@dfn.base.meaning}</div>
 
     <div :if={@dfn.base.graminfo} class="dimmed">
       &lt;{graminfo(@dfn)}&gt;
@@ -36,8 +32,8 @@
       {gettext("Usage: %{usage}", usage: @dfn.base.usage)}
     </div>
 
-    <div :if={@dfn.target.translation} class="mt-3">
-      <span class="font-bold">{@dfn.target.translation}</span>
+    <div :if={@dfn.target.translation} class="mt-75">
+      <strong>{@dfn.target.translation}</strong>
       <span :if={@dfn.target.comment} class="dimmed">({@dfn.target.comment})</span>
     </div>
 
@@ -51,12 +47,10 @@
       {gettext("Antonyms: %{antonyms}", antonyms: Enum.join(@dfn.base.antonyms, ", "))}
     </div>
 
-    <div :if={length(examples(@dfn)) > 0} class="mt-3">
-      <span class="dimmed font-semibold">
-        {gettext("Examples")}
-      </span>
+    <div :if={length(examples(@dfn)) > 0} class="mt-75">
+      <span>{gettext("Examples")}</span>
 
-      <ul class="list-disc list-inside">
+      <ul class="mt-75">
         <li :for={{base, target} <- examples(@dfn)}>
           <span data-id={base.id}>{base.value}</span>
           — <span data-id={target.id}>{target.value}</span>
@@ -64,12 +58,10 @@
       </ul>
     </div>
 
-    <div :if={length(idioms(@dfn)) > 0} class="mt-3">
-      <span class="dimmed font-semibold">
-        {gettext("Idioms")}
-      </span>
+    <div :if={length(idioms(@dfn)) > 0} class="mt-75">
+      <span>{gettext("Idioms")}</span>
 
-      <ul class="list-disc list-inside">
+      <ul class="mt-75">
         <li :for={{base, target} <- idioms(@dfn)}>
           <span data-id={base.id}>{base.value}</span>
           — <span data-id={target.id}>{target.value}</span>
@@ -77,12 +69,10 @@
       </ul>
     </div>
 
-    <div :if={length(compounds(@dfn)) > 0} class="mt-3">
-      <span class="dimmed font-semibold">
-        {gettext("Compounds")}
-      </span>
+    <div :if={length(compounds(@dfn)) > 0} class="mt-75">
+      <span>{gettext("Compounds")}</span>
 
-      <ul class="list-disc list-inside">
+      <ul class="mt-75">
         <li :for={{base, target} <- compounds(@dfn)}>
           <span data-id={base.id}>{base.value}</span>
           — <span data-id={target.id}>{target.value}</span>
@@ -90,12 +80,10 @@
       </ul>
     </div>
 
-    <div :if={length(derivations(@dfn)) > 0} class="mt-3">
-      <span class="dimmed font-semibold">
-        {gettext("Derivations")}
-      </span>
+    <div :if={length(derivations(@dfn)) > 0} class="mt-75">
+      <span>{gettext("Derivations")}</span>
 
-      <ul class="list-disc list-inside">
+      <ul class="mt-75">
         <li :for={{base, target} <- derivations(@dfn)}>
           <span data-id={base.id}>{base.value}</span>
           — <span data-id={target.id}>{target.value}</span>
