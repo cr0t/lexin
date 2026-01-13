@@ -41,8 +41,6 @@ defmodule LexinWeb.CoreComponents do
       <div class="flex items-start justify-between">
         <div class="flex flex-col basis-full">
           <div :if={@title} class="gap-1 my-1 text-sm font-semibold">
-            <.icon :if={@kind == :info} name="hero-information-circle-mini" class="h-4 w-4" />
-            <.icon :if={@kind == :error} name="hero-exclamation-circle-mini" class="h-4 w-4" />
             {@title}
           </div>
           <div class="my-1 text-base">
@@ -51,7 +49,7 @@ defmodule LexinWeb.CoreComponents do
         </div>
 
         <button type="button" class="group flex self-center" aria-label={gettext("close")}>
-          <.icon name="hero-x-mark-solid" class="opacity-40 group-hover:opacity-70" />
+          ×
         </button>
       </div>
     </div>
@@ -80,33 +78,6 @@ defmodule LexinWeb.CoreComponents do
     >
       {gettext("We can't find the Internet, attempting to reconnect…")}
     </.flash>
-    """
-  end
-
-  @doc """
-  Renders a [Hero Icon](https://heroicons.com).
-
-  Hero icons come in three styles – outline, solid, and mini.
-  By default, the outline style is used, but solid an mini may
-  be applied by using the `-solid` and `-mini` suffix.
-
-  You can customize the size and colors of the icons by setting
-  width, height, and background color classes.
-
-  Icons are extracted from your `assets/vendor/heroicons` directory and bundled
-  within your compiled app.css by the plugin in your `assets/tailwind.config.js`.
-
-  ## Examples
-
-      <.icon name="hero-x-mark-solid" />
-      <.icon name="hero-arrow-path" class="ml-1 w-3 h-3 animate-spin" />
-  """
-  attr :name, :string, required: true
-  attr :class, :string, default: nil
-
-  def icon(%{name: "hero-" <> _} = assigns) do
-    ~H"""
-    <span class={[@name, @class]} />
     """
   end
 
