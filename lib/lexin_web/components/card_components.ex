@@ -31,7 +31,6 @@ defmodule LexinWeb.CardComponents do
       <span>
         <a href={external_video_url(path)} target="_blank">
           {gettext("watch film")}
-          <.icon name="hero-arrow-top-right-on-square-mini" class="h-3 w-3" />
         </a>
       </span>
     <% end %>
