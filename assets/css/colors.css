@@ -2,8 +2,7 @@
   --color-bg: oklch(100% 0 0);
   --color-bg-input: oklch(100% 0 0);
   --color-text: oklch(20% 0.005 250);
-  --color-text-dimmed: oklch(55% 0.015 250);
-  --color-text-muted: oklch(65% 0.01 240);
+  --color-text-dimmed: oklch(50% 0.015 250);
   --color-link: oklch(50% 0.17 260);
   --color-link-hover: oklch(45% 0.17 260);
   --color-border: oklch(90% 0.01 250);
@@ -19,8 +18,7 @@
     --color-bg: oklch(10% 0.05 265);
     --color-bg-input: oklch(15% 0.05 265);
     --color-text: oklch(80% 0.015 250);
-    --color-text-dimmed: oklch(65% 0.015 250);
-    --color-text-muted: oklch(55% 0.015 240);
+    --color-text-dimmed: oklch(50% 0.015 250);
     --color-link: oklch(70% 0.15 260);
     --color-link-hover: oklch(75% 0.15 260);
     --color-border: oklch(30% 0.015 250);

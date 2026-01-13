@@ -58,7 +58,7 @@ ul {
 
 #footer {
   font-size: 0.85rem;
-  margin: 1.5rem 0;
+  padding: 1.5rem 0;
   text-align: center;
 
   #bottom-nav {
@@ -71,12 +71,12 @@ ul {
   }
 
   #sponsor-line {
-    color: var(--color-text-muted);
+    color: var(--color-text-dimmed);
     margin-top: 0.5rem;
 
     a {
-      border-bottom: 1px var(--color-text-muted) dashed;
-      color: var(--color-text-muted);
+      border-bottom: 1px var(--color-text-dimmed) dashed;
+      color: var(--color-text-dimmed);
       text-decoration: none;
     }
   }
@@ -90,22 +90,20 @@ ul {
   }
 }
 
+/* UTILS */
+
 .dimmed {
   color: var(--color-text-dimmed);
 }
 
-.font-bold {
-  font-weight: 600;
-}
-
-.pl-6 {
-  padding-left: 1.5rem;
-}
-
-.mt-6 {
+.mt-150 {
   margin-top: 1.5rem;
 }
 
-.mt-3 {
+.mt-75 {
   margin-top: 0.75rem;
+}
+
+.pl-150 {
+  padding-left: 1.5rem;
 }
