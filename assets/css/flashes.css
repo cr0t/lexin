@@ -1,0 +1,55 @@
+.flash {
+  border-radius: 0.25rem;
+  border: 1px solid;
+  padding: 0.75rem;
+  position: fixed;
+  right: 50%;
+  top: 0.5rem;
+  transform: translateX(50%);
+  width: 24rem;
+  z-index: 50;
+
+  &.is-info {
+    background-color: var(--color-flash-info-bg);
+    border-color: var(--color-flash-info-border);
+    box-shadow: 0 0.2rem 0.5rem oklch(40% 0.15 250 / 0.15);
+    color: var(--color-flash-info-text);
+  }
+
+  &.is-error {
+    background-color: var(--color-flash-error-bg);
+    border-color: var(--color-flash-error-border);
+    box-shadow: 0 0.2rem 0.5rem oklch(40% 0.18 10 / 0.15);
+    color: var(--color-flash-error-text);
+  }
+}
+
+.flash_main {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.flash_content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 0.85rem;
+  line-height: 1.5rem;
+}
+
+.flash_content-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.flash_close {
+  align-self: center;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 50ms;
+  user-select: none;
+
+  &:hover {
+    opacity: 1;
+  }
+}
