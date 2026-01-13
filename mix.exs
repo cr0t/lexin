@@ -72,9 +72,9 @@ defmodule Lexin.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind default", "esbuild default"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
+      "assets.setup": ["esbuild.install --if-missing"],
+      "assets.build": ["esbuild default"],
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
       "gettext.update": ["gettext.extract --merge --no-fuzzy"],
       test: ["esbuild default", "test"],
       "sitemap.gen": ["run --no-start scripts/sitemap_generator.exs"],
