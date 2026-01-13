@@ -1,9 +1,9 @@
-import {Socket} from 'phoenix'
-import {LiveSocket} from 'phoenix_live_view'
+import { Socket } from 'phoenix'
+import { LiveSocket } from 'phoenix_live_view'
 
 // ------------- Global UI/UX --------------
 
-window.playAudio = function (url) {
+window.playAudio = function(url) {
   new Audio(url).play()
 }
 
@@ -37,8 +37,8 @@ let hooks = {
 }
 
 let params = {
- _csrf_token: document.querySelector("meta[name='csrf-token']").getAttribute('content'),
- lang: window.preferredLanguage() // see layouts.ex and _lang_js_utils.html.heex for details
+  _csrf_token: document.querySelector("meta[name='csrf-token']").getAttribute('content'),
+  lang: window.preferredLanguage() // see layouts.ex and _lang_js_utils.html.heex for details
 }
 
 let socketParams = {
