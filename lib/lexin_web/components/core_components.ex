@@ -32,25 +32,19 @@ defmodule LexinWeb.CoreComponents do
       phx-click={JS.push("lv:clear-flash", value: %{key: @kind}) |> hide("##{@id}")}
       role="alert"
       class={[
-        "flash--container",
-        @kind == :info && "flash--info",
-        @kind == :error && "flash--error"
+        "flash",
+        @kind == :info && "is-info",
+        @kind == :error && "is-error"
       ]}
       {@rest}
     >
-      <div class="flex items-start justify-between">
-        <div class="flex flex-col basis-full">
-          <div :if={@title} class="gap-1 my-1 text-sm font-semibold">
-            {@title}
-          </div>
-          <div class="my-1 text-base">
-            {msg}
-          </div>
+      <div class="flash_main">
+        <div class="flash_content">
+          <div :if={@title} class="flash_content-title">{@title}</div>
+          <div class="flash_content-message">{msg}</div>
         </div>
 
-        <button type="button" class="group flex self-center" aria-label={gettext("close")}>
-          ×
-        </button>
+        <div class="flash_close" aria-label={gettext("close")}>×</div>
       </div>
     </div>
     """

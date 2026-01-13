@@ -11,6 +11,14 @@
   --color-shadow: oklch(50% 0.20 260 / 0.2);
   --color-reset-icon: oklch(65% 0.02 240);
   --color-reset-icon-hover: oklch(25% 0.01 250);
+
+  --color-flash-info-bg: oklch(96% 0.04 250);
+  --color-flash-info-text: oklch(40% 0.15 250);
+  --color-flash-info-border: oklch(85% 0.08 250);
+
+  --color-flash-error-bg: oklch(96% 0.04 10);
+  --color-flash-error-text: oklch(40% 0.18 10);
+  --color-flash-error-border: oklch(85% 0.08 10);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +35,13 @@
     --color-shadow: oklch(10% 0.015 250 / 0.4);
     --color-reset-icon: oklch(60% 0.015 240);
     --color-reset-icon-hover: oklch(85% 0.015 250);
+
+    --color-flash-info-bg: oklch(25% 0.04 250);
+    --color-flash-info-text: oklch(80% 0.10 250);
+    --color-flash-info-border: oklch(35% 0.08 250);
+
+    --color-flash-error-bg: oklch(25% 0.04 10);
+    --color-flash-error-text: oklch(85% 0.12 10);
+    --color-flash-error-border: oklch(35% 0.08 10);
   }
 }
-
