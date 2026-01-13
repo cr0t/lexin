@@ -4,9 +4,9 @@ defmodule Lexin.SearchTest do
 
   import Wallaby.Query
 
-  @query_input css("#form-query_field")
-  @lang_select css("#form-lang")
-  @submit_button css("#form-submit_button")
+  @query_input css("#search_form-query_input")
+  @lang_select css("#search_form-lang")
+  @submit_button css("#search_form-submit")
 
   feature "allows to select a translation language", %{session: session} do
     session
@@ -14,7 +14,7 @@ defmodule Lexin.SearchTest do
     |> fill_in(@lang_select, with: "ryska")
     |> fill_in(@query_input, with: "a conto")
     |> click(@submit_button)
-    |> refute_has(css("#flash.flash--error"))
+    |> refute_has(css(".flash.is-error"))
   end
 
   feature "pre-selects the given language in the URL", %{session: session} do
@@ -46,7 +46,7 @@ defmodule Lexin.SearchTest do
   feature "shows an alert if wrong language is given in the URL", %{session: session} do
     session
     |> visit("/dictionary/a conto?lang=ruskii")
-    |> assert_has(css("#flash.flash--error", text: "Språk stöds inte"))
+    |> assert_has(css(".flash.is-error", text: "Språk stöds inte"))
   end
 
   feature "shows an alert if word not found", %{session: session} do
@@ -55,7 +55,7 @@ defmodule Lexin.SearchTest do
     |> fill_in(@lang_select, with: "ryska")
     |> fill_in(@query_input, with: "hloogloo")
     |> click(@submit_button)
-    |> assert_has(css("#flash.flash--error", text: "Hittades inte"))
+    |> assert_has(css(".flash.is-error", text: "Hittades inte"))
   end
 
   feature "shows definitions for the query", %{session: session} do
