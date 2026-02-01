@@ -90,6 +90,7 @@
   padding: 0.5rem 0.75rem;
   position: absolute;
   width: 100%;
+  z-index: 1;
 
   li {
     list-style: none;
