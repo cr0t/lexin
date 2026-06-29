@@ -59,7 +59,7 @@ defmodule Lexin.MixProject do
       {:sentry, "~> 11.0.1"},
       {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.3.0"},
-      {:wallaby, "~> 0.30.6", only: :test, runtime: false}
+      {:wallaby, "~> 0.31.0", only: :test, runtime: false}
     ]
   end
 
