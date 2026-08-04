@@ -50,7 +50,7 @@ defmodule Lexin.MixProject do
       {:phoenix, "~> 1.8.3"},
       {:phoenix_html, "~> 4.3.0"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:phoenix_live_reload, "~> 1.6.0", only: :dev},
+      {:phoenix_live_reload, "~> 1.7.0", only: :dev},
       {:phoenix_live_view, "~> 1.1.2"},
       {:phoenix_seo, "~> 0.1.10"},
       {:plug_cowboy, "~> 2.7.1"},
@@ -59,7 +59,7 @@ defmodule Lexin.MixProject do
       {:sentry, "~> 11.0.1"},
       {:telemetry_metrics, "~> 1.1.0"},
       {:telemetry_poller, "~> 1.3.0"},
-      {:wallaby, "~> 0.30.6", only: :test, runtime: false}
+      {:wallaby, "~> 0.31.0", only: :test, runtime: false}
     ]
   end
 
