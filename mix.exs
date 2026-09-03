@@ -46,6 +46,7 @@ defmodule Lexin.MixProject do
       {:hammer, "~> 7.1.0"},
       {:image, "~> 0.62.1"},
       {:jason, "~> 1.4.1"},
+      {:lazy_html, "~> 0.1.12", only: :test},
       {:observer_cli, "~> 1.8.0"},
       {:phoenix, "~> 1.8.3"},
       {:phoenix_html, "~> 4.3.0"},

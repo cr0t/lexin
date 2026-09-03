@@ -4,6 +4,8 @@ defmodule Lexin.StaticTest do
 
   import Wallaby.Query
 
+  @moduletag :wallaby
+
   feature "opens about page", %{session: session} do
     session
     |> visit("/")

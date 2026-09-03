@@ -4,6 +4,8 @@ defmodule Lexin.SearchTest do
 
   import Wallaby.Query
 
+  @moduletag :wallaby
+
   @query_input css("#search_form-query_input")
   @lang_select css("#search_form-lang")
   @submit_button css("#search_form-submit")
