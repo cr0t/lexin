@@ -2,8 +2,11 @@ defmodule LexinWeb.Endpoint do
   use Sentry.PlugCapture
   use Phoenix.Endpoint, otp_app: :lexin
 
-  # Rewrites conn.remote_ip based on X-Forwarded-For, X-Real-Ip, and X-Client-Ip
-  plug RemoteIp
+  # Rewrites conn.remote_ip based on Cloudflare's request source IP.
+  #
+  # WARNING: We must ensure that we allow only Cloudflare's IP ranges connecting
+  # to our application!
+  plug RemoteIp, headers: ["cf-connecting-ip"]
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -71,7 +74,7 @@ defmodule LexinWeb.Endpoint do
   plug Plug.Session, @session_options
   plug LexinWeb.Router
 
-  defp rate_limit(conn, _opts) do
+  def rate_limit(conn, _opts) do
     key = "web_requests:#{:inet.ntoa(conn.remote_ip)}"
 
     case Lexin.RateLimit.hit(key, @rate_scale, @rate_limit) do
