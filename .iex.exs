@@ -1,3 +1,3 @@
-File.exists?(Path.expand("~/.iex.exs")) && import_file("~/.iex.exs")
+IEx.Helpers.import_file_if_available("~/.iex.exs")
 
 alias Lexin.Dictionary
