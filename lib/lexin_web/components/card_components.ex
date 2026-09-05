@@ -3,7 +3,6 @@ defmodule LexinWeb.CardComponents do
   Provides partials for the definition results view.
   """
 
-  use Phoenix.Component
   use LexinWeb, :html
 
   import Lexin.Dictionary.Helpers
