@@ -1,0 +1,8 @@
+# Versions are also used to build the Docker image (scripts/build.sh), so they
+# must exist as hexpm/elixir images: https://hub.docker.com/r/hexpm/elixir/tags
+[tools]
+elixir = "1.20.5-otp-29"
+erlang = "29.1.2"
+
+[env]
+ALPINE_VERSION = "3.24.4"

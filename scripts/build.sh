@@ -26,12 +26,12 @@ usage() {
 }
 
 check_docker() {
-  if ! command -v docker &> /dev/null; then
+  if ! command -v docker &>/dev/null; then
     echo "Error: Docker is not installed." >&2
     exit 1
   fi
 
-  if ! docker info &> /dev/null; then
+  if ! docker info &>/dev/null; then
     echo "Error: Docker daemon is not running." >&2
     exit 1
   fi
@@ -47,27 +47,27 @@ parse_arguments() {
   # Parse arguments
   while [[ $# -gt 0 ]]; do
     case "$1" in
-      --force)
-        FORCE_FLAG=true
+    --force)
+      FORCE_FLAG=true
+      shift
+      ;;
+    --no-cache)
+      NO_CACHE_FLAG=true
+      shift
+      ;;
+    -*)
+      echo "Error: Unknown option $1" >&2
+      usage
+      ;;
+    *)
+      if [[ -z "${IMAGE_NAME:-}" ]]; then
+        IMAGE_NAME="$1"
         shift
-        ;;
-      --no-cache)
-        NO_CACHE_FLAG=true
-        shift
-        ;;
-      -*)
-        echo "Error: Unknown option $1" >&2
+      else
+        echo "Error: Too many arguments" >&2
         usage
-        ;;
-      *)
-        if [[ -z "${IMAGE_NAME:-}" ]]; then
-          IMAGE_NAME="$1"
-          shift
-        else
-          echo "Error: Too many arguments" >&2
-          usage
-        fi
-        ;;
+      fi
+      ;;
     esac
   done
 }
@@ -75,7 +75,7 @@ parse_arguments() {
 build_docker_image() {
   # Check if image exists and handle force rebuild
   local existing_image_id
-  existing_image_id=$(docker images -q "$IMAGE_NAME" 2> /dev/null || true)
+  existing_image_id=$(docker images -q "$IMAGE_NAME" 2>/dev/null || true)
 
   if [[ -n "$existing_image_id" ]]; then
     if [[ "$FORCE_FLAG" == "true" ]]; then
@@ -88,7 +88,7 @@ build_docker_image() {
   fi
 
   readonly BUILD_PLATFORM="linux/amd64"
-  readonly BUILD_ENV_ARGS=$(awk '!/^($|#)/ {printf "--build-arg %s ", $0}' .env)
+  readonly BUILD_ENV_ARGS="--build-arg ELIXIR_VERSION=$ELIXIR_VERSION --build-arg ERLANG_VERSION=$ERLANG_VERSION --build-arg ALPINE_VERSION=$ALPINE_VERSION"
 
   local build_flags="$BUILD_ENV_ARGS --platform $BUILD_PLATFORM --file .docker/Dockerfile.build"
 
@@ -98,8 +98,23 @@ build_docker_image() {
   docker build --debug $build_flags --tag "$IMAGE_NAME" .
 }
 
+load_mise_env() {
+  if ! command -v mise &>/dev/null; then
+    echo "Error: mise is not installed." >&2
+    exit 1
+  fi
+
+  eval "$(mise env -s bash)"
+
+  ELIXIR_VERSION=$(mise current elixir | sed 's/-otp-.*//')
+  ERLANG_VERSION=$(mise current erlang)
+
+  : "${ELIXIR_VERSION:?}" "${ERLANG_VERSION:?}" "${ALPINE_VERSION:?}"
+}
+
 main() {
   check_docker
+  load_mise_env
   parse_arguments "$@"
   build_docker_image
   docker push "$IMAGE_NAME"
