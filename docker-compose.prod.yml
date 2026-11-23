@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   lexin:
     image: ghcr.io/cr0t/lexin:0.17.0
